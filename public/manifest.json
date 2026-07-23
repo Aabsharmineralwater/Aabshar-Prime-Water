@@ -1,0 +1,13 @@
+{
+  "name": "Aabshar",
+  "short_name": "Aabshar",
+  "description": "Aabshar — Pure, Natural, Balanced premium mineral water in Pakistan",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0A84FF",
+  "background_color": "#F2F2F7",
+  "icons": [
+    { "src": "/src/assets/images/regenerated_image_1779783054758.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

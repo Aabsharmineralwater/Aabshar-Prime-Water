@@ -1,0 +1,5 @@
+# Robots.txt for Aabshar Mineral Water
+User-agent: *
+Allow: /
+
+Sitemap: https://aabshar.org/sitemap.xml

@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Sora:wght@300;400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400..700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --brand: #0A84FF;
+  --brand-light: #E8F3FF;
+  --bg-primary: #F2F2F7;
+  --bg-card: #FFFFFF;
+  --bg-bar: rgba(255,255,255,0.92);
+  --text-primary: #000000;
+  --text-secondary: #8E8E93;
+  --text-tertiary: #C7C7CC;
+  --border: rgba(0,0,0,0.1);
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --radius-card: 16px;
+  --radius-btn: 14px;
+  --transition: 300ms cubic-bezier(0.4,0,0.2,1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #000000;
+    --bg-card: #1C1C1E;
+    --bg-bar: rgba(28,28,30,0.92);
+    --text-primary: #FFFFFF;
+    --text-secondary: #8E8E93;
+    --border: rgba(255,255,255,0.1);
+    --shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+}
+
+html.dark {
+  --bg-primary: #000000;
+  --bg-card: #1C1C1E;
+  --bg-bar: rgba(28,28,30,0.92);
+  --text-primary: #FFFFFF;
+  --text-secondary: #8E8E93;
+  --border: rgba(255,255,255,0.1);
+  --shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+html.light {
+  --bg-primary: #F2F2F7;
+  --bg-card: #FFFFFF;
+  --bg-bar: rgba(255,255,255,0.92);
+  --text-primary: #000000;
+  --text-secondary: #8E8E93;
+  --border: rgba(0,0,0,0.1);
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 105px;
+}
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", sans-serif;
+  --font-urdu: "Noto Nastaliq Urdu", serif;
+  
+  --color-brand-deep: #ffffff;
+  --color-brand-navy: #f0f9ff;
+  --color-brand-blue: #0f172a;
+  --color-brand-teal: #0284c7;
+  --color-brand-aqua: #0087a3;
+  --color-brand-gold: #0369a1;
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 1px 4px rgba(2, 132, 199, 0.15);
+  }
+  .bg-radial-gradient {
+    background: radial-gradient(circle at center, #f0fdfa 0%, #ffffff 100%);
+  }
+}
+
+/* Base style setups */
+body {
+  font-family: var(--font-sans);
+  background-color: #0a1628;
+  color: #f8fafc;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Custom real-mountain landscape background */
+.site-bg-backdrop {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none !important;
+  background-image: url('/src/assets/images/abshar_mountain_scenery_1779999755087.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #0a1628;
+}
+
+@media (min-width: 1024px) {
+  .site-bg-backdrop {
+    background-attachment: fixed;
+    transform: scale(1.08);
+    will-change: transform;
+  }
+}
+
+@media (max-width: 1023px) {
+  .site-bg-backdrop {
+    background-attachment: scroll;
+    transform: scale(1.0);
+  }
+}
+
+/* Premium frosted glass card conforming to requirements */
+.frosted-glass-card {
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  background: rgba(255, 255, 255, 0.82) !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+}
+
+.text-shadow-heading {
+  text-shadow: 0 2px 12px rgba(0,0,0,0.45) !important;
+}
+
+/* Custom 3D & Premium Visual Classes (Desktop & Mobile) */
+
+/* 1. Multi-layered Ambient + Keylight 3D shadow */
+.shadow-3d {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 
+              0 8px 24px rgba(2, 132, 199, 0.08), 
+              0 20px 48px rgba(2, 132, 199, 0.06) !important;
+}
+
+/* Premium Button shadow list on hover */
+.shadow-btn-glow {
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.15) !important;
+}
+.shadow-btn-glow:hover {
+  box-shadow: 0 0 24px rgba(2, 132, 199, 0.45), 
+              0 6px 18px rgba(2, 132, 199, 0.25) !important;
+}
+
+/* Soft inner highlight at top of cards representing top-illuminated surface */
+.inner-highlight {
+  border-top: 1px solid rgba(255, 255, 255, 0.35) !important;
+}
+
+/* 3D hover scale & deep shadow for cards */
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+}
+.hover-lift:hover {
+  transform: translateY(-8px) scale(1.01) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04), 
+              0 12px 30px rgba(2, 132, 199, 0.12), 
+              0 24px 60px rgba(2, 132, 199, 0.08) !important;
+}
+
+/* 2. Glassmorphic material design */
+.glass-panel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.45)) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+/* 3. Deep light-on-dark mesh and spotlight */
+.dark-mesh-bg {
+  background: radial-gradient(circle at 50% 10%, #0c1a30 0%, #030a16 60%, #02060f 100%) !important;
+  color: #f1f5f9 !important;
+}
+
+.spotlight-glow {
+  background: radial-gradient(ellipse at 50% 0%, rgba(79, 195, 247, 0.18) 0%, rgba(2, 132, 199, 0.05) 45%, transparent 70%) !important;
+}
+
+/* Noise Overlay */
+.noise-overlay {
+  position: relative;
+}
+.noise-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.035;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  z-index: 1;
+}
+
+/* Underline slide effect on absolute desktop lists */
+.nav-link-slide {
+  position: relative;
+}
+.nav-link-slide::after {
+  content: "" !important;
+  position: absolute !important;
+  width: 100% !important;
+  height: 2px !important;
+  bottom: -4px !important;
+  left: 0 !important;
+  background-color: var(--color-brand-teal) !important;
+  transform: scaleX(0) !important;
+  transform-origin: bottom right !important;
+  transition: transform 0.3s ease-out !important;
+}
+.nav-link-slide:hover::after {
+  transform: scaleX(1) !important;
+  transform-origin: bottom left !important;
+}
+
+/* Desktop 3D Tilt */
+@media (min-width: 769px) {
+  .tilt-card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+  .tilt-card:hover {
+    transform: perspective(1000px) rotateX(3deg) rotateY(-3deg) translateY(-8px) !important;
+  }
+}
+
+/* Click press feedback scale effect for buttons */
+.press-scale {
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.press-scale:active {
+  transform: scale(0.97) !important;
+}
+
+/* Scroll Entrance Animation */
+@keyframes fadeInUpScroll {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.scroll-reveal-active {
+  animation: fadeInUpScroll 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Native Mobile overrides */
+@media (max-width: 768px) {
+  body {
+    background-color: #ffffff;
+    background-image: linear-gradient(180deg, #ffffff 0%, #f0f9ff 100%) !important;
+    color: #334155;
+    font-size: 15px;
+    line-height: 1.6;
+    height: auto !important;
+    overflow: visible !important;
+    padding-bottom: 5rem; /* Ensure body scrolling doesn't get cut off by bottom navigation */
+  }
+
+  /* Hiding any potential Install option/button, Alert options, or Notification bells/icons */
+  #install-btn, .install-btn, .install-button, #install-button, .install-option, 
+  #pwa-install, .pwa-install, [class*="install-btn"], [class*="install-button"],
+  #notification-bell, .notification-bell, .bell-icon, #bell-icon, .alert-icon, .alert-button, #alert-btn,
+  .alert-option, [class*="alert-button"], [class*="bell-icon"], [class*="notification-icon"] {
+    display: none !important;
+  }
+
+  /* No visible browser scrollbars: scrollbar-width: none; -ms-overflow-style: none; */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none !important;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
+  /* Touch scale feedback */
+  .active-scale:active {
+    transform: scale(0.97) !important;
+    transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Specific interactive text logo element removal */
+div#root:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) {
+  display: none !important;
+}
+
+/* Skeleton shimmer utility */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-bg {
+  background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+html.dark .shimmer-bg {
+  background: linear-gradient(90deg, #27272a 25%, #3f3f46 50%, #27272a 75%);
+  background-size: 200% 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer-bg, .animate-pulse, .animate-float, .animate-slow-spin, .animate-bubble-slow, .animate-bubble-fast {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* Keyframe Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes slow-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-slow-spin {
+  animation: slow-spin 30s linear infinite;
+}
+
+@keyframes rise {
+  0% { transform: translateY(100%) scale(0.8); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: translateY(-100px) scale(1.2); opacity: 0; }
+}
+
+.animate-bubble-slow {
+  animation: rise 12s infinite linear;
+}
+
+.animate-bubble-fast {
+  animation: rise 8s infinite linear;
+}
+
+@keyframes waveFlow {
+  0% { transform: translateX(0) translateZ(0) scaleY(1); }
+  50% { transform: translateX(-25%) translateZ(0) scaleY(0.9); }
+  100% { transform: translateX(-50%) translateZ(0) scaleY(1); }
+}
+
+.animate-wave-1 {
+  animation: waveFlow 25s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+}
+
+.animate-wave-2 {
+  animation: waveFlow 18s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+}
+
+/* Water wave overlay style */
+.water-gradient {
+  background: linear-gradient(180deg, rgba(3,10,22,0) 0%, rgba(9,30,58,0.6) 50%, rgba(3,10,22,1) 100%);
+}
+
+@keyframes whatsappPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.animate-whatsapp-pulse {
+  animation: whatsappPulse 2s infinite;
+}
