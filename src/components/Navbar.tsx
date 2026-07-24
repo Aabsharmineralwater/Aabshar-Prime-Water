@@ -116,7 +116,7 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                 >
                   <img
                     src={aabsharLogo}
-                    alt="Aabshar Mineral Water Logo"
+                    alt="Aabshar Prime Water Logo"
                     className={`object-contain transition-all duration-300 group-hover:scale-102 ${
                       isScrolled
                         ? 'h-14 sm:h-16 md:h-18 lg:h-20'
@@ -203,13 +203,13 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                   <div className="flex items-center gap-1">
                     <img 
                       src={aabsharLogo} 
-                      alt="Aabshar Mineral Water Logo" 
+                      alt="Aabshar Prime Water Logo" 
                       className="h-11 w-auto"
                       referrerPolicy="no-referrer"
                     />
                     <div className="text-left select-none">
                       <span className="font-serif italic text-xs font-black text-brand-teal block leading-tight">Aabshar</span>
-                      <span className="text-[9px] font-sans font-bold text-slate-400 tracking-wider block uppercase leading-none">Mineral Water</span>
+                      <span className="text-[9px] font-sans font-bold text-slate-400 tracking-wider block uppercase leading-none">Prime Water</span>
                     </div>
                   </div>
                   <button

@@ -27,7 +27,7 @@ export default function Footer({ onLinkClick }: FooterProps) {
             <div className="flex items-center">
               <img
                 src={aabsharLogo}
-                alt="Aabshar Mineral Water Logo"
+                alt="Aabshar Prime Water Logo"
                 className="h-14 sm:h-16 w-auto object-contain cursor-pointer transition-transform hover:scale-102"
                 onClick={() => handleLinkClick('#hero')}
                 referrerPolicy="no-referrer"
@@ -164,7 +164,7 @@ export default function Footer({ onLinkClick }: FooterProps) {
         {/* Bottom bar */}
         <div className="border-t border-white/10 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p className="font-sans text-slate-400">
-            © 2026 Aabshar Mineral Water. All Rights Reserved.
+            © 2026 Aabshar Prime Water. All Rights Reserved.
           </p>
           <div className="flex items-center gap-4 text-slate-400">
             <button onClick={() => handleLinkClick('#privacy')} className="hover:text-brand-teal transition-colors cursor-pointer bg-transparent border-0 py-0">Privacy Policy</button>

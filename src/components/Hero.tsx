@@ -53,7 +53,7 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
             >
               Aabshar<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-brand-aqua">
-                Mineral Water
+                Prime Water
               </span>
             </motion.h1>
 
@@ -63,7 +63,7 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="font-sans text-sky-100/90 text-lg sm:text-xl font-normal leading-relaxed mb-8 max-w-xl"
             >
-              Aabshar Mineral Water is a trusted bottled water brand dedicated to providing pure, safe, and refreshing drinking water. We maintain high standards of quality, hygiene, and customer satisfaction to ensure every bottle delivers freshness and trust.
+              Aabshar Prime Water is a trusted bottled water brand dedicated to providing pure, safe, and refreshing drinking water. We maintain high standards of quality, hygiene, and customer satisfaction to ensure every bottle delivers freshness and trust.
             </motion.p>
 
             {/* CTA action buttons */}

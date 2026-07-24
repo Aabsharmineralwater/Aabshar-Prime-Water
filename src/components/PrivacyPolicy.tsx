@@ -37,14 +37,14 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
                 Privacy Policy
               </h1>
               <p className="font-sans text-xs text-slate-500 mt-1 uppercase tracking-wider font-bold">
-                Last Updated: July 19, 2026 • Aabshar Mineral Water
+                Last Updated: July 19, 2026 • Aabshar Prime Water
               </p>
             </div>
           </div>
 
           <div className="prose prose-slate max-w-none font-sans text-sm sm:text-base leading-relaxed text-slate-600 space-y-6">
             <p>
-              At <strong>Aabshar Mineral Water</strong> (referred to as "Aabshar", "we", "our", or "us"), we are deeply committed to protecting the privacy, security, and trust of our clients, customers, and website visitors. This Privacy Policy outlines how we collect, store, utilize, and protect your personal data when you interact with our website <a href="https://aabshar.org" className="text-brand-teal hover:underline font-semibold">https://aabshar.org</a> and order our mineral water services.
+              At <strong>Aabshar Prime Water</strong> (referred to as "Aabshar", "we", "our", or "us"), we are deeply committed to protecting the privacy, security, and trust of our clients, customers, and website visitors. This Privacy Policy outlines how we collect, store, utilize, and protect your personal data when you interact with our website <a href="https://aabshar.org" className="text-brand-teal hover:underline font-semibold">https://aabshar.org</a> and order our mineral water services.
             </p>
 
             <div className="w-full h-px bg-slate-100 my-6" />
@@ -104,7 +104,7 @@ export default function PrivacyPolicy({ onBackToHome }: PrivacyPolicyProps) {
               For any questions, issues, or policy feedback regarding your privacy, please connect with us at:
             </p>
             <div className="p-5 bg-sky-50 border border-sky-100 rounded-2xl">
-              <p className="font-bold text-slate-900">Aabshar Mineral Water</p>
+              <p className="font-bold text-slate-900">Aabshar Prime Water</p>
               <p className="text-sm">📍 Head Office: Islamabad & Rawalpindi, Pakistan</p>
               <p className="text-sm">📞 Phone: <a href="tel:+923051999897" className="text-brand-teal hover:underline font-semibold">+92-305-1999897</a></p>
               <p className="text-sm">✉️ Email: <a href="mailto:aabshar.org@gmail.com" className="text-brand-teal hover:underline font-semibold">aabshar.org@gmail.com</a></p>

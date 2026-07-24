@@ -271,7 +271,7 @@ export default function B2B({ onQuoteClick }: B2BProps) {
     {
       step: "Step 4",
       title: "We Produce & Deliver",
-      desc: "Your custom labeled Aabshar mineral water delivered fresh to your door",
+      desc: "Your custom labeled Aabshar Prime Water delivered fresh to your door",
       icon: <CheckCircle2 className="w-5 h-5 text-brand-teal" />,
     },
   ];

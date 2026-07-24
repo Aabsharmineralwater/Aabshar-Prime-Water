@@ -77,7 +77,7 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
     const sizeLabel = selectedSize === '1.5L' ? '1.5 Litre' : '500ml';
     const cleanNotes = isCorporate && corporateNotes.trim() ? corporateNotes.trim() : '';
     
-    const message = `🛒 NEW ORDER — AABSHAR MINERAL WATER\n\n👤 Name: ${name.trim()}\n📞 Phone: ${phone.trim()}\n🏙️ City: ${city}\n🍶 Bottle Size: ${sizeLabel}\n📦 Quantity: ${quantity}\n${cleanNotes ? `💬 Message: ${cleanNotes}\n` : ''}\nOrder placed via Aabshar Website ✅`;
+    const message = `🛒 NEW ORDER — AABSHAR PRIME WATER\n\n👤 Name: ${name.trim()}\n📞 Phone: ${phone.trim()}\n🏙️ City: ${city}\n🍶 Bottle Size: ${sizeLabel}\n📦 Quantity: ${quantity}\n${cleanNotes ? `💬 Message: ${cleanNotes}\n` : ''}\nOrder placed via Aabshar Website ✅`;
 
     // Simulate premium backend network submission
     setTimeout(() => {

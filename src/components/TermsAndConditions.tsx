@@ -36,14 +36,14 @@ export default function TermsAndConditions({ onBackToHome }: TermsAndConditionsP
                 Terms and Conditions
               </h1>
               <p className="font-sans text-xs text-slate-500 mt-1 uppercase tracking-wider font-bold">
-                Last Updated: July 19, 2026 • Aabshar Mineral Water
+                Last Updated: July 19, 2026 • Aabshar Prime Water
               </p>
             </div>
           </div>
 
           <div className="prose prose-slate max-w-none font-sans text-sm sm:text-base leading-relaxed text-slate-600 space-y-6">
             <p>
-              Welcome to the website of <strong>Aabshar Mineral Water</strong> ("Company", "we", "our", "us"). By accessing our website <a href="https://aabshar.org" className="text-brand-teal hover:underline font-semibold">https://aabshar.org</a> and placing orders for our premium bottled mineral water products, you explicitly agree to comply with and be bound by the following Terms and Conditions. Please review them thoroughly before initiating transactions.
+              Welcome to the website of <strong>Aabshar Prime Water</strong> ("Company", "we", "our", "us"). By accessing our website <a href="https://aabshar.org" className="text-brand-teal hover:underline font-semibold">https://aabshar.org</a> and placing orders for our premium bottled mineral water products, you explicitly agree to comply with and be bound by the following Terms and Conditions. Please review them thoroughly before initiating transactions.
             </p>
 
             <div className="w-full h-px bg-slate-100 my-6" />
@@ -94,7 +94,7 @@ export default function TermsAndConditions({ onBackToHome }: TermsAndConditionsP
               5. Intellectual Property Rights
             </h2>
             <p>
-              All materials, design styles, branding layout, logos, visual graphics, custom bottle high-fidelity compositions, and textual documentation featured on this website are the absolute intellectual property of Aabshar Mineral Water. Unauthorized republication or reproduction of these assets is strictly forbidden.
+              All materials, design styles, branding layout, logos, visual graphics, custom bottle high-fidelity compositions, and textual documentation featured on this website are the absolute intellectual property of Aabshar Prime Water. Unauthorized republication or reproduction of these assets is strictly forbidden.
             </p>
 
             <h2 className="font-serif text-xl sm:text-2xl font-bold text-slate-900">

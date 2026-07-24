@@ -146,7 +146,7 @@ export default function Delivery() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="font-sans text-sky-100/90 text-base sm:text-lg mt-4"
           >
-            Our specialized fleet of chilled delivery vehicles operates daily to bring Aabshar mineral water straight to your residence, luxury café, wedding marquee, or office.
+            Our specialized fleet of chilled delivery vehicles operates daily to bring Aabshar Prime Water straight to your residence, luxury café, wedding marquee, or office.
           </motion.p>
         </div>
 
