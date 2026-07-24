@@ -1,7 +1,6 @@
 import { ArrowRight, Sparkles, ShieldCheck, Truck } from 'lucide-react';
 import { motion } from 'motion/react';
-import bottleImage500ml from '../assets/images/aabshar_500ml_new_1784658719379.jpg';
-import bottleImage15L from '../assets/images/aabshar_1_5l_bottle_1779790755825.png';
+import combinedBottlesImage from '../assets/images/aabshar_combined_bottles_1784927333136.jpg';
 
 interface HeroProps {
   onOrderClick: () => void;
@@ -142,21 +141,12 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
               <div className="absolute inset-0 m-auto w-72 h-72 bg-radial-gradient blur-xs animate-slow-spin rounded-full opacity-30 select-none pointer-events-none" />
               <div className="absolute bg-brand-aqua/10 w-56 h-56 rounded-full filter blur-[70px] mix-blend-multiply opacity-50 select-none animate-pulse" />
               
-              {/* Composition of both 1.5L and 500ml bottles */}
-              <div className="relative flex items-end justify-center h-[430px] sm:h-[500px] md:h-[580px] w-full pb-4">
-                {/* 1.5L Bottle standing taller in the back-right */}
+              {/* Single combined bottle image */}
+              <div className="relative flex items-center justify-center h-[430px] sm:h-[500px] md:h-[580px] w-full pb-4">
                 <img
-                  src={bottleImage15L}
-                  alt="Aabshar Premium Minerals 1.5L Bottle"
-                  className="h-[370px] sm:h-[440px] md:h-[510px] w-auto animate-float object-contain relative z-10 pointer-events-none filter drop-shadow-[0_15px_30px_rgba(2,132,199,0.13)] translate-x-4"
-                  referrerPolicy="no-referrer"
-                />
-                
-                {/* 500ml Bottle standing shorter in the front-left */}
-                <img
-                  src={bottleImage500ml}
-                  alt="Aabshar Premium Minerals 500ml Bottle"
-                  className="h-[250px] sm:h-[300px] md:h-[350px] w-auto animate-float [animation-delay:0.5s] object-contain relative z-20 pointer-events-none filter drop-shadow-[0_12px_25px_rgba(2,132,199,0.16)] -translate-x-6 pb-2"
+                  src={combinedBottlesImage}
+                  alt="Aabshar Prime Water Bottles"
+                  className="max-h-[380px] sm:max-h-[460px] md:max-h-[530px] w-auto animate-float object-contain relative z-10 pointer-events-none filter drop-shadow-[0_15px_30px_rgba(2,132,199,0.18)]"
                   referrerPolicy="no-referrer"
                 />
               </div>
