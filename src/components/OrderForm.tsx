@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ShoppingCart, CheckCircle2, Phone, User, Landmark, HelpCircle, Sparkles, Building2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import bottleImage500ml from '../assets/images/regenerated_image_1784930368485.png';
-import bottleImage15L from '../assets/images/aabshar_1_5l_bottle_1779790755825.png';
+import bottleImage500ml from '../assets/images/order_form_500ml.png';
+import bottleImage15L from '../assets/images/order_form_1_5l.png';
 
 interface OrderFormProps {
   selectedSize: string;

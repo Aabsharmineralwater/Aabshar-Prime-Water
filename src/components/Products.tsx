@@ -1,7 +1,7 @@
 import { ArrowRight, ShoppingCart, Sparkles, CheckCircle2 } from 'lucide-react';
 import { motion } from 'motion/react';
-import bottleImage15L from '../assets/images/aabshar_1_5l_bottle_1779790755825.png';
-import bottleImage500ml from '../assets/images/regenerated_image_1784659234041.png';
+import bottleImage15L from '../assets/images/product_card_1_5l.png';
+import bottleImage500ml from '../assets/images/product_card_500ml.png';
 
 interface ProductsProps {
   onOrderProduct: (size: string) => void;

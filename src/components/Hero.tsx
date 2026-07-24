@@ -1,6 +1,6 @@
 import { ArrowRight, Sparkles, ShieldCheck, Truck } from 'lucide-react';
 import { motion } from 'motion/react';
-import combinedBottlesImage from '../assets/images/regenerated_image_1784927648855.png';
+import combinedBottlesImage from '../assets/images/hero_combined_bottles.png';
 
 interface HeroProps {
   onOrderClick: () => void;

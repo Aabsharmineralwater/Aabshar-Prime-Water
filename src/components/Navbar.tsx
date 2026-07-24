@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Droplets, Phone, Mail, MapPin, Clock, Info, ChevronRight, Home, Package, Briefcase, Users } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import aabsharLogo from '../assets/images/regenerated_image_1779783054758.png';
+import aabsharLogo from '../assets/images/aabshar_brand_logo.png';
 
 interface NavbarProps {
   onOrderClick: () => void;
