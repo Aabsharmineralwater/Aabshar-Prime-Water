@@ -21,9 +21,9 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 
 // Custom generated high-fidelity physical mockup images matching user upload
-import gymMockup from '../assets/images/b2b_gym_card_mockup.png';
-import riverdaleMockup from '../assets/images/b2b_riverdale_card_mockup.png';
-import nexoraMockup from '../assets/images/b2b_nexora_card_mockup.png';
+import gymMockup from '../assets/images/b2b_gym_card_mockup.webp';
+import riverdaleMockup from '../assets/images/b2b_riverdale_card_mockup.webp';
+import nexoraMockup from '../assets/images/b2b_nexora_card_mockup.webp';
 
 // Single clean file export with B2B private label segment
 interface B2BProps {

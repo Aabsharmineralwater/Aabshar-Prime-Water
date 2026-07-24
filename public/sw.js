@@ -1,20 +1,20 @@
-const CACHE_NAME = 'aabshar-cache-v3';
+const CACHE_NAME = 'aabshar-cache-v4';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/src/main.tsx',
   '/src/App.tsx',
   '/src/index.css',
-  '/src/assets/images/aabshar_brand_logo.png',
-  '/src/assets/images/hero_combined_bottles.png',
-  '/src/assets/images/product_card_500ml.png',
-  '/src/assets/images/product_card_1_5l.png',
-  '/src/assets/images/b2b_gym_card_mockup.png',
-  '/src/assets/images/b2b_riverdale_card_mockup.png',
-  '/src/assets/images/b2b_nexora_card_mockup.png',
-  '/src/assets/images/order_form_500ml.png',
-  '/src/assets/images/order_form_1_5l.png',
-  '/src/assets/images/abshar_mountain_scenery_1779999755087.png'
+  '/src/assets/images/aabshar_brand_logo.webp',
+  '/src/assets/images/hero_combined_bottles.webp',
+  '/src/assets/images/product_card_500ml.webp',
+  '/src/assets/images/product_card_1_5l.webp',
+  '/src/assets/images/b2b_gym_card_mockup.webp',
+  '/src/assets/images/b2b_riverdale_card_mockup.webp',
+  '/src/assets/images/b2b_nexora_card_mockup.webp',
+  '/src/assets/images/order_form_500ml.webp',
+  '/src/assets/images/order_form_1_5l.webp',
+  '/src/assets/images/abshar_mountain_scenery_1779999755087.webp'
 ];
 
 self.addEventListener('install', (event) => {

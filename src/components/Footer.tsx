@@ -1,5 +1,5 @@
 import { Facebook, Instagram, MapPin, Phone, Mail, Clock } from 'lucide-react';
-import aabsharLogo from '../assets/images/aabshar_brand_logo.png';
+import aabsharLogo from '../assets/images/aabshar_brand_logo.webp';
 
 interface FooterProps {
   onLinkClick: (href: string) => void;
@@ -63,7 +63,7 @@ export default function Footer({ onLinkClick }: FooterProps) {
                 <Instagram className="w-4 h-4" />
               </a>
               <a
-                href="https://wa.me/923051999897"
+                href={`https://wa.me/923051999897?text=${encodeURIComponent("Hi Aabshar! 👋\nI'd like to place an order or get more information.\nPlease assist me.")}`}
                 target="_blank"
                 rel="noreferrer"
                 className="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-emerald-600 hover:shadow-xs hover:border-emerald-200 transition-all duration-300"

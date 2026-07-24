@@ -10,7 +10,7 @@ export default function WhatsAppButton() {
   };
 
   return (
-    <div className="fixed bottom-[28px] right-[28px] z-[9999] flex items-center justify-end font-sans">
+    <div className="hidden md:flex fixed bottom-[28px] right-[28px] z-[9999] items-center justify-end font-sans">
       <div className="relative group flex items-center">
         {/* Hover tooltip */}
         <span className="absolute right-[76px] bg-slate-900 text-white text-xs font-semibold px-3 py-2 rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 shadow-xl border border-slate-800/80 whitespace-nowrap translate-x-2 group-hover:translate-x-0">
