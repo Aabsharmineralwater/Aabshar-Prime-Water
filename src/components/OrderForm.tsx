@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ShoppingCart, CheckCircle2, Phone, User, Landmark, HelpCircle, Sparkles, Building2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import bottleImage500ml from '../assets/images/aabshar_500ml_new_1784658719379.jpg';
+import bottleImage500ml from '../assets/images/regenerated_image_1784913005781.png';
 import bottleImage15L from '../assets/images/aabshar_1_5l_bottle_1779790755825.png';
 
 interface OrderFormProps {
