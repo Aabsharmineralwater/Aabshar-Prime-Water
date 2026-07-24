@@ -1,9 +1,7 @@
 import { ArrowRight, ShoppingCart, Sparkles, CheckCircle2 } from 'lucide-react';
 import { motion } from 'motion/react';
-import bottleImage15LWebp from '../assets/images/product_card_1_5l.webp';
-import bottleImage15LPng from '../assets/images/product_card_1_5l.png';
-import bottleImage500mlWebp from '../assets/images/product_card_500ml.webp';
-import bottleImage500mlPng from '../assets/images/product_card_500ml.png';
+import bottleImage15L from '../assets/images/product_card_1_5l.png';
+import bottleImage500ml from '../assets/images/product_card_500ml.png';
 
 interface ProductsProps {
   onOrderProduct: (size: string) => void;
@@ -26,8 +24,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
       ],
       imgScale: 'scale-90',
       tagline: 'Stay active, stay fresh. Carried easily to the gym, office, or dining table.',
-      imageWebp: bottleImage500mlWebp,
-      imagePng: bottleImage500mlPng,
+      image: bottleImage500ml,
     },
     {
       id: '1.5L',
@@ -44,8 +41,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
       ],
       imgScale: 'scale-100',
       tagline: 'Perfect family size or high-density workplace solution to elevate daily hydration.',
-      imageWebp: bottleImage15LWebp,
-      imagePng: bottleImage15LPng,
+      image: bottleImage15L,
     },
   ];
 
@@ -123,17 +119,14 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                 <div className="absolute w-64 h-64 bg-brand-teal/5 rounded-full blur-xl pointer-events-none group-hover:scale-110 transition-transform duration-500" />
                 
                 {/* SACRED Bottle - size adjusted proportionally based on scale */}
-                <picture className={`h-72 sm:h-80 w-auto flex items-center justify-center transition-transform duration-500 group-hover:scale-105 pointer-events-none drop-shadow-[0_15px_25px_rgba(2,132,199,0.1)] ${prod.imgScale}`}>
-                  <source srcSet={prod.imageWebp} type="image/webp" />
-                  <img
-                    src={prod.imagePng}
-                    alt={`${prod.name} - ${prod.sizeBadge}`}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-72 sm:h-80 w-auto object-contain pointer-events-none"
-                    referrerPolicy="no-referrer"
-                  />
-                </picture>
+                <img
+                  src={prod.image}
+                  alt={`${prod.name} - ${prod.sizeBadge}`}
+                  loading="lazy"
+                  decoding="async"
+                  className={`h-72 sm:h-80 w-auto object-contain transition-transform duration-500 group-hover:scale-105 pointer-events-none drop-shadow-[0_15px_25px_rgba(2,132,199,0.1)] ${prod.imgScale}`}
+                  referrerPolicy="no-referrer"
+                />
 
                 {/* Vertical logo identifier overlay indicating true raw file */}
                 <div className="absolute bottom-4 right-6 bg-white/95 border border-slate-200 px-3 py-1 rounded-md text-[10px] text-slate-500 font-mono flex items-center gap-1.5">
