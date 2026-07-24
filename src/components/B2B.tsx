@@ -21,9 +21,12 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 
 // Custom generated high-fidelity physical mockup images matching user upload
-import gymMockup from '../assets/images/b2b_gym_card_mockup.webp';
-import riverdaleMockup from '../assets/images/b2b_riverdale_card_mockup.webp';
-import nexoraMockup from '../assets/images/b2b_nexora_card_mockup.webp';
+import gymMockupWebp from '../assets/images/b2b_gym_card_mockup.webp';
+import gymMockupPng from '../assets/images/b2b_gym_card_mockup.png';
+import riverdaleMockupWebp from '../assets/images/b2b_riverdale_card_mockup.webp';
+import riverdaleMockupPng from '../assets/images/b2b_riverdale_card_mockup.png';
+import nexoraMockupWebp from '../assets/images/b2b_nexora_card_mockup.webp';
+import nexoraMockupPng from '../assets/images/b2b_nexora_card_mockup.png';
 
 // Single clean file export with B2B private label segment
 interface B2BProps {
@@ -32,7 +35,8 @@ interface B2BProps {
 
 // Premium High-Fidelity Private Label Mockup Card utilizing actual photorealistic generated assets
 const RealBottleMockupCard = ({
-  imageSrc,
+  imageSrcWebp,
+  imageSrcPng,
   brandName,
   subtitle,
   badge,
@@ -40,7 +44,8 @@ const RealBottleMockupCard = ({
   volumes = ["500 mL", "1.5 Liters"],
   tagline
 }: {
-  imageSrc: string;
+  imageSrcWebp: string;
+  imageSrcPng: string;
   brandName: string;
   subtitle: string;
   badge: React.ReactNode;
@@ -68,14 +73,17 @@ const RealBottleMockupCard = ({
         <div className="absolute inset-0 bg-radial-gradient from-white/90 via-transparent to-transparent opacity-95" />
         
         {/* The photorealistic bottle assets generated from user attachments */}
-        <img 
-          src={imageSrc} 
-          alt={`${brandName} custom bottle pairs`}
-          loading="lazy"
-          decoding="async"
-          referrerPolicy="no-referrer"
-          className="h-full w-auto object-contain z-10 filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.06)] group-hover:scale-105 transition-transform duration-500 ease-out"
-        />
+        <picture className="h-full w-auto flex items-center justify-center z-10">
+          <source srcSet={imageSrcWebp} type="image/webp" />
+          <img 
+            src={imageSrcPng} 
+            alt={`${brandName} custom bottle pairs`}
+            loading="lazy"
+            decoding="async"
+            referrerPolicy="no-referrer"
+            className="h-full w-auto object-contain filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.06)] group-hover:scale-105 transition-transform duration-500 ease-out"
+          />
+        </picture>
 
         {/* Gloss highlight strip overlay */}
         <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 select-none pointer-events-none z-20" />
@@ -471,7 +479,8 @@ export default function B2B({ onQuoteClick }: B2BProps) {
               className="flex justify-center h-full"
             >
               <RealBottleMockupCard
-                imageSrc={gymMockup}
+                imageSrcWebp={gymMockupWebp}
+                imageSrcPng={gymMockupPng}
                 brandName="GYM Definest & Training"
                 subtitle="High-Performance Athletic Clubs"
                 tagline="Definest athletic standards, hydrating ultimate physical training."
@@ -497,7 +506,8 @@ export default function B2B({ onQuoteClick }: B2BProps) {
               className="flex justify-center h-full"
             >
               <RealBottleMockupCard
-                imageSrc={riverdaleMockup}
+                imageSrcWebp={riverdaleMockupWebp}
+                imageSrcPng={riverdaleMockupPng}
                 brandName="Riverdale Restaurant"
                 subtitle="Premium Dining & Bistros"
                 tagline="Crafted flavors matched with exceptionally pure mineral hydration."
@@ -523,7 +533,8 @@ export default function B2B({ onQuoteClick }: B2BProps) {
               className="flex justify-center h-full"
             >
               <RealBottleMockupCard
-                imageSrc={nexoraMockup}
+                imageSrcWebp={nexoraMockupWebp}
+                imageSrcPng={nexoraMockupPng}
                 brandName="Nexora Technologies"
                 subtitle="Modern Corporate Headquarters"
                 tagline="Innovate, build, and deliver with top-tier corporate branding on every desk."

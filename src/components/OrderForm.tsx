@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ShoppingCart, CheckCircle2, Phone, User, Landmark, HelpCircle, Sparkles, Building2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import bottleImage500ml from '../assets/images/order_form_500ml.webp';
-import bottleImage15L from '../assets/images/order_form_1_5l.webp';
+import bottleImage500mlWebp from '../assets/images/order_form_500ml.webp';
+import bottleImage500mlPng from '../assets/images/order_form_500ml.png';
+import bottleImage15LWebp from '../assets/images/order_form_1_5l.webp';
+import bottleImage15LPng from '../assets/images/order_form_1_5l.png';
 
 interface OrderFormProps {
   selectedSize: string;
@@ -184,14 +186,17 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
               className="mt-8 p-4 bg-slate-900/40 border border-white/10 rounded-2xl flex items-center gap-4 relative overflow-hidden z-[5] text-white"
             >
               <div className="absolute right-[-10%] bottom-[-20%] w-32 h-32 bg-brand-teal/5 rounded-full blur-2xl pointer-events-none" />
-              <img
-                src={selectedSize === '500ml' ? bottleImage500ml : bottleImage15L}
-                alt="Selected Aabshar Bottle Visualizer"
-                loading="lazy"
-                decoding="async"
-                className="h-28 w-auto animate-float object-contain drop-shadow-[0_8px_15px_rgba(2,132,199,0.15)] flex-shrink-0"
-                referrerPolicy="no-referrer"
-              />
+              <picture className="flex items-center justify-center flex-shrink-0">
+                <source srcSet={selectedSize === '500ml' ? bottleImage500mlWebp : bottleImage15LWebp} type="image/webp" />
+                <img
+                  src={selectedSize === '500ml' ? bottleImage500mlPng : bottleImage15LPng}
+                  alt="Selected Aabshar Bottle Visualizer"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-28 w-auto animate-float object-contain drop-shadow-[0_8px_15px_rgba(2,132,199,0.15)] flex-shrink-0"
+                  referrerPolicy="no-referrer"
+                />
+              </picture>
               <div className="text-left">
                 <span className="font-sans text-[10px] text-white font-bold uppercase tracking-wider bg-brand-teal/30 px-2 py-0.5 rounded border border-brand-teal/20">Selected Model</span>
                 <h4 className="font-serif text-base font-bold text-white mt-1">Aabshar Hydration Companion</h4>

@@ -1,6 +1,7 @@
 import { ArrowRight, Sparkles, ShieldCheck, Truck } from 'lucide-react';
 import { motion } from 'motion/react';
-import combinedBottlesImage from '../assets/images/hero_combined_bottles.webp';
+import heroBottlesWebp from '../assets/images/hero_combined_bottles.webp';
+import heroBottlesPng from '../assets/images/hero_combined_bottles.png';
 
 interface HeroProps {
   onOrderClick: () => void;
@@ -143,15 +144,18 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
               
               {/* Single combined bottle image */}
               <div className="relative flex items-center justify-center h-[430px] sm:h-[500px] md:h-[580px] w-full pb-4">
-                <img
-                  src={combinedBottlesImage}
-                  alt="Aabshar Prime Water Bottles"
-                  loading="eager"
-                  decoding="async"
-                  fetchPriority="high"
-                  className="max-h-[380px] sm:max-h-[460px] md:max-h-[530px] w-auto animate-float object-contain relative z-10 pointer-events-none filter drop-shadow-[0_15px_30px_rgba(2,132,199,0.18)]"
-                  referrerPolicy="no-referrer"
-                />
+                <picture className="max-h-[380px] sm:max-h-[460px] md:max-h-[530px] w-auto animate-float relative z-10 pointer-events-none filter drop-shadow-[0_15px_30px_rgba(2,132,199,0.18)] flex items-center justify-center">
+                  <source srcSet={heroBottlesWebp} type="image/webp" />
+                  <img
+                    src={heroBottlesPng}
+                    alt="Aabshar Prime Water Bottles"
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
+                    className="max-h-[380px] sm:max-h-[460px] md:max-h-[530px] w-auto object-contain pointer-events-none"
+                    referrerPolicy="no-referrer"
+                  />
+                </picture>
               </div>
               
               {/* Elegant floating circular badge */}

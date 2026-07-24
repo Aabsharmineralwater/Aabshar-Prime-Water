@@ -1,5 +1,6 @@
 import { Facebook, Instagram, MapPin, Phone, Mail, Clock } from 'lucide-react';
-import aabsharLogo from '../assets/images/aabshar_brand_logo.webp';
+import aabsharLogoWebp from '../assets/images/aabshar_brand_logo.webp';
+import aabsharLogoPng from '../assets/images/aabshar_brand_logo.png';
 
 interface FooterProps {
   onLinkClick: (href: string) => void;
@@ -25,15 +26,18 @@ export default function Footer({ onLinkClick }: FooterProps) {
           {/* Column 1 — Brand */}
           <div className="flex flex-col items-start gap-4">
             <div className="flex items-center">
-              <img
-                src={aabsharLogo}
-                alt="Aabshar Prime Water Logo"
-                loading="lazy"
-                decoding="async"
-                className="h-14 sm:h-16 w-auto object-contain cursor-pointer transition-transform hover:scale-102"
-                onClick={() => handleLinkClick('#hero')}
-                referrerPolicy="no-referrer"
-              />
+              <picture className="flex items-center justify-center">
+                <source srcSet={aabsharLogoWebp} type="image/webp" />
+                <img
+                  src={aabsharLogoPng}
+                  alt="Aabshar Prime Water Logo"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-14 sm:h-16 w-auto object-contain cursor-pointer transition-transform hover:scale-102"
+                  onClick={() => handleLinkClick('#hero')}
+                  referrerPolicy="no-referrer"
+                />
+              </picture>
             </div>
             <p className="font-serif italic text-base font-bold text-brand-teal">
               Pure. Natural. Refreshing.

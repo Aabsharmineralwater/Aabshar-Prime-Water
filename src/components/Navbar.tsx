@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Droplets, Phone, Mail, MapPin, Clock, Info, ChevronRight, Home, Package, Briefcase, Users } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import aabsharLogo from '../assets/images/aabshar_brand_logo.webp';
+import aabsharLogoWebp from '../assets/images/aabshar_brand_logo.webp';
+import aabsharLogoPng from '../assets/images/aabshar_brand_logo.png';
 
 interface NavbarProps {
   onOrderClick: () => void;
@@ -114,19 +115,22 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                   onClick={() => handleLinkClick('#hero')} 
                   className="flex items-center gap-2 group cursor-pointer bg-transparent border-0 active:scale-95 transition-transform duration-200"
                 >
-                  <img
-                    src={aabsharLogo}
-                    alt="Aabshar Prime Water Logo"
-                    loading="eager"
-                    decoding="async"
-                    fetchPriority="high"
-                    className={`object-contain transition-all duration-300 group-hover:scale-102 ${
-                      isScrolled
-                        ? 'h-14 sm:h-16 md:h-18 lg:h-20'
-                        : 'h-16 sm:h-18 md:h-22 lg:h-24'
-                    }`}
-                    referrerPolicy="no-referrer"
-                  />
+                  <picture className="flex items-center justify-center">
+                    <source srcSet={aabsharLogoWebp} type="image/webp" />
+                    <img
+                      src={aabsharLogoPng}
+                      alt="Aabshar Prime Water Logo"
+                      loading="eager"
+                      decoding="async"
+                      fetchPriority="high"
+                      className={`object-contain transition-all duration-300 group-hover:scale-102 ${
+                        isScrolled
+                          ? 'h-14 sm:h-16 md:h-18 lg:h-20'
+                          : 'h-16 sm:h-18 md:h-22 lg:h-24'
+                      }`}
+                      referrerPolicy="no-referrer"
+                    />
+                  </picture>
                 </button>
               </div>
 
@@ -204,12 +208,15 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                 {/* 1. Drawer Header Panel */}
                 <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-gradient-to-r from-sky-50/20 to-teal-50/10">
                   <div className="flex items-center gap-1">
-                    <img 
-                      src={aabsharLogo} 
-                      alt="Aabshar Prime Water Logo" 
-                      className="h-11 w-auto"
-                      referrerPolicy="no-referrer"
-                    />
+                    <picture className="flex items-center justify-center">
+                      <source srcSet={aabsharLogoWebp} type="image/webp" />
+                      <img 
+                        src={aabsharLogoPng} 
+                        alt="Aabshar Prime Water Logo" 
+                        className="h-11 w-auto"
+                        referrerPolicy="no-referrer"
+                      />
+                    </picture>
                     <div className="text-left select-none">
                       <span className="font-serif italic text-xs font-black text-brand-teal block leading-tight">Aabshar</span>
                       <span className="text-[9px] font-sans font-bold text-slate-400 tracking-wider block uppercase leading-none">Prime Water</span>
