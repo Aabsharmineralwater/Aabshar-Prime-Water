@@ -21,7 +21,7 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
         setIsScrolled(false);
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -43,7 +43,7 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
       }
     };
     
-    window.addEventListener('scroll', handleScrollSpy);
+    window.addEventListener('scroll', handleScrollSpy, { passive: true });
     handleScrollSpy();
     return () => window.removeEventListener('scroll', handleScrollSpy);
   }, []);
@@ -117,6 +117,9 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                   <img
                     src={aabsharLogo}
                     alt="Aabshar Prime Water Logo"
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
                     className={`object-contain transition-all duration-300 group-hover:scale-102 ${
                       isScrolled
                         ? 'h-14 sm:h-16 md:h-18 lg:h-20'

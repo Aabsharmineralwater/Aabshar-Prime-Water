@@ -27,7 +27,7 @@ export default function Testimonials() {
   ];
 
   return (
-    <section id="testimonials" className="py-24 bg-transparent relative overflow-hidden spotlight-glow border-t border-white/5 text-slate-100">
+    <section id="testimonials" className="py-24 bg-transparent relative overflow-hidden spotlight-glow border-t border-white/5 text-slate-100 cv-auto">
       {/* Continuing Background Scenery Overlay (Slightly darker for text readability) */}
       <div className="absolute inset-0 bg-[rgba(5,15,35,0.72)] z-0 pointer-events-none" />
       {/* Top Wave Segment */}

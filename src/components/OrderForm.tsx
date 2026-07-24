@@ -105,7 +105,7 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
   };
 
   return (
-    <section id="contact" className="py-24 bg-transparent relative overflow-hidden spotlight-glow border-t border-white/5 text-slate-100">
+    <section id="contact" className="py-24 bg-transparent relative overflow-hidden spotlight-glow border-t border-white/5 text-slate-100 cv-auto">
       {/* Continuing Background Scenery Overlay (Slightly darker for text readability) */}
       <div className="absolute inset-0 bg-[rgba(5,15,35,0.72)] z-0 pointer-events-none" />
       {/* Top Wave Divider Representing Safe Purified Flow */}
@@ -187,6 +187,8 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
               <img
                 src={selectedSize === '500ml' ? bottleImage500ml : bottleImage15L}
                 alt="Selected Aabshar Bottle Visualizer"
+                loading="lazy"
+                decoding="async"
                 className="h-28 w-auto animate-float object-contain drop-shadow-[0_8px_15px_rgba(2,132,199,0.15)] flex-shrink-0"
                 referrerPolicy="no-referrer"
               />

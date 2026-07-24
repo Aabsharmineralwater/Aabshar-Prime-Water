@@ -71,6 +71,8 @@ const RealBottleMockupCard = ({
         <img 
           src={imageSrc} 
           alt={`${brandName} custom bottle pairs`}
+          loading="lazy"
+          decoding="async"
           referrerPolicy="no-referrer"
           className="h-full w-auto object-contain z-10 filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.06)] group-hover:scale-105 transition-transform duration-500 ease-out"
         />
@@ -311,7 +313,7 @@ export default function B2B({ onQuoteClick }: B2BProps) {
   };
 
   return (
-    <section id="b2b" className="py-24 bg-transparent text-slate-100 relative overflow-hidden spotlight-glow border-t border-white/5">
+    <section id="b2b" className="py-24 bg-transparent text-slate-100 relative overflow-hidden spotlight-glow border-t border-white/5 cv-auto">
       {/* Continuing Background Scenery Overlay (Slightly darker for text readability) */}
       <div className="absolute inset-0 bg-[rgba(5,15,35,0.72)] z-0 pointer-events-none" />
       

@@ -146,6 +146,9 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
                 <img
                   src={combinedBottlesImage}
                   alt="Aabshar Prime Water Bottles"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                   className="max-h-[380px] sm:max-h-[460px] md:max-h-[530px] w-auto animate-float object-contain relative z-10 pointer-events-none filter drop-shadow-[0_15px_30px_rgba(2,132,199,0.18)]"
                   referrerPolicy="no-referrer"
                 />

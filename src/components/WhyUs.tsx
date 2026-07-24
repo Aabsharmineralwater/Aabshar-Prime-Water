@@ -30,7 +30,7 @@ export default function WhyUs() {
   ];
 
   return (
-    <section id="about" className="py-24 bg-transparent relative overflow-hidden text-slate-100 border-t border-white/5">
+    <section id="about" className="py-24 bg-transparent relative overflow-hidden text-slate-100 border-t border-white/5 cv-auto">
       {/* Continuing Background Scenery Overlay (Slightly darker for text readability) */}
       <div className="absolute inset-0 bg-[rgba(5,15,35,0.72)] z-0 pointer-events-none" />
       {/* Top Wave Divider Representing Pristine Flow */}

@@ -46,7 +46,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
   ];
 
   return (
-    <section id="products" className="py-24 bg-transparent relative overflow-hidden spotlight-glow border-t border-white/5">
+    <section id="products" className="py-24 bg-transparent relative overflow-hidden spotlight-glow border-t border-white/5 cv-auto">
       {/* Continuing Background Scenery Overlay (lighter for products) */}
       <div className="absolute inset-0 bg-linear-to-b from-[rgba(5,15,35,0.60)] via-[rgba(5,15,35,0.45)] to-[rgba(5,15,35,0.65)] z-0 pointer-events-none" />
 
@@ -123,6 +123,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                   src={prod.image}
                   alt={`${prod.name} - ${prod.sizeBadge}`}
                   loading="lazy"
+                  decoding="async"
                   className={`h-72 sm:h-80 w-auto object-contain transition-transform duration-500 group-hover:scale-105 pointer-events-none drop-shadow-[0_15px_25px_rgba(2,132,199,0.1)] ${prod.imgScale}`}
                   referrerPolicy="no-referrer"
                 />

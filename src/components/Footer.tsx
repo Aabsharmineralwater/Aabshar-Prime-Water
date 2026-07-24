@@ -28,6 +28,8 @@ export default function Footer({ onLinkClick }: FooterProps) {
               <img
                 src={aabsharLogo}
                 alt="Aabshar Prime Water Logo"
+                loading="lazy"
+                decoding="async"
                 className="h-14 sm:h-16 w-auto object-contain cursor-pointer transition-transform hover:scale-102"
                 onClick={() => handleLinkClick('#hero')}
                 referrerPolicy="no-referrer"
