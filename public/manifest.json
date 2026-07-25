@@ -8,6 +8,6 @@
   "theme_color": "#0A84FF",
   "background_color": "#F2F2F7",
   "icons": [
-    { "src": "/src/assets/images/aabshar_brand_logo.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    { "src": "/logo.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ]
 }
