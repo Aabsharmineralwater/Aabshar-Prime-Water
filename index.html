@@ -175,10 +175,45 @@
       ]
     }
     </script>
+    
+    <!-- Critical Asset Preloading for Instant Above-the-Fold LCP -->
+    <link rel="preload" href="/src/assets/images/hero_combined_bottles_mobile.webp" as="image" type="image/webp" media="(max-width: 640px)" />
+    <link rel="preload" href="/src/assets/images/hero_combined_bottles.webp" as="image" type="image/webp" media="(min-width: 641px)" />
+    <link rel="preload" href="/src/assets/images/aabshar_brand_logo_small.webp" as="image" type="image/webp" />
+
     <title>Aabshar | Pure Water, Pure Trust</title>
   </head>
-  <body>
-    <div id="root"></div>
+  <body class="bg-[#050d1a] text-slate-100">
+    <div id="root">
+      <!-- Static Initial Shell for Search Crawlers & Sub-50ms Instant LCP Paint -->
+      <header className="fixed top-0 inset-x-0 z-40 bg-white/90 backdrop-blur-lg shadow-md py-3.5">
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
+          <a href="#hero" className="flex items-center gap-2">
+            <img src="/src/assets/images/aabshar_brand_logo_small.webp" alt="Aabshar Prime Water Logo" className="h-16 w-auto" />
+          </a>
+          <nav className="hidden md:flex items-center space-x-2 font-sans text-xs font-bold text-slate-700">
+            <a href="#hero" className="px-4 py-2">Home</a>
+            <a href="#products" className="px-4 py-2">Products</a>
+            <a href="#b2b" className="px-4 py-2">B2B Custom Label</a>
+            <a href="#about" className="px-4 py-2">About Us</a>
+            <a href="#contact" className="px-4 py-2">Contact Us</a>
+          </nav>
+        </div>
+      </header>
+      <main className="relative pt-32 pb-16 min-h-screen flex items-center justify-center text-center px-4">
+        <div className="max-w-4xl mx-auto">
+          <span className="inline-block px-3.5 py-1.5 rounded-full bg-sky-500/20 text-sky-200 font-semibold text-sm mb-6">
+            Premium Balanced Mineral Water — TDS 120–160
+          </span>
+          <h1 className="text-5xl sm:text-6xl font-extrabold text-white tracking-tight mb-6">
+            Aabshar Prime Water
+          </h1>
+          <p className="text-sky-100/90 text-lg sm:text-xl max-w-xl mx-auto mb-8">
+            Aabshar Prime Water is a trusted bottled water brand dedicated to providing pure, safe, and refreshing drinking water. We maintain high standards of quality, hygiene, and customer satisfaction.
+          </p>
+        </div>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
       if ('serviceWorker' in navigator) {
