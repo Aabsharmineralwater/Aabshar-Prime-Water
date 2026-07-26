@@ -12,7 +12,6 @@ import WhatsAppButton from './components/WhatsAppButton';
 import BottomNav from './components/BottomNav';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsAndConditions from './components/TermsAndConditions';
-import AnimatedBackground from './components/AnimatedBackground';
 import { motion, AnimatePresence } from 'motion/react';
 import { Droplet, ShieldCheck, Truck } from 'lucide-react';
 
@@ -75,10 +74,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen text-slate-100 font-sans selection:bg-brand-teal selection:text-white relative bg-[#050d1a]">
+    <div className="min-h-screen text-slate-100 font-sans selection:bg-brand-teal selection:text-white relative">
       
-      {/* GPU-Accelerated Animated Aabshar Atmosphere (No heavy image files) */}
-      <AnimatedBackground />
+      {/* Decoupled Real Mountain / Abshar scenery background */}
+      <div className="site-bg-backdrop" role="presentation" />
       
       {/* Absolute background canvas overlays */}
       <div className="fixed top-0 inset-x-0 bottom-0 pointer-events-none z-[1] overflow-hidden">
@@ -86,7 +85,7 @@ export default function App() {
         <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-brand-aqua/8 rounded-full blur-[180px] animate-pulse" style={{ animationDuration: '8000ms' }} />
       </div>
 
-      <div className="relative z-10 flex flex-col min-h-screen pb-24 sm:pb-28 md:pb-0">
+      <div className="relative z-10 flex flex-col min-h-screen pb-16 md:pb-0">
         {/* Navbar */}
         <Navbar 
           onOrderClick={() => handleLinkClick('#contact')} 

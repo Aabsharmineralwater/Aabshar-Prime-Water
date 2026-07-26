@@ -85,7 +85,7 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Lightweight CSS pure gradient and GPU backdrop */
+/* Custom real-mountain landscape background */
 .site-bg-backdrop {
   position: fixed;
   inset: 0;
@@ -93,7 +93,27 @@ body {
   height: 100%;
   z-index: 0;
   pointer-events: none !important;
-  background-color: #050d1a;
+  background-image: url('./assets/images/waterfall_scenery_bg_1785006829467.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #0a1628;
+}
+
+@media (min-width: 1024px) {
+  .site-bg-backdrop {
+    background-attachment: fixed;
+    transform: scale(1.02);
+    will-change: transform;
+  }
+}
+
+@media (max-width: 1023px) {
+  .site-bg-backdrop {
+    background-attachment: scroll;
+    background-position: center top;
+    transform: scale(1.0);
+  }
 }
 
 /* Premium frosted glass card conforming to requirements */

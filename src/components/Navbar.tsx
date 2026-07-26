@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Droplets, Phone, Home, Package, Building2, Info, Briefcase, Users, MapPin, Clock, Mail } from 'lucide-react';
-import aabsharLogo from '../assets/images/aabshar_brand_logo_small.webp';
+import { Menu, X, Droplets, Phone, Mail, MapPin, Clock, Info, ChevronRight, Home, Package, Briefcase, Users } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import aabsharLogo from '../assets/images/aabshar_brand_logo.png';
 
 interface NavbarProps {
   onOrderClick: () => void;
@@ -161,20 +162,168 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                 </button>
               </div>
 
-              {/* Mobile CTA Quick Button in top bar */}
-              <div className="flex md:hidden items-center">
+              {/* Mobile Hamburger menu toggle */}
+              <div className="flex md:hidden">
                 <button
-                  onClick={onOrderClick}
-                  className="inline-flex items-center justify-center px-4 py-2 font-bold text-xs text-white rounded-full bg-linear-to-r from-brand-teal to-brand-aqua hover:brightness-105 shadow-sm active:scale-95 transition-all cursor-pointer border-0"
+                  id="menu-toggle"
+                  onClick={() => setIsOpen(!isOpen)}
+                  aria-label="Toggle Navigation Menu"
+                  className="text-slate-800 hover:text-brand-teal hover:bg-slate-100/60 focus:outline-none focus:ring-2 focus:ring-brand-teal p-2 rounded-xl press-scale transition-colors border border-slate-205"
                 >
-                  <Droplets className="w-3.5 h-3.5 mr-1 text-white animate-pulse" />
-                  Order
+                  {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                 </button>
               </div>
 
             </div>
           </div>
         </div>
+
+        {/* ELEGANT MOBILE DRAWER SYSTEM */}
+        <AnimatePresence>
+          {isOpen && (
+            <>
+              {/* Tap to close backdrop overlay with high cinematic atmosphere */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setIsOpen(false)}
+                className="fixed inset-0 bg-slate-950/45 backdrop-blur-xs z-40 md:hidden"
+                id="drawer-backdrop"
+              />
+
+              {/* Modern Slide-out Panel Drawer Container */}
+              <motion.div
+                initial={{ x: '100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '100%' }}
+                transition={{ type: 'spring', damping: 26, stiffness: 210 }}
+                className="fixed top-0 right-0 h-screen w-full max-w-[340px] sm:max-w-[380px] bg-white z-50 md:hidden shadow-2xl border-l border-slate-200/60 flex flex-col justify-between overflow-y-auto"
+                id="drawer-panel"
+              >
+                {/* 1. Drawer Header Panel */}
+                <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-gradient-to-r from-sky-50/20 to-teal-50/10">
+                  <div className="flex items-center gap-1">
+                    <img 
+                      src={aabsharLogo} 
+                      alt="Aabshar Prime Water Logo" 
+                      className="h-11 w-auto"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="text-left select-none">
+                      <span className="font-serif italic text-xs font-black text-brand-teal block leading-tight">Aabshar</span>
+                      <span className="text-[9px] font-sans font-bold text-slate-400 tracking-wider block uppercase leading-none">Prime Water</span>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    aria-label="Close menu"
+                    className="w-9 h-9 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 transition-colors"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+
+                {/* 2. Main Navigation Links Lists */}
+                <div className="px-5 py-6 flex-grow space-y-6">
+                  <div>
+                    <h4 className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest pl-1 mb-3 select-none">
+                      Menu Sections
+                    </h4>
+                    <div className="space-y-1.5">
+                      {navLinks.map((link) => {
+                        const isActive = activeSection === link.href;
+                        return (
+                          <button
+                            key={link.name}
+                            onClick={() => handleLinkClick(link.href)}
+                            className={`flex items-center justify-between w-full px-4 py-3 rounded-xl text-sm font-bold transition-all ${
+                              isActive
+                                ? 'text-brand-teal bg-sky-50 shadow-xs border-l-4 border-brand-teal pl-3'
+                                : 'text-slate-700 hover:text-brand-teal hover:bg-slate-50 border-l-4 border-transparent'
+                            }`}
+                          >
+                            <div className="flex items-center gap-3">
+                              <span className={isActive ? 'text-brand-teal' : 'text-slate-400'}>
+                                {link.icon}
+                              </span>
+                              <span>{link.name}</span>
+                            </div>
+                            <ChevronRight className={`w-4 h-4 transition-transform ${isActive ? 'text-brand-teal translate-x-1' : 'text-slate-400'}`} />
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* 3. Balanced Quality Summary Widget Card */}
+                  <div className="p-4 bg-sky-50/50 rounded-2xl border border-sky-100/50 space-y-2">
+                    <div className="flex items-center gap-2 text-brand-teal font-extrabold text-xs tracking-wider uppercase">
+                      <Info className="w-4 h-4" />
+                      <span>Standard Certification</span>
+                    </div>
+                    <p className="text-[11px] text-slate-600 leading-relaxed text-left font-semibold">
+                      Formulated with a scientifically balanced natural minerals TDS 120–160, offering healthy active companion standards daily.
+                    </p>
+                    <div className="grid grid-cols-2 gap-2 pt-1 border-t border-sky-100/50">
+                      <div>
+                        <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider block">Fluoride/Sulfate</span>
+                        <span className="text-[11px] font-black text-slate-800">Balanced Verified</span>
+                      </div>
+                      <div>
+                        <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider block">Lab Sourced</span>
+                        <span className="text-[11px] font-black text-slate-800">100% PCRWR Approved</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 4. Contact Details Widget Card */}
+                  <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 space-y-3">
+                    <div className="flex items-center gap-2 text-slate-800 font-bold text-xs uppercase tracking-wider">
+                      <Phone className="w-4 h-4 text-brand-teal" />
+                      <span>Regional Delivery Ops</span>
+                    </div>
+                    
+                    <div className="space-y-2 text-[11px] text-slate-600">
+                      <div className="flex items-start gap-2.5">
+                        <MapPin className="w-3.5 h-3.5 text-brand-teal mt-0.5 flex-shrink-0" />
+                        <span className="leading-tight text-left">Islamabad, Rawalpindi & Fateh Jang sectors</span>
+                      </div>
+
+                      <div className="flex items-start gap-2.5">
+                        <Phone className="w-3.5 h-3.5 text-emerald-500 mt-0.5 flex-shrink-0" />
+                        <a href="tel:+923051999897" className="text-brand-teal font-black hover:underline text-left">
+                          +92-305-1999897
+                        </a>
+                      </div>
+
+                      <div className="flex items-start gap-2.5">
+                        <Mail className="w-3.5 h-3.5 text-sky-500 mt-0.5 flex-shrink-0" />
+                        <a href="mailto:aabshar.org@gmail.com" className="text-brand-teal font-medium hover:underline text-left break-all">
+                          aabshar.org@gmail.com
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 5. Mobile CTA Bottom Block */}
+                <div className="p-5 border-t border-slate-100 bg-slate-50/50">
+                  <button
+                    onClick={() => {
+                      setIsOpen(false);
+                      onOrderClick();
+                    }}
+                    className="flex items-center justify-center w-full px-5 py-3.5 text-sm font-black text-white bg-linear-to-r from-brand-teal to-brand-aqua rounded-xl shadow-[0_4px_16px_rgba(2,132,199,0.2)] hover:brightness-105 active:scale-98 transition-all cursor-pointer border-0"
+                  >
+                    <Droplets className="w-4.5 h-4.5 mr-2 text-white animate-bounce" />
+                    Place Quick Order
+                  </button>
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
       </header>
     </>
   );

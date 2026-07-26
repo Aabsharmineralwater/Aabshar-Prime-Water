@@ -1,8 +1,6 @@
 import { ArrowRight, Sparkles, ShieldCheck, Truck } from 'lucide-react';
 import { motion } from 'motion/react';
-import combinedBottlesPng from '../assets/images/hero_combined_bottles.png';
-import heroBottlesWebp from '../assets/images/hero_combined_bottles.webp';
-import heroBottlesMobileWebp from '../assets/images/hero_combined_bottles_mobile.webp';
+import combinedBottlesImage from '../assets/images/hero_combined_bottles.png';
 
 interface HeroProps {
   onOrderClick: () => void;
@@ -13,7 +11,7 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
   return (
     <section
       id="hero"
-      className="relative min-h-screen pt-28 pb-28 sm:pb-32 md:pb-16 flex items-center justify-center noise-overlay overflow-hidden bg-transparent"
+      className="relative min-h-screen pt-28 pb-16 md:pt-36 flex items-center justify-center noise-overlay overflow-hidden bg-transparent"
     >
       {/* 1. Semi-transparent dark overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-[rgba(5,15,35,0.62)] via-[rgba(5,15,35,0.45)] to-[rgba(5,15,35,0.70)] z-0 pointer-events-none" />
@@ -145,19 +143,15 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
               
               {/* Single combined bottle image */}
               <div className="relative flex items-center justify-center h-[430px] sm:h-[500px] md:h-[580px] w-full pb-4">
-                <picture>
-                  <source media="(max-width: 640px)" srcSet={heroBottlesMobileWebp} type="image/webp" />
-                  <source srcSet={heroBottlesWebp} type="image/webp" />
-                  <img
-                    src={combinedBottlesPng}
-                    alt="Aabshar Prime Water Bottles"
-                    loading="eager"
-                    decoding="async"
-                    fetchPriority="high"
-                    className="max-h-[380px] sm:max-h-[460px] md:max-h-[530px] w-auto animate-float object-contain relative z-10 pointer-events-none filter drop-shadow-[0_15px_30px_rgba(2,132,199,0.18)]"
-                    referrerPolicy="no-referrer"
-                  />
-                </picture>
+                <img
+                  src={combinedBottlesImage}
+                  alt="Aabshar Prime Water Bottles"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
+                  className="max-h-[380px] sm:max-h-[460px] md:max-h-[530px] w-auto animate-float object-contain relative z-10 pointer-events-none filter drop-shadow-[0_15px_30px_rgba(2,132,199,0.18)]"
+                  referrerPolicy="no-referrer"
+                />
               </div>
               
               {/* Elegant floating circular badge */}

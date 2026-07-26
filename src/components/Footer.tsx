@@ -1,5 +1,5 @@
 import { Facebook, Instagram, MapPin, Phone, Mail, Clock } from 'lucide-react';
-import aabsharLogo from '../assets/images/aabshar_brand_logo_small.webp';
+import aabsharLogo from '../assets/images/aabshar_brand_logo.png';
 
 interface FooterProps {
   onLinkClick: (href: string) => void;
