@@ -76,9 +76,6 @@ export default function App() {
   return (
     <div className="min-h-screen text-slate-100 font-sans selection:bg-brand-teal selection:text-white relative">
       
-      {/* Decoupled Real Mountain / Abshar scenery background */}
-      <div className="site-bg-backdrop" role="presentation" />
-      
       {/* Absolute background canvas overlays */}
       <div className="fixed top-0 inset-x-0 bottom-0 pointer-events-none z-[1] overflow-hidden">
         <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-brand-teal/5 rounded-full blur-[160px] animate-pulse" />
@@ -133,6 +130,9 @@ export default function App() {
             {/* Product Catalogue side-by-side cards */}
             <Products onOrderProduct={handleOrderProduct} />
 
+            {/* Reviews Testimonials Social Proof */}
+            <Testimonials />
+
             {/* B2B Private Custom Label Branding Option */}
             <B2B onQuoteClick={() => {
               // Simply accept completed inquiry
@@ -143,9 +143,6 @@ export default function App() {
 
             {/* Map tracker Area Delivery options */}
             <Delivery />
-
-            {/* Reviews Testimonials Social Proof */}
-            <Testimonials />
 
             {/* Interactive Ordering Form / Contact */}
             <OrderForm

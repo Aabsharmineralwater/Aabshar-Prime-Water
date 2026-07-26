@@ -234,6 +234,15 @@ export default function WhyUs() {
                   <strong>Aabshar Target Range:</strong> Our minerals are balanced to sit exactly at <strong>135 TDS</strong> for optimal cell bio-hydration.
                 </p>
               </div>
+
+              {/* WHO & PCRWR Accredited Laboratory Verification Badge */}
+              <div className="mt-4 p-4 bg-slate-900 text-white rounded-2xl border border-amber-400/40 shadow-md flex items-center gap-3">
+                <ShieldCheck className="w-8 h-8 text-amber-400 flex-shrink-0" />
+                <div>
+                  <span className="font-sans text-[10px] font-extrabold text-amber-300 uppercase tracking-wider block">Official Compliance</span>
+                  <span className="font-serif text-xs font-bold text-white block">WHO & PCRWR Quality Standards Lab Verified</span>
+                </div>
+              </div>
             </div>
 
           </div>

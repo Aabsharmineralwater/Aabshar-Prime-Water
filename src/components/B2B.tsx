@@ -137,6 +137,7 @@ const RealBottleMockupCard = ({
 
 export default function B2B({ onQuoteClick }: B2BProps) {
   // Form Logic State
+  const [formStep, setFormStep] = useState<1 | 2>(1);
   const [formData, setFormData] = useState({
     fullName: '',
     companyName: '',
@@ -162,6 +163,29 @@ export default function B2B({ onQuoteClick }: B2BProps) {
     if (e.target.files && e.target.files[0]) {
       setLogoFile(e.target.files[0]);
     }
+  };
+
+  const handleNextStep = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const newErrors: Record<string, string> = {};
+
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = 'Full Name is required';
+    }
+    if (!formData.companyName.trim()) {
+      newErrors.companyName = 'Company / Business Name is required';
+    }
+    if (!formData.city.trim()) {
+      newErrors.city = 'City is required';
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({});
+    setFormStep(2);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -405,8 +429,8 @@ export default function B2B({ onQuoteClick }: B2BProps) {
           </div>
         </div>
 
-        {/* 4 Step Process Horizontal Flow */}
-        <div className="mb-28 max-w-6xl mx-auto">
+        {/* 4 Step Process Horizontal Flow with Distinct Background Band */}
+        <div className="mb-28 max-w-6xl mx-auto bg-[#061224]/90 p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden backdrop-blur-md">
           <div className="text-center mb-16">
             <h3 className="font-serif text-2xl sm:text-3.5xl font-bold text-white text-shadow-heading drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]">
               Seamless 4-Step Process
@@ -462,7 +486,7 @@ export default function B2B({ onQuoteClick }: B2BProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center items-stretch">
             
-            {/* Bottle Mockup 1: GYM */}
+            {/* Bottle Mockup 1: IronCore Fitness */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -472,7 +496,7 @@ export default function B2B({ onQuoteClick }: B2BProps) {
             >
               <RealBottleMockupCard
                 imageSrc={gymMockup}
-                brandName="GYM Definest & Training"
+                brandName="IronCore Fitness"
                 subtitle="High-Performance Athletic Clubs"
                 tagline="Definest athletic standards, hydrating ultimate physical training."
                 badge={
@@ -488,7 +512,7 @@ export default function B2B({ onQuoteClick }: B2BProps) {
               />
             </motion.div>
 
-            {/* Bottle Mockup 2: RIVERDALE */}
+            {/* Bottle Mockup 2: The Olive Table */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -498,7 +522,7 @@ export default function B2B({ onQuoteClick }: B2BProps) {
             >
               <RealBottleMockupCard
                 imageSrc={riverdaleMockup}
-                brandName="Riverdale Restaurant"
+                brandName="The Olive Table"
                 subtitle="Premium Dining & Bistros"
                 tagline="Crafted flavors matched with exceptionally pure mineral hydration."
                 badge={
@@ -562,6 +586,17 @@ export default function B2B({ onQuoteClick }: B2BProps) {
               <p className="font-sans text-xs sm:text-sm text-slate-600 mt-2">
                 Provide basic business details. Our premium graphic lab will assemble and present a complimentary digital mockup of your product logo labeled bottle.
               </p>
+
+              {/* Progressive Disclosure Step Progress Bar */}
+              <div className="flex items-center justify-center gap-3 mt-6">
+                <div className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold transition-all ${formStep === 1 ? 'bg-brand-teal text-white shadow-sm' : 'bg-slate-200 text-slate-600'}`}>
+                  <span>1. Contact & Business</span>
+                </div>
+                <div className="w-6 h-[2px] bg-slate-300" />
+                <div className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold transition-all ${formStep === 2 ? 'bg-brand-teal text-white shadow-sm' : 'bg-slate-200 text-slate-600'}`}>
+                  <span>2. Order Specs & Logo</span>
+                </div>
+              </div>
             </div>
 
             <AnimatePresence mode="wait">
@@ -574,189 +609,215 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                   exit={{ opacity: 0 }}
                   className="space-y-6 animate-fade-in"
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                    {/* Full Name */}
-                    <div>
-                      <label htmlFor="fullName" className="block text-xs uppercase font-extrabold tracking-wider text-slate-600 mb-2">
-                        Full Name *
-                      </label>
-                      <input
-                        id="fullName"
-                        type="text"
-                        name="fullName"
-                        value={formData.fullName}
-                        onChange={handleInputChange}
-                        className={`w-full bg-slate-50 border rounded-xl px-4 py-3 text-slate-800 text-sm focus:outline-none focus:bg-white transition-all shadow-inner ${
-                          errors.fullName ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-brand-teal'
-                        }`}
-                        placeholder="e.g. Hammad Khan"
-                      />
-                      {errors.fullName && (
-                        <p className="text-red-500 text-xs font-semibold mt-1 flex items-center gap-1">
-                          ⚠️ {errors.fullName}
-                        </p>
-                      )}
-                    </div>
+                  {formStep === 1 ? (
+                    <div className="space-y-6 text-left">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* Full Name */}
+                        <div>
+                          <label htmlFor="fullName" className="block text-xs uppercase font-extrabold tracking-wider text-slate-600 mb-2">
+                            Full Name *
+                          </label>
+                          <input
+                            id="fullName"
+                            type="text"
+                            name="fullName"
+                            value={formData.fullName}
+                            onChange={handleInputChange}
+                            className={`w-full bg-slate-50 border rounded-xl px-4 py-3 text-slate-800 text-sm focus:outline-none focus:bg-white transition-all shadow-inner ${
+                              errors.fullName ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-brand-teal'
+                            }`}
+                            placeholder="e.g. Hammad Khan"
+                          />
+                          {errors.fullName && (
+                            <p className="text-red-500 text-xs font-semibold mt-1 flex items-center gap-1">
+                              ⚠️ {errors.fullName}
+                            </p>
+                          )}
+                        </div>
 
-                    {/* Company / Business Name */}
-                    <div>
-                      <label htmlFor="companyName" className="block text-xs uppercase font-extrabold tracking-wider text-slate-600 mb-2">
-                        Company / Business Name *
-                      </label>
-                      <input
-                        id="companyName"
-                        type="text"
-                        name="companyName"
-                        value={formData.companyName}
-                        onChange={handleInputChange}
-                        className={`w-full bg-slate-50 border rounded-xl px-4 py-3 text-slate-800 text-sm focus:outline-none focus:bg-white transition-all shadow-inner ${
-                          errors.companyName ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-brand-teal'
-                        }`}
-                        placeholder="e.g. Nexus Enterprises"
-                      />
-                      {errors.companyName && (
-                        <p className="text-red-500 text-xs font-semibold mt-1 flex items-center gap-1">
-                          ⚠️ {errors.companyName}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Business Type */}
-                    <div>
-                      <label htmlFor="businessType" className="block text-xs uppercase font-extrabold tracking-wider text-slate-600 mb-2">
-                        Business Type *
-                      </label>
-                      <select
-                        id="businessType"
-                        name="businessType"
-                        value={formData.businessType}
-                        onChange={handleInputChange}
-                        className={`w-full bg-slate-50 border rounded-xl px-4 py-3 text-slate-700 text-sm focus:outline-none focus:bg-white transition-all shadow-sm cursor-pointer ${
-                          errors.businessType ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-brand-teal'
-                        }`}
-                      >
-                        <option value="Hotel">Hotel / Resort</option>
-                        <option value="Restaurant">Restaurant / Cafe</option>
-                        <option value="Office">Office / Corporate</option>
-                        <option value="Shaadi Hall">Shaadi Hall / Marquee</option>
-                        <option value="Other">Other Event / Brand Type</option>
-                      </select>
-                      {errors.businessType && (
-                        <p className="text-red-500 text-xs font-semibold mt-1 flex items-center gap-1">
-                          ⚠️ {errors.businessType}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* City */}
-                    <div>
-                      <label htmlFor="city" className="block text-xs uppercase font-extrabold tracking-wider text-slate-600 mb-2">
-                        City *
-                      </label>
-                      <input
-                        id="city"
-                        type="text"
-                        name="city"
-                        value={formData.city}
-                        onChange={handleInputChange}
-                        className={`w-full bg-slate-50 border rounded-xl px-4 py-3 text-slate-800 text-sm focus:outline-none focus:bg-white transition-all shadow-inner ${
-                          errors.city ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-brand-teal'
-                        }`}
-                        placeholder="e.g. Abbottabad, Islamabad, Peshawar"
-                      />
-                      {errors.city && (
-                        <p className="text-red-500 text-xs font-semibold mt-1 flex items-center gap-1">
-                          ⚠️ {errors.city}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Quantity */}
-                    <div>
-                      <label htmlFor="quantity" className="block text-xs uppercase font-extrabold tracking-wider text-slate-600 mb-2">
-                        Estimated Monthly Quantity *
-                      </label>
-                      <select
-                        id="quantity"
-                        name="quantity"
-                        value={formData.quantity}
-                        onChange={handleInputChange}
-                        className={`w-full bg-slate-50 border rounded-xl px-4 py-3 text-slate-700 text-sm focus:outline-none focus:bg-white transition-all shadow-sm cursor-pointer ${
-                          errors.quantity ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-brand-teal'
-                        }`}
-                      >
-                        <option value="100–500 bottles">100–500 bottles</option>
-                        <option value="500–1000 bottles">500–1000 bottles</option>
-                        <option value="1000–5000 bottles">1000–5000 bottles</option>
-                        <option value="5000+ bottles">5000+ bottles</option>
-                      </select>
-                      {errors.quantity && (
-                        <p className="text-red-500 text-xs font-semibold mt-1 flex items-center gap-1">
-                          ⚠️ {errors.quantity}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Styled upload input */}
-                    <div>
-                      <label className="block text-xs uppercase font-extrabold tracking-wider text-slate-600 mb-2">
-                        Upload Brand Logo (Optional)
-                      </label>
-                      <div className="relative flex items-center justify-center border-2 border-dashed border-slate-200 rounded-xl bg-slate-50 p-3 hover:border-brand-teal hover:bg-white transition-all group cursor-pointer">
-                        <input
-                          id="logoUpload"
-                          type="file"
-                          accept="image/*"
-                          onChange={handleFileChange}
-                          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                        />
-                        <div className="flex items-center gap-2">
-                          <Upload className="w-4 h-4 text-slate-450 group-hover:text-brand-teal transition-colors" />
-                          <span className="text-xs text-slate-500 group-hover:text-slate-700 transition-colors truncate">
-                            {logoFile ? logoFile.name : "Select JPG / PNG logo source"}
-                          </span>
+                        {/* Company / Business Name */}
+                        <div>
+                          <label htmlFor="companyName" className="block text-xs uppercase font-extrabold tracking-wider text-slate-600 mb-2">
+                            Company / Business Name *
+                          </label>
+                          <input
+                            id="companyName"
+                            type="text"
+                            name="companyName"
+                            value={formData.companyName}
+                            onChange={handleInputChange}
+                            className={`w-full bg-slate-50 border rounded-xl px-4 py-3 text-slate-800 text-sm focus:outline-none focus:bg-white transition-all shadow-inner ${
+                              errors.companyName ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-brand-teal'
+                            }`}
+                            placeholder="e.g. Nexus Enterprises"
+                          />
+                          {errors.companyName && (
+                            <p className="text-red-500 text-xs font-semibold mt-1 flex items-center gap-1">
+                              ⚠️ {errors.companyName}
+                            </p>
+                          )}
                         </div>
                       </div>
+
+                      {/* City */}
+                      <div>
+                        <label htmlFor="city" className="block text-xs uppercase font-extrabold tracking-wider text-slate-600 mb-2">
+                          City *
+                        </label>
+                        <input
+                          id="city"
+                          type="text"
+                          name="city"
+                          value={formData.city}
+                          onChange={handleInputChange}
+                          className={`w-full bg-slate-50 border rounded-xl px-4 py-3 text-slate-800 text-sm focus:outline-none focus:bg-white transition-all shadow-inner ${
+                            errors.city ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-brand-teal'
+                          }`}
+                          placeholder="e.g. Rawalpindi, Islamabad, Fateh Jang, Lahore"
+                        />
+                        {errors.city && (
+                          <p className="text-red-500 text-xs font-semibold mt-1 flex items-center gap-1">
+                            ⚠️ {errors.city}
+                          </p>
+                        )}
+                      </div>
+
+                      <div className="pt-2">
+                        <button
+                          type="button"
+                          onClick={handleNextStep}
+                          className="w-full py-4 bg-gradient-to-r from-brand-teal to-brand-aqua text-white font-black uppercase tracking-widest text-sm rounded-xl shadow-btn-glow hover:shadow-btn-glow transition-all duration-300 press-scale cursor-pointer flex items-center justify-center gap-2"
+                        >
+                          Continue to Step 2
+                          <ArrowRight className="w-4 h-4" />
+                        </button>
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    <div className="space-y-6 text-left">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* Business Type */}
+                        <div>
+                          <label htmlFor="businessType" className="block text-xs uppercase font-extrabold tracking-wider text-slate-600 mb-2">
+                            Business Type *
+                          </label>
+                          <select
+                            id="businessType"
+                            name="businessType"
+                            value={formData.businessType}
+                            onChange={handleInputChange}
+                            className={`w-full bg-slate-50 border rounded-xl px-4 py-3 text-slate-700 text-sm focus:outline-none focus:bg-white transition-all shadow-sm cursor-pointer ${
+                              errors.businessType ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-brand-teal'
+                            }`}
+                          >
+                            <option value="Hotel">Hotel / Resort</option>
+                            <option value="Restaurant">Restaurant / Cafe</option>
+                            <option value="Office">Office / Corporate</option>
+                            <option value="Shaadi Hall">Shaadi Hall / Marquee</option>
+                            <option value="Other">Other Event / Brand Type</option>
+                          </select>
+                          {errors.businessType && (
+                            <p className="text-red-500 text-xs font-semibold mt-1 flex items-center gap-1">
+                              ⚠️ {errors.businessType}
+                            </p>
+                          )}
+                        </div>
 
-                  {/* Message requirements */}
-                  <div className="text-left">
-                    <label htmlFor="message" className="block text-xs uppercase font-extrabold tracking-wider text-slate-600 mb-2">
-                      Your Message / Special Requirements
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-800 text-sm focus:outline-none focus:border-brand-teal focus:bg-white transition-all shadow-inner resize-none"
-                      placeholder="Mention preferred distribution schedules, specific fonts, custom label coordinates, etc."
-                    />
-                  </div>
+                        {/* Quantity */}
+                        <div>
+                          <label htmlFor="quantity" className="block text-xs uppercase font-extrabold tracking-wider text-slate-600 mb-2">
+                            Estimated Monthly Quantity *
+                          </label>
+                          <select
+                            id="quantity"
+                            name="quantity"
+                            value={formData.quantity}
+                            onChange={handleInputChange}
+                            className={`w-full bg-slate-50 border rounded-xl px-4 py-3 text-slate-700 text-sm focus:outline-none focus:bg-white transition-all shadow-sm cursor-pointer ${
+                              errors.quantity ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-brand-teal'
+                            }`}
+                          >
+                            <option value="100–500 bottles">100–500 bottles</option>
+                            <option value="500–1000 bottles">500–1000 bottles</option>
+                            <option value="1000–5000 bottles">1000–5000 bottles</option>
+                            <option value="5000+ bottles">5000+ bottles</option>
+                          </select>
+                          {errors.quantity && (
+                            <p className="text-red-500 text-xs font-semibold mt-1 flex items-center gap-1">
+                              ⚠️ {errors.quantity}
+                            </p>
+                          )}
+                        </div>
+                      </div>
 
-                  {/* Submission triggers */}
-                  <div className="pt-2">
-                    <button
-                      id="b2b-submit-btn"
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full py-4 bg-gradient-to-r from-brand-teal to-brand-aqua disabled:from-slate-300 disabled:to-slate-400 disabled:cursor-not-allowed text-white font-black uppercase tracking-widest text-sm rounded-xl shadow-btn-glow hover:shadow-btn-glow border-t border-white/35 transition-all duration-300 press-scale cursor-pointer flex items-center justify-center gap-2"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                          Processing Design Package...
-                        </>
-                      ) : (
-                        <>
-                          <Send className="w-4 h-4" />
-                          Request Your Free Mockup
-                        </>
-                      )}
-                    </button>
-                  </div>
+                      {/* Styled upload input */}
+                      <div>
+                        <label className="block text-xs uppercase font-extrabold tracking-wider text-slate-600 mb-2">
+                          Upload Brand Logo (Optional)
+                        </label>
+                        <div className="relative flex items-center justify-center border-2 border-dashed border-slate-200 rounded-xl bg-slate-50 p-3 hover:border-brand-teal hover:bg-white transition-all group cursor-pointer">
+                          <input
+                            id="logoUpload"
+                            type="file"
+                            accept="image/*"
+                            onChange={handleFileChange}
+                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                          />
+                          <div className="flex items-center gap-2">
+                            <Upload className="w-4 h-4 text-slate-450 group-hover:text-brand-teal transition-colors" />
+                            <span className="text-xs text-slate-500 group-hover:text-slate-700 transition-colors truncate">
+                              {logoFile ? logoFile.name : "Select JPG / PNG logo source"}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Message requirements */}
+                      <div>
+                        <label htmlFor="message" className="block text-xs uppercase font-extrabold tracking-wider text-slate-600 mb-2">
+                          Your Message / Special Requirements
+                        </label>
+                        <textarea
+                          id="message"
+                          name="message"
+                          rows={3}
+                          value={formData.message}
+                          onChange={handleInputChange}
+                          className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-800 text-sm focus:outline-none focus:border-brand-teal focus:bg-white transition-all shadow-inner resize-none"
+                          placeholder="Mention preferred distribution schedules, specific fonts, custom label coordinates, etc."
+                        />
+                      </div>
+
+                      {/* Submission triggers */}
+                      <div className="pt-2 flex flex-col sm:flex-row gap-3">
+                        <button
+                          type="button"
+                          onClick={() => setFormStep(1)}
+                          className="w-full sm:w-1/3 py-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold uppercase tracking-wider text-xs rounded-xl transition-colors cursor-pointer"
+                        >
+                          ← Back
+                        </button>
+                        <button
+                          id="b2b-submit-btn"
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="w-full sm:w-2/3 py-4 bg-gradient-to-r from-brand-teal to-brand-aqua disabled:from-slate-300 disabled:to-slate-400 disabled:cursor-not-allowed text-white font-black uppercase tracking-widest text-sm rounded-xl shadow-btn-glow hover:shadow-btn-glow border-t border-white/35 transition-all duration-300 press-scale cursor-pointer flex items-center justify-center gap-2"
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                              Processing Design Package...
+                            </>
+                          ) : (
+                            <>
+                              <Send className="w-4 h-4" />
+                              Request Your Free Mockup
+                            </>
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  )}
 
                   {/* Guarantee statement */}
                   <p className="font-sans text-center text-xs text-slate-400 mt-4">

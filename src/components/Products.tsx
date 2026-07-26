@@ -165,6 +165,18 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                 </div>
 
                 <div>
+                  <div className="mb-6 p-4 bg-slate-50 rounded-2xl border border-slate-200/80 flex items-center justify-between">
+                    <div>
+                      <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-slate-500 block">Pricing</span>
+                      <span className="text-sm sm:text-base font-serif font-extrabold text-slate-900">
+                        {prod.id === '500ml' ? 'Starting from PKR 50' : 'Starting from PKR 90'}
+                      </span>
+                    </div>
+                    <span className="px-3 py-1 rounded-full bg-amber-400/15 border border-amber-400/40 text-amber-600 font-sans text-xs font-bold uppercase tracking-wide">
+                      Bulk Discount Available
+                    </span>
+                  </div>
+
                   <button
                     id={`order-btn-${prod.id}`}
                     onClick={() => onOrderProduct(prod.id)}

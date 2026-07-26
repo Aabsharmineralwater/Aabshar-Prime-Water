@@ -1,4 +1,4 @@
-import { ArrowRight, Sparkles, ShieldCheck, Truck } from 'lucide-react';
+import { ArrowRight, Sparkles, ShieldCheck, Truck, Users } from 'lucide-react';
 import { motion } from 'motion/react';
 import combinedBottlesImage from '../assets/images/hero_combined_bottles.png';
 
@@ -13,6 +13,9 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
       id="hero"
       className="relative min-h-screen pt-28 pb-16 md:pt-36 flex items-center justify-center noise-overlay overflow-hidden bg-transparent"
     >
+      {/* Waterfall landscape background scoped strictly to Hero section */}
+      <div className="hero-bg-backdrop" role="presentation" />
+
       {/* 1. Semi-transparent dark overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-[rgba(5,15,35,0.62)] via-[rgba(5,15,35,0.45)] to-[rgba(5,15,35,0.70)] z-0 pointer-events-none" />
 
@@ -40,7 +43,7 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
               transition={{ duration: 0.6 }}
               className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-teal/20 border border-brand-teal/30 text-white font-sans font-semibold text-xs sm:text-sm mb-6 max-w-max shadow-sm"
             >
-              <Sparkles className="w-4 h-4 text-sky-300 animate-spin-slow" />
+              <Sparkles className="w-4 h-4 text-amber-300 animate-spin-slow" />
               <span className="text-sky-100">Premium Balanced Mineral Water — TDS 120–160</span>
             </motion.div>
 
@@ -48,7 +51,7 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-display text-5xl sm:text-6xl lg:text-7.5xl font-extrabold text-white tracking-tight leading-none mb-6 text-shadow-heading drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]"
+              className="font-serif text-5xl sm:text-6xl lg:text-7.5xl font-extrabold text-white tracking-tight leading-none mb-6 text-shadow-heading drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]"
             >
               Aabshar<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-brand-aqua">
@@ -70,7 +73,7 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 mb-10"
+              className="flex flex-col sm:flex-row gap-4 mb-4"
             >
               <button
                 id="hero-order-cta"
@@ -83,11 +86,24 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
               <button
                 id="hero-explore-cta"
                 onClick={onExploreClick}
-                className="w-full sm:w-auto text-center px-8 py-4 bg-white/90 hover:bg-white border border-white hover:text-brand-teal font-bold text-base text-slate-800 rounded-full active:scale-95 transition-all duration-300 press-scale shadow-sm cursor-pointer flex items-center justify-center gap-2"
+                className="w-full sm:w-auto text-center px-8 py-4 bg-white hover:bg-slate-900 border-2 border-brand-teal hover:border-brand-teal font-black text-base text-slate-900 hover:text-white rounded-full active:scale-95 transition-all duration-300 press-scale shadow-md cursor-pointer flex items-center justify-center gap-2"
               >
                 Explore Products
-                <ArrowRight className="w-4 h-4 text-brand-teal" />
+                <ArrowRight className="w-4.5 h-4.5 text-brand-teal group-hover:text-white" />
               </button>
+            </motion.div>
+
+            {/* Trust Counter Line near CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.35 }}
+              className="mb-8"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900/85 backdrop-blur-md rounded-full border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-bold shadow-md">
+                <Users className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                <span>Trusted by 500+ households & businesses in Rawalpindi, Islamabad & Fateh Jang</span>
+              </div>
             </motion.div>
 
             {/* Quick trust badges - styled glassmorphic */}

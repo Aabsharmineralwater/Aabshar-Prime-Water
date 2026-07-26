@@ -85,9 +85,14 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Custom real-mountain landscape background */
-.site-bg-backdrop {
-  position: fixed;
+/* Heading font standardization across site */
+h1, h2, h3, .font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Custom real-mountain landscape background scoped to hero */
+.hero-bg-backdrop {
+  position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
@@ -101,7 +106,7 @@ body {
 }
 
 @media (min-width: 1024px) {
-  .site-bg-backdrop {
+  .hero-bg-backdrop {
     background-attachment: fixed;
     transform: scale(1.02);
     will-change: transform;
@@ -109,19 +114,19 @@ body {
 }
 
 @media (max-width: 1023px) {
-  .site-bg-backdrop {
+  .hero-bg-backdrop {
     background-attachment: scroll;
     background-position: center top;
     transform: scale(1.0);
   }
 }
 
-/* Premium frosted glass card conforming to requirements */
+/* Premium frosted glass card conforming to requirements (94% opacity for maximum readability) */
 .frosted-glass-card {
   backdrop-filter: blur(14px) !important;
   -webkit-backdrop-filter: blur(14px) !important;
-  background: rgba(255, 255, 255, 0.82) !important;
-  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  background: rgba(255, 255, 255, 0.94) !important;
+  border: 1px solid rgba(210, 225, 240, 0.8) !important;
 }
 
 .text-shadow-heading {

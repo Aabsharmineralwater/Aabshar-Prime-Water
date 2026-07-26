@@ -162,13 +162,20 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                 </button>
               </div>
 
-              {/* Mobile Hamburger menu toggle */}
-              <div className="flex md:hidden">
+              {/* Mobile CTA and Hamburger menu toggle */}
+              <div className="flex items-center gap-2 md:hidden">
+                <button
+                  onClick={onOrderClick}
+                  className="px-3.5 py-1.8 text-xs font-black text-white bg-gradient-to-r from-brand-teal to-brand-aqua rounded-full shadow-xs active:scale-95 transition-all flex items-center gap-1 cursor-pointer border-0"
+                >
+                  <Droplets className="w-3.5 h-3.5 text-white" />
+                  <span>Order</span>
+                </button>
                 <button
                   id="menu-toggle"
                   onClick={() => setIsOpen(!isOpen)}
                   aria-label="Toggle Navigation Menu"
-                  className="text-slate-800 hover:text-brand-teal hover:bg-slate-100/60 focus:outline-none focus:ring-2 focus:ring-brand-teal p-2 rounded-xl press-scale transition-colors border border-slate-205"
+                  className="text-slate-800 hover:text-brand-teal hover:bg-slate-100/60 focus:outline-none focus:ring-2 focus:ring-brand-teal p-2 rounded-xl press-scale transition-colors border border-slate-200"
                 >
                   {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                 </button>
