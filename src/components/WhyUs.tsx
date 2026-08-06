@@ -1,261 +1,203 @@
-import { GlassWater, Droplet, Mountain, ShieldCheck, Truck } from 'lucide-react';
+import { GlassWater, Droplet, ShieldCheck, Truck, Zap } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function WhyUs() {
   const features = [
     {
-      icon: <Droplet className="w-8 h-8 text-brand-teal" />,
-      title: '120–160 TDS',
-      badge: 'Perfect mineral balance',
-      description: 'The sweet spot for cellular absorption. Perfectly balanced mineral composition with essential magnesium, calcium, and potassium ions to power your daily vitality.',
+      number: '01',
+      icon: <Droplet className="w-4 h-4 text-[#00D4FF]" />,
+      title: '120–160 TDS Target',
+      badge: 'Cellular Absorption',
+      bullets: ['Magnesium & Potassium', 'Cellular Hydration', 'Zero Saline Taste'],
+      monoStat: '135 PPM Target',
     },
     {
-      icon: <GlassWater className="w-8 h-8 text-brand-teal" />,
-      title: 'Pristine Purity',
-      badge: 'Advanced Purification',
-      description: 'Subjected to multi-stage filtration and molecular balancing to achieve absolute physical cleanliness, giving you a refreshing, premium daily hydration taste.',
+      number: '02',
+      icon: <GlassWater className="w-4 h-4 text-[#00D4FF]" />,
+      title: 'Molecular Purity',
+      badge: '9-Stage Filtration',
+      bullets: ['Reverse Osmosis', 'UV Sterilization', 'Ozonated Freshness'],
+      monoStat: 'Multi-Stage Filter',
     },
     {
-      icon: <Truck className="w-8 h-8 text-brand-teal" />,
-      title: 'Cold Doorstep Delivery',
-      badge: 'Fresh every time',
-      description: 'Delivered in dedicated temperature-controlled vans. Your water reaches your home or office cold, crisp, and ready to immediately quench your thirst.',
+      number: '03',
+      icon: <Truck className="w-4 h-4 text-[#00D4FF]" />,
+      title: 'Chilled Fleet Express',
+      badge: 'Doorstep Delivery',
+      bullets: ['Temperature Controlled', 'Same-Day Dispatch', 'Zero Delivery Fee'],
+      monoStat: 'Daily Runs',
     },
     {
-      icon: <ShieldCheck className="w-8 h-8 text-brand-teal" />,
-      title: 'Lab Verified',
-      badge: 'Quality you can trust',
-      description: 'Subjected to rigorous daily testing at our state-of-the-art laboratory and verified by independent accredited institutions to exceed standard WHO guidelines.',
+      number: '04',
+      icon: <ShieldCheck className="w-4 h-4 text-[#00D4FF]" />,
+      title: 'WHO & PCRWR Compliant',
+      badge: 'Lab Certified',
+      bullets: ['Daily Lab Testing', 'Micro-Filtered', 'PCRWR Approved'],
+      monoStat: '100% Verified',
     },
   ];
 
   return (
-    <section id="about" className="py-24 bg-transparent relative overflow-hidden text-slate-100 border-t border-white/5 cv-auto">
-      {/* Continuing Background Scenery Overlay (Slightly darker for text readability) */}
-      <div className="absolute inset-0 bg-[rgba(5,15,35,0.72)] z-0 pointer-events-none" />
-      {/* Top Wave Divider Representing Pristine Flow */}
-      <div className="absolute top-0 inset-x-0 h-10 overflow-hidden pointer-events-none z-1 select-none opacity-40">
-        <svg viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto min-w-[1000px]">
-          <path d="M0,32 C240,70 480,0 720,40 C960,80 1200,10 1440,32 L1440,0 L0,0 Z" fill="rgba(2, 132, 199, 0.08)" />
-          <path d="M0,45 C300,10 600,60 900,20 C1200,-20 1350,50 1440,30 L1440,0 L0,0 Z" fill="rgba(14, 165, 233, 0.05)" />
-        </svg>
-      </div>
+    <section id="about" className="py-20 bg-gradient-to-b from-[#0A1930] via-[#0D223D] to-[#0A1930] text-white relative overflow-hidden cv-auto border-t border-b border-[#00D4FF]/20">
+      {/* Top & Bottom Glowing Divider Lines */}
+      <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#00D4FF]/40 to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#00D4FF]/40 to-transparent pointer-events-none z-10" />
 
-      {/* Visual background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#0ea5e903_1px,transparent_1px),linear-gradient(to_bottom,#0ea5e903_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-      <div className="absolute top-1/2 left-0 w-80 h-80 bg-brand-teal/5 rounded-full blur-[100px] pointer-events-none" />
-
-      {/* Animated Rising Water Bubbles */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden select-none z-0">
-        <div className="absolute left-[8%] bottom-0 w-3 h-3 bg-brand-teal/15 rounded-full blur-xs animate-bubble-slow" />
-        <div className="absolute left-[25%] bottom-5 w-4 h-4 bg-brand-teal/10 rounded-full blur-xs animate-bubble-fast [animation-delay:3s]" />
-        <div className="absolute right-[12%] bottom-2 w-2 h-2 bg-brand-teal/20 rounded-full blur-xs animate-bubble-slow [animation-delay:1.5s]" />
-        <div className="absolute right-[30%] bottom-8 w-5 h-5 bg-brand-teal/10 rounded-full blur-xs animate-bubble-fast [animation-delay:4.5s]" />
-      </div>
-
-      {/* Stylized Science/Mineral filtration lattice map as watermark */}
-      <div className="absolute right-[-10%] md:right-[2%] top-[10%] md:top-[12%] opacity-15 pointer-events-none select-none z-0 w-[300px] sm:w-[480px] h-[300px] sm:h-[480px] flex items-center justify-center">
-        <svg
-          viewBox="0 0 400 400"
-          className="w-full h-full text-brand-teal/30 drop-shadow-[0_0_30px_rgba(2,132,199,0.12)]"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* Crystalline water molecule nodes (H2O & minerals) */}
-          <g stroke="currentColor" strokeWidth="1.5">
-            <line x1="200" y1="200" x2="100" y2="150" opacity="0.4" />
-            <line x1="200" y1="200" x2="300" y2="150" opacity="0.4" />
-            <line x1="200" y1="200" x2="200" y2="310" opacity="0.4" />
-            <line x1="100" y1="150" x2="100" y2="70" strokeDasharray="3,3" opacity="0.3" />
-            <line x1="300" y1="150" x2="300" y2="70" strokeDasharray="3,3" opacity="0.3" />
-            <line x1="200" y1="310" x2="120" y2="350" strokeDasharray="3,3" opacity="0.3" />
-            <line x1="200" y1="310" x2="280" y2="350" strokeDasharray="3,3" opacity="0.3" />
-          </g>
-
-          {/* Central O (Oxygen) Core */}
-          <g className="translate-x-[200px] translate-y-[200px]">
-            <circle cx="0" cy="0" r="32" className="fill-brand-teal/10 stroke-brand-teal stroke-2" />
-            <circle cx="0" cy="0" r="12" className="fill-brand-teal" />
-            <text x="0" y="5" textAnchor="middle" className="fill-white font-sans text-xs font-black">H₂O</text>
-          </g>
-
-          {/* Hydrogen & Mineral satellites */}
-          <g className="translate-x-[100px] translate-y-[150px]">
-            <circle cx="0" cy="0" r="22" className="fill-sky-500/10 stroke-sky-400 stroke-1" />
-            <circle cx="0" cy="0" r="8" className="fill-sky-400" />
-            <text x="0" y="-28" textAnchor="middle" className="fill-slate-900 font-sans text-[10px] font-bold">Ca²⁺ (Calcium)</text>
-          </g>
-
-          <g className="translate-x-[300px] translate-y-[150px]">
-            <circle cx="0" cy="0" r="22" className="fill-sky-500/10 stroke-sky-400 stroke-1" />
-            <circle cx="0" cy="0" r="8" className="fill-sky-400" />
-            <text x="0" y="-28" textAnchor="middle" className="fill-slate-900 font-sans text-[10px] font-bold">Mg²⁺ (Magnesium)</text>
-          </g>
-
-          <g className="translate-x-[200px] translate-y-[310px]">
-            <circle cx="0" cy="0" r="22" className="fill-sky-500/10 stroke-sky-400 stroke-1" />
-            <circle cx="0" cy="0" r="8" className="fill-sky-400" />
-            <text x="0" y="36" textAnchor="middle" className="fill-slate-900 font-sans text-[10px] font-bold">K⁺ (Potassium)</text>
-          </g>
-
-          {/* Outer orbiting rings */}
-          <circle cx="200" cy="200" r="160" stroke="currentColor" strokeWidth="1" strokeDasharray="5,15" fill="none" className="animate-[spin_30s_linear_infinite]" />
-        </svg>
-      </div>
+      {/* Subtle background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00D4FF]/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+        {/* Magazine Editorial Section Header & Pull-Quote */}
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-white bg-brand-teal/30 border border-brand-teal/20 px-3.5 py-1 rounded-full font-sans text-xs sm:text-sm font-bold tracking-widest uppercase mb-4 inline-flex items-center gap-1.5"
+            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0F3A4A] border border-[#00D4FF]/30 font-mono text-xs font-bold tracking-widest uppercase mb-4 text-[#00D4FF]"
           >
-            <GlassWater className="w-4 h-4 animate-bounce text-sky-200" />
-            <span className="text-sky-100">The Pure Standard</span>
-          </motion.p>
+            <GlassWater className="w-3.5 h-3.5 text-[#C9A24A]" />
+            <span>The Bio-Mineral Standard</span>
+          </motion.div>
+          
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight text-shadow-heading drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]"
+            transition={{ duration: 0.5 }}
+            className="font-serif text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4"
           >
-            What Makes Aabshar Premium & Pure?
+            “Pure Minerals, Perfected by <span className="font-serif italic text-[#00D4FF] border-b-2 border-[#C9A24A]">Nature & Science</span>.”
           </motion.h2>
-          <div className="w-20 h-1 bg-linear-to-r from-brand-teal to-brand-aqua mx-auto mt-6 rounded-full" />
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-sans text-sky-100/90 text-base sm:text-lg mt-4"
-          >
-            Aabshar is more than just drinking water — it is scientifically balanced mineral hydration designed for active lifestyles, perfectly crafted to elevate your daily well-being.
-          </motion.p>
+
+          <p className="font-sans text-slate-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+            Every bottle is processed through multi-stage micro-filtration and calibrated to an optimal mineral balance for maximum cellular absorption and crisp, natural taste.
+          </p>
         </div>
 
-        {/* USP Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Feature Points Grid (Fine-line Icons + Gold Dividers on Dark Navy Cards) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {features.map((item, index) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
-              className="frosted-glass-card rounded-3xl p-8 hover:border-brand-teal/40 transition-all duration-300 shadow-3d hover-lift tilt-card inner-highlight relative group overflow-hidden text-slate-800"
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              className="bg-[#0A1930]/90 backdrop-blur-xl rounded-2xl p-6 border border-white/10 shadow-xl hover:border-[#00D4FF]/40 transition-all relative group flex flex-col justify-between"
             >
-              {/* Subtle accent hover indicator in card top corner */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-brand-teal to-brand-aqua scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              {/* Fine gold top accent bar */}
+              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#00D4FF] via-[#0F3A4A] to-[#C9A24A] rounded-t-2xl opacity-80 group-hover:opacity-100 transition-opacity" />
 
-              <div className="w-16 h-16 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center mb-6 group-hover:bg-brand-teal/10 group-hover:border-brand-teal/30 transition-all duration-300">
-                {item.icon}
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#0F3A4A] border border-[#00D4FF]/30 flex items-center justify-center text-[#00D4FF] group-hover:bg-[#00D4FF] group-hover:text-[#0A1930] transition-colors">
+                    {item.icon}
+                  </div>
+                  <span className="font-mono text-xs font-black text-[#C9A24A] bg-[#C9A24A]/10 border border-[#C9A24A]/30 px-2.5 py-0.5 rounded-full">
+                    {item.number}
+                  </span>
+                </div>
+
+                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#00D4FF] block mb-1">
+                  {item.badge}
+                </span>
+
+                <h3 className="font-serif text-xl font-extrabold text-white mb-3">
+                  {item.title}
+                </h3>
+
+                <div className="w-full h-[1px] bg-gradient-to-r from-[#C9A24A]/40 via-white/10 to-transparent mb-3" />
+
+                <ul className="space-y-1.5 mb-4">
+                  {item.bullets.map((b) => (
+                    <li key={b} className="flex items-center text-xs text-slate-300 font-medium">
+                      <Zap className="w-3 h-3 text-[#00D4FF] mr-2 flex-shrink-0" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              <div className="inline-block px-3 py-1 rounded-full bg-brand-teal/10 border border-brand-teal/20 text-brand-teal text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-3">
-                {item.badge}
+              <div className="pt-3 border-t border-white/10 flex items-center justify-between">
+                <span className="font-mono text-[10px] uppercase tracking-wider text-slate-400 font-bold">Lab Target</span>
+                <span className="font-mono text-[11px] font-bold text-[#C9A24A]">
+                  {item.monoStat}
+                </span>
               </div>
-
-              <h3 className="font-serif text-xl sm:text-2xl font-bold text-slate-900 mb-4 group-hover:text-brand-teal transition-colors duration-200">
-                {item.title}
-              </h3>
-
-              <p className="font-sans text-slate-600 text-sm leading-relaxed group-hover:text-slate-700 transition-colors duration-200">
-                {item.description}
-              </p>
             </motion.div>
           ))}
         </div>
 
-        {/* TDS Showcase Box */}
+        {/* CUSTOM HORIZONTAL FUEL GAUGE METER GRAPHIC FOR 135 PPM TDS */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mt-20 p-8 sm:p-12 rounded-3xl frosted-glass-card shadow-3d hover-lift tilt-card inner-highlight relative overflow-hidden text-slate-850"
+          transition={{ duration: 0.6 }}
+          className="p-8 rounded-3xl bg-[#0A1930] text-white border border-[#00D4FF]/30 shadow-2xl relative overflow-hidden"
         >
-          <div className="absolute top-0 right-0 w-64 h-64 bg-brand-teal/5 rounded-full blur-3xl pointer-events-none" />
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Subtle Ambient Glow */}
+          <div className="absolute top-0 right-0 w-80 h-80 bg-[#00D4FF]/10 rounded-full blur-[100px] pointer-events-none" />
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             
-            <div className="lg:col-span-8">
-              <span className="font-sans text-xs text-brand-teal font-bold tracking-widest uppercase bg-brand-teal/10 border border-brand-teal/20 px-3 py-1 rounded-full mb-4 inline-block">
-                The Science of Balanced Hydration
+            <div className="lg:col-span-7 text-left">
+              <span className="font-mono text-xs font-bold tracking-widest uppercase bg-[#C9A24A]/20 border border-[#C9A24A]/50 text-[#C9A24A] px-3.5 py-1 rounded-full mb-3 inline-block">
+                SCIENTIFIC TDS ABSORPTION GAUGE
               </span>
-              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
-                Why mineral water between 120 and 160 TDS is medically ideal
+              <h3 className="font-serif text-2xl sm:text-3xl font-extrabold text-white mb-3 leading-tight">
+                Why <span className="font-serif italic text-[#00D4FF]">120–160 TDS</span> is the Bio-Sweet Spot
               </h3>
-              <p className="font-sans text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl">
-                TDS (Total Dissolved Solids) measures minerals dissolved in drinking water. Water with too low TDS (under 50) tastes flat, robs minerals from your body cells, and offers zero hydration. High TDS (over 300) leaves a chalky saline residue. Water with 120–160 TDS represents the pristine organic target: sweet taste, instant bio-absorption, and essential electrolytes.
+              <p className="font-sans text-slate-300 text-sm leading-relaxed max-w-xl">
+                Demineralized water (&lt;50 TDS) leaches body minerals and causes acidic taste. Excess mineral water (&gt;300 TDS) burdens kidneys with heavy salts. Aabshar’s engineered 135 PPM target matches cellular fluid density for optimal bio-absorption.
               </p>
             </div>
 
-            <div className="lg:col-span-4 flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-slate-150 pt-6 lg:pt-0 lg:pl-8 text-left">
-              <div className="mb-4">
-                <span className="text-[9px] uppercase font-mono tracking-widest text-brand-teal font-extrabold block mb-1">Aabshar Metric Laboratory</span>
-                <h4 className="font-serif text-lg font-extrabold text-slate-900">Total Dissolved Solids (TDS)</h4>
+            <div className="lg:col-span-5 bg-[#0F3A4A]/80 backdrop-blur-md p-6 rounded-2xl border border-[#00D4FF]/30 text-left">
+              <div className="flex items-center justify-between mb-3">
+                <span className="font-mono text-xs font-bold uppercase text-slate-300 tracking-wider">Bio-Hydration Meter</span>
+                <span className="font-serif text-sm font-extrabold text-[#C9A24A] bg-[#C9A24A]/20 px-2.5 py-0.5 rounded-full border border-[#C9A24A]/40">
+                  Aabshar Target: 135 PPM
+                </span>
               </div>
 
-              {/* Styled Visual SVG Gauge bar */}
-              <div className="w-full h-8 relative rounded-full overflow-hidden bg-slate-100/80 border border-slate-200/50 flex mb-4 shadow-inner">
-                {/* 0-100 Low mineral segment */}
-                <div className="w-[35%] h-full bg-gradient-to-r from-slate-200 to-sky-100 flex items-center justify-center">
-                  <span className="text-[8px] font-sans font-extrabold text-slate-500 uppercase tracking-widest">Low</span>
-                </div>
-                {/* 120-160 Sweet Spot (Glowing Brand-Teal/Emerald) */}
-                <div className="w-[30%] h-full bg-gradient-to-r from-brand-teal to-emerald-500 flex items-center justify-center relative shadow-[inset_0_0_12px_rgba(2,132,199,0.25)]">
-                  <div className="absolute inset-0 bg-white/20 animate-pulse pointer-events-none" />
-                  <span className="text-[8px] font-sans font-black text-white uppercase tracking-wider text-center drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]">SWEET SPOT</span>
-                </div>
-                {/* 170-300 High mineral segment */}
-                <div className="w-[35%] h-full bg-gradient-to-r from-slate-100 to-slate-200 flex items-center justify-center">
-                  <span className="text-[8px] font-sans font-extrabold text-slate-500 uppercase tracking-widest">High</span>
+              {/* FUEL GAUGE METER GRAPHIC */}
+              <div className="relative w-full my-4">
+                {/* Meter Bar Container */}
+                <div className="h-7 w-full rounded-full bg-slate-900 border border-slate-700/80 p-0.5 flex overflow-hidden shadow-inner">
+                  {/* Zone 1: Demineralized / Acidic */}
+                  <div className="w-[30%] h-full bg-slate-800/80 border-r border-slate-700 flex items-center justify-center text-[9px] font-mono font-bold text-slate-400">
+                    ACIDIC (&lt;50)
+                  </div>
+                  {/* Zone 2: Aabshar Ideal Bio-Zone */}
+                  <div className="w-[40%] h-full bg-gradient-to-r from-[#00D4FF] via-[#38bdf8] to-[#C9A24A] flex items-center justify-center text-[9px] font-mono font-black text-[#0A1930] uppercase tracking-wider relative shadow-md">
+                    SWEET SPOT (120-160)
+                  </div>
+                  {/* Zone 3: High Saline / Heavy Salts */}
+                  <div className="w-[30%] h-full bg-slate-800/80 border-l border-slate-700 flex items-center justify-center text-[9px] font-mono font-bold text-slate-400">
+                    HEAVY (&gt;300)
+                  </div>
                 </div>
 
-                {/* Sliding indicator node in the middle of sweet spot */}
-                <div className="absolute left-[50%] top-[-3px] w-2.5 h-[38px] bg-slate-900 rounded-full shadow-lg border-2 border-white animate-bounce pointer-events-none" />
+                {/* Glowing Needle Indicator pointing directly at 135 PPM (approx 52% mark) */}
+                <div className="absolute top-0 bottom-0 left-[52%] -translate-x-1/2 flex flex-col items-center pointer-events-none z-20">
+                  <div className="w-1 h-9 bg-white shadow-[0_0_12px_#ffffff] rounded-full animate-pulse" />
+                  <div className="w-3.5 h-3.5 rounded-full bg-[#C9A24A] border-2 border-white shadow-[0_0_10px_#C9A24A] -mt-1" />
+                </div>
               </div>
 
-              {/* Legend & range details */}
-              <div className="grid grid-cols-3 text-center text-[10px] font-sans font-bold text-slate-500 uppercase tracking-wider mb-4">
-                <div>&lt; 50 TDS</div>
-                <div className="text-brand-teal font-extrabold">120 - 160</div>
-                <div>&gt; 300 TDS</div>
-              </div>
-
-              <div className="p-3.5 bg-emerald-50/60 border border-emerald-100 rounded-2xl flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 flex-shrink-0 font-bold font-sans text-xs">
-                  ✓
-                </div>
-                <p className="font-sans text-[11px] text-slate-600 leading-tight">
-                  <strong>Aabshar Target Range:</strong> Our minerals are balanced to sit exactly at <strong>135 TDS</strong> for optimal cell bio-hydration.
-                </p>
-              </div>
-
-              {/* WHO & PCRWR Accredited Laboratory Verification Badge */}
-              <div className="mt-4 p-4 bg-slate-900 text-white rounded-2xl border border-amber-400/40 shadow-md flex items-center gap-3">
-                <ShieldCheck className="w-8 h-8 text-amber-400 flex-shrink-0" />
-                <div>
-                  <span className="font-sans text-[10px] font-extrabold text-amber-300 uppercase tracking-wider block">Official Compliance</span>
-                  <span className="font-serif text-xs font-bold text-white block">WHO & PCRWR Quality Standards Lab Verified</span>
-                </div>
+              <div className="p-3 bg-[#0A1930] rounded-xl border border-[#C9A24A]/40 flex items-center gap-3">
+                <ShieldCheck className="w-5 h-5 text-[#C9A24A] flex-shrink-0" />
+                <span className="font-serif text-xs font-bold text-white">
+                  100% PCRWR & WHO Certified Pure Standard
+                </span>
               </div>
             </div>
 
           </div>
         </motion.div>
 
-      </div>
-
-      {/* Bottom overlapping wave divider flowing into Products catalog */}
-      <div className="absolute bottom-0 inset-x-0 h-12 overflow-hidden pointer-events-none z-10 select-none opacity-40 translate-y-px">
-        <svg viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto min-w-[1000px] rotate-180">
-          <path d="M0,32 C240,70 480,0 720,40 C960,80 1200,10 1440,32 L1440,0 L0,0 Z" fill="rgba(100, 255, 218, 0.15)" />
-          <path d="M0,45 C300,10 600,60 900,20 C1200,-20 1350,50 1440,30 L1440,0 L0,0 Z" fill="rgba(128, 255, 225, 0.08)" />
-        </svg>
       </div>
     </section>
   );

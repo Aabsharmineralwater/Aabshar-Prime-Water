@@ -76,21 +76,21 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-xs font-semibold tracking-wide">
             <div className="flex items-center space-x-6">
               <span className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors">
-                <MapPin className="w-3.5 h-3.5 text-brand-teal" />
+                <MapPin className="w-3.5 h-3.5 text-[#4FD1E8]" />
                 <span>Rawalpindi • Islamabad • Fateh Jang</span>
               </span>
               <span className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors">
-                <Clock className="w-3.5 h-3.5 text-brand-teal" />
+                <Clock className="w-3.5 h-3.5 text-[#4FD1E8]" />
                 <span>Daily Delivery: 8:00 AM – 8:00 PM</span>
               </span>
             </div>
             <div className="flex items-center space-x-6">
-              <a href="tel:+923051999897" className="flex items-center gap-1.5 text-sky-200 hover:text-white transition-colors font-bold">
+              <a href="tel:+923051999897" className="flex items-center gap-1.5 text-[#4FD1E8] hover:text-white transition-colors font-bold">
                 <Phone className="w-3.5 h-3.5 text-emerald-400" />
                 <span>+92-305-1999897</span>
               </a>
               <a href="mailto:aabshar.org@gmail.com" className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors">
-                <Mail className="w-3.5 h-3.5 text-sky-400" />
+                <Mail className="w-3.5 h-3.5 text-[#4FD1E8]" />
                 <span>aabshar.org@gmail.com</span>
               </a>
             </div>
@@ -101,8 +101,8 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
         <div 
           className={`transition-all duration-300 border-b ${
             isScrolled
-              ? 'bg-white/96 backdrop-blur-xl shadow-lg border-slate-200/60 py-2'
-              : 'bg-white/90 backdrop-blur-lg shadow-md border-slate-200/30 py-3.5'
+              ? 'bg-[#0A1930]/98 backdrop-blur-xl shadow-2xl border-[#00D4FF]/25 py-2.5'
+              : 'bg-[#0A1930]/95 backdrop-blur-lg shadow-xl border-[#00D4FF]/20 py-3.5'
           }`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -130,52 +130,59 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                 </button>
               </div>
 
-              {/* Desktop Navigation Link Pills */}
-              <div className="hidden md:flex items-center space-x-2 bg-slate-100/60 p-1.5 rounded-full border border-slate-200/40">
+              {/* Desktop Navigation Link Pills with Gold/Cyan Active Dot Indicator */}
+              <div className="hidden md:flex items-center space-x-1.5 bg-[#0F3A4A]/80 backdrop-blur-md p-1.5 rounded-full border border-[#00D4FF]/25 shadow-inner">
                 {navLinks.map((link) => {
                   const isActive = activeSection === link.href;
                   return (
                     <button
                       key={link.name}
                       onClick={() => handleLinkClick(link.href)}
-                      className={`font-sans text-xs lg:text-sm font-bold transition-all duration-300 cursor-pointer px-4.5 py-1.8 rounded-full ${
+                      className={`font-sans text-xs lg:text-sm font-bold transition-all duration-300 cursor-pointer px-4 py-1.8 rounded-full flex items-center gap-1.5 relative ${
                         isActive 
-                          ? 'text-white bg-linear-to-r from-brand-teal to-brand-aqua shadow-sm scale-102 border-t border-white/20' 
-                          : 'text-slate-700 hover:text-brand-teal hover:bg-white/90'
+                          ? 'text-white bg-[#0A1930] shadow-md border border-[#00D4FF]/40' 
+                          : 'text-slate-300 hover:text-white hover:bg-white/10'
                       }`}
                     >
+                      {isActive && (
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24A] shadow-[0_0_8px_#C9A24A] animate-pulse" />
+                      )}
                       {link.name}
                     </button>
                   );
                 })}
               </div>
 
-              {/* Desktop Dynamic Call To Action Button */}
+              {/* Desktop Dynamic Call To Action Button (Signature Gold/Gradient Pill -> Opens WhatsApp directly) */}
               <div className="hidden md:flex items-center">
-                <button
+                <a
                   id="navbar-cta"
-                  onClick={onOrderClick}
-                  className="relative inline-flex items-center justify-center px-6 py-2.5 font-extrabold text-xs lg:text-sm tracking-wide text-white rounded-full bg-linear-to-r from-brand-teal to-brand-aqua hover:brightness-105 shadow-[0_4px_14px_rgba(2,132,199,0.25)] border-t border-white/30 hover:border-white/40 press-scale transition-all duration-300 cursor-pointer"
+                  href="https://wa.me/923051999897?text=Hi%20Aabshar,%20I%20would%20like%20to%20place%20an%20order%20for%20Aabshar%20Prime%20Water."
+                  target="_blank"
+                  rel="noreferrer"
+                  className="relative inline-flex items-center justify-center px-6 py-2.5 font-black text-xs lg:text-sm tracking-wider uppercase text-[#0A1930] rounded-full bg-gradient-to-r from-[#C9A24A] via-[#E5C158] to-[#C9A24A] hover:brightness-110 shadow-[0_4px_20px_rgba(201,162,74,0.35)] border border-[#E5C158]/50 press-scale transition-all duration-300 cursor-pointer hover:shadow-[0_0_25px_rgba(201,162,74,0.6)]"
                 >
-                  <Droplets className="w-4 h-4 mr-1.5 text-white animate-pulse" />
+                  <Droplets className="w-4 h-4 mr-1.5 text-[#0A1930] fill-[#0A1930]" />
                   Order Now
-                </button>
+                </a>
               </div>
 
               {/* Mobile CTA and Hamburger menu toggle */}
               <div className="flex items-center gap-2 md:hidden">
-                <button
-                  onClick={onOrderClick}
-                  className="px-3.5 py-1.8 text-xs font-black text-white bg-gradient-to-r from-brand-teal to-brand-aqua rounded-full shadow-xs active:scale-95 transition-all flex items-center gap-1 cursor-pointer border-0"
+                <a
+                  href="https://wa.me/923051999897?text=Hi%20Aabshar,%20I%20would%20like%20to%20place%20an%20order%20for%20Aabshar%20Prime%20Water."
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-3.5 py-1.8 text-xs font-black text-[#0A1930] bg-gradient-to-r from-[#C9A24A] via-[#E5C158] to-[#C9A24A] rounded-full shadow-md active:scale-95 transition-all flex items-center gap-1 cursor-pointer border border-[#E5C158]/40"
                 >
-                  <Droplets className="w-3.5 h-3.5 text-white" />
+                  <Droplets className="w-3.5 h-3.5 text-[#0A1930] fill-[#0A1930]" />
                   <span>Order</span>
-                </button>
+                </a>
                 <button
                   id="menu-toggle"
                   onClick={() => setIsOpen(!isOpen)}
                   aria-label="Toggle Navigation Menu"
-                  className="text-slate-800 hover:text-brand-teal hover:bg-slate-100/60 focus:outline-none focus:ring-2 focus:ring-brand-teal p-2 rounded-xl press-scale transition-colors border border-slate-200"
+                  className="text-white hover:text-[#00D4FF] bg-[#0F3A4A]/80 hover:bg-[#0F3A4A] p-2 rounded-xl press-scale transition-colors border border-[#00D4FF]/30"
                 >
                   {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                 </button>
@@ -195,37 +202,33 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setIsOpen(false)}
-                className="fixed inset-0 bg-slate-950/45 backdrop-blur-xs z-40 md:hidden"
+                className="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-40 md:hidden"
                 id="drawer-backdrop"
               />
 
-              {/* Modern Slide-out Panel Drawer Container */}
+              {/* Modern Slide-out Panel Drawer Container in Navy Theme */}
               <motion.div
                 initial={{ x: '100%' }}
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'spring', damping: 26, stiffness: 210 }}
-                className="fixed top-0 right-0 h-screen w-full max-w-[340px] sm:max-w-[380px] bg-white z-50 md:hidden shadow-2xl border-l border-slate-200/60 flex flex-col justify-between overflow-y-auto"
+                className="fixed top-0 right-0 h-screen w-full max-w-[340px] sm:max-w-[380px] bg-[#0A1930] text-white z-50 md:hidden shadow-2xl border-l border-[#00D4FF]/30 flex flex-col justify-between overflow-y-auto"
                 id="drawer-panel"
               >
                 {/* 1. Drawer Header Panel */}
-                <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-gradient-to-r from-sky-50/20 to-teal-50/10">
-                  <div className="flex items-center gap-1">
+                <div className="p-5 border-b border-white/10 flex items-center justify-between bg-[#0F3A4A]/80">
+                  <div className="flex items-center gap-2">
                     <img 
                       src={aabsharLogo} 
                       alt="Aabshar Prime Water Logo" 
-                      className="h-11 w-auto"
+                      className="h-12 w-auto"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="text-left select-none">
-                      <span className="font-serif italic text-xs font-black text-brand-teal block leading-tight">Aabshar</span>
-                      <span className="text-[9px] font-sans font-bold text-slate-400 tracking-wider block uppercase leading-none">Prime Water</span>
-                    </div>
                   </div>
                   <button
                     onClick={() => setIsOpen(false)}
                     aria-label="Close menu"
-                    className="w-9 h-9 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 transition-colors"
+                    className="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-white/20"
                   >
                     <X className="w-4 h-4" />
                   </button>
@@ -234,7 +237,7 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                 {/* 2. Main Navigation Links Lists */}
                 <div className="px-5 py-6 flex-grow space-y-6">
                   <div>
-                    <h4 className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest pl-1 mb-3 select-none">
+                    <h4 className="text-[10px] font-extrabold text-[#C9A24A] uppercase tracking-widest pl-1 mb-3 select-none">
                       Menu Sections
                     </h4>
                     <div className="space-y-1.5">
@@ -246,17 +249,17 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                             onClick={() => handleLinkClick(link.href)}
                             className={`flex items-center justify-between w-full px-4 py-3 rounded-xl text-sm font-bold transition-all ${
                               isActive
-                                ? 'text-brand-teal bg-sky-50 shadow-xs border-l-4 border-brand-teal pl-3'
-                                : 'text-slate-700 hover:text-brand-teal hover:bg-slate-50 border-l-4 border-transparent'
+                                ? 'text-[#00D4FF] bg-[#0F3A4A] shadow-md border-l-4 border-[#00D4FF] pl-3'
+                                : 'text-slate-300 hover:text-white hover:bg-white/5 border-l-4 border-transparent'
                             }`}
                           >
                             <div className="flex items-center gap-3">
-                              <span className={isActive ? 'text-brand-teal' : 'text-slate-400'}>
+                              <span className={isActive ? 'text-[#00D4FF]' : 'text-slate-400'}>
                                 {link.icon}
                               </span>
                               <span>{link.name}</span>
                             </div>
-                            <ChevronRight className={`w-4 h-4 transition-transform ${isActive ? 'text-brand-teal translate-x-1' : 'text-slate-400'}`} />
+                            <ChevronRight className={`w-4 h-4 transition-transform ${isActive ? 'text-[#00D4FF] translate-x-1' : 'text-slate-500'}`} />
                           </button>
                         );
                       })}
@@ -264,49 +267,49 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                   </div>
 
                   {/* 3. Balanced Quality Summary Widget Card */}
-                  <div className="p-4 bg-sky-50/50 rounded-2xl border border-sky-100/50 space-y-2">
-                    <div className="flex items-center gap-2 text-brand-teal font-extrabold text-xs tracking-wider uppercase">
+                  <div className="p-4 bg-[#0F3A4A]/60 rounded-2xl border border-white/10 space-y-2">
+                    <div className="flex items-center gap-2 text-[#00D4FF] font-extrabold text-xs tracking-wider uppercase">
                       <Info className="w-4 h-4" />
                       <span>Standard Certification</span>
                     </div>
-                    <p className="text-[11px] text-slate-600 leading-relaxed text-left font-semibold">
-                      Formulated with a scientifically balanced natural minerals TDS 120–160, offering healthy active companion standards daily.
+                    <p className="text-[11px] text-slate-300 leading-relaxed text-left font-medium">
+                      Formulated with scientifically balanced natural minerals TDS 120–160, offering healthy active companion standards daily.
                     </p>
-                    <div className="grid grid-cols-2 gap-2 pt-1 border-t border-sky-100/50">
+                    <div className="grid grid-cols-2 gap-2 pt-2 border-t border-white/10">
                       <div>
-                        <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider block">Fluoride/Sulfate</span>
-                        <span className="text-[11px] font-black text-slate-800">Balanced Verified</span>
+                        <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider block">Bio TDS</span>
+                        <span className="text-[11px] font-black text-[#C9A24A]">135 PPM Target</span>
                       </div>
                       <div>
                         <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider block">Lab Sourced</span>
-                        <span className="text-[11px] font-black text-slate-800">100% PCRWR Approved</span>
+                        <span className="text-[11px] font-black text-[#00D4FF]">100% PCRWR Approved</span>
                       </div>
                     </div>
                   </div>
 
                   {/* 4. Contact Details Widget Card */}
-                  <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 space-y-3">
-                    <div className="flex items-center gap-2 text-slate-800 font-bold text-xs uppercase tracking-wider">
-                      <Phone className="w-4 h-4 text-brand-teal" />
+                  <div className="p-4 bg-[#0F3A4A]/40 rounded-2xl border border-white/10 space-y-3">
+                    <div className="flex items-center gap-2 text-white font-bold text-xs uppercase tracking-wider">
+                      <Phone className="w-4 h-4 text-[#C9A24A]" />
                       <span>Regional Delivery Ops</span>
                     </div>
                     
-                    <div className="space-y-2 text-[11px] text-slate-600">
+                    <div className="space-y-2 text-[11px] text-slate-300">
                       <div className="flex items-start gap-2.5">
-                        <MapPin className="w-3.5 h-3.5 text-brand-teal mt-0.5 flex-shrink-0" />
-                        <span className="leading-tight text-left">Islamabad, Rawalpindi & Fateh Jang sectors</span>
+                        <MapPin className="w-3.5 h-3.5 text-[#00D4FF] mt-0.5 flex-shrink-0" />
+                        <span className="leading-tight text-left">Islamabad, Rawalpindi & Fateh Jang</span>
                       </div>
 
                       <div className="flex items-start gap-2.5">
-                        <Phone className="w-3.5 h-3.5 text-emerald-500 mt-0.5 flex-shrink-0" />
-                        <a href="tel:+923051999897" className="text-brand-teal font-black hover:underline text-left">
+                        <Phone className="w-3.5 h-3.5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                        <a href="tel:+923051999897" className="text-[#C9A24A] font-black hover:underline text-left">
                           +92-305-1999897
                         </a>
                       </div>
 
                       <div className="flex items-start gap-2.5">
-                        <Mail className="w-3.5 h-3.5 text-sky-500 mt-0.5 flex-shrink-0" />
-                        <a href="mailto:aabshar.org@gmail.com" className="text-brand-teal font-medium hover:underline text-left break-all">
+                        <Mail className="w-3.5 h-3.5 text-[#00D4FF] mt-0.5 flex-shrink-0" />
+                        <a href="mailto:aabshar.org@gmail.com" className="text-slate-300 font-medium hover:underline text-left break-all">
                           aabshar.org@gmail.com
                         </a>
                       </div>
@@ -314,18 +317,18 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                   </div>
                 </div>
 
-                {/* 5. Mobile CTA Bottom Block */}
-                <div className="p-5 border-t border-slate-100 bg-slate-50/50">
-                  <button
-                    onClick={() => {
-                      setIsOpen(false);
-                      onOrderClick();
-                    }}
-                    className="flex items-center justify-center w-full px-5 py-3.5 text-sm font-black text-white bg-linear-to-r from-brand-teal to-brand-aqua rounded-xl shadow-[0_4px_16px_rgba(2,132,199,0.2)] hover:brightness-105 active:scale-98 transition-all cursor-pointer border-0"
+                {/* 5. Mobile CTA Bottom Block (Golden Button opening WhatsApp) */}
+                <div className="p-5 border-t border-white/10 bg-[#0F3A4A]/80">
+                  <a
+                    href="https://wa.me/923051999897?text=Hi%20Aabshar,%20I%20would%20like%20to%20place%20an%20order%20for%20Aabshar%20Prime%20Water."
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-center w-full px-5 py-3.5 text-sm font-black text-[#0A1930] bg-gradient-to-r from-[#C9A24A] via-[#E5C158] to-[#C9A24A] rounded-xl shadow-[0_4px_20px_rgba(201,162,74,0.4)] hover:brightness-110 active:scale-98 transition-all cursor-pointer border border-[#E5C158]/50 uppercase tracking-wider"
                   >
-                    <Droplets className="w-4.5 h-4.5 mr-2 text-white animate-bounce" />
+                    <Droplets className="w-4.5 h-4.5 mr-2 text-[#0A1930] fill-[#0A1930] animate-bounce" />
                     Place Quick Order
-                  </button>
+                  </a>
                 </div>
               </motion.div>
             </>

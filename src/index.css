@@ -54,17 +54,22 @@ html {
 }
 
 @theme {
-  --font-serif: "Playfair Display", Georgia, serif;
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Sora", sans-serif;
-  --font-urdu: "Noto Nastaliq Urdu", serif;
+  --font-serif: "Playfair Display", "Fraunces", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
   
-  --color-brand-deep: #ffffff;
-  --color-brand-navy: #f0f9ff;
-  --color-brand-blue: #0f172a;
-  --color-brand-teal: #0284c7;
-  --color-brand-aqua: #0087a3;
-  --color-brand-gold: #0369a1;
+  --color-ink-navy: #0A1930;
+  --color-deep-teal: #0F3A4A;
+  --color-aqua-signal: #4FD1E8;
+  --color-mineral-gold: #C9A24A;
+  --color-mist-white: #F3F7F9;
+
+  --color-brand-deep: #0A1930;
+  --color-brand-navy: #0A1930;
+  --color-brand-blue: #0F3A4A;
+  --color-brand-teal: #4FD1E8;
+  --color-brand-aqua: #22d3ee;
+  --color-brand-gold: #C9A24A;
 }
 
 @layer utilities {
@@ -90,7 +95,7 @@ h1, h2, h3, .font-serif {
   font-family: var(--font-serif);
 }
 
-/* Custom real-mountain landscape background scoped to hero */
+/* Custom cinematic dark water background scoped to hero */
 .hero-bg-backdrop {
   position: absolute;
   inset: 0;
@@ -98,26 +103,32 @@ h1, h2, h3, .font-serif {
   height: 100%;
   z-index: 0;
   pointer-events: none !important;
-  background-image: url('./assets/images/waterfall_scenery_bg_1785006829467.jpg');
+  background-image: url('./assets/images/cinematic_water_hero_bg_1786016587405.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-color: #0a1628;
+  animation: heroBgZoom 25s ease-in-out infinite alternate;
+}
+
+@keyframes heroBgZoom {
+  0% {
+    transform: scale(1.0);
+  }
+  100% {
+    transform: scale(1.08);
+  }
 }
 
 @media (min-width: 1024px) {
   .hero-bg-backdrop {
-    background-attachment: fixed;
-    transform: scale(1.02);
     will-change: transform;
   }
 }
 
 @media (max-width: 1023px) {
   .hero-bg-backdrop {
-    background-attachment: scroll;
-    background-position: center top;
-    transform: scale(1.0);
+    background-position: center center;
   }
 }
 
@@ -127,6 +138,82 @@ h1, h2, h3, .font-serif {
   -webkit-backdrop-filter: blur(14px) !important;
   background: rgba(255, 255, 255, 0.94) !important;
   border: 1px solid rgba(210, 225, 240, 0.8) !important;
+}
+
+/* Unified Premium Card System Utilities */
+.card-dark-glass {
+  background: rgba(10, 25, 48, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(79, 209, 232, 0.3);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 25px rgba(79, 209, 232, 0.12), inset 0 1px 1px 0 rgba(255, 255, 255, 0.18);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.card-dark-glass:hover {
+  transform: translateY(-6px);
+  border-color: rgba(79, 209, 232, 0.8);
+  box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.7), 0 0 40px rgba(79, 209, 232, 0.28), inset 0 1px 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.card-light-glass {
+  background: linear-gradient(135deg, rgba(243, 247, 249, 0.95), rgba(255, 255, 255, 0.98));
+  border: 1px solid rgba(210, 225, 240, 0.9);
+  box-shadow: 0 4px 20px -2px rgba(10, 25, 48, 0.06), 0 1px 3px 0 rgba(10, 25, 48, 0.04);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.card-light-glass:hover {
+  transform: translateY(-6px);
+  border-color: rgba(79, 209, 232, 0.6);
+  box-shadow: 0 20px 35px -8px rgba(10, 25, 48, 0.12), 0 6px 18px 0 rgba(79, 209, 232, 0.15);
+}
+
+/* Horizontal snap scroll container for touch/mobile carousels */
+.snap-x-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.snap-x-container > * {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+/* Hide scrollbar helper */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+/* Card shimmer sweep overlay */
+.card-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.card-shimmer::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.8s ease;
+  pointer-events: none;
+}
+.card-shimmer:hover::after {
+  transform: translateX(100%);
 }
 
 .text-shadow-heading {
