@@ -183,8 +183,6 @@ const MobileCaseStudyCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [pausedUntil, setPausedUntil] = useState<number>(0);
-  const touchStartX = useRef<number | null>(null);
-  const touchEndX = useRef<number | null>(null);
 
   const totalCards = caseStudiesData.length;
 
@@ -217,33 +215,10 @@ const MobileCaseStudyCarousel = () => {
     return () => clearInterval(interval);
   }, [pausedUntil, totalCards]);
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchEndX.current = null;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStartX.current || !touchEndX.current) return;
-    const diff = touchStartX.current - touchEndX.current;
-    if (Math.abs(diff) > 40) {
-      if (diff > 0) {
-        handleNext();
-      } else {
-        handlePrev();
-      }
-    }
-    touchStartX.current = null;
-    touchEndX.current = null;
-  };
-
   const currentCard = caseStudiesData[currentIndex];
 
   return (
-    <div className="relative w-full max-w-xs sm:max-w-sm mx-auto px-6">
+    <div className="relative w-full max-w-xs sm:max-w-sm mx-auto px-6 select-none">
       {/* Left Arrow */}
       <button
         type="button"
@@ -265,21 +240,33 @@ const MobileCaseStudyCarousel = () => {
       </button>
 
       {/* Slide Box */}
-      <div 
-        className="overflow-hidden rounded-3xl touch-pan-y"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        <AnimatePresence mode="wait" custom={direction}>
+      <div className="overflow-hidden rounded-3xl touch-pan-y relative w-full">
+        <AnimatePresence mode="popLayout" custom={direction} initial={false}>
           <motion.div
             key={currentCard.id}
             custom={direction}
-            initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            dragSnapToOrigin={true}
+            onDragEnd={(_e, info) => {
+              const swipe = info.offset.x;
+              const velocity = info.velocity.x;
+              if (swipe < -40 || velocity < -250) {
+                handleNext();
+              } else if (swipe > 40 || velocity > 250) {
+                handlePrev();
+              }
+            }}
+            initial={{ opacity: 0, x: direction >= 0 ? '100%' : '-100%' }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: direction < 0 ? 100 : -100 }}
-            transition={{ duration: 0.35, ease: 'easeOut' }}
-            className={`backdrop-blur-xl border rounded-3xl p-6 shadow-xl relative overflow-hidden group transition-all duration-500 ${currentCard.cardContainerClass}`}
+            exit={{ opacity: 0, x: direction >= 0 ? '-100%' : '100%' }}
+            transition={{
+              x: { type: 'spring', stiffness: 300, damping: 32 },
+              opacity: { duration: 0.25 }
+            }}
+            style={{ willChange: 'transform' }}
+            className={`backdrop-blur-xl border rounded-3xl p-6 shadow-xl relative overflow-hidden group transition-colors duration-500 w-full cursor-grab active:cursor-grabbing ${currentCard.cardContainerClass}`}
           >
             <div className={`absolute inset-0 pointer-events-none transition-colors ${currentCard.overlayClass}`} />
 
@@ -336,8 +323,6 @@ const MobileOnboardingCarousel = ({ steps }: { steps: OnboardingStep[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [pausedUntil, setPausedUntil] = useState<number>(0);
-  const touchStartX = useRef<number | null>(null);
-  const touchEndX = useRef<number | null>(null);
 
   const totalCards = steps.length;
 
@@ -370,33 +355,10 @@ const MobileOnboardingCarousel = ({ steps }: { steps: OnboardingStep[] }) => {
     return () => clearInterval(interval);
   }, [pausedUntil, totalCards]);
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchEndX.current = null;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStartX.current || !touchEndX.current) return;
-    const diff = touchStartX.current - touchEndX.current;
-    if (Math.abs(diff) > 40) {
-      if (diff > 0) {
-        handleNext();
-      } else {
-        handlePrev();
-      }
-    }
-    touchStartX.current = null;
-    touchEndX.current = null;
-  };
-
   const st = steps[currentIndex];
 
   return (
-    <div className="relative w-full max-w-xs sm:max-w-sm mx-auto px-6 my-4">
+    <div className="relative w-full max-w-xs sm:max-w-sm mx-auto px-6 my-4 select-none">
       {/* Left Arrow */}
       <button
         type="button"
@@ -418,21 +380,33 @@ const MobileOnboardingCarousel = ({ steps }: { steps: OnboardingStep[] }) => {
       </button>
 
       {/* Slide Box */}
-      <div 
-        className="overflow-hidden rounded-2xl touch-pan-y"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        <AnimatePresence mode="wait" custom={direction}>
+      <div className="overflow-hidden rounded-2xl touch-pan-y relative w-full min-h-[220px]">
+        <AnimatePresence mode="popLayout" custom={direction} initial={false}>
           <motion.div
             key={st.num}
             custom={direction}
-            initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            dragSnapToOrigin={true}
+            onDragEnd={(_e, info) => {
+              const swipe = info.offset.x;
+              const velocity = info.velocity.x;
+              if (swipe < -40 || velocity < -250) {
+                handleNext();
+              } else if (swipe > 40 || velocity > 250) {
+                handlePrev();
+              }
+            }}
+            initial={{ opacity: 0, x: direction >= 0 ? '100%' : '-100%' }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: direction < 0 ? 100 : -100 }}
-            transition={{ duration: 0.35, ease: 'easeOut' }}
-            className="bg-[#0F3A4A]/80 backdrop-blur-xl border border-[#00D4FF]/40 rounded-2xl p-6 shadow-xl flex flex-col items-center text-center relative overflow-hidden min-h-[220px]"
+            exit={{ opacity: 0, x: direction >= 0 ? '-100%' : '100%' }}
+            transition={{
+              x: { type: 'spring', stiffness: 300, damping: 32 },
+              opacity: { duration: 0.25 }
+            }}
+            style={{ willChange: 'transform' }}
+            className="bg-[#0F3A4A]/80 backdrop-blur-xl border border-[#00D4FF]/40 rounded-2xl p-6 shadow-xl flex flex-col items-center text-center relative overflow-hidden min-h-[220px] w-full cursor-grab active:cursor-grabbing"
           >
             {/* Fine gold top accent bar */}
             <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#00D4FF] via-[#C9A24A] to-[#00D4FF]" />

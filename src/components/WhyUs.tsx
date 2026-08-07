@@ -15,8 +15,6 @@ const MobileFeatureCarousel = ({ features }: { features: FeatureItem[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [pausedUntil, setPausedUntil] = useState<number>(0);
-  const touchStartX = useRef<number | null>(null);
-  const touchEndX = useRef<number | null>(null);
 
   const totalCards = features.length;
 
@@ -49,33 +47,10 @@ const MobileFeatureCarousel = ({ features }: { features: FeatureItem[] }) => {
     return () => clearInterval(interval);
   }, [pausedUntil, totalCards]);
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchEndX.current = null;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStartX.current || !touchEndX.current) return;
-    const diff = touchStartX.current - touchEndX.current;
-    if (Math.abs(diff) > 40) {
-      if (diff > 0) {
-        handleNext();
-      } else {
-        handlePrev();
-      }
-    }
-    touchStartX.current = null;
-    touchEndX.current = null;
-  };
-
   const item = features[currentIndex];
 
   return (
-    <div className="relative w-full max-w-xs sm:max-w-sm mx-auto px-6 mb-12">
+    <div className="relative w-full max-w-xs sm:max-w-sm mx-auto px-6 mb-12 select-none">
       {/* Left Arrow */}
       <button
         type="button"
@@ -97,21 +72,33 @@ const MobileFeatureCarousel = ({ features }: { features: FeatureItem[] }) => {
       </button>
 
       {/* Slide Box */}
-      <div 
-        className="overflow-hidden rounded-2xl touch-pan-y"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        <AnimatePresence mode="wait" custom={direction}>
+      <div className="overflow-hidden rounded-2xl touch-pan-y relative w-full min-h-[310px]">
+        <AnimatePresence mode="popLayout" custom={direction} initial={false}>
           <motion.div
             key={item.title}
             custom={direction}
-            initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            dragSnapToOrigin={true}
+            onDragEnd={(_e, info) => {
+              const swipe = info.offset.x;
+              const velocity = info.velocity.x;
+              if (swipe < -40 || velocity < -250) {
+                handleNext();
+              } else if (swipe > 40 || velocity > 250) {
+                handlePrev();
+              }
+            }}
+            initial={{ opacity: 0, x: direction >= 0 ? '100%' : '-100%' }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: direction < 0 ? 100 : -100 }}
-            transition={{ duration: 0.35, ease: 'easeOut' }}
-            className="bg-[#0A1930]/90 backdrop-blur-xl rounded-2xl p-6 border border-white/10 shadow-xl hover:border-[#00D4FF]/40 transition-all relative group flex flex-col justify-between min-h-[310px]"
+            exit={{ opacity: 0, x: direction >= 0 ? '-100%' : '100%' }}
+            transition={{
+              x: { type: 'spring', stiffness: 300, damping: 32 },
+              opacity: { duration: 0.25 }
+            }}
+            style={{ willChange: 'transform' }}
+            className="bg-[#0A1930]/90 backdrop-blur-xl rounded-2xl p-6 border border-white/10 shadow-xl hover:border-[#00D4FF]/40 transition-colors relative group flex flex-col justify-between min-h-[310px] w-full cursor-grab active:cursor-grabbing"
           >
             {/* Fine gold top accent bar */}
             <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#00D4FF] via-[#0F3A4A] to-[#C9A24A] rounded-t-2xl opacity-80 group-hover:opacity-100 transition-opacity" />

@@ -1,5 +1,262 @@
-import { MapPin, Globe, Check, Compass, Sparkles } from 'lucide-react';
-import { motion } from 'motion/react';
+import React, { useState, useEffect } from 'react';
+import { MapPin, Globe, Check, Compass, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+
+interface ActiveArea {
+  name: string;
+  sector: string;
+  deliveryTime: string;
+}
+
+interface ComingSoonArea {
+  name: string;
+  target: string;
+}
+
+const MobileActiveDeliveryCarousel = ({ areas }: { areas: ActiveArea[] }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [pausedUntil, setPausedUntil] = useState<number>(0);
+
+  const totalCards = areas.length;
+
+  const handleNext = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % totalCards);
+    setPausedUntil(Date.now() + 8000);
+  };
+
+  const handlePrev = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + totalCards) % totalCards);
+    setPausedUntil(Date.now() + 8000);
+  };
+
+  const handleDotClick = (index: number) => {
+    setDirection(index > currentIndex ? 1 : -1);
+    setCurrentIndex(index);
+    setPausedUntil(Date.now() + 8000);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (Date.now() >= pausedUntil) {
+        setDirection(1);
+        setCurrentIndex((prev) => (prev + 1) % totalCards);
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [pausedUntil, totalCards]);
+
+  const area = areas[currentIndex];
+
+  return (
+    <div className="relative w-full max-w-xs sm:max-w-sm mx-auto px-6 my-2 select-none">
+      {/* Left Arrow */}
+      <button
+        type="button"
+        onClick={handlePrev}
+        aria-label="Previous zone"
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#0A1930]/95 border border-[#00D4FF]/50 text-[#00D4FF] flex items-center justify-center shadow-[0_0_15px_rgba(0,212,255,0.3)] active:scale-95 hover:bg-[#00D4FF] hover:text-[#0A1930] transition-all duration-300 cursor-pointer"
+      >
+        <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
+      </button>
+
+      {/* Right Arrow */}
+      <button
+        type="button"
+        onClick={handleNext}
+        aria-label="Next zone"
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#0A1930]/95 border border-[#00D4FF]/50 text-[#00D4FF] flex items-center justify-center shadow-[0_0_15px_rgba(0,212,255,0.3)] active:scale-95 hover:bg-[#00D4FF] hover:text-[#0A1930] transition-all duration-300 cursor-pointer"
+      >
+        <ChevronRight className="w-6 h-6 stroke-[2.5]" />
+      </button>
+
+      {/* Slide Box */}
+      <div className="overflow-hidden rounded-2xl touch-pan-y relative w-full min-h-[140px]">
+        <AnimatePresence mode="popLayout" custom={direction} initial={false}>
+          <motion.div
+            key={area.name}
+            custom={direction}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            dragSnapToOrigin={true}
+            onDragEnd={(_e, info) => {
+              const swipe = info.offset.x;
+              const velocity = info.velocity.x;
+              if (swipe < -40 || velocity < -250) {
+                handleNext();
+              } else if (swipe > 40 || velocity > 250) {
+                handlePrev();
+              }
+            }}
+            initial={{ opacity: 0, x: direction >= 0 ? '100%' : '-100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction >= 0 ? '-100%' : '100%' }}
+            transition={{
+              x: { type: 'spring', stiffness: 300, damping: 32 },
+              opacity: { duration: 0.25 }
+            }}
+            style={{ willChange: 'transform' }}
+            className="flex flex-col justify-between p-5 bg-[#0F3A4A]/60 backdrop-blur-md rounded-2xl border border-white/10 hover:border-[#4FD1E8]/50 transition-colors duration-300 gap-4 group w-full cursor-grab active:cursor-grabbing min-h-[140px]"
+          >
+            <div className="flex items-start gap-4">
+              <div className="w-11 h-11 rounded-2xl bg-[#4FD1E8]/15 border border-[#4FD1E8]/40 flex items-center justify-center text-[#4FD1E8] flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                <MapPin className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="font-serif text-lg sm:text-xl font-extrabold text-white group-hover:text-[#4FD1E8] transition-colors">{area.name}</h4>
+                <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed">{area.sector}</p>
+              </div>
+            </div>
+            <div className="flex-shrink-0 self-start text-right text-[#4FD1E8] text-xs font-mono font-bold bg-[#0A1930]/90 px-3.5 py-1.5 rounded-full border border-[#4FD1E8]/40 shadow-xs">
+              ⚡ {area.deliveryTime}
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Dots */}
+      <div className="flex items-center justify-center gap-2 mt-4">
+        {areas.map((item, idx) => (
+          <button
+            key={item.name}
+            type="button"
+            onClick={() => handleDotClick(idx)}
+            aria-label={`Go to zone ${idx + 1}`}
+            className={`transition-all duration-300 cursor-pointer ${
+              idx === currentIndex
+                ? 'w-7 h-2.5 bg-gradient-to-r from-[#00D4FF] via-[#38bdf8] to-[#C9A24A] rounded-full shadow-[0_0_10px_rgba(0,212,255,0.5)]'
+                : 'w-2.5 h-2.5 bg-slate-700 hover:bg-slate-500 rounded-full'
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const MobileComingSoonCarousel = ({ areas }: { areas: ComingSoonArea[] }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [pausedUntil, setPausedUntil] = useState<number>(0);
+
+  const totalCards = areas.length;
+
+  const handleNext = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % totalCards);
+    setPausedUntil(Date.now() + 8000);
+  };
+
+  const handlePrev = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + totalCards) % totalCards);
+    setPausedUntil(Date.now() + 8000);
+  };
+
+  const handleDotClick = (index: number) => {
+    setDirection(index > currentIndex ? 1 : -1);
+    setCurrentIndex(index);
+    setPausedUntil(Date.now() + 8000);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (Date.now() >= pausedUntil) {
+        setDirection(1);
+        setCurrentIndex((prev) => (prev + 1) % totalCards);
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [pausedUntil, totalCards]);
+
+  const area = areas[currentIndex];
+
+  return (
+    <div className="relative w-full max-w-xs sm:max-w-sm mx-auto px-6 my-2 select-none">
+      {/* Left Arrow */}
+      <button
+        type="button"
+        onClick={handlePrev}
+        aria-label="Previous area"
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#0A1930]/95 border border-[#00D4FF]/50 text-[#00D4FF] flex items-center justify-center shadow-[0_0_15px_rgba(0,212,255,0.3)] active:scale-95 hover:bg-[#00D4FF] hover:text-[#0A1930] transition-all duration-300 cursor-pointer"
+      >
+        <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
+      </button>
+
+      {/* Right Arrow */}
+      <button
+        type="button"
+        onClick={handleNext}
+        aria-label="Next area"
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#0A1930]/95 border border-[#00D4FF]/50 text-[#00D4FF] flex items-center justify-center shadow-[0_0_15px_rgba(0,212,255,0.3)] active:scale-95 hover:bg-[#00D4FF] hover:text-[#0A1930] transition-all duration-300 cursor-pointer"
+      >
+        <ChevronRight className="w-6 h-6 stroke-[2.5]" />
+      </button>
+
+      {/* Slide Box */}
+      <div className="overflow-hidden rounded-xl touch-pan-y relative w-full min-h-[70px]">
+        <AnimatePresence mode="popLayout" custom={direction} initial={false}>
+          <motion.div
+            key={area.name}
+            custom={direction}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            dragSnapToOrigin={true}
+            onDragEnd={(_e, info) => {
+              const swipe = info.offset.x;
+              const velocity = info.velocity.x;
+              if (swipe < -40 || velocity < -250) {
+                handleNext();
+              } else if (swipe > 40 || velocity > 250) {
+                handlePrev();
+              }
+            }}
+            initial={{ opacity: 0, x: direction >= 0 ? '100%' : '-100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction >= 0 ? '-100%' : '100%' }}
+            transition={{
+              x: { type: 'spring', stiffness: 300, damping: 32 },
+              opacity: { duration: 0.25 }
+            }}
+            style={{ willChange: 'transform' }}
+            className="flex items-center justify-between p-4 bg-[#0F3A4A]/40 rounded-xl border border-white/10 hover:border-[#C9A24A]/40 transition-colors duration-300 w-full cursor-grab active:cursor-grabbing min-h-[70px]"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-2.5 h-2.5 bg-[#C9A24A] rounded-full animate-pulse" />
+              <span className="font-serif text-base sm:text-lg font-bold text-white">{area.name}</span>
+            </div>
+            <span className="font-mono text-[10px] uppercase font-bold text-[#C9A24A] tracking-wider bg-[#C9A24A]/10 px-2.5 py-1 rounded-md border border-[#C9A24A]/30">
+              {area.target}
+            </span>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Dots */}
+      <div className="flex items-center justify-center gap-2 mt-4">
+        {areas.map((item, idx) => (
+          <button
+            key={item.name}
+            type="button"
+            onClick={() => handleDotClick(idx)}
+            aria-label={`Go to area ${idx + 1}`}
+            className={`transition-all duration-300 cursor-pointer ${
+              idx === currentIndex
+                ? 'w-7 h-2.5 bg-gradient-to-r from-[#00D4FF] via-[#38bdf8] to-[#C9A24A] rounded-full shadow-[0_0_10px_rgba(0,212,255,0.5)]'
+                : 'w-2.5 h-2.5 bg-slate-700 hover:bg-slate-500 rounded-full'
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default function Delivery() {
   const activeAreas = [
@@ -169,7 +426,13 @@ export default function Delivery() {
                 </span>
               </div>
 
-              <div className="space-y-5">
+              {/* Mobile View (< md) */}
+              <div className="block md:hidden">
+                <MobileActiveDeliveryCarousel areas={activeAreas} />
+              </div>
+
+              {/* Desktop/Tablet View (>= md) */}
+              <div className="hidden md:block space-y-5">
                 {activeAreas.map((area) => (
                   <div
                     key={area.name}
@@ -227,7 +490,13 @@ export default function Delivery() {
                   </span>
                 </div>
 
-                <div className="space-y-4">
+                {/* Mobile View (< md) */}
+                <div className="block md:hidden">
+                  <MobileComingSoonCarousel areas={comingSoonAreas} />
+                </div>
+
+                {/* Desktop/Tablet View (>= md) */}
+                <div className="hidden md:block space-y-4">
                   {comingSoonAreas.map((area) => (
                     <div
                       key={area.name}

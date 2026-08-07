@@ -16,8 +16,6 @@ const MobileTestimonialCarousel = ({ reviews }: { reviews: ReviewItem[] }) => {
   const [direction, setDirection] = useState(0);
   const [pausedUntil, setPausedUntil] = useState<number>(0);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-  const touchStartX = useRef<number | null>(null);
-  const touchEndX = useRef<number | null>(null);
 
   const totalCards = reviews.length;
 
@@ -50,35 +48,12 @@ const MobileTestimonialCarousel = ({ reviews }: { reviews: ReviewItem[] }) => {
     return () => clearInterval(interval);
   }, [pausedUntil, totalCards]);
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchEndX.current = null;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStartX.current || !touchEndX.current) return;
-    const diff = touchStartX.current - touchEndX.current;
-    if (Math.abs(diff) > 40) {
-      if (diff > 0) {
-        handleNext();
-      } else {
-        handlePrev();
-      }
-    }
-    touchStartX.current = null;
-    touchEndX.current = null;
-  };
-
   const rev = reviews[currentIndex];
   const isExpanded = expandedIndex === currentIndex;
   const initials = rev.name.split(' ').map(n => n[0]).join('');
 
   return (
-    <div className="relative w-full max-w-xs sm:max-w-sm mx-auto px-6 mb-8">
+    <div className="relative w-full max-w-xs sm:max-w-sm mx-auto px-6 mb-8 select-none">
       {/* Left Arrow */}
       <button
         type="button"
@@ -100,21 +75,33 @@ const MobileTestimonialCarousel = ({ reviews }: { reviews: ReviewItem[] }) => {
       </button>
 
       {/* Slide Box */}
-      <div 
-        className="overflow-hidden rounded-3xl touch-pan-y"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        <AnimatePresence mode="wait" custom={direction}>
+      <div className="overflow-hidden rounded-3xl touch-pan-y relative w-full min-h-[300px]">
+        <AnimatePresence mode="popLayout" custom={direction} initial={false}>
           <motion.div
             key={rev.name}
             custom={direction}
-            initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            dragSnapToOrigin={true}
+            onDragEnd={(_e, info) => {
+              const swipe = info.offset.x;
+              const velocity = info.velocity.x;
+              if (swipe < -40 || velocity < -250) {
+                handleNext();
+              } else if (swipe > 40 || velocity > 250) {
+                handlePrev();
+              }
+            }}
+            initial={{ opacity: 0, x: direction >= 0 ? '100%' : '-100%' }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: direction < 0 ? 100 : -100 }}
-            transition={{ duration: 0.35, ease: 'easeOut' }}
-            className="bg-[#0A1930]/80 backdrop-blur-xl rounded-3xl p-7 border-l-2 border-l-[#C9A24A] border-y border-r border-white/10 flex flex-col justify-between relative group hover:border-l-[#00D4FF] transition-all duration-300 shadow-xl min-h-[300px]"
+            exit={{ opacity: 0, x: direction >= 0 ? '-100%' : '100%' }}
+            transition={{
+              x: { type: 'spring', stiffness: 300, damping: 32 },
+              opacity: { duration: 0.25 }
+            }}
+            style={{ willChange: 'transform' }}
+            className="bg-[#0A1930]/80 backdrop-blur-xl rounded-3xl p-7 border-l-2 border-l-[#C9A24A] border-y border-r border-white/10 flex flex-col justify-between relative group hover:border-l-[#00D4FF] transition-colors duration-300 shadow-xl min-h-[300px] w-full cursor-grab active:cursor-grabbing"
           >
             {/* Large Gold Opening Quotation Glyph */}
             <div className="font-serif text-6xl leading-none text-[#C9A24A] opacity-60 absolute top-4 right-6 pointer-events-none select-none">
