@@ -103,6 +103,12 @@ export default function Footer({ onLinkClick }: FooterProps) {
                 About Us
               </button>
               <button
+                onClick={() => handleLinkClick('#faq')}
+                className="text-xs sm:text-sm text-slate-300 hover:text-[#00D4FF] hover:translate-x-1 transition-all cursor-pointer bg-transparent border-0 py-0"
+              >
+                FAQ
+              </button>
+              <button
                 onClick={() => handleLinkClick('#contact')}
                 className="text-xs sm:text-sm text-slate-300 hover:text-[#00D4FF] hover:translate-x-1 transition-all cursor-pointer bg-transparent border-0 py-0"
               >

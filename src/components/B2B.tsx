@@ -13,9 +13,15 @@ import {
   Factory, 
   Dumbbell,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  User,
+  MapPin,
+  ChevronDown,
+  Package,
+  FileText
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import WaterRippleEffect from './WaterRippleEffect';
 
 // Custom generated high-fidelity physical mockup images
 import gymMockup from '../assets/images/b2b_gym_card_mockup.png';
@@ -75,11 +81,8 @@ const RealBottleMockupCard = ({
           className="h-full w-auto object-contain z-10 filter drop-shadow-[0_18px_25px_rgba(0,0,0,0.7)] group-hover:scale-105 group-hover:-translate-y-1.5 transition-transform duration-500 ease-out"
         />
 
-        {/* Rippled Drop-Shadow & Water Reflection under bottle */}
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex flex-col items-center pointer-events-none z-10">
-          <div className="w-24 h-2.5 rounded-[100%] bg-[#4FD1E8]/30 blur-sm scale-x-125 group-hover:scale-x-150 transition-transform duration-500" />
-          <div className="w-36 h-1.5 rounded-[100%] border border-[#4FD1E8]/40 scale-y-50 opacity-60 -mt-1" />
-        </div>
+        {/* Water Ripple & Splash Effect under bottle */}
+        <WaterRippleEffect size="md" />
 
         {/* Studio Gloss Overlay */}
         <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 select-none pointer-events-none z-20" />
@@ -800,25 +803,39 @@ export default function B2B({ onQuoteClick }: B2BProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-[#0A1930]/95 backdrop-blur-2xl rounded-3xl p-8 sm:p-12 shadow-[0_25px_60px_rgba(0,0,0,0.8)] border border-[#00D4FF]/30 relative overflow-hidden text-white"
+            className="bg-[#0A1930]/90 backdrop-blur-2xl rounded-3xl p-6 sm:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.8)] border border-[#00D4FF]/30 relative overflow-hidden text-white"
           >
+            {/* Ambient Corner Blur Effects */}
+            <div className="absolute top-0 right-0 w-72 h-72 bg-[#00D4FF]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#C9A24A]/10 rounded-full blur-3xl pointer-events-none" />
+
             {/* Slim Gold Progress Bar at Top */}
-            <div className="absolute top-0 inset-x-0 h-1 bg-slate-800">
+            <div className="absolute top-0 inset-x-0 h-1 bg-slate-800/80">
               <div
-                className="h-full bg-gradient-to-r from-[#C9A24A] via-[#E5C158] to-[#00D4FF] transition-all duration-500"
+                className="h-full bg-gradient-to-r from-[#C9A24A] via-[#E5C158] to-[#00D4FF] transition-all duration-500 shadow-[0_0_10px_#00D4FF]"
                 style={{ width: formStep === 1 ? '50%' : '100%' }}
               />
             </div>
 
-            <div className="text-center mb-8 max-w-lg mx-auto">
-              <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#C9A24A]">
-                COMPLIMENTARY GRAPHIC PROOF
-              </span>
-              <h3 className="font-serif text-2xl sm:text-3xl font-extrabold text-white mt-1">
-                Request Your Brand Mockup
+            <div className="text-center mb-8 max-w-lg mx-auto relative z-10">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C9A24A]/15 border border-[#C9A24A]/40 text-[#C9A24A] text-xs font-mono font-bold tracking-widest uppercase mb-3.5 shadow-[0_0_15px_rgba(201,162,74,0.25)]"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-[#E5C158] animate-pulse" />
+                <span>COMPLIMENTARY GRAPHIC PROOF</span>
+              </motion.div>
+
+              <h3 className="font-serif text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+                Request Your <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-[#00D4FF] via-[#38bdf8] to-[#C9A24A]">Brand Mockup</span>
               </h3>
-              <p className="font-sans text-xs sm:text-sm text-slate-300 mt-2">
-                Provide basic details and receive a 3D digital bottle proof within 24–48 hours.
+              
+              <div className="w-20 h-1 bg-gradient-to-r from-transparent via-[#00D4FF] to-transparent mx-auto mt-2.5 rounded-full shadow-[0_0_10px_#00D4FF]" />
+
+              <p className="font-sans text-xs sm:text-sm text-slate-300 mt-3 max-w-lg mx-auto leading-relaxed">
+                Provide basic details and receive a high-definition 3D digital bottle proof tailored to your brand within 24–48 hours.
               </p>
             </div>
 
@@ -830,72 +847,97 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                   noValidate
                   initial={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="space-y-6 text-left"
+                  className="space-y-6 text-left relative z-10"
                 >
                   {formStep === 1 ? (
                     <div className="space-y-5">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         {/* Full Name */}
                         <div>
-                          <label htmlFor="fullName" className="block text-[10px] font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-1.5">
+                          <label htmlFor="fullName" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-2">
                             Full Name *
                           </label>
-                          <input
-                            id="fullName"
-                            type="text"
-                            name="fullName"
-                            value={formData.fullName}
-                            onChange={handleInputChange}
-                            className={`w-full bg-[#0F3A4A]/60 border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#00D4FF] transition-all ${
-                              errors.fullName ? 'border-red-500' : 'border-white/20'
-                            }`}
-                            placeholder="e.g. Hammad Khan"
-                          />
+                          <div className="relative">
+                            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                              <User className="w-4 h-4 text-[#00D4FF]" />
+                            </div>
+                            <input
+                              id="fullName"
+                              type="text"
+                              name="fullName"
+                              value={formData.fullName}
+                              onChange={handleInputChange}
+                              className={`w-full bg-[#0F3A4A]/60 border rounded-xl pl-10 pr-4 py-3 text-white text-sm placeholder-slate-400 focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] focus:bg-[#0F3A4A] transition-all ${
+                                errors.fullName ? 'border-red-500/80 bg-red-950/20' : 'border-white/20'
+                              }`}
+                              placeholder="e.g. Hammad Khan"
+                            />
+                          </div>
+                          {errors.fullName && (
+                            <p className="text-xs text-red-400 mt-1 font-semibold">{errors.fullName}</p>
+                          )}
                         </div>
 
                         {/* Company Name */}
                         <div>
-                          <label htmlFor="companyName" className="block text-[10px] font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-1.5">
-                            Company Name *
+                          <label htmlFor="companyName" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-2">
+                            Company / Business Name *
                           </label>
-                          <input
-                            id="companyName"
-                            type="text"
-                            name="companyName"
-                            value={formData.companyName}
-                            onChange={handleInputChange}
-                            className={`w-full bg-[#0F3A4A]/60 border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#00D4FF] transition-all ${
-                              errors.companyName ? 'border-red-500' : 'border-white/20'
-                            }`}
-                            placeholder="e.g. Nexus Enterprises"
-                          />
+                          <div className="relative">
+                            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                              <Building2 className="w-4 h-4 text-[#00D4FF]" />
+                            </div>
+                            <input
+                              id="companyName"
+                              type="text"
+                              name="companyName"
+                              value={formData.companyName}
+                              onChange={handleInputChange}
+                              className={`w-full bg-[#0F3A4A]/60 border rounded-xl pl-10 pr-4 py-3 text-white text-sm placeholder-slate-400 focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] focus:bg-[#0F3A4A] transition-all ${
+                                errors.companyName ? 'border-red-500/80 bg-red-950/20' : 'border-white/20'
+                              }`}
+                              placeholder="e.g. Nexus Enterprises"
+                            />
+                          </div>
+                          {errors.companyName && (
+                            <p className="text-xs text-red-400 mt-1 font-semibold">{errors.companyName}</p>
+                          )}
                         </div>
                       </div>
 
                       {/* City */}
                       <div>
-                        <label htmlFor="city" className="block text-[10px] font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-1.5">
+                        <label htmlFor="city" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-2">
                           City *
                         </label>
-                        <input
-                          id="city"
-                          type="text"
-                          name="city"
-                          value={formData.city}
-                          onChange={handleInputChange}
-                          className={`w-full bg-[#0F3A4A]/60 border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#00D4FF] transition-all ${
-                            errors.city ? 'border-red-500' : 'border-white/20'
-                          }`}
-                          placeholder="Rawalpindi, Islamabad, Fateh Jang..."
-                        />
+                        <div className="relative">
+                          <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                            <MapPin className="w-4 h-4 text-[#00D4FF]" />
+                          </div>
+                          <input
+                            id="city"
+                            type="text"
+                            name="city"
+                            value={formData.city}
+                            onChange={handleInputChange}
+                            className={`w-full bg-[#0F3A4A]/60 border rounded-xl pl-10 pr-4 py-3 text-white text-sm placeholder-slate-400 focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] focus:bg-[#0F3A4A] transition-all ${
+                              errors.city ? 'border-red-500/80 bg-red-950/20' : 'border-white/20'
+                            }`}
+                            placeholder="Rawalpindi, Islamabad, Fateh Jang..."
+                          />
+                        </div>
+                        {errors.city && (
+                          <p className="text-xs text-red-400 mt-1 font-semibold">{errors.city}</p>
+                        )}
                       </div>
 
                       <button
                         type="button"
                         onClick={handleNextStep}
-                        className="w-full py-4 bg-gradient-to-r from-[#C9A24A] via-[#E5C158] to-[#C9A24A] text-[#0A1930] font-black uppercase tracking-widest text-xs rounded-xl shadow-lg hover:brightness-110 transition-all cursor-pointer flex items-center justify-center gap-2 mt-4"
+                        className="w-full py-3 sm:py-3.5 bg-gradient-to-r from-[#C9A24A] via-[#E5C158] to-[#C9A24A] hover:brightness-110 text-[#0A1930] font-black uppercase tracking-widest text-xs sm:text-sm rounded-2xl shadow-[0_4px_25px_rgba(201,162,74,0.4)] border border-[#E5C158]/70 transition-all cursor-pointer flex items-center justify-center gap-2.5 mt-5 hover:shadow-[0_0_35px_rgba(201,162,74,0.65)] active:scale-98 group"
                       >
-                        Proceed to Order Specs <ArrowRight className="w-4 h-4 text-[#0A1930]" />
+                        <span>Proceed to Order Specs</span>
+                        <ArrowRight className="w-4 h-4 text-[#0A1930] group-hover:translate-x-1 transition-transform" />
                       </button>
                     </div>
                   ) : (
@@ -903,84 +945,106 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         {/* Business Type */}
                         <div>
-                          <label htmlFor="businessType" className="block text-[10px] font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-1.5">
+                          <label htmlFor="businessType" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-2">
                             Business Type *
                           </label>
-                          <select
-                            id="businessType"
-                            name="businessType"
-                            value={formData.businessType}
-                            onChange={handleInputChange}
-                            className="w-full bg-[#0F3A4A] border border-white/20 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#00D4FF]"
-                          >
-                            <option value="Hotel" className="bg-[#0A1930]">Hotel / Resort</option>
-                            <option value="Restaurant" className="bg-[#0A1930]">Restaurant / Cafe</option>
-                            <option value="Office" className="bg-[#0A1930]">Office / Corporate</option>
-                            <option value="Shaadi Hall" className="bg-[#0A1930]">Shaadi Hall / Marquee</option>
-                            <option value="Other" className="bg-[#0A1930]">Other Brand Event</option>
-                          </select>
+                          <div className="relative">
+                            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                              <Building2 className="w-4 h-4 text-[#00D4FF]" />
+                            </div>
+                            <select
+                              id="businessType"
+                              name="businessType"
+                              value={formData.businessType}
+                              onChange={handleInputChange}
+                              className="w-full bg-[#0F3A4A]/60 border border-white/20 rounded-xl pl-10 pr-10 py-3 text-white text-sm appearance-none focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] focus:bg-[#0F3A4A] transition-all cursor-pointer"
+                            >
+                              <option value="Hotel" className="bg-[#0A1930] text-white">Hotel / Resort</option>
+                              <option value="Restaurant" className="bg-[#0A1930] text-white">Restaurant / Cafe</option>
+                              <option value="Office" className="bg-[#0A1930] text-white">Office / Corporate</option>
+                              <option value="Shaadi Hall" className="bg-[#0A1930] text-white">Shaadi Hall / Marquee</option>
+                              <option value="Other" className="bg-[#0A1930] text-white">Other Brand Event</option>
+                            </select>
+                            <div className="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-slate-400">
+                              <ChevronDown className="w-4 h-4 text-[#00D4FF]" />
+                            </div>
+                          </div>
                         </div>
 
                         {/* Quantity */}
                         <div>
-                          <label htmlFor="quantity" className="block text-[10px] font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-1.5">
+                          <label htmlFor="quantity" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-2">
                             Monthly Volume *
                           </label>
-                          <select
-                            id="quantity"
-                            name="quantity"
-                            value={formData.quantity}
-                            onChange={handleInputChange}
-                            className="w-full bg-[#0F3A4A] border border-white/20 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#00D4FF]"
-                          >
-                            <option value="100–500 bottles" className="bg-[#0A1930]">100–500 bottles</option>
-                            <option value="500–1000 bottles" className="bg-[#0A1930]">500–1000 bottles</option>
-                            <option value="1000–5000 bottles" className="bg-[#0A1930]">1000–5000 bottles</option>
-                            <option value="5000+ bottles" className="bg-[#0A1930]">5000+ bottles</option>
-                          </select>
+                          <div className="relative">
+                            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                              <Package className="w-4 h-4 text-[#00D4FF]" />
+                            </div>
+                            <select
+                              id="quantity"
+                              name="quantity"
+                              value={formData.quantity}
+                              onChange={handleInputChange}
+                              className="w-full bg-[#0F3A4A]/60 border border-white/20 rounded-xl pl-10 pr-10 py-3 text-white text-sm appearance-none focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] focus:bg-[#0F3A4A] transition-all cursor-pointer"
+                            >
+                              <option value="100–500 bottles" className="bg-[#0A1930] text-white">100–500 bottles</option>
+                              <option value="500–1000 bottles" className="bg-[#0A1930] text-white">500–1000 bottles</option>
+                              <option value="1000–5000 bottles" className="bg-[#0A1930] text-white">1000–5000 bottles</option>
+                              <option value="5000+ bottles" className="bg-[#0A1930] text-white">5000+ bottles</option>
+                            </select>
+                            <div className="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-slate-400">
+                              <ChevronDown className="w-4 h-4 text-[#00D4FF]" />
+                            </div>
+                          </div>
                         </div>
                       </div>
 
                       {/* Logo Upload */}
                       <div>
-                        <label className="block text-[10px] font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-1.5">
+                        <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-2">
                           Brand Logo Upload (Optional)
                         </label>
-                        <div className="relative border border-dashed border-white/30 rounded-xl bg-[#0F3A4A]/40 p-3 hover:border-[#00D4FF] transition-all text-center cursor-pointer">
+                        <div className="relative border border-dashed border-white/30 hover:border-[#00D4FF] rounded-xl bg-[#0F3A4A]/40 p-3.5 transition-all text-center cursor-pointer group hover:bg-[#0F3A4A]/70">
                           <input
                             id="logoUpload"
                             type="file"
                             accept="image/*"
                             onChange={handleFileChange}
-                            className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                            className="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10"
                           />
-                          <span className="text-xs text-slate-300">
-                            {logoFile ? logoFile.name : "Click to select logo file (PNG / SVG)"}
-                          </span>
+                          <div className="flex items-center justify-center gap-2 text-xs text-slate-300 group-hover:text-white">
+                            <Upload className="w-4 h-4 text-[#00D4FF]" />
+                            <span>{logoFile ? logoFile.name : "Click or drag to select logo file (PNG / SVG)"}</span>
+                          </div>
                         </div>
                       </div>
 
                       {/* Message */}
                       <div>
-                        <label htmlFor="message" className="block text-[10px] font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-1.5">
+                        <label htmlFor="message" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-2">
                           Special Requirements
                         </label>
-                        <textarea
-                          id="message"
-                          name="message"
-                          rows={3}
-                          value={formData.message}
-                          onChange={handleInputChange}
-                          className="w-full bg-[#0F3A4A]/60 border border-white/20 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#00D4FF] resize-none"
-                          placeholder="Describe preferred label colors or delivery schedule..."
-                        />
+                        <div className="relative">
+                          <div className="absolute top-3 left-3.5 flex items-center pointer-events-none text-slate-400">
+                            <FileText className="w-4 h-4 text-[#00D4FF]" />
+                          </div>
+                          <textarea
+                            id="message"
+                            name="message"
+                            rows={3}
+                            value={formData.message}
+                            onChange={handleInputChange}
+                            className="w-full bg-[#0F3A4A]/60 border border-white/20 rounded-xl pl-10 pr-4 py-3 text-white text-sm placeholder-slate-400 focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] focus:bg-[#0F3A4A] transition-all resize-none"
+                            placeholder="Describe preferred label colors or delivery schedule..."
+                          />
+                        </div>
                       </div>
 
                       <div className="flex gap-3 pt-2">
                         <button
                           type="button"
                           onClick={() => setFormStep(1)}
-                          className="w-1/3 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase rounded-xl transition-colors cursor-pointer"
+                          className="w-1/3 py-3 sm:py-3.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs uppercase rounded-xl transition-all cursor-pointer hover:border-[#00D4FF]"
                         >
                           ← Back
                         </button>
@@ -988,19 +1052,20 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                           id="b2b-submit-btn"
                           type="submit"
                           disabled={isSubmitting}
-                          className="w-2/3 py-3.5 bg-gradient-to-r from-[#00D4FF] via-[#0284c7] to-[#00D4FF] hover:brightness-110 text-white font-black text-xs uppercase tracking-widest rounded-xl shadow-[0_0_20px_rgba(0,212,255,0.4)] transition-all cursor-pointer flex items-center justify-center gap-2"
+                          className="w-2/3 py-3 sm:py-3.5 bg-gradient-to-r from-[#00D4FF] via-[#0284c7] to-[#00D4FF] hover:brightness-110 text-white font-black text-xs sm:text-sm uppercase tracking-widest rounded-xl shadow-[0_0_20px_rgba(0,212,255,0.4)] hover:shadow-[0_0_35px_rgba(0,212,255,0.65)] border border-[#00D4FF]/60 transition-all cursor-pointer flex items-center justify-center gap-2"
                         >
-                          {isSubmitting ? "Generating Proof..." : "Request Free Digital Proof"}
+                          <Send className="w-4 h-4 text-white" />
+                          <span>{isSubmitting ? "Generating Proof..." : "Request Free Digital Proof"}</span>
                         </button>
                       </div>
                     </div>
                   )}
                 </motion.form>
               ) : (
-                <div className="text-center py-8">
-                  <CheckCircle2 className="w-12 h-12 text-[#00D4FF] mx-auto mb-3 animate-bounce" />
-                  <h4 className="font-serif text-xl font-bold text-white">Inquiry Received!</h4>
-                  <p className="font-sans text-xs text-slate-300 mt-2">
+                <div className="text-center py-8 relative z-10">
+                  <CheckCircle2 className="w-14 h-14 text-[#00D4FF] mx-auto mb-3 animate-bounce drop-shadow-[0_0_20px_#00D4FF]" />
+                  <h4 className="font-serif text-2xl font-bold text-white">Inquiry Received!</h4>
+                  <p className="font-sans text-xs sm:text-sm text-slate-300 mt-2 max-w-md mx-auto">
                     Our design team will contact you via WhatsApp with custom digital bottle proofs within 24–48 hours.
                   </p>
                 </div>

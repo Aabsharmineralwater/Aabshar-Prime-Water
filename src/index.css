@@ -493,6 +493,61 @@ html.dark .shimmer-bg {
 }
 
 /* Animated Aquatic Caustics & Water Ripple Effects */
+@keyframes bottleRippleExpand {
+  0% {
+    transform: scale(0.75) scaleY(0.42);
+    opacity: 0.85;
+    border-width: 2px;
+  }
+  50% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(1.35) scaleY(0.42);
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+@keyframes bottleRipplePulse {
+  0%, 100% {
+    transform: scale(0.95) scaleY(0.42);
+    opacity: 0.65;
+  }
+  50% {
+    transform: scale(1.1) scaleY(0.44);
+    opacity: 0.9;
+  }
+}
+
+@keyframes splashShimmer {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translateY(0) scale(0.96);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translateY(-2px) scale(1.04);
+  }
+}
+
+.animate-ripple-expand-1 {
+  animation: bottleRippleExpand 2.8s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+}
+
+.animate-ripple-expand-2 {
+  animation: bottleRippleExpand 2.8s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+  animation-delay: 1.4s;
+}
+
+.animate-ripple-pulse {
+  animation: bottleRipplePulse 3s ease-in-out infinite;
+}
+
+.animate-splash-shimmer {
+  animation: splashShimmer 2.5s ease-in-out infinite;
+}
+
 @keyframes waterCaustics {
   0% {
     background-position: 0% 0%, 0% 0%, 0% 0%;

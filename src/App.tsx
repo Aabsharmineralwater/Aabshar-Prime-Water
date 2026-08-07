@@ -5,6 +5,7 @@ import WhyUs from './components/WhyUs';
 import Products from './components/Products';
 import B2B from './components/B2B';
 import Delivery from './components/Delivery';
+import FAQ from './components/FAQ';
 import Testimonials from './components/Testimonials';
 import OrderForm from './components/OrderForm';
 import Footer from './components/Footer';
@@ -110,6 +111,9 @@ export default function App() {
 
             {/* Map tracker Area Delivery options */}
             <Delivery />
+
+            {/* Frequently Asked Questions */}
+            <FAQ />
 
             {/* Interactive Ordering Form / Contact */}
             <OrderForm

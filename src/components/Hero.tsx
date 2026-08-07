@@ -28,9 +28,12 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] sm:w-[320px] h-[220px] sm:h-[320px] rounded-full border border-[#38bdf8]/30 animate-pulse opacity-30 pointer-events-none z-0" />
 
       {/* Smooth blend into next section with SVG shoreline wave */}
-      <div className="absolute inset-x-0 bottom-0 pointer-events-none z-20">
-        <svg viewBox="0 0 1200 80" preserveAspectRatio="none" className="w-full h-8 sm:h-12 text-[#0D223D] fill-current opacity-80">
-          <path d="M0,0 C300,50 600,-20 900,40 C1050,60 1150,20 1200,30 L1200,80 L0,80 Z" />
+      <div className="absolute inset-x-0 bottom-0 pointer-events-none z-20 overflow-hidden h-12 sm:h-16">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-[200%] h-12 sm:h-16 text-[#0D223D] fill-current opacity-90 animate-wave-1">
+          <path d="M0,0 C300,50 600,-20 900,40 C1050,60 1150,20 1200,30 L1200,120 L0,120 Z" />
+        </svg>
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-[200%] h-10 sm:h-14 text-[#00D4FF]/20 fill-current opacity-60 animate-wave-2 absolute bottom-0 left-0">
+          <path d="M0,30 C200,80 450,10 700,60 C950,110 1100,20 1200,40 L1200,120 L0,120 Z" />
         </svg>
       </div>
 
@@ -58,12 +61,16 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.15 }}
-              className="order-3 flex items-center gap-2 mb-3 sm:mb-5"
+              className="order-3 flex items-center gap-2 mb-3 sm:mb-5 group cursor-default"
             >
               <span className="h-[1px] w-5 bg-gradient-to-r from-transparent to-[#00D4FF]" />
-              <p className="font-serif italic font-semibold text-xs sm:text-lg text-[#00D4FF] tracking-wider uppercase">
-                Pure Water. Pure Trust.
-              </p>
+              <div className="relative inline-flex items-center gap-1.5">
+                <Sparkles className="w-4 h-4 text-[#00D4FF] animate-pulse drop-shadow-[0_0_10px_rgba(0,212,255,0.9)]" />
+                <p className="font-serif italic font-semibold text-xs sm:text-lg text-[#00D4FF] tracking-wider uppercase">
+                  Pure Water. Pure Trust.
+                </p>
+                <div className="w-2 h-2 rounded-full bg-[#00D4FF] animate-ping opacity-75 shadow-[0_0_10px_#00D4FF]" />
+              </div>
               <span className="h-[1px] w-5 bg-gradient-to-l from-transparent to-[#00D4FF]" />
             </motion.div>
 
@@ -189,14 +196,14 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
               {/* Radial ice-cyan glow background beneath bottle */}
               <div className="absolute inset-0 m-auto w-80 h-80 bg-[radial-gradient(circle_at_center,rgba(0,212,255,0.28)_0%,transparent_70%)] blur-md rounded-full pointer-events-none" />
               <div className="absolute bg-[#0F3A4A]/60 w-64 h-64 rounded-full filter blur-[70px] pointer-events-none" />
-              
+
               {/* Single combined bottle image */}
               <div className="relative flex items-center justify-center h-[500px] lg:h-[560px] w-full pb-4">
                 <img
                   src={combinedBottlesImage}
                   alt="Aabshar Prime Water Bottles"
                   loading="eager"
-                  className="max-h-[480px] lg:max-h-[520px] w-auto animate-float object-contain relative z-10 pointer-events-none filter drop-shadow-[0_20px_35px_rgba(0,212,255,0.35)]"
+                  className="max-h-[480px] lg:max-h-[520px] w-auto animate-float object-contain relative z-10 filter drop-shadow-[0_20px_35px_rgba(0,212,255,0.35)]"
                   referrerPolicy="no-referrer"
                 />
               </div>

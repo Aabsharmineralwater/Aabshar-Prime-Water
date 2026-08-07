@@ -44,6 +44,42 @@ export default function AquaticBackground() {
           <path d="M0,40 C300,100 500,0 800,70 C1000,120 1100,20 1200,60 L1200,120 L0,120 Z" />
         </svg>
       </div>
+
+      {/* 6. Rising Floating Water Bubble Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[
+          { left: '4%', size: 'w-2 h-2', delay: '0s', duration: '14s', opacity: 'opacity-30' },
+          { left: '9%', size: 'w-3.5 h-3.5', delay: '2s', duration: '11s', opacity: 'opacity-35' },
+          { left: '15%', size: 'w-1.5 h-1.5', delay: '5s', duration: '16s', opacity: 'opacity-25' },
+          { left: '21%', size: 'w-4 h-4', delay: '1.2s', duration: '12s', opacity: 'opacity-30' },
+          { left: '27%', size: 'w-2.5 h-2.5', delay: '6.5s', duration: '9s', opacity: 'opacity-35' },
+          { left: '33%', size: 'w-5 h-5', delay: '3.8s', duration: '18s', opacity: 'opacity-20' },
+          { left: '39%', size: 'w-2 h-2', delay: '0.8s', duration: '10s', opacity: 'opacity-30' },
+          { left: '44%', size: 'w-3 h-3', delay: '7.1s', duration: '15s', opacity: 'opacity-25' },
+          { left: '50%', size: 'w-4.5 h-4.5', delay: '2.5s', duration: '13s', opacity: 'opacity-30' },
+          { left: '56%', size: 'w-1.5 h-1.5', delay: '4.2s', duration: '8s', opacity: 'opacity-35' },
+          { left: '62%', size: 'w-3 h-3', delay: '8s', duration: '17s', opacity: 'opacity-25' },
+          { left: '68%', size: 'w-5 h-5', delay: '1.8s', duration: '19s', opacity: 'opacity-20' },
+          { left: '73%', size: 'w-2.5 h-2.5', delay: '5.5s', duration: '11s', opacity: 'opacity-30' },
+          { left: '79%', size: 'w-4 h-4', delay: '3s', duration: '14s', opacity: 'opacity-35' },
+          { left: '84%', size: 'w-2 h-2', delay: '6.2s', duration: '10s', opacity: 'opacity-25' },
+          { left: '89%', size: 'w-3.5 h-3.5', delay: '0.5s', duration: '15s', opacity: 'opacity-30' },
+          { left: '94%', size: 'w-1.5 h-1.5', delay: '4.8s', duration: '12s', opacity: 'opacity-35' },
+          { left: '12%', size: 'w-3 h-3', delay: '8.5s', duration: '13s', opacity: 'opacity-25' },
+          { left: '47%', size: 'w-2.5 h-2.5', delay: '9.2s', duration: '16s', opacity: 'opacity-30' },
+          { left: '76%', size: 'w-4 h-4', delay: '2.1s', duration: '14s', opacity: 'opacity-25' },
+        ].map((b, i) => (
+          <div 
+            key={i}
+            className={`absolute bottom-0 ${b.size} rounded-full bg-gradient-to-tr from-[#00D4FF] via-[#38bdf8] to-white/90 border border-white/60 shadow-[0_0_10px_rgba(0,212,255,0.7)] ${b.opacity} ${i % 2 === 0 ? 'animate-bubble-slow' : 'animate-bubble-fast'}`}
+            style={{ 
+              left: b.left, 
+              animationDelay: b.delay, 
+              animationDuration: b.duration 
+            }} 
+          />
+        ))}
+      </div>
     </div>
   );
 }

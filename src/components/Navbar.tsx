@@ -112,15 +112,21 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
               <div className="flex-shrink-0 flex items-center">
                 <button 
                   onClick={() => handleLinkClick('#hero')} 
-                  className="flex items-center gap-2 group cursor-pointer bg-transparent border-0 active:scale-95 transition-transform duration-200"
+                  className="relative flex items-center gap-2 group cursor-pointer bg-transparent border-0 active:scale-95 transition-transform duration-200 py-1"
                 >
+                  {/* Soft glowing radial gradient aura behind logo */}
+                  <div className="absolute inset-0 m-auto w-[130%] h-[130%] bg-[radial-gradient(ellipse_at_center,rgba(0,212,255,0.38)_0%,rgba(0,212,255,0.12)_55%,transparent_75%)] rounded-full blur-md pointer-events-none group-hover:scale-110 transition-transform duration-300 z-0" />
+
+                  {/* Subtle horizontal cyan underline / glow bar beneath logo */}
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-gradient-to-r from-transparent via-[#00D4FF] to-transparent shadow-[0_0_8px_#00D4FF] opacity-85 group-hover:opacity-100 group-hover:w-full transition-all duration-300 pointer-events-none z-0" />
+
                   <img
                     src={aabsharLogo}
                     alt="Aabshar Prime Water Logo"
                     loading="eager"
                     decoding="async"
                     fetchPriority="high"
-                    className={`object-contain transition-all duration-300 group-hover:scale-102 ${
+                    className={`relative z-10 object-contain brightness-105 contrast-105 filter drop-shadow-[0_0_8px_rgba(0,212,255,0.65)] transition-all duration-300 group-hover:scale-102 group-hover:drop-shadow-[0_0_12px_rgba(0,212,255,0.85)] ${
                       isScrolled
                         ? 'h-14 sm:h-16 md:h-18 lg:h-20'
                         : 'h-16 sm:h-18 md:h-22 lg:h-24'
@@ -186,15 +192,21 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
               <div className="flex-shrink-0 flex justify-center items-center">
                 <button 
                   onClick={() => handleLinkClick('#hero')} 
-                  className="flex items-center justify-center group cursor-pointer bg-transparent border-0 active:scale-95 transition-transform duration-200"
+                  className="relative flex items-center justify-center group cursor-pointer bg-transparent border-0 active:scale-95 transition-transform duration-200 py-1"
                 >
+                  {/* Soft glowing radial gradient aura behind logo */}
+                  <div className="absolute inset-0 m-auto w-[130%] h-[130%] bg-[radial-gradient(ellipse_at_center,rgba(0,212,255,0.38)_0%,rgba(0,212,255,0.12)_55%,transparent_75%)] rounded-full blur-md pointer-events-none group-hover:scale-110 transition-transform duration-300 z-0" />
+
+                  {/* Subtle horizontal cyan underline / glow bar beneath logo */}
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-gradient-to-r from-transparent via-[#00D4FF] to-transparent shadow-[0_0_8px_#00D4FF] opacity-85 group-hover:opacity-100 group-hover:w-full transition-all duration-300 pointer-events-none z-0" />
+
                   <img
                     src={aabsharLogo}
                     alt="Aabshar Prime Water Logo"
                     loading="eager"
                     decoding="async"
                     fetchPriority="high"
-                    className={`object-contain transition-all duration-300 group-hover:scale-102 ${
+                    className={`relative z-10 object-contain brightness-105 contrast-105 filter drop-shadow-[0_0_8px_rgba(0,212,255,0.65)] transition-all duration-300 group-hover:scale-102 group-hover:drop-shadow-[0_0_12px_rgba(0,212,255,0.85)] ${
                       isScrolled
                         ? 'h-13 sm:h-15'
                         : 'h-15 sm:h-17'
