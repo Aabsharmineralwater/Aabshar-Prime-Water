@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Hotel, 
   Utensils, 
@@ -11,7 +11,9 @@ import {
   Compass, 
   Heart, 
   Factory, 
-  Dumbbell 
+  Dumbbell,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -135,6 +137,345 @@ const RealBottleMockupCard = ({
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  );
+};
+
+// Case study cards data for Private Label Industry Mockups
+const caseStudiesData = [
+  {
+    id: 'fitness',
+    imageSrc: gymMockup,
+    alt: 'IronCore Fitness Custom Bottle',
+    badgeText: 'Fitness & Sports',
+    badgeClass: 'text-[#C9A24A] bg-[#C9A24A]/20 border-[#C9A24A]/40',
+    title: 'IronCore Fitness',
+    description: 'High-performance athletic club custom bottles.',
+    cardContainerClass: 'bg-gradient-to-b from-[#1c1917]/90 via-[#0A1930] to-[#0A1930] border-[#C9A24A]/40 hover:border-[#C9A24A]',
+    overlayClass: 'bg-amber-500/10 group-hover:bg-amber-500/20'
+  },
+  {
+    id: 'dining',
+    imageSrc: riverdaleMockup,
+    alt: 'The Olive Table Custom Bottle',
+    badgeText: 'Fine Dining & Cafes',
+    badgeClass: 'text-[#00D4FF] bg-[#00D4FF]/20 border-[#00D4FF]/40',
+    title: 'The Olive Table',
+    description: 'Gourmet dining table 500 mL mineral bottles.',
+    cardContainerClass: 'bg-gradient-to-b from-[#0F3A4A]/90 via-[#0A1930] to-[#0A1930] border-[#00D4FF]/40 hover:border-[#00D4FF]',
+    overlayClass: 'bg-sky-500/10 group-hover:bg-sky-500/20'
+  },
+  {
+    id: 'corporate',
+    imageSrc: nexoraMockup,
+    alt: 'Nexora Technologies Custom Bottle',
+    badgeText: 'Corporate & Tech',
+    badgeClass: 'text-teal-300 bg-teal-500/20 border-teal-500/40',
+    title: 'Nexora Technologies',
+    description: 'Executive summit boardroom water bottles.',
+    cardContainerClass: 'bg-gradient-to-b from-[#042f2e]/90 via-[#0A1930] to-[#0A1930] border-teal-500/40 hover:border-teal-400',
+    overlayClass: 'bg-teal-500/10 group-hover:bg-teal-500/20'
+  }
+];
+
+const MobileCaseStudyCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [pausedUntil, setPausedUntil] = useState<number>(0);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
+  const totalCards = caseStudiesData.length;
+
+  const handleNext = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % totalCards);
+    setPausedUntil(Date.now() + 8000);
+  };
+
+  const handlePrev = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + totalCards) % totalCards);
+    setPausedUntil(Date.now() + 8000);
+  };
+
+  const handleDotClick = (index: number) => {
+    setDirection(index > currentIndex ? 1 : -1);
+    setCurrentIndex(index);
+    setPausedUntil(Date.now() + 8000);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (Date.now() >= pausedUntil) {
+        setDirection(1);
+        setCurrentIndex((prev) => (prev + 1) % totalCards);
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [pausedUntil, totalCards]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchEndX.current = null;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  const currentCard = caseStudiesData[currentIndex];
+
+  return (
+    <div className="relative w-full max-w-xs sm:max-w-sm mx-auto px-6">
+      {/* Left Arrow */}
+      <button
+        type="button"
+        onClick={handlePrev}
+        aria-label="Previous card"
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#0A1930]/95 border border-[#00D4FF]/50 text-[#00D4FF] flex items-center justify-center shadow-[0_0_15px_rgba(0,212,255,0.3)] active:scale-95 hover:bg-[#00D4FF] hover:text-[#0A1930] transition-all duration-300 cursor-pointer"
+      >
+        <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
+      </button>
+
+      {/* Right Arrow */}
+      <button
+        type="button"
+        onClick={handleNext}
+        aria-label="Next card"
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#0A1930]/95 border border-[#00D4FF]/50 text-[#00D4FF] flex items-center justify-center shadow-[0_0_15px_rgba(0,212,255,0.3)] active:scale-95 hover:bg-[#00D4FF] hover:text-[#0A1930] transition-all duration-300 cursor-pointer"
+      >
+        <ChevronRight className="w-6 h-6 stroke-[2.5]" />
+      </button>
+
+      {/* Slide Box */}
+      <div 
+        className="overflow-hidden rounded-3xl touch-pan-y"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.div
+            key={currentCard.id}
+            custom={direction}
+            initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction < 0 ? 100 : -100 }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
+            className={`backdrop-blur-xl border rounded-3xl p-6 shadow-xl relative overflow-hidden group transition-all duration-500 ${currentCard.cardContainerClass}`}
+          >
+            <div className={`absolute inset-0 pointer-events-none transition-colors ${currentCard.overlayClass}`} />
+
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-slate-900 flex items-center justify-center p-4">
+              <img
+                src={currentCard.imageSrc}
+                alt={currentCard.alt}
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+                className="h-full w-auto object-contain transform group-hover:scale-110 transition-transform duration-700 ease-out"
+              />
+            </div>
+
+            <div className="relative z-10 text-left">
+              <span className={`font-mono text-[10px] uppercase font-bold px-2.5 py-0.5 rounded-full border ${currentCard.badgeClass}`}>
+                {currentCard.badgeText}
+              </span>
+              <h4 className="font-serif text-xl font-bold text-white mt-2">{currentCard.title}</h4>
+              <p className="font-sans text-xs text-slate-300 mt-1">{currentCard.description}</p>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Dots */}
+      <div className="flex items-center justify-center gap-2 mt-5">
+        {caseStudiesData.map((item, idx) => (
+          <button
+            key={item.id}
+            type="button"
+            onClick={() => handleDotClick(idx)}
+            aria-label={`Go to slide ${idx + 1}`}
+            className={`transition-all duration-300 cursor-pointer ${
+              idx === currentIndex
+                ? 'w-7 h-2.5 bg-gradient-to-r from-[#00D4FF] via-[#38bdf8] to-[#C9A24A] rounded-full shadow-[0_0_10px_rgba(0,212,255,0.5)]'
+                : 'w-2.5 h-2.5 bg-slate-700 hover:bg-slate-500 rounded-full'
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+interface OnboardingStep {
+  num: string;
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+}
+
+const MobileOnboardingCarousel = ({ steps }: { steps: OnboardingStep[] }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [pausedUntil, setPausedUntil] = useState<number>(0);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
+  const totalCards = steps.length;
+
+  const handleNext = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % totalCards);
+    setPausedUntil(Date.now() + 8000);
+  };
+
+  const handlePrev = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + totalCards) % totalCards);
+    setPausedUntil(Date.now() + 8000);
+  };
+
+  const handleDotClick = (index: number) => {
+    setDirection(index > currentIndex ? 1 : -1);
+    setCurrentIndex(index);
+    setPausedUntil(Date.now() + 8000);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (Date.now() >= pausedUntil) {
+        setDirection(1);
+        setCurrentIndex((prev) => (prev + 1) % totalCards);
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [pausedUntil, totalCards]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchEndX.current = null;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  const st = steps[currentIndex];
+
+  return (
+    <div className="relative w-full max-w-xs sm:max-w-sm mx-auto px-6 my-4">
+      {/* Left Arrow */}
+      <button
+        type="button"
+        onClick={handlePrev}
+        aria-label="Previous step"
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#0A1930]/95 border border-[#00D4FF]/50 text-[#00D4FF] flex items-center justify-center shadow-[0_0_15px_rgba(0,212,255,0.3)] active:scale-95 hover:bg-[#00D4FF] hover:text-[#0A1930] transition-all duration-300 cursor-pointer"
+      >
+        <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
+      </button>
+
+      {/* Right Arrow */}
+      <button
+        type="button"
+        onClick={handleNext}
+        aria-label="Next step"
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#0A1930]/95 border border-[#00D4FF]/50 text-[#00D4FF] flex items-center justify-center shadow-[0_0_15px_rgba(0,212,255,0.3)] active:scale-95 hover:bg-[#00D4FF] hover:text-[#0A1930] transition-all duration-300 cursor-pointer"
+      >
+        <ChevronRight className="w-6 h-6 stroke-[2.5]" />
+      </button>
+
+      {/* Slide Box */}
+      <div 
+        className="overflow-hidden rounded-2xl touch-pan-y"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.div
+            key={st.num}
+            custom={direction}
+            initial={{ opacity: 0, x: direction > 0 ? 100 : -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction < 0 ? 100 : -100 }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
+            className="bg-[#0F3A4A]/80 backdrop-blur-xl border border-[#00D4FF]/40 rounded-2xl p-6 shadow-xl flex flex-col items-center text-center relative overflow-hidden min-h-[220px]"
+          >
+            {/* Fine gold top accent bar */}
+            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#00D4FF] via-[#C9A24A] to-[#00D4FF]" />
+
+            {/* Badge Step Indicator Header */}
+            <span className="font-mono text-[10px] uppercase font-bold tracking-widest text-[#C9A24A] bg-[#C9A24A]/10 border border-[#C9A24A]/30 px-2.5 py-0.5 rounded-full mb-3">
+              Step {currentIndex + 1} of {totalCards}
+            </span>
+
+            {/* Circle Node Number */}
+            <div className="w-14 h-14 rounded-full bg-[#C9A24A] text-[#0A1930] border-2 border-white shadow-[0_0_20px_#C9A24A] flex items-center justify-center font-mono font-black text-sm my-1">
+              {st.num}
+            </div>
+
+            <div className="flex items-center gap-1.5 mt-3 mb-1 text-[#00D4FF]">
+              {st.icon}
+              <h4 className="font-serif text-lg font-extrabold text-white">
+                {st.title}
+              </h4>
+            </div>
+
+            <p className="font-sans text-xs text-slate-200 leading-relaxed max-w-xs mt-1">
+              {st.desc}
+            </p>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Dots */}
+      <div className="flex items-center justify-center gap-2 mt-5">
+        {steps.map((item, idx) => (
+          <button
+            key={item.num}
+            type="button"
+            onClick={() => handleDotClick(idx)}
+            aria-label={`Go to step ${idx + 1}`}
+            className={`transition-all duration-300 cursor-pointer ${
+              idx === currentIndex
+                ? 'w-7 h-2.5 bg-gradient-to-r from-[#00D4FF] via-[#38bdf8] to-[#C9A24A] rounded-full shadow-[0_0_10px_rgba(0,212,255,0.5)]'
+                : 'w-2.5 h-2.5 bg-slate-700 hover:bg-slate-500 rounded-full'
+            }`}
+          />
+        ))}
       </div>
     </div>
   );
@@ -384,12 +725,17 @@ export default function B2B({ onQuoteClick }: B2BProps) {
             </p>
           </div>
 
-          {/* Circuit Trace Timeline Line & Nodes */}
-          <div className="relative my-8">
-            {/* Glowing cyan-and-gold gradient timeline line */}
-            <div className="hidden md:block absolute top-7 left-[10%] right-[10%] h-1 bg-gradient-to-r from-[#00D4FF] via-[#C9A24A] to-[#00D4FF] z-0 rounded-full shadow-[0_0_10px_#00D4FF]" />
+          {/* Mobile View: Auto-sliding Carousel (< md) */}
+          <div className="block md:hidden">
+            <MobileOnboardingCarousel steps={steps} />
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative z-10">
+          {/* Desktop/Tablet View: Circuit Trace Timeline Line & Nodes (>= md) */}
+          <div className="hidden md:block relative my-8">
+            {/* Glowing cyan-and-gold gradient timeline line */}
+            <div className="absolute top-7 left-[10%] right-[10%] h-1 bg-gradient-to-r from-[#00D4FF] via-[#C9A24A] to-[#00D4FF] z-0 rounded-full shadow-[0_0_10px_#00D4FF]" />
+
+            <div className="grid grid-cols-4 gap-6 relative z-10">
               {steps.map((st, idx) => {
                 const isActive = activeStepHover === idx;
                 return (
@@ -432,97 +778,44 @@ export default function B2B({ onQuoteClick }: B2BProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center items-stretch">
-            
-            {/* Card 1: Fitness (Warm Amber/Gold Tint Overlay) */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-b from-[#1c1917]/90 via-[#0A1930] to-[#0A1930] backdrop-blur-xl border border-[#C9A24A]/40 rounded-3xl p-6 shadow-xl relative overflow-hidden group hover:border-[#C9A24A] transition-all duration-500"
-            >
-              <div className="absolute inset-0 bg-amber-500/10 pointer-events-none group-hover:bg-amber-500/20 transition-colors" />
-              
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-slate-900 flex items-center justify-center p-4">
-                <img
-                  src={gymMockup}
-                  alt="IronCore Fitness Custom Bottle"
-                  loading="lazy"
-                  decoding="async"
-                  referrerPolicy="no-referrer"
-                  className="h-full w-auto object-contain transform group-hover:scale-110 transition-transform duration-700 ease-out"
-                />
-              </div>
+          {/* Mobile Carousel View (widths < 768px / md) */}
+          <div className="block md:hidden">
+            <MobileCaseStudyCarousel />
+          </div>
 
-              <div className="relative z-10 text-left">
-                <span className="font-mono text-[10px] uppercase font-bold text-[#C9A24A] bg-[#C9A24A]/20 px-2.5 py-0.5 rounded-full border border-[#C9A24A]/40">
-                  Fitness & Sports
-                </span>
-                <h4 className="font-serif text-xl font-bold text-white mt-2">IronCore Fitness</h4>
-                <p className="font-sans text-xs text-slate-300 mt-1">High-performance athletic club custom bottles.</p>
-              </div>
-            </motion.div>
+          {/* Desktop/Tablet Grid View (widths >= 768px / md) */}
+          <div className="hidden md:grid md:grid-cols-3 gap-8 justify-center items-stretch">
+            {caseStudiesData.map((card, index) => (
+              <motion.div
+                key={card.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`backdrop-blur-xl border rounded-3xl p-6 shadow-xl relative overflow-hidden group transition-all duration-500 ${card.cardContainerClass}`}
+              >
+                <div className={`absolute inset-0 pointer-events-none transition-colors ${card.overlayClass}`} />
 
-            {/* Card 2: Dining (Rich Navy Tint Overlay) */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="bg-gradient-to-b from-[#0F3A4A]/90 via-[#0A1930] to-[#0A1930] backdrop-blur-xl border border-[#00D4FF]/40 rounded-3xl p-6 shadow-xl relative overflow-hidden group hover:border-[#00D4FF] transition-all duration-500"
-            >
-              <div className="absolute inset-0 bg-sky-500/10 pointer-events-none group-hover:bg-sky-500/20 transition-colors" />
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-slate-900 flex items-center justify-center p-4">
+                  <img
+                    src={card.imageSrc}
+                    alt={card.alt}
+                    loading="lazy"
+                    decoding="async"
+                    referrerPolicy="no-referrer"
+                    className="h-full w-auto object-contain transform group-hover:scale-110 transition-transform duration-700 ease-out"
+                  />
+                </div>
 
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-slate-900 flex items-center justify-center p-4">
-                <img
-                  src={riverdaleMockup}
-                  alt="The Olive Table Custom Bottle"
-                  loading="lazy"
-                  decoding="async"
-                  referrerPolicy="no-referrer"
-                  className="h-full w-auto object-contain transform group-hover:scale-110 transition-transform duration-700 ease-out"
-                />
-              </div>
-
-              <div className="relative z-10 text-left">
-                <span className="font-mono text-[10px] uppercase font-bold text-[#00D4FF] bg-[#00D4FF]/20 px-2.5 py-0.5 rounded-full border border-[#00D4FF]/40">
-                  Fine Dining & Cafes
-                </span>
-                <h4 className="font-serif text-xl font-bold text-white mt-2">The Olive Table</h4>
-                <p className="font-sans text-xs text-slate-300 mt-1">Gourmet dining table 500 mL mineral bottles.</p>
-              </div>
-            </motion.div>
-
-            {/* Card 3: Corporate (Cool Teal Overlay) */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-gradient-to-b from-[#042f2e]/90 via-[#0A1930] to-[#0A1930] backdrop-blur-xl border border-teal-500/40 rounded-3xl p-6 shadow-xl relative overflow-hidden group hover:border-teal-400 transition-all duration-500"
-            >
-              <div className="absolute inset-0 bg-teal-500/10 pointer-events-none group-hover:bg-teal-500/20 transition-colors" />
-
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-slate-900 flex items-center justify-center p-4">
-                <img
-                  src={nexoraMockup}
-                  alt="Nexora Technologies Custom Bottle"
-                  loading="lazy"
-                  decoding="async"
-                  referrerPolicy="no-referrer"
-                  className="h-full w-auto object-contain transform group-hover:scale-110 transition-transform duration-700 ease-out"
-                />
-              </div>
-
-              <div className="relative z-10 text-left">
-                <span className="font-mono text-[10px] uppercase font-bold text-teal-300 bg-teal-500/20 px-2.5 py-0.5 rounded-full border border-teal-500/40">
-                  Corporate & Tech
-                </span>
-                <h4 className="font-serif text-xl font-bold text-white mt-2">Nexora Technologies</h4>
-                <p className="font-sans text-xs text-slate-300 mt-1">Executive summit boardroom water bottles.</p>
-              </div>
-            </motion.div>
-
+                <div className="relative z-10 text-left">
+                  <span className={`font-mono text-[10px] uppercase font-bold px-2.5 py-0.5 rounded-full border ${card.badgeClass}`}>
+                    {card.badgeText}
+                  </span>
+                  <h4 className="font-serif text-xl font-bold text-white mt-2">{card.title}</h4>
+                  <p className="font-sans text-xs text-slate-300 mt-1">{card.description}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
 

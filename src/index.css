@@ -491,3 +491,50 @@ html.dark .shimmer-bg {
 .animate-whatsapp-pulse {
   animation: whatsappPulse 2s infinite;
 }
+
+/* Animated Aquatic Caustics & Water Ripple Effects */
+@keyframes waterCaustics {
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 0%;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    background-position: 100% 50%, 50% 100%, 80% 20%;
+    transform: scale(1.04) rotate(1deg);
+  }
+  100% {
+    background-position: 0% 100%, 100% 0%, 0% 100%;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes aquaticRipples {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px;
+  }
+  50% {
+    background-position: 150px 100px, -100px 150px, 80px -80px;
+  }
+  100% {
+    background-position: 300px 200px, -200px 300px, 160px -160px;
+  }
+}
+
+.aquatic-caustics {
+  background-image: 
+    radial-gradient(ellipse at 25% 25%, rgba(0, 212, 255, 0.22) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 75%, rgba(79, 209, 232, 0.20) 0%, transparent 55%),
+    radial-gradient(circle at 50% 50%, rgba(201, 162, 74, 0.12) 0%, transparent 60%);
+  background-size: 150% 150%, 180% 180%, 200% 200%;
+  animation: waterCaustics 16s ease-in-out infinite alternate;
+}
+
+.aquatic-ripples {
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.12) 1px, transparent 2px),
+    radial-gradient(circle at 20% 20%, rgba(79, 209, 232, 0.10) 1px, transparent 3px),
+    radial-gradient(circle at 80% 80%, rgba(34, 211, 238, 0.10) 1px, transparent 2px);
+  background-size: 40px 40px, 60px 60px, 50px 50px;
+  animation: aquaticRipples 20s linear infinite;
+}
+

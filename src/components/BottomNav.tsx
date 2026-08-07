@@ -42,63 +42,61 @@ export default function BottomNav({ onLinkClick }: BottomNavProps) {
   };
 
   return (
-    <div className="fixed bottom-4 left-3 right-3 z-40 bg-slate-950/98 backdrop-blur-3xl border border-sky-400/25 shadow-[0_15px_45px_rgba(2,132,199,0.35),0_4px_12px_rgba(0,0,0,0.5)] rounded-2xl md:hidden pb-safe overflow-hidden">
-      <div className="flex items-center justify-around h-18 px-1 max-w-md mx-auto">
+    <div className="fixed bottom-3 left-3 right-3 z-40 bg-[#0A1930]/98 backdrop-blur-3xl border border-[#00D4FF]/30 shadow-[0_15px_45px_rgba(0,212,255,0.25),0_4px_16px_rgba(0,0,0,0.8)] rounded-2xl md:hidden pb-safe overflow-hidden">
+      <div className="flex items-center justify-around h-16 px-1 max-w-md mx-auto">
         
         {/* 1. Home */}
         <button
           onClick={() => handleTabClick('#hero')}
-          className="flex flex-col items-center justify-center flex-1 h-full gap-1 transition-all duration-300 relative select-none active-scale py-1 cursor-pointer border-0"
-          style={{ minWidth: '44px', minHeight: '48px' }}
+          className="flex flex-col items-center justify-center flex-1 h-full gap-1 transition-all duration-300 relative select-none cursor-pointer border-0 py-1"
+          style={{ minWidth: '44px' }}
         >
-          <div className={`p-2 rounded-xl transition-all duration-300 ${
+          <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 ${
             activeSection === '#hero' 
-              ? 'text-sky-200 bg-sky-500/25 scale-110 shadow-[0_0_15px_rgba(14,165,233,0.3),inset_0_1px_4px_rgba(255,255,255,0.2)] border border-sky-400/30' 
-              : 'text-slate-400 hover:text-slate-200'
+              ? 'bg-gradient-to-r from-[#00D4FF] to-[#38bdf8] text-[#0A1930] shadow-[0_0_16px_rgba(0,212,255,0.5)] scale-105 border border-white/50' 
+              : 'bg-[#0F2847]/90 text-[#38bdf8] border border-[#00D4FF]/25 shadow-sm'
           }`}>
-            <Home className="w-5.5 h-5.5 stroke-[2.4]" />
+            <Home className="w-4.5 h-4.5 stroke-[2.2]" />
           </div>
-          <span className={`text-[10px] tracking-wide transition-colors duration-300 ${
-            activeSection === '#hero' ? 'text-[#00D4FF] font-black' : 'text-slate-200 font-extrabold'
-          }`}>Home</span>
-          {activeSection === '#hero' && (
-            <span className="absolute bottom-0 w-8 h-1 rounded-full bg-linear-to-r from-brand-teal to-brand-aqua shadow-[0_0_14px_#38bdf8] animate-fade-in" />
-          )}
+          <span className={`text-[10px] tracking-wide text-center transition-colors duration-300 ${
+            activeSection === '#hero' ? 'text-[#00D4FF] font-black' : 'text-slate-100 font-extrabold'
+          }`}>
+            Home
+          </span>
         </button>
 
         {/* 2. Products */}
         <button
           onClick={() => handleTabClick('#products')}
-          className="flex flex-col items-center justify-center flex-1 h-full gap-1 transition-all duration-300 relative select-none active-scale py-1 cursor-pointer border-0"
-          style={{ minWidth: '44px', minHeight: '48px' }}
+          className="flex flex-col items-center justify-center flex-1 h-full gap-1 transition-all duration-300 relative select-none cursor-pointer border-0 py-1"
+          style={{ minWidth: '44px' }}
         >
-          <div className={`p-2 rounded-xl transition-all duration-300 ${
+          <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 ${
             activeSection === '#products' 
-              ? 'text-sky-200 bg-sky-500/25 scale-110 shadow-[0_0_15px_rgba(14,165,233,0.3),inset_0_1px_4px_rgba(255,255,255,0.2)] border border-sky-400/30' 
-              : 'text-slate-400 hover:text-slate-200'
+              ? 'bg-gradient-to-r from-[#00D4FF] to-[#38bdf8] text-[#0A1930] shadow-[0_0_16px_rgba(0,212,255,0.5)] scale-105 border border-white/50' 
+              : 'bg-[#0F2847]/90 text-[#38bdf8] border border-[#00D4FF]/25 shadow-sm'
           }`}>
-            <Package className="w-5.5 h-5.5 stroke-[2.4]" />
+            <Package className="w-4.5 h-4.5 stroke-[2.2]" />
           </div>
-          <span className={`text-[10px] tracking-wide transition-colors duration-300 ${
-            activeSection === '#products' ? 'text-[#00D4FF] font-black' : 'text-slate-200 font-extrabold'
-          }`}>Products</span>
-          {activeSection === '#products' && (
-            <span className="absolute bottom-0 w-8 h-1 rounded-full bg-linear-to-r from-brand-teal to-brand-aqua shadow-[0_0_14px_#38bdf8] animate-fade-in" />
-          )}
+          <span className={`text-[10px] tracking-wide text-center transition-colors duration-300 ${
+            activeSection === '#products' ? 'text-[#00D4FF] font-black' : 'text-slate-100 font-extrabold'
+          }`}>
+            Products
+          </span>
         </button>
 
-        {/* 3. WhatsApp (Center Primary Contact Action with Visual Emphasis) */}
+        {/* 3. WhatsApp (Center Primary Action, Consistent Ice-Blue Styling) */}
         <button
           onClick={openWhatsApp}
-          className="flex flex-col items-center justify-center flex-1 h-full gap-1 transition-all duration-300 relative select-none active-scale py-1 cursor-pointer border-0 group"
-          style={{ minWidth: '44px', minHeight: '48px' }}
+          className="flex flex-col items-center justify-center flex-1 h-full gap-1 transition-all duration-300 relative select-none cursor-pointer border-0 group py-1"
+          style={{ minWidth: '44px' }}
         >
-          <div className="p-2.5 rounded-full bg-gradient-to-tr from-emerald-600 via-emerald-500 to-teal-400 text-white shadow-[0_0_20px_rgba(16,185,129,0.55)] border border-emerald-300/40 -mt-2 group-hover:scale-110 transition-transform">
-            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current text-white" xmlns="http://www.w3.org/2000/svg">
+          <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-r from-[#00D4FF] via-[#38bdf8] to-[#C9A24A] text-[#0A1930] shadow-[0_0_18px_rgba(0,212,255,0.6)] border border-white/50 -mt-1 group-hover:scale-110 transition-transform">
+            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current text-[#0A1930]" xmlns="http://www.w3.org/2000/svg">
               <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.456L0 24zm6.59-4.846c1.6.95 3.1 1.455 4.782 1.456 5.486 0 9.948-4.461 9.951-9.94.002-2.654-1.03-5.15-2.903-7.027-1.872-1.877-4.363-2.91-7.018-2.913-5.487 0-9.95 4.46-9.954 9.94l-.001 1.94c.002 1.42.37 2.82 1.07 4.05l-.94 3.44 3.51-.92c1.23.67 2.5 1.03 3.82 1.03zm10.742-7.514c-.29-.145-1.72-.85-1.983-.947-.267-.1-.462-.146-.657.146-.196.29-.757.948-.928 1.14-.17.195-.34.22-.63.073-.29-.145-1.228-.453-2.337-1.444-.863-.77-1.447-1.72-1.617-2.013-.17-.29-.018-.447.127-.59.13-.13.29-.34.435-.51.145-.17.193-.29.29-.485.097-.195.048-.363-.024-.51-.07-.145-.657-1.58-.9-2.17-.236-.57-.477-.493-.657-.5-.17-.006-.364-.007-.56-.007-.195 0-.51.073-.777.363-.266.29-1.018.995-1.018 2.428 0 1.433 1.04 2.81 1.187 3.01.146.193 2.05 3.12 4.96 4.38.7.3 1.24.48 1.66.62.7.22 1.34.19 1.84.11.56-.08 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.267-.19-.558-.335z"/>
             </svg>
           </div>
-          <span className="text-[10px] tracking-wide font-black transition-colors duration-300 text-emerald-400 group-hover:text-emerald-300">
+          <span className="text-[10px] tracking-wide text-center font-black text-[#00D4FF]">
             WhatsApp
           </span>
         </button>
@@ -106,43 +104,41 @@ export default function BottomNav({ onLinkClick }: BottomNavProps) {
         {/* 4. B2B */}
         <button
           onClick={() => handleTabClick('#b2b')}
-          className="flex flex-col items-center justify-center flex-1 h-full gap-1 transition-all duration-300 relative select-none active-scale py-1 cursor-pointer border-0"
-          style={{ minWidth: '44px', minHeight: '48px' }}
+          className="flex flex-col items-center justify-center flex-1 h-full gap-1 transition-all duration-300 relative select-none cursor-pointer border-0 py-1"
+          style={{ minWidth: '44px' }}
         >
-          <div className={`p-2 rounded-xl transition-all duration-300 ${
+          <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 ${
             activeSection === '#b2b' 
-              ? 'text-sky-200 bg-sky-500/25 scale-110 shadow-[0_0_15px_rgba(14,165,233,0.3),inset_0_1px_4px_rgba(255,255,255,0.2)] border border-sky-400/30' 
-              : 'text-slate-400 hover:text-slate-200'
+              ? 'bg-gradient-to-r from-[#00D4FF] to-[#38bdf8] text-[#0A1930] shadow-[0_0_16px_rgba(0,212,255,0.5)] scale-105 border border-white/50' 
+              : 'bg-[#0F2847]/90 text-[#38bdf8] border border-[#00D4FF]/25 shadow-sm'
           }`}>
-            <Building2 className="w-5.5 h-5.5 stroke-[2.4]" />
+            <Building2 className="w-4.5 h-4.5 stroke-[2.2]" />
           </div>
-          <span className={`text-[10px] tracking-wide transition-colors duration-300 ${
-            activeSection === '#b2b' ? 'text-[#00D4FF] font-black' : 'text-slate-200 font-extrabold'
-          }`}>B2B</span>
-          {activeSection === '#b2b' && (
-            <span className="absolute bottom-0 w-8 h-1 rounded-full bg-linear-to-r from-brand-teal to-brand-aqua shadow-[0_0_14px_#38bdf8] animate-fade-in" />
-          )}
+          <span className={`text-[10px] tracking-wide text-center transition-colors duration-300 ${
+            activeSection === '#b2b' ? 'text-[#00D4FF] font-black' : 'text-slate-100 font-extrabold'
+          }`}>
+            B2B
+          </span>
         </button>
 
         {/* 5. Contact */}
         <button
           onClick={() => handleTabClick('#contact')}
-          className="flex flex-col items-center justify-center flex-1 h-full gap-1 transition-all duration-300 relative select-none active-scale py-1 cursor-pointer border-0"
-          style={{ minWidth: '44px', minHeight: '48px' }}
+          className="flex flex-col items-center justify-center flex-1 h-full gap-1 transition-all duration-300 relative select-none cursor-pointer border-0 py-1"
+          style={{ minWidth: '44px' }}
         >
-          <div className={`p-2 rounded-xl transition-all duration-300 ${
+          <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 ${
             activeSection === '#contact' 
-              ? 'text-sky-200 bg-sky-500/25 scale-110 shadow-[0_0_15px_rgba(14,165,233,0.3),inset_0_1px_4px_rgba(255,255,255,0.2)] border border-sky-400/30' 
-              : 'text-slate-400 hover:text-slate-200'
+              ? 'bg-gradient-to-r from-[#00D4FF] to-[#38bdf8] text-[#0A1930] shadow-[0_0_16px_rgba(0,212,255,0.5)] scale-105 border border-white/50' 
+              : 'bg-[#0F2847]/90 text-[#38bdf8] border border-[#00D4FF]/25 shadow-sm'
           }`}>
-            <Phone className="w-5.5 h-5.5 stroke-[2.4]" />
+            <Phone className="w-4.5 h-4.5 stroke-[2.2]" />
           </div>
-          <span className={`text-[10px] tracking-wide transition-colors duration-300 ${
-            activeSection === '#contact' ? 'text-[#00D4FF] font-black' : 'text-slate-200 font-extrabold'
-          }`}>Contact</span>
-          {activeSection === '#contact' && (
-            <span className="absolute bottom-0 w-8 h-1 rounded-full bg-linear-to-r from-brand-teal to-brand-aqua shadow-[0_0_14px_#38bdf8] animate-fade-in" />
-          )}
+          <span className={`text-[10px] tracking-wide text-center transition-colors duration-300 ${
+            activeSection === '#contact' ? 'text-[#00D4FF] font-black' : 'text-slate-100 font-extrabold'
+          }`}>
+            Contact
+          </span>
         </button>
 
       </div>
