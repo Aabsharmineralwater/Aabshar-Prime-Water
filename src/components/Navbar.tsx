@@ -106,8 +106,8 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
           }`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between min-h-16 md:min-h-18">
-              
+            {/* DESKTOP HEADER LAYOUT (>= md) */}
+            <div className="hidden md:flex items-center justify-between min-h-16 md:min-h-18">
               {/* Premium Logo Column */}
               <div className="flex-shrink-0 flex items-center">
                 <button 
@@ -166,9 +166,46 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                   Order Now
                 </a>
               </div>
+            </div>
 
-              {/* Mobile CTA and Hamburger menu toggle */}
-              <div className="flex items-center gap-2 md:hidden">
+            {/* MOBILE HEADER LAYOUT (< md): Left Hamburger -> Center Logo -> Right Order Button */}
+            <div className="flex md:hidden items-center justify-between min-h-16 w-full">
+              {/* 1. Far Left: Hamburger Menu Toggle */}
+              <div className="flex-1 flex justify-start items-center">
+                <button
+                  id="menu-toggle"
+                  onClick={() => setIsOpen(!isOpen)}
+                  aria-label="Toggle Navigation Menu"
+                  className="text-white hover:text-[#00D4FF] bg-[#0F3A4A]/80 hover:bg-[#0F3A4A] p-2 rounded-xl press-scale transition-colors border border-[#00D4FF]/30 cursor-pointer"
+                >
+                  {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                </button>
+              </div>
+
+              {/* 2. Middle: Centered Logo */}
+              <div className="flex-shrink-0 flex justify-center items-center">
+                <button 
+                  onClick={() => handleLinkClick('#hero')} 
+                  className="flex items-center justify-center group cursor-pointer bg-transparent border-0 active:scale-95 transition-transform duration-200"
+                >
+                  <img
+                    src={aabsharLogo}
+                    alt="Aabshar Prime Water Logo"
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
+                    className={`object-contain transition-all duration-300 group-hover:scale-102 ${
+                      isScrolled
+                        ? 'h-13 sm:h-15'
+                        : 'h-15 sm:h-17'
+                    }`}
+                    referrerPolicy="no-referrer"
+                  />
+                </button>
+              </div>
+
+              {/* 3. Far Right: Mobile Order Button */}
+              <div className="flex-1 flex justify-end items-center">
                 <a
                   href="https://wa.me/923051999897?text=Hi%20Aabshar,%20I%20would%20like%20to%20place%20an%20order%20for%20Aabshar%20Prime%20Water."
                   target="_blank"
@@ -178,16 +215,7 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                   <Droplets className="w-3.5 h-3.5 text-[#0A1930] fill-[#0A1930]" />
                   <span>Order</span>
                 </a>
-                <button
-                  id="menu-toggle"
-                  onClick={() => setIsOpen(!isOpen)}
-                  aria-label="Toggle Navigation Menu"
-                  className="text-white hover:text-[#00D4FF] bg-[#0F3A4A]/80 hover:bg-[#0F3A4A] p-2 rounded-xl press-scale transition-colors border border-[#00D4FF]/30"
-                >
-                  {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-                </button>
               </div>
-
             </div>
           </div>
         </div>

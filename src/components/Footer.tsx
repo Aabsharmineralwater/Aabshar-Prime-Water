@@ -11,18 +11,9 @@ export default function Footer({ onLinkClick }: FooterProps) {
   };
 
   return (
-    <footer className="pt-20 pb-10 relative overflow-hidden font-sans text-slate-300 bg-[#0A1930]">
+    <footer className="pt-12 sm:pt-16 pb-20 md:pb-6 relative overflow-hidden font-sans text-slate-300 bg-[#0A1930]">
       {/* Top Border Gradient Line */}
       <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#4FD1E8]/60 to-transparent pointer-events-none z-20" />
-
-      {/* Background design glows */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-[#4FD1E8]/10 rounded-full filter blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-60 h-60 bg-[#0F3A4A]/60 rounded-full filter blur-3xl pointer-events-none" />
-
-      {/* Watermark brand mark repeated at bottom-right */}
-      <div className="absolute -right-12 -bottom-12 opacity-5 pointer-events-none select-none">
-        <img src={aabsharLogo} alt="" className="w-96 h-auto grayscale" />
-      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-0 lg:divide-x divide-white/10 items-start">

@@ -79,7 +79,7 @@ export default function App() {
       {/* Dynamic Animated Aquatic Background (Water caustics, wave vectors, rising bubble particles) */}
       <AquaticBackground />
 
-      <div className="relative z-10 flex flex-col min-h-screen pb-16 md:pb-0">
+      <div className="relative z-10 flex flex-col min-h-screen">
         {/* Navbar */}
         <Navbar 
           onOrderClick={() => handleLinkClick('#contact')} 
@@ -97,9 +97,6 @@ export default function App() {
             {/* Product Catalogue side-by-side cards */}
             <Products onOrderProduct={handleOrderProduct} />
 
-            {/* Reviews Testimonials Social Proof */}
-            <Testimonials />
-
             {/* B2B Private Custom Label Branding Option */}
             <B2B onQuoteClick={() => {
               // Simply accept completed inquiry
@@ -107,6 +104,9 @@ export default function App() {
 
             {/* USP / Why Aabshar Section (About Us) */}
             <WhyUs />
+
+            {/* Reviews Testimonials Social Proof */}
+            <Testimonials />
 
             {/* Map tracker Area Delivery options */}
             <Delivery />
