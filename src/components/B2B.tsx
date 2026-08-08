@@ -280,8 +280,9 @@ const MobileCaseStudyCarousel = () => {
                 loading="lazy"
                 decoding="async"
                 referrerPolicy="no-referrer"
-                className="h-full w-auto object-contain transform group-hover:scale-110 transition-transform duration-700 ease-out"
+                className="h-full w-auto object-contain z-20 relative transform group-hover:scale-110 transition-transform duration-700 ease-out"
               />
+              <WaterRippleEffect size="md" className="bottom-2" />
             </div>
 
             <div className="relative z-10 text-left">
@@ -780,8 +781,9 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                     loading="lazy"
                     decoding="async"
                     referrerPolicy="no-referrer"
-                    className="h-full w-auto object-contain transform group-hover:scale-110 transition-transform duration-700 ease-out"
+                    className="h-full w-auto object-contain z-20 relative transform group-hover:scale-110 transition-transform duration-700 ease-out"
                   />
+                  <WaterRippleEffect size="md" className="bottom-2" />
                 </div>
 
                 <div className="relative z-10 text-left">
