@@ -133,7 +133,7 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="order-6 font-sans text-slate-200 text-sm sm:text-xl font-normal leading-relaxed mb-6 sm:mb-8 max-w-xl text-shadow-sm"
             >
-              Lab-verified, scientifically balanced mineral water sourced with pristine purity. Experience daily doorstep delivery across Rawalpindi, Islamabad, and Fateh Jang.
+              Aabshar Prime Water is a trusted bottled water brand dedicated to providing pure, safe, and refreshing drinking water. We maintain high standards of quality, hygiene, and customer satisfaction to ensure every bottle delivers freshness and trust.
             </motion.p>
 
             {/* 7. ELEGANT HORIZONTAL STAT STRIP (order-7 on mobile) */}
