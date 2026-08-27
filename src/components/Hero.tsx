@@ -11,30 +11,85 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
   return (
     <section
       id="hero"
-      className="relative min-h-screen pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-36 flex items-center justify-center noise-overlay overflow-hidden bg-gradient-to-b from-white via-sky-50/30 to-slate-50"
+      className="relative min-h-[90vh] lg:min-h-screen pt-28 pb-10 sm:pt-32 sm:pb-14 md:pt-32 lg:pt-36 flex items-center justify-center noise-overlay overflow-hidden bg-gradient-to-b from-white via-sky-50/30 to-slate-50"
     >
-      {/* Soft Ambient Radial Light Overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,180,216,0.08)_0%,transparent_60%)] z-0 pointer-events-none" />
+      {/* 1. Two Soft Radial Glow Blobs in Opposite Corners (Light blue, ~0.15-0.2 opacity) */}
+      <div className="absolute -top-20 -left-20 sm:-top-28 sm:-left-28 w-80 sm:w-96 lg:w-[480px] h-80 sm:h-96 lg:h-[480px] rounded-full bg-[radial-gradient(circle_at_center,rgba(0,180,216,0.18)_0%,transparent_70%)] blur-2xl sm:blur-3xl pointer-events-none z-0" />
+      <div className="absolute -bottom-20 -right-20 sm:-bottom-28 sm:-right-28 w-80 sm:w-96 lg:w-[500px] h-80 sm:h-96 lg:h-[500px] rounded-full bg-[radial-gradient(circle_at_center,rgba(2,132,199,0.16)_0%,transparent_70%)] blur-2xl sm:blur-3xl pointer-events-none z-0" />
 
-      {/* Interactive Water Ripple Circle */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] rounded-full border border-sky-300/30 animate-ping opacity-25 pointer-events-none z-0" style={{ animationDuration: '6s' }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] sm:w-[320px] h-[220px] sm:h-[320px] rounded-full border border-sky-400/20 animate-pulse opacity-40 pointer-events-none z-0" />
+      {/* 2. Faint Expanding Ripple Rings Scattered on Staggered 6-Second Loops */}
+      <div className="absolute top-[18%] left-[10%] sm:left-[14%] -translate-x-1/2 -translate-y-1/2 w-44 h-44 sm:w-60 sm:h-60 pointer-events-none z-0">
+        <motion.div
+          animate={{ scale: [0.35, 1.55], opacity: [0.4, 0] }}
+          transition={{ duration: 6, repeat: Infinity, delay: 0, ease: 'easeOut' }}
+          className="w-full h-full rounded-full border border-sky-400/40"
+        />
+        <motion.div
+          animate={{ scale: [0.25, 1.25], opacity: [0.3, 0] }}
+          transition={{ duration: 6, repeat: Infinity, delay: 0.6, ease: 'easeOut' }}
+          className="absolute inset-0 m-auto w-3/4 h-3/4 rounded-full border border-sky-300/30"
+        />
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+      <div className="absolute top-[68%] left-[40%] sm:left-[35%] -translate-x-1/2 -translate-y-1/2 w-40 h-40 sm:w-56 sm:h-56 pointer-events-none z-0">
+        <motion.div
+          animate={{ scale: [0.35, 1.55], opacity: [0.38, 0] }}
+          transition={{ duration: 6, repeat: Infinity, delay: 2, ease: 'easeOut' }}
+          className="w-full h-full rounded-full border border-sky-400/35"
+        />
+        <motion.div
+          animate={{ scale: [0.25, 1.25], opacity: [0.28, 0] }}
+          transition={{ duration: 6, repeat: Infinity, delay: 2.6, ease: 'easeOut' }}
+          className="absolute inset-0 m-auto w-3/4 h-3/4 rounded-full border border-sky-300/25"
+        />
+      </div>
+
+      <div className="absolute top-[28%] right-[8%] sm:right-[12%] translate-x-1/2 -translate-y-1/2 w-48 h-48 sm:w-64 sm:h-64 pointer-events-none z-0">
+        <motion.div
+          animate={{ scale: [0.35, 1.55], opacity: [0.35, 0] }}
+          transition={{ duration: 6, repeat: Infinity, delay: 4, ease: 'easeOut' }}
+          className="w-full h-full rounded-full border border-sky-400/35"
+        />
+        <motion.div
+          animate={{ scale: [0.25, 1.25], opacity: [0.25, 0] }}
+          transition={{ duration: 6, repeat: Infinity, delay: 4.6, ease: 'easeOut' }}
+          className="absolute inset-0 m-auto w-3/4 h-3/4 rounded-full border border-sky-300/25"
+        />
+      </div>
+
+      {/* 3. Tiny (4px) Soft Blue Dots Gently Drifting Up and Down */}
+      {[
+        { top: '20%', left: '8%', duration: 6.2, delay: 0 },
+        { top: '38%', left: '26%', duration: 7.4, delay: 1.2 },
+        { top: '76%', left: '16%', duration: 5.8, delay: 0.6 },
+        { top: '16%', right: '22%', duration: 6.8, delay: 1.8 },
+        { top: '56%', right: '14%', duration: 6.0, delay: 2.4 },
+        { top: '80%', right: '28%', duration: 7.2, delay: 0.9 },
+      ].map((dot, idx) => (
+        <motion.div
+          key={idx}
+          style={{ top: dot.top, left: dot.left, right: dot.right }}
+          animate={{ y: [-7, 7, -7], opacity: [0.35, 0.75, 0.35] }}
+          transition={{ duration: dot.duration, repeat: Infinity, delay: dot.delay, ease: 'easeInOut' }}
+          className="absolute w-1 h-1 rounded-full bg-[#00D4FF] shadow-[0_0_6px_rgba(0,212,255,0.7)] pointer-events-none z-0"
+        />
+      ))}
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           
           {/* Left Column: Hero Text & CTAs */}
           <div className="lg:col-span-7 flex flex-col justify-center text-left">
             
-            {/* Headline - Single line on mobile */}
+            {/* Headline - Clean & Responsive across all viewports */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="order-1 font-serif text-[26px] min-[370px]:text-[29px] min-[420px]:text-[32px] sm:text-5xl lg:text-7.5xl font-extrabold tracking-tight leading-[1.1] mt-1 sm:mt-0 mb-2 sm:mb-3 whitespace-nowrap sm:whitespace-normal"
+              className="order-1 font-serif text-2xl min-[360px]:text-[28px] sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-tight mt-1 sm:mt-0 mb-2 sm:mb-3"
             >
               <span className="font-serif font-black text-slate-900 tracking-tight">Aabshar </span>
-              <span className="font-serif italic font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#0088CC] via-[#00B4D8] to-[#0284C7] drop-shadow-[0_2px_10px_rgba(0,180,216,0.25)]">
+              <span className="font-serif italic font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#0088CC] via-[#00B4D8] to-[#0284C7] drop-shadow-[0_2px_10px_rgba(0,180,216,0.25)] whitespace-nowrap">
                 Prime Water
               </span>
             </motion.h1>
