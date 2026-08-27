@@ -172,7 +172,7 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
             </div>
 
             {/* MOBILE HEADER LAYOUT (< md): Left Hamburger -> Center Logo -> Right Order Button */}
-            <div className="flex md:hidden items-center justify-between min-h-16 w-full">
+            <div className="flex md:hidden items-center justify-between min-h-18 min-[380px]:min-h-20 w-full">
               {/* 1. Far Left: Hamburger Menu Toggle */}
               <div className="flex-1 flex justify-start items-center">
                 <button
@@ -197,10 +197,10 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                     loading="eager"
                     decoding="async"
                     fetchPriority="high"
-                    className={`relative z-10 object-contain transition-all duration-300 group-hover:scale-102 ${
+                    className={`relative z-10 object-contain transition-all duration-300 group-hover:scale-105 ${
                       isScrolled
-                        ? 'h-13 sm:h-15'
-                        : 'h-15 sm:h-17'
+                        ? 'h-16 min-[380px]:h-18 sm:h-20 max-w-[200px]'
+                        : 'h-18 min-[380px]:h-20 sm:h-22 max-w-[220px]'
                     }`}
                     referrerPolicy="no-referrer"
                   />
@@ -252,7 +252,7 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                     <img 
                       src={aabsharLogo} 
                       alt="Aabshar Prime Water Logo" 
-                      className="h-12 w-auto"
+                      className="h-14 sm:h-16 w-auto object-contain"
                       referrerPolicy="no-referrer"
                     />
                   </div>

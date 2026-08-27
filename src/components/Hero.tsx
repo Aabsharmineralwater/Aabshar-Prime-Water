@@ -112,17 +112,17 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="order-6 font-sans text-slate-600 text-sm sm:text-lg font-normal leading-relaxed mb-6 sm:mb-8 max-w-xl"
+              className="order-6 font-sans text-slate-600 text-sm sm:text-lg font-normal leading-relaxed mb-0 sm:mb-8 max-w-xl"
             >
               Aabshar Prime Water is a trusted bottled water brand dedicated to providing pure, safe, and refreshing drinking water. We maintain high standards of quality, hygiene, and customer satisfaction to ensure every bottle delivers freshness and trust.
             </motion.p>
 
-            {/* 7. ELEGANT HORIZONTAL STAT STRIP (order-7 on mobile) */}
+            {/* 7. ELEGANT HORIZONTAL STAT STRIP (Hidden on mobile, visible on sm/md/lg tablet & desktop) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.35 }}
-              className="order-7 w-full max-w-2xl py-4 px-3 bg-white/80 backdrop-blur-sm rounded-2xl border border-slate-200/80 shadow-sm grid grid-cols-2 sm:grid-cols-4 gap-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-200"
+              className="hidden sm:grid order-7 w-full max-w-2xl py-4 px-3 bg-white/80 backdrop-blur-sm rounded-2xl border border-slate-200/80 shadow-sm sm:grid-cols-4 gap-4 sm:divide-x divide-slate-200"
             >
               {/* Stat 1: 500+ */}
               <div className="flex flex-col justify-center sm:pr-4">

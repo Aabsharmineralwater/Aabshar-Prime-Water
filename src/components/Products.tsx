@@ -111,7 +111,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
         </div>
 
         {/* Product Cards - Asymmetric Split Layout Cards */}
-        <div className="flex flex-col gap-10 max-w-5xl mx-auto">
+        <div className="flex flex-col gap-6 sm:gap-10 max-w-5xl mx-auto">
           {items.map((prod, index) => (
             <motion.div
               key={prod.id}
@@ -119,24 +119,24 @@ export default function Products({ onOrderProduct }: ProductsProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white border border-slate-200/90 hover:border-sky-300 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 grid grid-cols-1 md:grid-cols-12 relative group"
+              className="bg-white border border-slate-200/90 hover:border-sky-300 rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 grid grid-cols-1 md:grid-cols-12 relative group"
             >
               {/* Left Column: Asymmetric Bottle Showcase Stage */}
-              <div className="md:col-span-5 relative min-h-[350px] sm:min-h-[390px] md:min-h-[450px] bg-gradient-to-b from-sky-50/80 via-sky-50/40 to-slate-100 flex flex-col items-center justify-end pt-16 sm:pt-20 pb-8 px-6 border-b md:border-b-0 md:border-r border-slate-200 overflow-hidden">
+              <div className="md:col-span-5 relative min-h-[280px] sm:min-h-[320px] md:min-h-[450px] bg-gradient-to-b from-sky-50/80 via-sky-50/40 to-slate-100 flex flex-col items-center justify-end pt-12 sm:pt-16 md:pt-16 pb-4 sm:pb-6 md:pb-8 px-4 sm:px-6 border-b md:border-b-0 md:border-r border-slate-200 overflow-hidden">
                 {/* Radial Spotlight & Caustic Light behind Bottle */}
-                <div className="absolute w-64 h-64 bg-[radial-gradient(circle,rgba(0,180,216,0.18)_0%,transparent_75%)] rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700 pointer-events-none" />
+                <div className="absolute w-56 sm:w-64 h-56 sm:h-64 bg-[radial-gradient(circle,rgba(0,180,216,0.18)_0%,transparent_75%)] rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700 pointer-events-none" />
 
                 {/* Refined Size Badge */}
-                <div className="absolute top-4 left-4 sm:top-5 sm:left-5 z-20">
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 text-[#0284C7] text-xs font-mono font-black tracking-wider uppercase shadow-sm">
-                    <Sparkles className="w-3.5 h-3.5 text-[#00D4FF] animate-pulse" />
+                <div className="absolute top-3 left-3 sm:top-5 sm:left-5 z-20">
+                  <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 text-[#0284C7] text-[11px] sm:text-xs font-mono font-black tracking-wider uppercase shadow-xs">
+                    <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#00D4FF] animate-pulse" />
                     <span>{prod.sizeBadge}</span>
                   </div>
                 </div>
 
                 {/* Glowing Platform Pedestal & Water Ripple Effect beneath Bottle */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-48 sm:w-56 h-10 bg-gradient-to-r from-sky-200/40 via-sky-300/50 to-sky-200/40 rounded-[100%] blur-md pointer-events-none z-10 animate-ripple-pulse" />
-                <WaterRippleEffect size="lg" className="bottom-2 opacity-60" />
+                <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 w-44 sm:w-48 md:w-56 h-8 sm:h-10 bg-gradient-to-r from-sky-200/40 via-sky-300/50 to-sky-200/40 rounded-[100%] blur-md pointer-events-none z-10 animate-ripple-pulse" />
+                <WaterRippleEffect size="lg" className="bottom-1 sm:bottom-2 opacity-60" />
 
                 {/* Floating Bottle Render with Gentle Idle Bobbing */}
                 <motion.img
@@ -146,38 +146,38 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                   decoding="async"
                   animate={{ y: [0, -6, 0] }}
                   transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-                  className={`h-56 sm:h-64 md:h-72 w-auto object-contain pointer-events-none filter drop-shadow-[0_18px_25px_rgba(2,132,199,0.2)] z-20 mt-8 sm:mt-10 md:mt-6 mb-1 ${prod.imgScale}`}
+                  className={`h-56 sm:h-60 md:h-72 w-auto object-contain pointer-events-none filter drop-shadow-[0_16px_24px_rgba(2,132,199,0.22)] z-20 mt-4 sm:mt-6 md:mt-6 mb-1 ${prod.imgScale}`}
                   referrerPolicy="no-referrer"
                 />
               </div>
 
               {/* Right Column: Details & Pricing */}
-              <div className="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between text-left">
+              <div className="md:col-span-7 p-4 sm:p-6 md:p-8 flex flex-col justify-between text-left">
                 <div>
                   {/* Top Badges Row */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-[#0284C7] text-xs font-mono font-black uppercase tracking-widest">
-                      <Droplets className="w-3.5 h-3.5 text-[#00D4FF]" />
+                  <div className="flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 mb-2 sm:mb-3">
+                    <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-sky-50 border border-sky-200 text-[#0284C7] text-[10px] sm:text-xs font-mono font-black uppercase tracking-widest">
+                      <Droplets className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#00D4FF]" />
                       <span>AABSHAR PURE SERIES</span>
                     </div>
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-[11px] font-mono font-bold tracking-wider uppercase">
-                      <ShieldCheck className="w-3.5 h-3.5 text-[#0284C7]" />
+                    <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-[10px] sm:text-[11px] font-mono font-bold tracking-wider uppercase">
+                      <ShieldCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#0284C7]" />
                       <span>TDS 135 VERIFIED</span>
                     </div>
                   </div>
 
-                  <h3 className="font-serif text-2xl sm:text-3xl font-extrabold text-slate-900 group-hover:text-[#0284C7] transition-colors duration-200 mb-1">
+                  <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 group-hover:text-[#0284C7] transition-colors duration-200 mb-0.5 sm:mb-1">
                     {prod.name}
                   </h3>
-                  <p className="font-sans text-slate-600 text-xs sm:text-sm font-medium mb-4">
+                  <p className="font-sans text-slate-600 text-xs sm:text-sm font-medium mb-2.5 sm:mb-4">
                     {prod.subtitle}
                   </p>
 
                   {/* Animated Thin Cyan Accent Line */}
-                  <div className="w-full h-[1.5px] bg-gradient-to-r from-[#0088CC] via-sky-300 to-transparent mb-5" />
+                  <div className="w-full h-[1.5px] bg-gradient-to-r from-[#0088CC] via-sky-300 to-transparent mb-3 sm:mb-5" />
 
-                  {/* Specifications List with Contextual Icons */}
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                  {/* Specifications List with Contextual Icons - Hidden on mobile (< md), visible on tablet/desktop (>= md) */}
+                  <ul className="hidden md:grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
                     {prod.features.map((feat) => {
                       const IconComponent = feat.icon;
                       return (
@@ -193,19 +193,19 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                 </div>
 
                 <div>
-                  {/* Premium Pricing Box */}
-                  <div className="mb-5 p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-wrap items-center justify-between gap-3 shadow-xs relative overflow-hidden group/price">
+                  {/* Compact Premium Pricing Box on Mobile */}
+                  <div className="mb-3 sm:mb-5 p-2.5 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border border-slate-200 flex items-center justify-between gap-2 sm:gap-3 shadow-xs relative overflow-hidden group/price">
                     <div className="relative z-10">
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500 block mb-0.5">Unit Retail Price</span>
-                      <div className="flex items-baseline gap-1.5">
-                        <span className="font-serif text-3xl sm:text-4xl font-extrabold text-slate-900">
+                      <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500 block mb-0.5">Unit Retail Price</span>
+                      <div className="flex items-baseline gap-1">
+                        <span className="font-serif text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 leading-none">
                           {prod.price}
                         </span>
                       </div>
                     </div>
-                    <div className="relative z-10 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-sky-100 border border-sky-300 text-[#0284C7] font-mono text-xs font-black uppercase tracking-wide">
-                      <Tag className="w-3.5 h-3.5 text-[#0284C7]" />
-                      <span>Bulk Savings Available</span>
+                    <div className="relative z-10 inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-sky-100 border border-sky-300 text-[#0284C7] font-mono text-[10px] sm:text-xs font-black uppercase tracking-wide">
+                      <Tag className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#0284C7]" />
+                      <span>Bulk Savings</span>
                     </div>
                   </div>
 
@@ -213,12 +213,12 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                   <button
                     id={`order-btn-${prod.id}`}
                     onClick={() => onOrderProduct(prod.id)}
-                    className="w-full px-4 sm:px-6 py-3.5 bg-gradient-to-r from-[#00D4FF] via-[#0284C7] to-[#0369A1] hover:brightness-110 text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-2xl shadow-md border border-[#00D4FF]/50 transition-all cursor-pointer flex items-center justify-center gap-2 sm:gap-2.5 hover:shadow-lg active:scale-98 group"
+                    className="w-full px-4 sm:px-6 py-2.5 sm:py-3.5 bg-gradient-to-r from-[#00D4FF] via-[#0284C7] to-[#0369A1] hover:brightness-110 text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl shadow-md border border-[#00D4FF]/50 transition-all cursor-pointer flex items-center justify-center gap-2 sm:gap-2.5 hover:shadow-lg active:scale-98 group"
                   >
                     <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 fill-current text-white group-hover:scale-110 transition-transform shrink-0" />
                     <span className="text-center leading-snug">Order {prod.sizeBadge} Chilled</span>
                   </button>
-                  <p className="font-sans text-center text-[11px] text-slate-500 mt-2 font-medium">
+                  <p className="font-sans text-center text-[10px] sm:text-[11px] text-slate-500 mt-1.5 sm:mt-2 font-medium">
                     Daily Chilled Express Delivery across Rawalpindi, Islamabad & Fateh Jang
                   </p>
                 </div>

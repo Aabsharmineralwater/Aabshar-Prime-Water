@@ -597,82 +597,56 @@ export default function B2B({ onQuoteClick }: B2BProps) {
     <section id="b2b" className="py-24 bg-slate-50/70 text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* SECTION 5: SPLIT-LAYOUT B2B EDITORIAL + FINE-LINE ICON STRIP */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24">
-          <div className="lg:col-span-7 text-left">
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-50 border border-sky-200 text-[#0284C7] text-xs font-mono font-bold uppercase tracking-wider mb-4 shadow-xs"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-[#0284C7]" />
-              <span>B2B Private Label Program</span>
-            </motion.div>
+        {/* SECTION 5: B2B EDITORIAL + INDUSTRIES SERVED */}
+        <div className="text-center max-w-4xl mx-auto mb-16 sm:mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-50 border border-sky-200 text-[#0284C7] text-xs font-mono font-bold uppercase tracking-wider mb-4 shadow-xs"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-[#0284C7]" />
+            <span>B2B Private Label Program</span>
+          </motion.div>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4"
-            >
-              Your Brand on Every Bottle. <br />
-              <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-[#0088CC] via-[#00B4D8] to-[#0284C7]">Pure Mineral Water</span> for Discerning Venues.
-            </motion.h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4"
+          >
+            Your Brand on Every Bottle. <br />
+            <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-[#0088CC] via-[#00B4D8] to-[#0284C7]">Pure Mineral Water</span> for Discerning Venues.
+          </motion.h2>
 
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-sans text-slate-600 text-sm sm:text-base leading-relaxed mb-8 max-w-xl"
-            >
-              Transform standard hydration into a high-impact branding statement. We manufacture, custom-label, and deliver certified mineral water directly to luxury hotels, fine dining establishments, corporate boardrooms, and premier wedding marquees.
-            </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-sans text-slate-600 text-sm sm:text-base leading-relaxed mb-10 max-w-2xl mx-auto"
+          >
+            Transform standard hydration into a high-impact branding statement. We manufacture, custom-label, and deliver certified mineral water directly to luxury hotels, fine dining establishments, corporate boardrooms, and premier wedding marquees.
+          </motion.p>
 
-            {/* Fine-Line Icon Strip for Industries Served */}
-            <div className="pt-6 border-t border-slate-200">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#0284C7] block mb-3">
-                Industries Served
-              </span>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-                {industries.map((ind) => (
-                  <div key={ind.title} className="flex flex-col items-center text-center p-2.5 rounded-xl bg-white border border-slate-200 hover:border-sky-300 shadow-sm transition-colors">
-                    <div className="p-2 rounded-full bg-sky-50 mb-1.5">
-                      {ind.icon}
-                    </div>
-                    <span className="font-serif text-xs font-bold text-slate-800 leading-tight">
-                      {ind.title}
-                    </span>
+          {/* Fine-Line Icon Strip for Industries Served */}
+          <div className="pt-8 border-t border-slate-200 max-w-4xl mx-auto">
+            <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#0284C7] block mb-4">
+              Industries Served
+            </span>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+              {industries.map((ind) => (
+                <div key={ind.title} className="flex flex-col items-center text-center p-3 rounded-2xl bg-white border border-slate-200 hover:border-sky-300 shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="p-2.5 rounded-full bg-sky-50 mb-2">
+                    {ind.icon}
                   </div>
-                ))}
-              </div>
+                  <span className="font-serif text-xs font-bold text-slate-800 leading-tight">
+                    {ind.title}
+                  </span>
+                </div>
+              ))}
             </div>
-          </div>
-
-          {/* Right Visual Highlight Box */}
-          <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-slate-200 shadow-xl relative">
-            <div className="absolute top-0 right-0 w-40 h-40 bg-sky-100/50 rounded-full blur-2xl pointer-events-none" />
-            <h3 className="font-serif text-2xl font-extrabold text-slate-900 mb-2">
-              Why Choose Aabshar Private Label?
-            </h3>
-            <div className="w-12 h-1 bg-[#0284C7] rounded-full mb-6" />
-
-            <ul className="space-y-4 font-sans text-xs sm:text-sm text-slate-700">
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-[#0284C7] flex-shrink-0 mt-0.5" />
-                <span><strong className="text-slate-900">High-Definition Printing:</strong> Crystal-clear waterproof gloss label wraps that maintain vibrant brand colors when chilled.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-[#0284C7] flex-shrink-0 mt-0.5" />
-                <span><strong className="text-slate-900">WHO & PCRWR Certified:</strong> 135 PPM target mineral water guaranteed to satisfy international purity benchmarks.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-[#0284C7] flex-shrink-0 mt-0.5" />
-                <span><strong className="text-slate-900">Chilled Fleet Delivery:</strong> Scheduled doorstep runs across Rawalpindi, Islamabad, and Fateh Jang.</span>
-              </li>
-            </ul>
           </div>
         </div>
 
