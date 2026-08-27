@@ -59,7 +59,7 @@ const MobileTestimonialCarousel = ({ reviews }: { reviews: ReviewItem[] }) => {
         type="button"
         onClick={handlePrev}
         aria-label="Previous review"
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#0A1930]/95 border border-[#00D4FF]/50 text-[#00D4FF] flex items-center justify-center shadow-[0_0_15px_rgba(0,212,255,0.3)] active:scale-95 hover:bg-[#00D4FF] hover:text-[#0A1930] transition-all duration-300 cursor-pointer"
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white border border-slate-200 text-[#0284C7] flex items-center justify-center shadow-md active:scale-95 hover:bg-sky-50 transition-all duration-300 cursor-pointer"
       >
         <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
       </button>
@@ -69,7 +69,7 @@ const MobileTestimonialCarousel = ({ reviews }: { reviews: ReviewItem[] }) => {
         type="button"
         onClick={handleNext}
         aria-label="Next review"
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#0A1930]/95 border border-[#00D4FF]/50 text-[#00D4FF] flex items-center justify-center shadow-[0_0_15px_rgba(0,212,255,0.3)] active:scale-95 hover:bg-[#00D4FF] hover:text-[#0A1930] transition-all duration-300 cursor-pointer"
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white border border-slate-200 text-[#0284C7] flex items-center justify-center shadow-md active:scale-95 hover:bg-sky-50 transition-all duration-300 cursor-pointer"
       >
         <ChevronRight className="w-6 h-6 stroke-[2.5]" />
       </button>
@@ -101,38 +101,38 @@ const MobileTestimonialCarousel = ({ reviews }: { reviews: ReviewItem[] }) => {
               opacity: { duration: 0.25 }
             }}
             style={{ willChange: 'transform' }}
-            className="bg-[#0A1930]/80 backdrop-blur-xl rounded-3xl p-7 border-l-2 border-l-[#C9A24A] border-y border-r border-white/10 flex flex-col justify-between relative group hover:border-l-[#00D4FF] transition-colors duration-300 shadow-xl min-h-[300px] w-full cursor-grab active:cursor-grabbing"
+            className="bg-white rounded-3xl p-7 border-l-4 border-l-[#0284C7] border-y border-r border-slate-200 flex flex-col justify-between relative group shadow-md min-h-[300px] w-full cursor-grab active:cursor-grabbing"
           >
-            {/* Large Gold Opening Quotation Glyph */}
-            <div className="font-serif text-6xl leading-none text-[#C9A24A] opacity-60 absolute top-4 right-6 pointer-events-none select-none">
+            {/* Large Opening Quotation Glyph */}
+            <div className="font-serif text-6xl leading-none text-sky-200 absolute top-4 right-6 pointer-events-none select-none">
               “
             </div>
 
             <div>
               {/* Top Header: Monogram Badge Avatar + Name/Role */}
               <div className="flex items-center gap-3.5 mb-5 relative z-10">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#C9A24A] via-[#E5C158] to-[#0F3A4A] p-0.5 shadow-lg flex-shrink-0">
-                  <div className="w-full h-full rounded-full bg-[#0A1930] flex items-center justify-center font-serif text-base font-black text-[#C9A24A]">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0088CC] to-[#0284C7] p-0.5 shadow-sm flex-shrink-0">
+                  <div className="w-full h-full rounded-full bg-sky-50 flex items-center justify-center font-serif text-base font-black text-[#0284C7]">
                     {initials}
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="font-serif text-base font-extrabold text-white group-hover:text-[#00D4FF] transition-colors">
+                  <h4 className="font-serif text-base font-extrabold text-slate-900 group-hover:text-[#0284C7] transition-colors">
                     {rev.name}
                   </h4>
-                  <p className="font-sans text-xs text-slate-300 font-medium">
+                  <p className="font-sans text-xs text-slate-500 font-medium">
                     {rev.role}
                   </p>
-                  <span className="inline-block text-[10px] font-mono font-bold text-[#00D4FF] mt-0.5">
+                  <span className="inline-block text-[10px] font-mono font-bold text-[#0284C7] mt-0.5">
                     📍 {rev.location}
                   </span>
                 </div>
               </div>
 
-              {/* Thin Vertical Gold Accent Line & Highlight Quote */}
-              <div className="pl-4 border-l-2 border-[#C9A24A]/40 my-4">
-                <p className="font-sans text-slate-100 text-sm font-semibold leading-relaxed">
+              {/* Highlight Quote */}
+              <div className="pl-4 border-l-2 border-sky-300 my-4">
+                <p className="font-sans text-slate-800 text-sm font-semibold leading-relaxed">
                   "{rev.highlightQuote}"
                 </p>
               </div>
@@ -144,7 +144,7 @@ const MobileTestimonialCarousel = ({ reviews }: { reviews: ReviewItem[] }) => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="font-sans text-slate-300 text-xs leading-relaxed italic mb-3 pt-3 border-t border-white/10"
+                    className="font-sans text-slate-600 text-xs leading-relaxed italic mb-3 pt-3 border-t border-slate-100"
                   >
                     {rev.fullQuote}
                   </motion.p>
@@ -154,7 +154,7 @@ const MobileTestimonialCarousel = ({ reviews }: { reviews: ReviewItem[] }) => {
               <button
                 type="button"
                 onClick={() => setExpandedIndex(isExpanded ? null : currentIndex)}
-                className="inline-flex items-center text-xs font-mono text-[#00D4FF] hover:text-[#C9A24A] transition-colors cursor-pointer mb-3"
+                className="inline-flex items-center text-xs font-mono text-[#0284C7] hover:text-[#0088CC] transition-colors cursor-pointer mb-3"
               >
                 {isExpanded ? (
                   <>Hide details <ChevronUp className="w-3.5 h-3.5 ml-1" /></>
@@ -165,13 +165,13 @@ const MobileTestimonialCarousel = ({ reviews }: { reviews: ReviewItem[] }) => {
             </div>
 
             {/* Footer Star Rating & Verification Badge */}
-            <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+            <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
               <div className="flex gap-1">
                 {[...Array(rev.rating)].map((_, i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-[#C9A24A] text-[#C9A24A]" />
+                  <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                 ))}
               </div>
-              <span className="font-mono text-[9px] uppercase tracking-wider text-[#C9A24A] bg-[#C9A24A]/10 border border-[#C9A24A]/30 px-2 py-0.5 rounded-full font-bold">
+              <span className="font-mono text-[9px] uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full font-bold">
                 VERIFIED CLIENT
               </span>
             </div>
@@ -189,8 +189,8 @@ const MobileTestimonialCarousel = ({ reviews }: { reviews: ReviewItem[] }) => {
             aria-label={`Go to review ${idx + 1}`}
             className={`transition-all duration-300 cursor-pointer ${
               idx === currentIndex
-                ? 'w-7 h-2.5 bg-gradient-to-r from-[#00D4FF] via-[#38bdf8] to-[#C9A24A] rounded-full shadow-[0_0_10px_rgba(0,212,255,0.5)]'
-                : 'w-2.5 h-2.5 bg-slate-700 hover:bg-slate-500 rounded-full'
+                ? 'w-7 h-2.5 bg-[#0284C7] rounded-full'
+                : 'w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400 rounded-full'
             }`}
           />
         ))}
@@ -242,11 +242,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="py-20 bg-gradient-to-b from-[#0A1930] via-[#0F3A4A] to-[#0A1930] text-white relative overflow-hidden cv-auto border-t border-b border-[#00D4FF]/20">
-      {/* Top & Bottom Glowing Accent Lines */}
-      <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#00D4FF]/50 to-transparent pointer-events-none z-20" />
-      <div className="absolute bottom-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#00D4FF]/60 to-transparent pointer-events-none z-20" />
-
+    <section id="testimonials" className="py-20 bg-white text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
@@ -255,9 +251,9 @@ export default function Testimonials() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#4FD1E8]/15 border border-[#4FD1E8]/30 text-[#4FD1E8] text-xs font-mono font-bold uppercase tracking-wider mb-3"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-[#0284C7] text-xs font-mono font-bold uppercase tracking-wider mb-3"
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#C9A24A]" />
+            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
             <span>Verified Reviews</span>
           </motion.div>
           <motion.h2
@@ -265,11 +261,11 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="font-serif text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight"
+            className="font-serif text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight"
           >
-            Trusted By <span className="font-serif italic text-[#00D4FF]">Leaders Across Punjab</span>
+            Trusted By <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-[#0088CC] via-[#00B4D8] to-[#0284C7]">Leaders Across Punjab</span>
           </motion.h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-[#4FD1E8] via-[#22d3ee] to-[#C9A24A] mx-auto mt-3 rounded-full" />
+          <div className="w-16 h-1 bg-[#0284C7] mx-auto mt-3 rounded-full" />
         </div>
 
         {/* Mobile View: Auto-sliding Carousel (< md) */}
@@ -290,38 +286,38 @@ export default function Testimonials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-[#0A1930]/80 backdrop-blur-xl rounded-3xl p-7 border-l-2 border-l-[#C9A24A] border-y border-r border-white/10 flex flex-col justify-between relative group hover:border-l-[#00D4FF] transition-all duration-300 shadow-xl"
+                className="bg-white rounded-3xl p-7 border-l-4 border-l-[#0284C7] border-y border-r border-slate-200 flex flex-col justify-between relative group hover:shadow-lg transition-all duration-300 shadow-sm"
               >
-                {/* Large Gold Opening Quotation Glyph */}
-                <div className="font-serif text-6xl leading-none text-[#C9A24A] opacity-60 absolute top-4 right-6 pointer-events-none select-none">
+                {/* Large Opening Quotation Glyph */}
+                <div className="font-serif text-6xl leading-none text-sky-200 absolute top-4 right-6 pointer-events-none select-none">
                   “
                 </div>
 
                 <div>
                   {/* Top Header: Monogram Badge Avatar + Name/Role */}
                   <div className="flex items-center gap-3.5 mb-5 relative z-10">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#C9A24A] via-[#E5C158] to-[#0F3A4A] p-0.5 shadow-lg flex-shrink-0">
-                      <div className="w-full h-full rounded-full bg-[#0A1930] flex items-center justify-center font-serif text-base font-black text-[#C9A24A]">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0088CC] to-[#0284C7] p-0.5 shadow-sm flex-shrink-0">
+                      <div className="w-full h-full rounded-full bg-sky-50 flex items-center justify-center font-serif text-base font-black text-[#0284C7]">
                         {initials}
                       </div>
                     </div>
 
                     <div>
-                      <h4 className="font-serif text-base font-extrabold text-white group-hover:text-[#00D4FF] transition-colors">
+                      <h4 className="font-serif text-base font-extrabold text-slate-900 group-hover:text-[#0284C7] transition-colors">
                         {rev.name}
                       </h4>
-                      <p className="font-sans text-xs text-slate-300 font-medium">
+                      <p className="font-sans text-xs text-slate-500 font-medium">
                         {rev.role}
                       </p>
-                      <span className="inline-block text-[10px] font-mono font-bold text-[#00D4FF] mt-0.5">
+                      <span className="inline-block text-[10px] font-mono font-bold text-[#0284C7] mt-0.5">
                         📍 {rev.location}
                       </span>
                     </div>
                   </div>
 
-                  {/* Thin Vertical Gold Accent Line & Highlight Quote */}
-                  <div className="pl-4 border-l-2 border-[#C9A24A]/40 my-4">
-                    <p className="font-sans text-slate-100 text-sm font-semibold leading-relaxed">
+                  {/* Highlight Quote */}
+                  <div className="pl-4 border-l-2 border-sky-300 my-4">
+                    <p className="font-sans text-slate-800 text-sm font-semibold leading-relaxed">
                       "{rev.highlightQuote}"
                     </p>
                   </div>
@@ -333,7 +329,7 @@ export default function Testimonials() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="font-sans text-slate-300 text-xs leading-relaxed italic mb-3 pt-3 border-t border-white/10"
+                        className="font-sans text-slate-600 text-xs leading-relaxed italic mb-3 pt-3 border-t border-slate-100"
                       >
                         {rev.fullQuote}
                       </motion.p>
@@ -341,8 +337,9 @@ export default function Testimonials() {
                   </AnimatePresence>
 
                   <button
+                    type="button"
                     onClick={() => toggleExpand(index)}
-                    className="inline-flex items-center text-xs font-mono text-[#00D4FF] hover:text-[#C9A24A] transition-colors cursor-pointer mb-3"
+                    className="inline-flex items-center text-xs font-mono text-[#0284C7] hover:text-[#0088CC] transition-colors cursor-pointer mb-3"
                   >
                     {isExpanded ? (
                       <>Hide details <ChevronUp className="w-3.5 h-3.5 ml-1" /></>
@@ -353,13 +350,13 @@ export default function Testimonials() {
                 </div>
 
                 {/* Footer Star Rating & Verification Badge */}
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                   <div className="flex gap-1">
                     {[...Array(rev.rating)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-[#C9A24A] text-[#C9A24A]" />
+                      <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  <span className="font-mono text-[9px] uppercase tracking-wider text-[#C9A24A] bg-[#C9A24A]/10 border border-[#C9A24A]/30 px-2 py-0.5 rounded-full font-bold">
+                  <span className="font-mono text-[9px] uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full font-bold">
                     VERIFIED CLIENT
                   </span>
                 </div>

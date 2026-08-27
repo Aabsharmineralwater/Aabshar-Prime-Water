@@ -51,25 +51,19 @@ const RealBottleMockupCard = ({
   tagline: string;
 }) => {
   return (
-    <div className="flex flex-col items-center bg-gradient-to-br from-[#0A1930]/95 via-[#0F3A4A]/80 to-[#0A1930]/95 backdrop-blur-xl border border-[#4FD1E8]/30 rounded-3xl p-6 sm:p-7 shadow-[0_15px_35px_-5px_rgba(0,0,0,0.6),_inset_0_1px_1px_0_rgba(255,255,255,0.15)] hover:border-[#4FD1E8] hover:shadow-[0_25px_50px_-10px_rgba(79,209,232,0.3),_inset_0_1px_1px_0_rgba(255,255,255,0.25)] transition-all duration-500 group w-full max-w-sm relative overflow-hidden text-white">
-      {/* Micro-depth top edge shine line */}
-      <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#4FD1E8]/60 to-transparent pointer-events-none z-20" />
-
-      {/* Background radial glow accent */}
-      <div className="absolute top-0 right-0 w-36 h-36 bg-[#4FD1E8]/15 rounded-full blur-2xl pointer-events-none group-hover:bg-[#4FD1E8]/25 transition-colors" />
-      
+    <div className="flex flex-col items-center bg-white border border-slate-200 rounded-3xl p-6 sm:p-7 shadow-lg hover:border-sky-300 hover:shadow-xl transition-all duration-500 group w-full max-w-sm relative overflow-hidden text-slate-800">
       {/* Category Pill Top-Left */}
       <div className="w-full flex justify-between items-center mb-5 z-10">
         {badge}
-        <span className="text-[10px] font-mono text-[#4FD1E8] font-bold tracking-wider uppercase bg-[#0F3A4A]/80 px-2.5 py-1 rounded-full border border-[#4FD1E8]/30 shadow-xs">
+        <span className="text-[10px] font-mono text-[#0284C7] font-bold tracking-wider uppercase bg-sky-50 px-2.5 py-1 rounded-full border border-sky-200 shadow-xs">
           Studio Render
         </span>
       </div>
 
-      {/* Dark Studio Image Container */}
-      <div className="relative w-full aspect-[4/5] px-4 py-6 bg-gradient-to-b from-[#0F3A4A]/80 via-[#0A1930] to-[#061224] rounded-2xl flex items-center justify-center overflow-hidden border border-[#4FD1E8]/20 shadow-inner">
+      {/* Light Studio Image Container */}
+      <div className="relative w-full aspect-[4/5] px-4 py-6 bg-gradient-to-b from-sky-50/80 via-sky-50/40 to-slate-100 rounded-2xl flex items-center justify-center overflow-hidden border border-slate-200 shadow-inner">
         {/* Soft studio backlighting spotlight */}
-        <div className="absolute w-44 h-44 bg-[radial-gradient(circle,rgba(79,209,232,0.25)_0%,transparent_70%)] rounded-full blur-xl group-hover:scale-125 transition-transform duration-500" />
+        <div className="absolute w-44 h-44 bg-[radial-gradient(circle,rgba(0,180,216,0.15)_0%,transparent_70%)] rounded-full blur-xl group-hover:scale-125 transition-transform duration-500" />
         
         {/* Bottle Image */}
         <img 
@@ -78,61 +72,58 @@ const RealBottleMockupCard = ({
           loading="lazy"
           decoding="async"
           referrerPolicy="no-referrer"
-          className="h-full w-auto object-contain z-10 filter drop-shadow-[0_18px_25px_rgba(0,0,0,0.7)] group-hover:scale-105 group-hover:-translate-y-1.5 transition-transform duration-500 ease-out"
+          className="h-full w-auto object-contain z-10 filter drop-shadow-[0_16px_20px_rgba(2,132,199,0.15)] group-hover:scale-105 group-hover:-translate-y-1.5 transition-transform duration-500 ease-out"
         />
 
         {/* Water Ripple & Splash Effect under bottle */}
-        <WaterRippleEffect size="md" />
-
-        {/* Studio Gloss Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 select-none pointer-events-none z-20" />
+        <WaterRippleEffect size="md" className="opacity-60" />
       </div>
 
       {/* Brand & Design Info */}
       <div className="w-full mt-5 text-left z-10">
-        <h4 className="font-serif text-xl sm:text-2xl font-extrabold text-white group-hover:text-[#4FD1E8] transition-colors duration-200 leading-snug">
+        <h4 className="font-serif text-xl sm:text-2xl font-extrabold text-slate-900 group-hover:text-[#0284C7] transition-colors duration-200 leading-snug">
           {brandName}
         </h4>
-        <p className="font-sans text-xs text-[#4FD1E8] font-semibold mt-1 tracking-wide">
+        <p className="font-sans text-xs text-[#0284C7] font-semibold mt-1 tracking-wide">
           {subtitle}
         </p>
         
-        <p className="font-sans italic text-xs text-slate-300/90 mt-3 line-clamp-2 border-l-2 border-[#C9A24A] pl-2.5">
+        <p className="font-sans italic text-xs text-slate-600 mt-3 line-clamp-2 border-l-2 border-[#0284C7] pl-2.5">
           "{tagline}"
         </p>
 
         {/* Palette Matching - Labeled Brand Palette Chip */}
-        <div className="mt-5 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
+        <div className="mt-5 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-col gap-1.5">
-            <span className="text-[10px] uppercase font-mono tracking-wider text-slate-300 font-extrabold flex items-center gap-1">
+            <span className="text-[10px] uppercase font-mono tracking-wider text-slate-500 font-extrabold flex items-center gap-1">
               🎨 Brand Palette
             </span>
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-[#0F3A4A]/80 border border-[#4FD1E8]/25 shadow-xs">
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200 shadow-xs">
               <div className="flex items-center gap-1.5">
                 {colors.map((c, i) => (
                   <div 
                     key={i} 
-                    className="w-3.5 h-3.5 rounded-full border border-white/80 shadow-xs" 
+                    className="w-3.5 h-3.5 rounded-full border border-white shadow-xs" 
                     style={{ backgroundColor: c.bg }}
                     title={c.name}
                   />
                 ))}
               </div>
-              <span className="font-mono text-[10px] font-bold text-sky-100/90 truncate max-w-[130px]">
+              <span className="font-mono text-[10px] font-bold text-slate-700 truncate max-w-[130px]">
                 {colors.map(c => c.name.split(' ')[0]).join(' · ')}
               </span>
             </div>
           </div>
 
           <div className="flex flex-col items-end gap-1.5">
-            <span className="text-[10px] uppercase font-mono tracking-wider text-slate-300 font-extrabold">
+            <span className="text-[10px] uppercase font-mono tracking-wider text-slate-500 font-extrabold">
               Bottle Formats
             </span>
             <div className="flex items-center gap-1.5">
               {volumes.map((v, i) => (
                 <span 
                   key={i} 
-                  className="text-[10px] font-mono font-bold bg-[#0A1930] text-[#4FD1E8] px-2.5 py-1 rounded-md border border-[#4FD1E8]/30 shadow-xs"
+                  className="text-[10px] font-mono font-bold bg-sky-50 text-[#0284C7] px-2.5 py-1 rounded-md border border-sky-200 shadow-xs"
                 >
                   {v}
                 </span>
@@ -152,33 +143,33 @@ const caseStudiesData = [
     imageSrc: gymMockup,
     alt: 'IronCore Fitness Custom Bottle',
     badgeText: 'Fitness & Sports',
-    badgeClass: 'text-[#C9A24A] bg-[#C9A24A]/20 border-[#C9A24A]/40',
+    badgeClass: 'text-[#0284C7] bg-sky-50 border-sky-200',
     title: 'IronCore Fitness',
     description: 'High-performance athletic club custom bottles.',
-    cardContainerClass: 'bg-gradient-to-b from-[#1c1917]/90 via-[#0A1930] to-[#0A1930] border-[#C9A24A]/40 hover:border-[#C9A24A]',
-    overlayClass: 'bg-amber-500/10 group-hover:bg-amber-500/20'
+    cardContainerClass: 'bg-white border-slate-200 hover:border-sky-300 shadow-lg text-slate-800',
+    overlayClass: 'bg-sky-500/5 group-hover:bg-sky-500/10'
   },
   {
     id: 'dining',
     imageSrc: riverdaleMockup,
     alt: 'The Olive Table Custom Bottle',
     badgeText: 'Fine Dining & Cafes',
-    badgeClass: 'text-[#00D4FF] bg-[#00D4FF]/20 border-[#00D4FF]/40',
+    badgeClass: 'text-[#0284C7] bg-sky-50 border-sky-200',
     title: 'The Olive Table',
     description: 'Gourmet dining table 500 mL mineral bottles.',
-    cardContainerClass: 'bg-gradient-to-b from-[#0F3A4A]/90 via-[#0A1930] to-[#0A1930] border-[#00D4FF]/40 hover:border-[#00D4FF]',
-    overlayClass: 'bg-sky-500/10 group-hover:bg-sky-500/20'
+    cardContainerClass: 'bg-white border-slate-200 hover:border-sky-300 shadow-lg text-slate-800',
+    overlayClass: 'bg-sky-500/5 group-hover:bg-sky-500/10'
   },
   {
     id: 'corporate',
     imageSrc: nexoraMockup,
     alt: 'Nexora Technologies Custom Bottle',
     badgeText: 'Corporate & Tech',
-    badgeClass: 'text-teal-300 bg-teal-500/20 border-teal-500/40',
+    badgeClass: 'text-[#0284C7] bg-sky-50 border-sky-200',
     title: 'Nexora Technologies',
     description: 'Executive summit boardroom water bottles.',
-    cardContainerClass: 'bg-gradient-to-b from-[#042f2e]/90 via-[#0A1930] to-[#0A1930] border-teal-500/40 hover:border-teal-400',
-    overlayClass: 'bg-teal-500/10 group-hover:bg-teal-500/20'
+    cardContainerClass: 'bg-white border-slate-200 hover:border-sky-300 shadow-lg text-slate-800',
+    overlayClass: 'bg-sky-500/5 group-hover:bg-sky-500/10'
   }
 ];
 
@@ -227,7 +218,7 @@ const MobileCaseStudyCarousel = () => {
         type="button"
         onClick={handlePrev}
         aria-label="Previous card"
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#0A1930]/95 border border-[#00D4FF]/50 text-[#00D4FF] flex items-center justify-center shadow-[0_0_15px_rgba(0,212,255,0.3)] active:scale-95 hover:bg-[#00D4FF] hover:text-[#0A1930] transition-all duration-300 cursor-pointer"
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white border border-slate-200 text-[#0284C7] flex items-center justify-center shadow-md active:scale-95 hover:bg-sky-50 transition-all duration-300 cursor-pointer"
       >
         <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
       </button>
@@ -237,7 +228,7 @@ const MobileCaseStudyCarousel = () => {
         type="button"
         onClick={handleNext}
         aria-label="Next card"
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#0A1930]/95 border border-[#00D4FF]/50 text-[#00D4FF] flex items-center justify-center shadow-[0_0_15px_rgba(0,212,255,0.3)] active:scale-95 hover:bg-[#00D4FF] hover:text-[#0A1930] transition-all duration-300 cursor-pointer"
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white border border-slate-200 text-[#0284C7] flex items-center justify-center shadow-md active:scale-95 hover:bg-sky-50 transition-all duration-300 cursor-pointer"
       >
         <ChevronRight className="w-6 h-6 stroke-[2.5]" />
       </button>
@@ -269,11 +260,11 @@ const MobileCaseStudyCarousel = () => {
               opacity: { duration: 0.25 }
             }}
             style={{ willChange: 'transform' }}
-            className={`backdrop-blur-xl border rounded-3xl p-6 shadow-xl relative overflow-hidden group transition-colors duration-500 w-full cursor-grab active:cursor-grabbing ${currentCard.cardContainerClass}`}
+            className={`border rounded-3xl p-6 shadow-lg relative overflow-hidden group transition-colors duration-500 w-full cursor-grab active:cursor-grabbing ${currentCard.cardContainerClass}`}
           >
             <div className={`absolute inset-0 pointer-events-none transition-colors ${currentCard.overlayClass}`} />
 
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-slate-900 flex items-center justify-center p-4">
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-slate-100 flex items-center justify-center p-4">
               <img
                 src={currentCard.imageSrc}
                 alt={currentCard.alt}
@@ -282,15 +273,15 @@ const MobileCaseStudyCarousel = () => {
                 referrerPolicy="no-referrer"
                 className="h-full w-auto object-contain z-20 relative transform group-hover:scale-110 transition-transform duration-700 ease-out"
               />
-              <WaterRippleEffect size="md" className="bottom-2" />
+              <WaterRippleEffect size="md" className="bottom-2 opacity-60" />
             </div>
 
             <div className="relative z-10 text-left">
               <span className={`font-mono text-[10px] uppercase font-bold px-2.5 py-0.5 rounded-full border ${currentCard.badgeClass}`}>
                 {currentCard.badgeText}
               </span>
-              <h4 className="font-serif text-xl font-bold text-white mt-2">{currentCard.title}</h4>
-              <p className="font-sans text-xs text-slate-300 mt-1">{currentCard.description}</p>
+              <h4 className="font-serif text-xl font-bold text-slate-900 mt-2">{currentCard.title}</h4>
+              <p className="font-sans text-xs text-slate-600 mt-1">{currentCard.description}</p>
             </div>
           </motion.div>
         </AnimatePresence>
@@ -306,8 +297,8 @@ const MobileCaseStudyCarousel = () => {
             aria-label={`Go to slide ${idx + 1}`}
             className={`transition-all duration-300 cursor-pointer ${
               idx === currentIndex
-                ? 'w-7 h-2.5 bg-gradient-to-r from-[#00D4FF] via-[#38bdf8] to-[#C9A24A] rounded-full shadow-[0_0_10px_rgba(0,212,255,0.5)]'
-                : 'w-2.5 h-2.5 bg-slate-700 hover:bg-slate-500 rounded-full'
+                ? 'w-7 h-2.5 bg-gradient-to-r from-[#0284C7] via-[#00B4D8] to-[#00D4FF] rounded-full shadow-sm'
+                : 'w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400 rounded-full'
             }`}
           />
         ))}
@@ -368,7 +359,7 @@ const MobileOnboardingCarousel = ({ steps }: { steps: OnboardingStep[] }) => {
         type="button"
         onClick={handlePrev}
         aria-label="Previous step"
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#0A1930]/95 border border-[#00D4FF]/50 text-[#00D4FF] flex items-center justify-center shadow-[0_0_15px_rgba(0,212,255,0.3)] active:scale-95 hover:bg-[#00D4FF] hover:text-[#0A1930] transition-all duration-300 cursor-pointer"
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white border border-slate-200 text-[#0284C7] flex items-center justify-center shadow-md active:scale-95 hover:bg-sky-50 transition-all duration-300 cursor-pointer"
       >
         <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
       </button>
@@ -378,7 +369,7 @@ const MobileOnboardingCarousel = ({ steps }: { steps: OnboardingStep[] }) => {
         type="button"
         onClick={handleNext}
         aria-label="Next step"
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#0A1930]/95 border border-[#00D4FF]/50 text-[#00D4FF] flex items-center justify-center shadow-[0_0_15px_rgba(0,212,255,0.3)] active:scale-95 hover:bg-[#00D4FF] hover:text-[#0A1930] transition-all duration-300 cursor-pointer"
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white border border-slate-200 text-[#0284C7] flex items-center justify-center shadow-md active:scale-95 hover:bg-sky-50 transition-all duration-300 cursor-pointer"
       >
         <ChevronRight className="w-6 h-6 stroke-[2.5]" />
       </button>
@@ -410,29 +401,29 @@ const MobileOnboardingCarousel = ({ steps }: { steps: OnboardingStep[] }) => {
               opacity: { duration: 0.25 }
             }}
             style={{ willChange: 'transform' }}
-            className="bg-[#0F3A4A]/80 backdrop-blur-xl border border-[#00D4FF]/40 rounded-2xl p-6 shadow-xl flex flex-col items-center text-center relative overflow-hidden min-h-[220px] w-full cursor-grab active:cursor-grabbing"
+            className="bg-white border border-slate-200 rounded-2xl p-6 shadow-md flex flex-col items-center text-center relative overflow-hidden min-h-[220px] w-full cursor-grab active:cursor-grabbing"
           >
-            {/* Fine gold top accent bar */}
-            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#00D4FF] via-[#C9A24A] to-[#00D4FF]" />
+            {/* Fine cyan top accent bar */}
+            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#0284C7] via-[#00B4D8] to-[#00D4FF]" />
 
             {/* Badge Step Indicator Header */}
-            <span className="font-mono text-[10px] uppercase font-bold tracking-widest text-[#C9A24A] bg-[#C9A24A]/10 border border-[#C9A24A]/30 px-2.5 py-0.5 rounded-full mb-3">
+            <span className="font-mono text-[10px] uppercase font-bold tracking-widest text-[#0284C7] bg-sky-50 border border-sky-200 px-2.5 py-0.5 rounded-full mb-3">
               Step {currentIndex + 1} of {totalCards}
             </span>
 
             {/* Circle Node Number */}
-            <div className="w-14 h-14 rounded-full bg-[#C9A24A] text-[#0A1930] border-2 border-white shadow-[0_0_20px_#C9A24A] flex items-center justify-center font-mono font-black text-sm my-1">
+            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#0284C7] to-[#0369A1] text-white border-2 border-sky-200 shadow-md flex items-center justify-center font-mono font-black text-sm my-1">
               {st.num}
             </div>
 
-            <div className="flex items-center gap-1.5 mt-3 mb-1 text-[#00D4FF]">
+            <div className="flex items-center gap-1.5 mt-3 mb-1 text-[#0284C7]">
               {st.icon}
-              <h4 className="font-serif text-lg font-extrabold text-white">
+              <h4 className="font-serif text-lg font-extrabold text-slate-900">
                 {st.title}
               </h4>
             </div>
 
-            <p className="font-sans text-xs text-slate-200 leading-relaxed max-w-xs mt-1">
+            <p className="font-sans text-xs text-slate-600 leading-relaxed max-w-xs mt-1">
               {st.desc}
             </p>
           </motion.div>
@@ -449,8 +440,8 @@ const MobileOnboardingCarousel = ({ steps }: { steps: OnboardingStep[] }) => {
             aria-label={`Go to step ${idx + 1}`}
             className={`transition-all duration-300 cursor-pointer ${
               idx === currentIndex
-                ? 'w-7 h-2.5 bg-gradient-to-r from-[#00D4FF] via-[#38bdf8] to-[#C9A24A] rounded-full shadow-[0_0_10px_rgba(0,212,255,0.5)]'
-                : 'w-2.5 h-2.5 bg-slate-700 hover:bg-slate-500 rounded-full'
+                ? 'w-7 h-2.5 bg-gradient-to-r from-[#0284C7] via-[#00B4D8] to-[#00D4FF] rounded-full shadow-sm'
+                : 'w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400 rounded-full'
             }`}
           />
         ))}
@@ -566,12 +557,12 @@ export default function B2B({ onQuoteClick }: B2BProps) {
 
   // Industries served fine-line icon strip
   const industries = [
-    { title: "Hotels & Resorts", icon: <Hotel className="w-5 h-5 text-[#C9A24A]" /> },
-    { title: "Restaurants & Cafes", icon: <Utensils className="w-5 h-5 text-[#C9A24A]" /> },
-    { title: "Corporate Boardrooms", icon: <Building2 className="w-5 h-5 text-[#C9A24A]" /> },
-    { title: "Weddings & Marquees", icon: <Heart className="w-5 h-5 text-[#C9A24A]" /> },
-    { title: "Conferences & Expos", icon: <Factory className="w-5 h-5 text-[#C9A24A]" /> },
-    { title: "Fitness & Wellness", icon: <Dumbbell className="w-5 h-5 text-[#C9A24A]" /> },
+    { title: "Hotels & Resorts", icon: <Hotel className="w-5 h-5 text-[#00D4FF]" /> },
+    { title: "Restaurants & Cafes", icon: <Utensils className="w-5 h-5 text-[#00D4FF]" /> },
+    { title: "Corporate Boardrooms", icon: <Building2 className="w-5 h-5 text-[#00D4FF]" /> },
+    { title: "Weddings & Marquees", icon: <Heart className="w-5 h-5 text-[#00D4FF]" /> },
+    { title: "Conferences & Expos", icon: <Factory className="w-5 h-5 text-[#00D4FF]" /> },
+    { title: "Fitness & Wellness", icon: <Dumbbell className="w-5 h-5 text-[#00D4FF]" /> },
   ];
 
   // Steps data for Metro-Map Connected Timeline
@@ -603,11 +594,7 @@ export default function B2B({ onQuoteClick }: B2BProps) {
   ];
 
   return (
-    <section id="b2b" className="py-24 bg-gradient-to-b from-[#0A1930] via-[#0D223D] to-[#0A1930] text-white relative overflow-hidden cv-auto">
-      {/* Top Gradient Transition (Replacing SVG wave) */}
-      <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-[#0A1930] via-[#0A1930]/80 to-transparent pointer-events-none z-10" />
-      <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#00D4FF]/40 to-[#C9A24A]/40 pointer-events-none z-20" />
-
+    <section id="b2b" className="py-24 bg-slate-50/70 text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* SECTION 5: SPLIT-LAYOUT B2B EDITORIAL + FINE-LINE ICON STRIP */}
@@ -617,9 +604,9 @@ export default function B2B({ onQuoteClick }: B2BProps) {
               initial={{ opacity: 0, y: -10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C9A24A]/15 border border-[#C9A24A]/30 text-[#C9A24A] text-xs font-mono font-bold uppercase tracking-wider mb-4"
+              className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-50 border border-sky-200 text-[#0284C7] text-xs font-mono font-bold uppercase tracking-wider mb-4 shadow-xs"
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#C9A24A]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#0284C7]" />
               <span>B2B Private Label Program</span>
             </motion.div>
 
@@ -628,10 +615,10 @@ export default function B2B({ onQuoteClick }: B2BProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4"
+              className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4"
             >
               Your Brand on Every Bottle. <br />
-              <span className="font-serif italic text-[#00D4FF]">Pure Mineral Water</span> for Discerning Venues.
+              <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-[#0088CC] via-[#00B4D8] to-[#0284C7]">Pure Mineral Water</span> for Discerning Venues.
             </motion.h2>
 
             <motion.p
@@ -639,23 +626,23 @@ export default function B2B({ onQuoteClick }: B2BProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-sans text-slate-300 text-sm sm:text-base leading-relaxed mb-8 max-w-xl"
+              className="font-sans text-slate-600 text-sm sm:text-base leading-relaxed mb-8 max-w-xl"
             >
               Transform standard hydration into a high-impact branding statement. We manufacture, custom-label, and deliver certified mineral water directly to luxury hotels, fine dining establishments, corporate boardrooms, and premier wedding marquees.
             </motion.p>
 
             {/* Fine-Line Icon Strip for Industries Served */}
-            <div className="pt-6 border-t border-white/10">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#C9A24A] block mb-3">
+            <div className="pt-6 border-t border-slate-200">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#0284C7] block mb-3">
                 Industries Served
               </span>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                 {industries.map((ind) => (
-                  <div key={ind.title} className="flex flex-col items-center text-center p-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-[#C9A24A]/50 transition-colors">
-                    <div className="p-2 rounded-full bg-[#C9A24A]/10 mb-1.5">
+                  <div key={ind.title} className="flex flex-col items-center text-center p-2.5 rounded-xl bg-white border border-slate-200 hover:border-sky-300 shadow-sm transition-colors">
+                    <div className="p-2 rounded-full bg-sky-50 mb-1.5">
                       {ind.icon}
                     </div>
-                    <span className="font-serif text-xs font-bold text-white leading-tight">
+                    <span className="font-serif text-xs font-bold text-slate-800 leading-tight">
                       {ind.title}
                     </span>
                   </div>
@@ -665,40 +652,40 @@ export default function B2B({ onQuoteClick }: B2BProps) {
           </div>
 
           {/* Right Visual Highlight Box */}
-          <div className="lg:col-span-5 bg-gradient-to-br from-[#0F3A4A]/80 via-[#0A1930] to-[#061224] p-8 rounded-3xl border border-[#00D4FF]/30 shadow-2xl relative">
-            <div className="absolute top-0 right-0 w-40 h-40 bg-[#00D4FF]/10 rounded-full blur-2xl pointer-events-none" />
-            <h3 className="font-serif text-2xl font-extrabold text-white mb-2">
+          <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-slate-200 shadow-xl relative">
+            <div className="absolute top-0 right-0 w-40 h-40 bg-sky-100/50 rounded-full blur-2xl pointer-events-none" />
+            <h3 className="font-serif text-2xl font-extrabold text-slate-900 mb-2">
               Why Choose Aabshar Private Label?
             </h3>
-            <div className="w-12 h-1 bg-[#C9A24A] rounded-full mb-6" />
+            <div className="w-12 h-1 bg-[#0284C7] rounded-full mb-6" />
 
-            <ul className="space-y-4 font-sans text-xs sm:text-sm text-slate-200">
+            <ul className="space-y-4 font-sans text-xs sm:text-sm text-slate-700">
               <li className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-[#00D4FF] flex-shrink-0 mt-0.5" />
-                <span><strong>High-Definition Printing:</strong> Crystal-clear waterproof gloss label wraps that maintain vibrant brand colors when chilled.</span>
+                <CheckCircle2 className="w-5 h-5 text-[#0284C7] flex-shrink-0 mt-0.5" />
+                <span><strong className="text-slate-900">High-Definition Printing:</strong> Crystal-clear waterproof gloss label wraps that maintain vibrant brand colors when chilled.</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-[#00D4FF] flex-shrink-0 mt-0.5" />
-                <span><strong>WHO & PCRWR Certified:</strong> 135 PPM target mineral water guaranteed to satisfy international purity benchmarks.</span>
+                <CheckCircle2 className="w-5 h-5 text-[#0284C7] flex-shrink-0 mt-0.5" />
+                <span><strong className="text-slate-900">WHO & PCRWR Certified:</strong> 135 PPM target mineral water guaranteed to satisfy international purity benchmarks.</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-[#00D4FF] flex-shrink-0 mt-0.5" />
-                <span><strong>Chilled Fleet Delivery:</strong> Scheduled doorstep runs across Rawalpindi, Islamabad, and Fateh Jang.</span>
+                <CheckCircle2 className="w-5 h-5 text-[#0284C7] flex-shrink-0 mt-0.5" />
+                <span><strong className="text-slate-900">Chilled Fleet Delivery:</strong> Scheduled doorstep runs across Rawalpindi, Islamabad, and Fateh Jang.</span>
               </li>
             </ul>
           </div>
         </div>
 
         {/* SECTION 6: METRO-MAP CONNECTED HORIZONTAL TIMELINE PROCESS */}
-        <div className="mb-24 max-w-5xl mx-auto bg-[#0A1930]/90 backdrop-blur-xl p-8 sm:p-12 rounded-3xl border border-[#00D4FF]/30 shadow-2xl text-center relative overflow-hidden">
+        <div className="mb-24 max-w-5xl mx-auto bg-white p-8 sm:p-12 rounded-3xl border border-slate-200 shadow-xl text-center relative overflow-hidden">
           <div className="mb-12">
-            <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#C9A24A]">
+            <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#0284C7]">
               EFFICIENT WORKFLOW
             </span>
-            <h3 className="font-serif text-2xl sm:text-4xl font-extrabold text-white mt-1">
+            <h3 className="font-serif text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">
               Connected 4-Step Onboarding Trace
             </h3>
-            <p className="font-sans text-xs sm:text-sm text-slate-300 mt-2">
+            <p className="font-sans text-xs sm:text-sm text-slate-600 mt-2">
               Hover over nodes to inspect details along our digital circuit trace
             </p>
           </div>
@@ -710,8 +697,8 @@ export default function B2B({ onQuoteClick }: B2BProps) {
 
           {/* Desktop/Tablet View: Circuit Trace Timeline Line & Nodes (>= md) */}
           <div className="hidden md:block relative my-8">
-            {/* Glowing cyan-and-gold gradient timeline line */}
-            <div className="absolute top-7 left-[10%] right-[10%] h-1 bg-gradient-to-r from-[#00D4FF] via-[#C9A24A] to-[#00D4FF] z-0 rounded-full shadow-[0_0_10px_#00D4FF]" />
+            {/* Glowing cyan-and-royal gradient timeline line */}
+            <div className="absolute top-7 left-[10%] right-[10%] h-1 bg-gradient-to-r from-[#00D4FF] via-[#0284C7] to-[#0369A1] z-0 rounded-full shadow-sm" />
 
             <div className="grid grid-cols-4 gap-6 relative z-10">
               {steps.map((st, idx) => {
@@ -725,17 +712,17 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                     {/* Node circle */}
                     <div className={`w-14 h-14 rounded-full flex items-center justify-center font-mono font-black text-sm transition-all duration-300 z-10 border-2 ${
                       isActive
-                        ? 'bg-[#C9A24A] text-[#0A1930] border-white shadow-[0_0_20px_#C9A24A] scale-110'
-                        : 'bg-[#0F3A4A] text-white border-[#00D4FF]/60 hover:border-white'
+                        ? 'bg-[#0284C7] text-white border-sky-300 shadow-md scale-110'
+                        : 'bg-sky-50 text-[#0284C7] border-sky-200 hover:border-[#0284C7]'
                     }`}>
                       {st.num}
                     </div>
 
-                    <h4 className="font-serif text-sm font-extrabold text-white mt-3 mb-1 group-hover:text-[#00D4FF] transition-colors">
+                    <h4 className="font-serif text-sm font-extrabold text-slate-900 mt-3 mb-1 group-hover:text-[#0284C7] transition-colors">
                       {st.title}
                     </h4>
 
-                    <p className="font-sans text-xs text-slate-300 leading-relaxed text-center px-2">
+                    <p className="font-sans text-xs text-slate-600 leading-relaxed text-center px-2">
                       {st.desc}
                     </p>
                   </div>
@@ -748,10 +735,10 @@ export default function B2B({ onQuoteClick }: B2BProps) {
         {/* SECTION 7: MOCKUP CARDS WITH COLOR-TINTED OVERLAYS & HOVER ZOOM */}
         <div className="mb-24 max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h3 className="font-serif text-2xl sm:text-4xl font-extrabold text-white">
+            <h3 className="font-serif text-2xl sm:text-4xl font-extrabold text-slate-900">
               Private Label Industry Mockups
             </h3>
-            <p className="font-sans text-xs sm:text-sm text-slate-300 mt-2">
+            <p className="font-sans text-xs sm:text-sm text-slate-600 mt-2">
               Customized bottle renderings created for Pakistani industry leaders
             </p>
           </div>
@@ -770,11 +757,11 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`backdrop-blur-xl border rounded-3xl p-6 shadow-xl relative overflow-hidden group transition-all duration-500 ${card.cardContainerClass}`}
+                className={`border rounded-3xl p-6 shadow-lg relative overflow-hidden group transition-all duration-500 ${card.cardContainerClass}`}
               >
                 <div className={`absolute inset-0 pointer-events-none transition-colors ${card.overlayClass}`} />
 
-                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-slate-900 flex items-center justify-center p-4">
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-slate-100 flex items-center justify-center p-4">
                   <img
                     src={card.imageSrc}
                     alt={card.alt}
@@ -783,38 +770,38 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                     referrerPolicy="no-referrer"
                     className="h-full w-auto object-contain z-20 relative transform group-hover:scale-110 transition-transform duration-700 ease-out"
                   />
-                  <WaterRippleEffect size="md" className="bottom-2" />
+                  <WaterRippleEffect size="md" className="bottom-2 opacity-60" />
                 </div>
 
                 <div className="relative z-10 text-left">
                   <span className={`font-mono text-[10px] uppercase font-bold px-2.5 py-0.5 rounded-full border ${card.badgeClass}`}>
                     {card.badgeText}
                   </span>
-                  <h4 className="font-serif text-xl font-bold text-white mt-2">{card.title}</h4>
-                  <p className="font-sans text-xs text-slate-300 mt-1">{card.description}</p>
+                  <h4 className="font-serif text-xl font-bold text-slate-900 mt-2">{card.title}</h4>
+                  <p className="font-sans text-xs text-slate-600 mt-1">{card.description}</p>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* SECTION 8: REQUEST BRAND MOCKUP FORM (DARK GLASSMORPHISM + GOLD PROGRESS BAR + FLOATING LABELS) */}
+        {/* SECTION 8: REQUEST BRAND MOCKUP FORM */}
         <div id="get-quote-block" className="max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-[#0A1930]/90 backdrop-blur-2xl rounded-3xl p-6 sm:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.8)] border border-[#00D4FF]/30 relative overflow-hidden text-white"
+            className="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-200 relative overflow-hidden text-slate-800"
           >
             {/* Ambient Corner Blur Effects */}
-            <div className="absolute top-0 right-0 w-72 h-72 bg-[#00D4FF]/10 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#C9A24A]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-72 h-72 bg-sky-100/60 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-sky-100/60 rounded-full blur-3xl pointer-events-none" />
 
-            {/* Slim Gold Progress Bar at Top */}
-            <div className="absolute top-0 inset-x-0 h-1 bg-slate-800/80">
+            {/* Slim Cyan Progress Bar at Top */}
+            <div className="absolute top-0 inset-x-0 h-1 bg-slate-100">
               <div
-                className="h-full bg-gradient-to-r from-[#C9A24A] via-[#E5C158] to-[#00D4FF] transition-all duration-500 shadow-[0_0_10px_#00D4FF]"
+                className="h-full bg-gradient-to-r from-[#00D4FF] via-[#0284C7] to-[#0369A1] transition-all duration-500"
                 style={{ width: formStep === 1 ? '50%' : '100%' }}
               />
             </div>
@@ -824,19 +811,19 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C9A24A]/15 border border-[#C9A24A]/40 text-[#C9A24A] text-xs font-mono font-bold tracking-widest uppercase mb-3.5 shadow-[0_0_15px_rgba(201,162,74,0.25)]"
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-[#0284C7] text-xs font-mono font-bold tracking-widest uppercase mb-3.5 shadow-xs"
               >
-                <Sparkles className="w-3.5 h-3.5 text-[#E5C158] animate-pulse" />
+                <Sparkles className="w-3.5 h-3.5 text-[#0284C7] animate-pulse" />
                 <span>COMPLIMENTARY GRAPHIC PROOF</span>
               </motion.div>
 
-              <h3 className="font-serif text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-                Request Your <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-[#00D4FF] via-[#38bdf8] to-[#C9A24A]">Brand Mockup</span>
+              <h3 className="font-serif text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                Request Your <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-[#0088CC] via-[#00B4D8] to-[#0284C7]">Brand Mockup</span>
               </h3>
               
-              <div className="w-20 h-1 bg-gradient-to-r from-transparent via-[#00D4FF] to-transparent mx-auto mt-2.5 rounded-full shadow-[0_0_10px_#00D4FF]" />
+              <div className="w-20 h-1 bg-gradient-to-r from-transparent via-[#0284C7] to-transparent mx-auto mt-2.5 rounded-full" />
 
-              <p className="font-sans text-xs sm:text-sm text-slate-300 mt-3 max-w-lg mx-auto leading-relaxed">
+              <p className="font-sans text-xs sm:text-sm text-slate-600 mt-3 max-w-lg mx-auto leading-relaxed">
                 Provide basic details and receive a high-definition 3D digital bottle proof tailored to your brand within 24–48 hours.
               </p>
             </div>
@@ -856,12 +843,12 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         {/* Full Name */}
                         <div>
-                          <label htmlFor="fullName" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-2">
+                          <label htmlFor="fullName" className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2">
                             Full Name *
                           </label>
                           <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                              <User className="w-4 h-4 text-[#00D4FF]" />
+                              <User className="w-4 h-4 text-[#0284C7]" />
                             </div>
                             <input
                               id="fullName"
@@ -869,25 +856,25 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                               name="fullName"
                               value={formData.fullName}
                               onChange={handleInputChange}
-                              className={`w-full bg-[#0F3A4A]/60 border rounded-xl pl-10 pr-4 py-3 text-white text-sm placeholder-slate-400 focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] focus:bg-[#0F3A4A] transition-all ${
-                                errors.fullName ? 'border-red-500/80 bg-red-950/20' : 'border-white/20'
+                              className={`w-full bg-slate-50 border rounded-xl pl-10 pr-4 py-3 text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:border-[#0284C7] focus:ring-1 focus:ring-[#0284C7] focus:bg-white transition-all ${
+                                errors.fullName ? 'border-red-500 bg-red-50/50' : 'border-slate-200'
                               }`}
                               placeholder="e.g. Hammad Khan"
                             />
                           </div>
                           {errors.fullName && (
-                            <p className="text-xs text-red-400 mt-1 font-semibold">{errors.fullName}</p>
+                            <p className="text-xs text-red-500 mt-1 font-semibold">{errors.fullName}</p>
                           )}
                         </div>
 
                         {/* Company Name */}
                         <div>
-                          <label htmlFor="companyName" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-2">
+                          <label htmlFor="companyName" className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2">
                             Company / Business Name *
                           </label>
                           <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                              <Building2 className="w-4 h-4 text-[#00D4FF]" />
+                              <Building2 className="w-4 h-4 text-[#0284C7]" />
                             </div>
                             <input
                               id="companyName"
@@ -895,26 +882,26 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                               name="companyName"
                               value={formData.companyName}
                               onChange={handleInputChange}
-                              className={`w-full bg-[#0F3A4A]/60 border rounded-xl pl-10 pr-4 py-3 text-white text-sm placeholder-slate-400 focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] focus:bg-[#0F3A4A] transition-all ${
-                                errors.companyName ? 'border-red-500/80 bg-red-950/20' : 'border-white/20'
+                              className={`w-full bg-slate-50 border rounded-xl pl-10 pr-4 py-3 text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:border-[#0284C7] focus:ring-1 focus:ring-[#0284C7] focus:bg-white transition-all ${
+                                errors.companyName ? 'border-red-500 bg-red-50/50' : 'border-slate-200'
                               }`}
                               placeholder="e.g. Nexus Enterprises"
                             />
                           </div>
                           {errors.companyName && (
-                            <p className="text-xs text-red-400 mt-1 font-semibold">{errors.companyName}</p>
+                            <p className="text-xs text-red-500 mt-1 font-semibold">{errors.companyName}</p>
                           )}
                         </div>
                       </div>
 
                       {/* City */}
                       <div>
-                        <label htmlFor="city" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-2">
+                        <label htmlFor="city" className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2">
                           City *
                         </label>
                         <div className="relative">
                           <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                            <MapPin className="w-4 h-4 text-[#00D4FF]" />
+                            <MapPin className="w-4 h-4 text-[#0284C7]" />
                           </div>
                           <input
                             id="city"
@@ -922,24 +909,24 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                             name="city"
                             value={formData.city}
                             onChange={handleInputChange}
-                            className={`w-full bg-[#0F3A4A]/60 border rounded-xl pl-10 pr-4 py-3 text-white text-sm placeholder-slate-400 focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] focus:bg-[#0F3A4A] transition-all ${
-                              errors.city ? 'border-red-500/80 bg-red-950/20' : 'border-white/20'
+                            className={`w-full bg-slate-50 border rounded-xl pl-10 pr-4 py-3 text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:border-[#0284C7] focus:ring-1 focus:ring-[#0284C7] focus:bg-white transition-all ${
+                              errors.city ? 'border-red-500 bg-red-50/50' : 'border-slate-200'
                             }`}
                             placeholder="Rawalpindi, Islamabad, Fateh Jang..."
                           />
                         </div>
                         {errors.city && (
-                          <p className="text-xs text-red-400 mt-1 font-semibold">{errors.city}</p>
+                          <p className="text-xs text-red-500 mt-1 font-semibold">{errors.city}</p>
                         )}
                       </div>
 
                       <button
                         type="button"
                         onClick={handleNextStep}
-                        className="w-full py-3 sm:py-3.5 bg-gradient-to-r from-[#C9A24A] via-[#E5C158] to-[#C9A24A] hover:brightness-110 text-[#0A1930] font-black uppercase tracking-widest text-xs sm:text-sm rounded-2xl shadow-[0_4px_25px_rgba(201,162,74,0.4)] border border-[#E5C158]/70 transition-all cursor-pointer flex items-center justify-center gap-2.5 mt-5 hover:shadow-[0_0_35px_rgba(201,162,74,0.65)] active:scale-98 group"
+                        className="w-full py-3 sm:py-3.5 bg-gradient-to-r from-[#0284C7] via-[#00B4D8] to-[#0088CC] hover:brightness-105 text-white font-black uppercase tracking-widest text-xs sm:text-sm rounded-2xl shadow-md transition-all cursor-pointer flex items-center justify-center gap-2.5 mt-5 active:scale-98 group"
                       >
                         <span>Proceed to Order Specs</span>
-                        <ArrowRight className="w-4 h-4 text-[#0A1930] group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
                       </button>
                     </div>
                   ) : (
@@ -947,55 +934,55 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         {/* Business Type */}
                         <div>
-                          <label htmlFor="businessType" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-2">
+                          <label htmlFor="businessType" className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2">
                             Business Type *
                           </label>
                           <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                              <Building2 className="w-4 h-4 text-[#00D4FF]" />
+                              <Building2 className="w-4 h-4 text-[#0284C7]" />
                             </div>
                             <select
                               id="businessType"
                               name="businessType"
                               value={formData.businessType}
                               onChange={handleInputChange}
-                              className="w-full bg-[#0F3A4A]/60 border border-white/20 rounded-xl pl-10 pr-10 py-3 text-white text-sm appearance-none focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] focus:bg-[#0F3A4A] transition-all cursor-pointer"
+                              className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-10 py-3 text-slate-900 text-sm appearance-none focus:outline-none focus:border-[#0284C7] focus:ring-1 focus:ring-[#0284C7] focus:bg-white transition-all cursor-pointer"
                             >
-                              <option value="Hotel" className="bg-[#0A1930] text-white">Hotel / Resort</option>
-                              <option value="Restaurant" className="bg-[#0A1930] text-white">Restaurant / Cafe</option>
-                              <option value="Office" className="bg-[#0A1930] text-white">Office / Corporate</option>
-                              <option value="Shaadi Hall" className="bg-[#0A1930] text-white">Shaadi Hall / Marquee</option>
-                              <option value="Other" className="bg-[#0A1930] text-white">Other Brand Event</option>
+                              <option value="Hotel">Hotel / Resort</option>
+                              <option value="Restaurant">Restaurant / Cafe</option>
+                              <option value="Office">Office / Corporate</option>
+                              <option value="Shaadi Hall">Shaadi Hall / Marquee</option>
+                              <option value="Other">Other Brand Event</option>
                             </select>
                             <div className="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-slate-400">
-                              <ChevronDown className="w-4 h-4 text-[#00D4FF]" />
+                              <ChevronDown className="w-4 h-4 text-[#0284C7]" />
                             </div>
                           </div>
                         </div>
 
                         {/* Quantity */}
                         <div>
-                          <label htmlFor="quantity" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-2">
+                          <label htmlFor="quantity" className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2">
                             Monthly Volume *
                           </label>
                           <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                              <Package className="w-4 h-4 text-[#00D4FF]" />
+                              <Package className="w-4 h-4 text-[#0284C7]" />
                             </div>
                             <select
                               id="quantity"
                               name="quantity"
                               value={formData.quantity}
                               onChange={handleInputChange}
-                              className="w-full bg-[#0F3A4A]/60 border border-white/20 rounded-xl pl-10 pr-10 py-3 text-white text-sm appearance-none focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] focus:bg-[#0F3A4A] transition-all cursor-pointer"
+                              className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-10 py-3 text-slate-900 text-sm appearance-none focus:outline-none focus:border-[#0284C7] focus:ring-1 focus:ring-[#0284C7] focus:bg-white transition-all cursor-pointer"
                             >
-                              <option value="100–500 bottles" className="bg-[#0A1930] text-white">100–500 bottles</option>
-                              <option value="500–1000 bottles" className="bg-[#0A1930] text-white">500–1000 bottles</option>
-                              <option value="1000–5000 bottles" className="bg-[#0A1930] text-white">1000–5000 bottles</option>
-                              <option value="5000+ bottles" className="bg-[#0A1930] text-white">5000+ bottles</option>
+                              <option value="100–500 bottles">100–500 bottles</option>
+                              <option value="500–1000 bottles">500–1000 bottles</option>
+                              <option value="1000–5000 bottles">1000–5000 bottles</option>
+                              <option value="5000+ bottles">5000+ bottles</option>
                             </select>
                             <div className="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-slate-400">
-                              <ChevronDown className="w-4 h-4 text-[#00D4FF]" />
+                              <ChevronDown className="w-4 h-4 text-[#0284C7]" />
                             </div>
                           </div>
                         </div>
@@ -1003,10 +990,10 @@ export default function B2B({ onQuoteClick }: B2BProps) {
 
                       {/* Logo Upload */}
                       <div>
-                        <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-2">
+                        <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2">
                           Brand Logo Upload (Optional)
                         </label>
-                        <div className="relative border border-dashed border-white/30 hover:border-[#00D4FF] rounded-xl bg-[#0F3A4A]/40 p-3.5 transition-all text-center cursor-pointer group hover:bg-[#0F3A4A]/70">
+                        <div className="relative border border-dashed border-slate-300 hover:border-[#0284C7] rounded-xl bg-slate-50 p-3.5 transition-all text-center cursor-pointer group hover:bg-sky-50/50">
                           <input
                             id="logoUpload"
                             type="file"
@@ -1014,8 +1001,8 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                             onChange={handleFileChange}
                             className="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10"
                           />
-                          <div className="flex items-center justify-center gap-2 text-xs text-slate-300 group-hover:text-white">
-                            <Upload className="w-4 h-4 text-[#00D4FF]" />
+                          <div className="flex items-center justify-center gap-2 text-xs text-slate-600 group-hover:text-slate-900">
+                            <Upload className="w-4 h-4 text-[#0284C7]" />
                             <span>{logoFile ? logoFile.name : "Click or drag to select logo file (PNG / SVG)"}</span>
                           </div>
                         </div>
@@ -1023,12 +1010,12 @@ export default function B2B({ onQuoteClick }: B2BProps) {
 
                       {/* Message */}
                       <div>
-                        <label htmlFor="message" className="block text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-2">
+                        <label htmlFor="message" className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2">
                           Special Requirements
                         </label>
                         <div className="relative">
                           <div className="absolute top-3 left-3.5 flex items-center pointer-events-none text-slate-400">
-                            <FileText className="w-4 h-4 text-[#00D4FF]" />
+                            <FileText className="w-4 h-4 text-[#0284C7]" />
                           </div>
                           <textarea
                             id="message"
@@ -1036,7 +1023,7 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                             rows={3}
                             value={formData.message}
                             onChange={handleInputChange}
-                            className="w-full bg-[#0F3A4A]/60 border border-white/20 rounded-xl pl-10 pr-4 py-3 text-white text-sm placeholder-slate-400 focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] focus:bg-[#0F3A4A] transition-all resize-none"
+                            className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:border-[#0284C7] focus:ring-1 focus:ring-[#0284C7] focus:bg-white transition-all resize-none"
                             placeholder="Describe preferred label colors or delivery schedule..."
                           />
                         </div>
@@ -1046,7 +1033,7 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                         <button
                           type="button"
                           onClick={() => setFormStep(1)}
-                          className="w-1/3 py-3 sm:py-3.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs uppercase rounded-xl transition-all cursor-pointer hover:border-[#00D4FF]"
+                          className="w-1/3 py-3 sm:py-3.5 bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 font-bold text-xs uppercase rounded-xl transition-all cursor-pointer"
                         >
                           ← Back
                         </button>
@@ -1054,7 +1041,7 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                           id="b2b-submit-btn"
                           type="submit"
                           disabled={isSubmitting}
-                          className="w-2/3 py-3 sm:py-3.5 bg-gradient-to-r from-[#00D4FF] via-[#0284c7] to-[#00D4FF] hover:brightness-110 text-white font-black text-xs sm:text-sm uppercase tracking-widest rounded-xl shadow-[0_0_20px_rgba(0,212,255,0.4)] hover:shadow-[0_0_35px_rgba(0,212,255,0.65)] border border-[#00D4FF]/60 transition-all cursor-pointer flex items-center justify-center gap-2"
+                          className="w-2/3 py-3 sm:py-3.5 bg-gradient-to-r from-[#0284C7] via-[#00B4D8] to-[#0088CC] hover:brightness-105 text-white font-black text-xs sm:text-sm uppercase tracking-widest rounded-xl shadow-md transition-all cursor-pointer flex items-center justify-center gap-2"
                         >
                           <Send className="w-4 h-4 text-white" />
                           <span>{isSubmitting ? "Generating Proof..." : "Request Free Digital Proof"}</span>
@@ -1065,9 +1052,9 @@ export default function B2B({ onQuoteClick }: B2BProps) {
                 </motion.form>
               ) : (
                 <div className="text-center py-8 relative z-10">
-                  <CheckCircle2 className="w-14 h-14 text-[#00D4FF] mx-auto mb-3 animate-bounce drop-shadow-[0_0_20px_#00D4FF]" />
-                  <h4 className="font-serif text-2xl font-bold text-white">Inquiry Received!</h4>
-                  <p className="font-sans text-xs sm:text-sm text-slate-300 mt-2 max-w-md mx-auto">
+                  <CheckCircle2 className="w-14 h-14 text-[#0284C7] mx-auto mb-3 animate-bounce" />
+                  <h4 className="font-serif text-2xl font-bold text-slate-900">Inquiry Received!</h4>
+                  <p className="font-sans text-xs sm:text-sm text-slate-600 mt-2 max-w-md mx-auto">
                     Our design team will contact you via WhatsApp with custom digital bottle proofs within 24–48 hours.
                   </p>
                 </div>
@@ -1077,10 +1064,6 @@ export default function B2B({ onQuoteClick }: B2BProps) {
         </div>
 
       </div>
-
-      {/* Bottom Gradient Transition */}
-      <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-[#0A1930] to-transparent pointer-events-none z-10" />
-      <div className="absolute bottom-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#00D4FF]/40 to-[#C9A24A]/40 pointer-events-none z-20" />
     </section>
   );
 }

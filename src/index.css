@@ -3,54 +3,24 @@
 :root {
   --brand: #0A84FF;
   --brand-light: #E8F3FF;
-  --bg-primary: #F2F2F7;
+  --bg-primary: #FFFFFF;
   --bg-card: #FFFFFF;
-  --bg-bar: rgba(255,255,255,0.92);
-  --text-primary: #000000;
-  --text-secondary: #8E8E93;
-  --text-tertiary: #C7C7CC;
-  --border: rgba(0,0,0,0.1);
-  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --bg-bar: rgba(255, 255, 255, 0.95);
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-tertiary: #94A3B8;
+  --border: rgba(226, 232, 240, 0.9);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   --radius-card: 16px;
   --radius-btn: 14px;
-  --transition: 300ms cubic-bezier(0.4,0,0.2,1);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-primary: #000000;
-    --bg-card: #1C1C1E;
-    --bg-bar: rgba(28,28,30,0.92);
-    --text-primary: #FFFFFF;
-    --text-secondary: #8E8E93;
-    --border: rgba(255,255,255,0.1);
-    --shadow: 0 2px 12px rgba(0,0,0,0.4);
-  }
-}
-
-html.dark {
-  --bg-primary: #000000;
-  --bg-card: #1C1C1E;
-  --bg-bar: rgba(28,28,30,0.92);
-  --text-primary: #FFFFFF;
-  --text-secondary: #8E8E93;
-  --border: rgba(255,255,255,0.1);
-  --shadow: 0 2px 12px rgba(0,0,0,0.4);
-}
-
-html.light {
-  --bg-primary: #F2F2F7;
-  --bg-card: #FFFFFF;
-  --bg-bar: rgba(255,255,255,0.92);
-  --text-primary: #000000;
-  --text-secondary: #8E8E93;
-  --border: rgba(0,0,0,0.1);
-  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 105px;
+  background-color: #FFFFFF;
+  color: #0F172A;
 }
 
 @theme {
@@ -58,17 +28,17 @@ html {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
   
-  --color-ink-navy: #0A1930;
-  --color-deep-teal: #0F3A4A;
-  --color-aqua-signal: #4FD1E8;
+  --color-ink-navy: #0F172A;
+  --color-deep-teal: #0284C7;
+  --color-aqua-signal: #00D4FF;
   --color-mineral-gold: #C9A24A;
-  --color-mist-white: #F3F7F9;
+  --color-mist-white: #FFFFFF;
 
-  --color-brand-deep: #0A1930;
-  --color-brand-navy: #0A1930;
-  --color-brand-blue: #0F3A4A;
-  --color-brand-teal: #4FD1E8;
-  --color-brand-aqua: #22d3ee;
+  --color-brand-deep: #0F172A;
+  --color-brand-navy: #0A2540;
+  --color-brand-blue: #0284C7;
+  --color-brand-teal: #00D4FF;
+  --color-brand-aqua: #00D4FF;
   --color-brand-gold: #C9A24A;
 }
 
@@ -77,15 +47,15 @@ html {
     text-shadow: 0 1px 4px rgba(2, 132, 199, 0.15);
   }
   .bg-radial-gradient {
-    background: radial-gradient(circle at center, #f0fdfa 0%, #ffffff 100%);
+    background: radial-gradient(circle at center, #F0F9FF 0%, #FFFFFF 100%);
   }
 }
 
 /* Base style setups */
 body {
   font-family: var(--font-sans);
-  background-color: #0a1628;
-  color: #f8fafc;
+  background-color: #FFFFFF;
+  color: #1E293B;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
@@ -473,7 +443,7 @@ html.dark .shimmer-bg {
 
 /* Water wave overlay style */
 .water-gradient {
-  background: linear-gradient(180deg, rgba(3,10,22,0) 0%, rgba(9,30,58,0.6) 50%, rgba(3,10,22,1) 100%);
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(240,249,255,0.6) 50%, rgba(255,255,255,1) 100%);
 }
 
 @keyframes whatsappPulse {
@@ -577,18 +547,18 @@ html.dark .shimmer-bg {
 
 .aquatic-caustics {
   background-image: 
-    radial-gradient(ellipse at 25% 25%, rgba(0, 212, 255, 0.22) 0%, transparent 50%),
-    radial-gradient(ellipse at 75% 75%, rgba(79, 209, 232, 0.20) 0%, transparent 55%),
-    radial-gradient(circle at 50% 50%, rgba(201, 162, 74, 0.12) 0%, transparent 60%);
+    radial-gradient(ellipse at 25% 25%, rgba(0, 180, 216, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 75%, rgba(56, 189, 248, 0.08) 0%, transparent 55%),
+    radial-gradient(circle at 50% 50%, rgba(201, 162, 74, 0.05) 0%, transparent 60%);
   background-size: 150% 150%, 180% 180%, 200% 200%;
   animation: waterCaustics 16s ease-in-out infinite alternate;
 }
 
 .aquatic-ripples {
   background-image: 
-    radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.12) 1px, transparent 2px),
-    radial-gradient(circle at 20% 20%, rgba(79, 209, 232, 0.10) 1px, transparent 3px),
-    radial-gradient(circle at 80% 80%, rgba(34, 211, 238, 0.10) 1px, transparent 2px);
+    radial-gradient(circle at 50% 50%, rgba(0, 180, 216, 0.08) 1px, transparent 2px),
+    radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.06) 1px, transparent 3px),
+    radial-gradient(circle at 80% 80%, rgba(14, 165, 233, 0.06) 1px, transparent 2px);
   background-size: 40px 40px, 60px 60px, 50px 50px;
   animation: aquaticRipples 20s linear infinite;
 }

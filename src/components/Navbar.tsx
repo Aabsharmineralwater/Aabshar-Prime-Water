@@ -69,28 +69,28 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
       >
         {/* COLLAPSIBLE PREMIUM TOP UTILITY BAR (Desktop only) */}
         <div 
-          className={`hidden md:block bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-slate-300 border-b border-white/[0.04] transition-all duration-350 transform origin-top overflow-hidden ${
+          className={`hidden md:block bg-[#0A2540] text-slate-200 border-b border-slate-800/80 transition-all duration-350 transform origin-top overflow-hidden ${
             isScrolled ? 'max-h-0 py-0 opacity-0 scale-y-0' : 'max-h-11 py-2 opacity-100 scale-y-100'
           }`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-xs font-semibold tracking-wide">
             <div className="flex items-center space-x-6">
               <span className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors">
-                <MapPin className="w-3.5 h-3.5 text-[#4FD1E8]" />
+                <MapPin className="w-3.5 h-3.5 text-[#00D4FF]" />
                 <span>Rawalpindi • Islamabad • Fateh Jang</span>
               </span>
               <span className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors">
-                <Clock className="w-3.5 h-3.5 text-[#4FD1E8]" />
+                <Clock className="w-3.5 h-3.5 text-[#00D4FF]" />
                 <span>Daily Delivery: 8:00 AM – 8:00 PM</span>
               </span>
             </div>
             <div className="flex items-center space-x-6">
-              <a href="tel:+923051999897" className="flex items-center gap-1.5 text-[#4FD1E8] hover:text-white transition-colors font-bold">
-                <Phone className="w-3.5 h-3.5 text-emerald-400" />
+              <a href="tel:+923051999897" className="flex items-center gap-1.5 text-[#00D4FF] hover:text-white transition-colors font-bold">
+                <Phone className="w-3.5 h-3.5 text-[#00D4FF]" />
                 <span>+92-305-1999897</span>
               </a>
               <a href="mailto:aabshar.org@gmail.com" className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors">
-                <Mail className="w-3.5 h-3.5 text-[#4FD1E8]" />
+                <Mail className="w-3.5 h-3.5 text-[#00D4FF]" />
                 <span>aabshar.org@gmail.com</span>
               </a>
             </div>
@@ -101,8 +101,8 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
         <div 
           className={`transition-all duration-300 border-b ${
             isScrolled
-              ? 'bg-[#0A1930]/98 backdrop-blur-xl shadow-2xl border-[#00D4FF]/25 py-2.5'
-              : 'bg-[#0A1930]/95 backdrop-blur-lg shadow-xl border-[#00D4FF]/20 py-3.5'
+              ? 'bg-white/98 backdrop-blur-xl shadow-md border-slate-200/90 py-2.5'
+              : 'bg-white/95 backdrop-blur-lg shadow-sm border-slate-200/70 py-3.5'
           }`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,11 +114,8 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                   onClick={() => handleLinkClick('#hero')} 
                   className="relative flex items-center gap-2 group cursor-pointer bg-transparent border-0 active:scale-95 transition-transform duration-200 py-1"
                 >
-                  {/* Soft glowing radial gradient aura behind logo */}
-                  <div className="absolute inset-0 m-auto w-[130%] h-[130%] bg-[radial-gradient(ellipse_at_center,rgba(0,212,255,0.38)_0%,rgba(0,212,255,0.12)_55%,transparent_75%)] rounded-full blur-md pointer-events-none group-hover:scale-110 transition-transform duration-300 z-0" />
-
                   {/* Subtle horizontal cyan underline / glow bar beneath logo */}
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-gradient-to-r from-transparent via-[#00D4FF] to-transparent shadow-[0_0_8px_#00D4FF] opacity-85 group-hover:opacity-100 group-hover:w-full transition-all duration-300 pointer-events-none z-0" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-gradient-to-r from-transparent via-[#00D4FF] to-transparent opacity-85 group-hover:opacity-100 group-hover:w-full transition-all duration-300 pointer-events-none z-0" />
 
                   <img
                     src={aabsharLogo}
@@ -126,7 +123,7 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                     loading="eager"
                     decoding="async"
                     fetchPriority="high"
-                    className={`relative z-10 object-contain brightness-105 contrast-105 filter drop-shadow-[0_0_8px_rgba(0,212,255,0.65)] transition-all duration-300 group-hover:scale-102 group-hover:drop-shadow-[0_0_12px_rgba(0,212,255,0.85)] ${
+                    className={`relative z-10 object-contain transition-all duration-300 group-hover:scale-102 ${
                       isScrolled
                         ? 'h-14 sm:h-16 md:h-18 lg:h-20'
                         : 'h-16 sm:h-18 md:h-22 lg:h-24'
@@ -137,7 +134,7 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
               </div>
 
               {/* Desktop Navigation Link Pills with Gold/Cyan Active Dot Indicator */}
-              <div className="hidden md:flex items-center space-x-1.5 bg-[#0F3A4A]/80 backdrop-blur-md p-1.5 rounded-full border border-[#00D4FF]/25 shadow-inner">
+              <div className="hidden md:flex items-center space-x-1.5 bg-slate-100/90 backdrop-blur-md p-1.5 rounded-full border border-slate-200 shadow-inner">
                 {navLinks.map((link) => {
                   const isActive = activeSection === link.href;
                   return (
@@ -146,12 +143,12 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                       onClick={() => handleLinkClick(link.href)}
                       className={`font-sans text-xs lg:text-sm font-bold transition-all duration-300 cursor-pointer px-4 py-1.8 rounded-full flex items-center gap-1.5 relative ${
                         isActive 
-                          ? 'text-white bg-[#0A1930] shadow-md border border-[#00D4FF]/40' 
-                          : 'text-slate-300 hover:text-white hover:bg-white/10'
+                          ? 'text-[#0284C7] bg-white shadow-sm border border-slate-200/80 font-black' 
+                          : 'text-slate-600 hover:text-slate-900 hover:bg-white/80'
                       }`}
                     >
                       {isActive && (
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24A] shadow-[0_0_8px_#C9A24A] animate-pulse" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#00D4FF] shadow-[0_0_6px_#00D4FF] animate-pulse" />
                       )}
                       {link.name}
                     </button>
@@ -159,16 +156,16 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                 })}
               </div>
 
-              {/* Desktop Dynamic Call To Action Button (Signature Gold/Gradient Pill -> Opens WhatsApp directly) */}
+              {/* Desktop Dynamic Call To Action Button */}
               <div className="hidden md:flex items-center">
                 <a
                   id="navbar-cta"
                   href="https://wa.me/923051999897?text=Hi%20Aabshar,%20I%20would%20like%20to%20place%20an%20order%20for%20Aabshar%20Prime%20Water."
                   target="_blank"
                   rel="noreferrer"
-                  className="relative inline-flex items-center justify-center px-6 py-2.5 font-black text-xs lg:text-sm tracking-wider uppercase text-[#0A1930] rounded-full bg-gradient-to-r from-[#C9A24A] via-[#E5C158] to-[#C9A24A] hover:brightness-110 shadow-[0_4px_20px_rgba(201,162,74,0.35)] border border-[#E5C158]/50 press-scale transition-all duration-300 cursor-pointer hover:shadow-[0_0_25px_rgba(201,162,74,0.6)]"
+                  className="relative inline-flex items-center justify-center px-6 py-2.5 font-black text-xs lg:text-sm tracking-wider uppercase text-white rounded-full bg-gradient-to-r from-[#00D4FF] via-[#0284C7] to-[#0369A1] hover:brightness-110 shadow-[0_4px_15px_rgba(2,132,199,0.3)] border border-[#00D4FF]/50 press-scale transition-all duration-300 cursor-pointer hover:shadow-[0_0_20px_rgba(0,212,255,0.5)]"
                 >
-                  <Droplets className="w-4 h-4 mr-1.5 text-[#0A1930] fill-[#0A1930]" />
+                  <Droplets className="w-4 h-4 mr-1.5 text-white fill-white" />
                   Order Now
                 </a>
               </div>
@@ -182,7 +179,7 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                   id="menu-toggle"
                   onClick={() => setIsOpen(!isOpen)}
                   aria-label="Toggle Navigation Menu"
-                  className="text-white hover:text-[#00D4FF] bg-[#0F3A4A]/80 hover:bg-[#0F3A4A] p-2 rounded-xl press-scale transition-colors border border-[#00D4FF]/30 cursor-pointer"
+                  className="text-slate-700 hover:text-[#0284C7] bg-slate-100 hover:bg-slate-200 p-2 rounded-xl press-scale transition-colors border border-slate-200 cursor-pointer"
                 >
                   {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                 </button>
@@ -194,19 +191,13 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                   onClick={() => handleLinkClick('#hero')} 
                   className="relative flex items-center justify-center group cursor-pointer bg-transparent border-0 active:scale-95 transition-transform duration-200 py-1"
                 >
-                  {/* Soft glowing radial gradient aura behind logo */}
-                  <div className="absolute inset-0 m-auto w-[130%] h-[130%] bg-[radial-gradient(ellipse_at_center,rgba(0,212,255,0.38)_0%,rgba(0,212,255,0.12)_55%,transparent_75%)] rounded-full blur-md pointer-events-none group-hover:scale-110 transition-transform duration-300 z-0" />
-
-                  {/* Subtle horizontal cyan underline / glow bar beneath logo */}
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4/5 h-[2px] bg-gradient-to-r from-transparent via-[#00D4FF] to-transparent shadow-[0_0_8px_#00D4FF] opacity-85 group-hover:opacity-100 group-hover:w-full transition-all duration-300 pointer-events-none z-0" />
-
                   <img
                     src={aabsharLogo}
                     alt="Aabshar Prime Water Logo"
                     loading="eager"
                     decoding="async"
                     fetchPriority="high"
-                    className={`relative z-10 object-contain brightness-105 contrast-105 filter drop-shadow-[0_0_8px_rgba(0,212,255,0.65)] transition-all duration-300 group-hover:scale-102 group-hover:drop-shadow-[0_0_12px_rgba(0,212,255,0.85)] ${
+                    className={`relative z-10 object-contain transition-all duration-300 group-hover:scale-102 ${
                       isScrolled
                         ? 'h-13 sm:h-15'
                         : 'h-15 sm:h-17'
@@ -222,9 +213,9 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                   href="https://wa.me/923051999897?text=Hi%20Aabshar,%20I%20would%20like%20to%20place%20an%20order%20for%20Aabshar%20Prime%20Water."
                   target="_blank"
                   rel="noreferrer"
-                  className="px-3.5 py-1.8 text-xs font-black text-[#0A1930] bg-gradient-to-r from-[#C9A24A] via-[#E5C158] to-[#C9A24A] rounded-full shadow-md active:scale-95 transition-all flex items-center gap-1 cursor-pointer border border-[#E5C158]/40"
+                  className="px-3.5 py-1.8 text-xs font-black text-white bg-gradient-to-r from-[#00D4FF] via-[#0284C7] to-[#0369A1] rounded-full shadow-md active:scale-95 transition-all flex items-center gap-1 cursor-pointer border border-[#00D4FF]/40"
                 >
-                  <Droplets className="w-3.5 h-3.5 text-[#0A1930] fill-[#0A1930]" />
+                  <Droplets className="w-3.5 h-3.5 text-white fill-white" />
                   <span>Order</span>
                 </a>
               </div>
@@ -242,21 +233,21 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setIsOpen(false)}
-                className="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-40 md:hidden"
+                className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-40 md:hidden"
                 id="drawer-backdrop"
               />
 
-              {/* Modern Slide-out Panel Drawer Container in Navy Theme */}
+              {/* Modern Slide-out Panel Drawer Container in Clean White Theme */}
               <motion.div
                 initial={{ x: '100%' }}
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'spring', damping: 26, stiffness: 210 }}
-                className="fixed top-0 right-0 h-screen w-full max-w-[340px] sm:max-w-[380px] bg-[#0A1930] text-white z-50 md:hidden shadow-2xl border-l border-[#00D4FF]/30 flex flex-col justify-between overflow-y-auto"
+                className="fixed top-0 right-0 h-screen w-full max-w-[340px] sm:max-w-[380px] bg-white text-slate-900 z-50 md:hidden shadow-2xl border-l border-slate-200 flex flex-col justify-between overflow-y-auto"
                 id="drawer-panel"
               >
                 {/* 1. Drawer Header Panel */}
-                <div className="p-5 border-b border-white/10 flex items-center justify-between bg-[#0F3A4A]/80">
+                <div className="p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
                   <div className="flex items-center gap-2">
                     <img 
                       src={aabsharLogo} 
@@ -268,7 +259,7 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                   <button
                     onClick={() => setIsOpen(false)}
                     aria-label="Close menu"
-                    className="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-white/20"
+                    className="w-9 h-9 flex items-center justify-center rounded-full bg-slate-200/80 hover:bg-slate-300 text-slate-700 transition-colors border border-slate-200"
                   >
                     <X className="w-4 h-4" />
                   </button>
@@ -277,7 +268,7 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                 {/* 2. Main Navigation Links Lists */}
                 <div className="px-5 py-6 flex-grow space-y-6">
                   <div>
-                    <h4 className="text-[10px] font-extrabold text-[#C9A24A] uppercase tracking-widest pl-1 mb-3 select-none">
+                    <h4 className="text-[10px] font-extrabold text-[#0284C7] uppercase tracking-widest pl-1 mb-3 select-none">
                       Menu Sections
                     </h4>
                     <div className="space-y-1.5">
@@ -289,17 +280,17 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                             onClick={() => handleLinkClick(link.href)}
                             className={`flex items-center justify-between w-full px-4 py-3 rounded-xl text-sm font-bold transition-all ${
                               isActive
-                                ? 'text-[#00D4FF] bg-[#0F3A4A] shadow-md border-l-4 border-[#00D4FF] pl-3'
-                                : 'text-slate-300 hover:text-white hover:bg-white/5 border-l-4 border-transparent'
+                                ? 'text-[#0284C7] bg-sky-50 shadow-xs border-l-4 border-[#00D4FF] pl-3'
+                                : 'text-slate-700 hover:text-slate-950 hover:bg-slate-100 border-l-4 border-transparent'
                             }`}
                           >
                             <div className="flex items-center gap-3">
-                              <span className={isActive ? 'text-[#00D4FF]' : 'text-slate-400'}>
+                              <span className={isActive ? 'text-[#0284C7]' : 'text-slate-400'}>
                                 {link.icon}
                               </span>
                               <span>{link.name}</span>
                             </div>
-                            <ChevronRight className={`w-4 h-4 transition-transform ${isActive ? 'text-[#00D4FF] translate-x-1' : 'text-slate-500'}`} />
+                            <ChevronRight className={`w-4 h-4 transition-transform ${isActive ? 'text-[#0284C7] translate-x-1' : 'text-slate-400'}`} />
                           </button>
                         );
                       })}
@@ -307,49 +298,49 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                   </div>
 
                   {/* 3. Balanced Quality Summary Widget Card */}
-                  <div className="p-4 bg-[#0F3A4A]/60 rounded-2xl border border-white/10 space-y-2">
-                    <div className="flex items-center gap-2 text-[#00D4FF] font-extrabold text-xs tracking-wider uppercase">
+                  <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                    <div className="flex items-center gap-2 text-[#0284C7] font-extrabold text-xs tracking-wider uppercase">
                       <Info className="w-4 h-4" />
                       <span>Standard Certification</span>
                     </div>
-                    <p className="text-[11px] text-slate-300 leading-relaxed text-left font-medium">
+                    <p className="text-[11px] text-slate-600 leading-relaxed text-left font-medium">
                       Formulated with scientifically balanced natural minerals TDS 120–160, offering healthy active companion standards daily.
                     </p>
-                    <div className="grid grid-cols-2 gap-2 pt-2 border-t border-white/10">
+                    <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-200">
                       <div>
-                        <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider block">Bio TDS</span>
-                        <span className="text-[11px] font-black text-[#C9A24A]">135 PPM Target</span>
+                        <span className="text-[9px] text-slate-500 font-bold uppercase tracking-wider block">Bio TDS</span>
+                        <span className="text-[11px] font-black text-[#0284C7]">135 PPM Target</span>
                       </div>
                       <div>
-                        <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider block">Lab Sourced</span>
-                        <span className="text-[11px] font-black text-[#00D4FF]">100% PCRWR Approved</span>
+                        <span className="text-[9px] text-slate-500 font-bold uppercase tracking-wider block">Lab Sourced</span>
+                        <span className="text-[11px] font-black text-[#0284C7]">100% PCRWR Approved</span>
                       </div>
                     </div>
                   </div>
 
                   {/* 4. Contact Details Widget Card */}
-                  <div className="p-4 bg-[#0F3A4A]/40 rounded-2xl border border-white/10 space-y-3">
-                    <div className="flex items-center gap-2 text-white font-bold text-xs uppercase tracking-wider">
-                      <Phone className="w-4 h-4 text-[#C9A24A]" />
+                  <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
+                    <div className="flex items-center gap-2 text-slate-800 font-bold text-xs uppercase tracking-wider">
+                      <Phone className="w-4 h-4 text-[#0284C7]" />
                       <span>Regional Delivery Ops</span>
                     </div>
                     
-                    <div className="space-y-2 text-[11px] text-slate-300">
+                    <div className="space-y-2 text-[11px] text-slate-600">
                       <div className="flex items-start gap-2.5">
-                        <MapPin className="w-3.5 h-3.5 text-[#00D4FF] mt-0.5 flex-shrink-0" />
+                        <MapPin className="w-3.5 h-3.5 text-[#0284C7] mt-0.5 flex-shrink-0" />
                         <span className="leading-tight text-left">Islamabad, Rawalpindi & Fateh Jang</span>
                       </div>
 
                       <div className="flex items-start gap-2.5">
-                        <Phone className="w-3.5 h-3.5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                        <a href="tel:+923051999897" className="text-[#C9A24A] font-black hover:underline text-left">
+                        <Phone className="w-3.5 h-3.5 text-[#0284C7] mt-0.5 flex-shrink-0" />
+                        <a href="tel:+923051999897" className="text-[#0284C7] font-black hover:underline text-left">
                           +92-305-1999897
                         </a>
                       </div>
 
                       <div className="flex items-start gap-2.5">
-                        <Mail className="w-3.5 h-3.5 text-[#00D4FF] mt-0.5 flex-shrink-0" />
-                        <a href="mailto:aabshar.org@gmail.com" className="text-slate-300 font-medium hover:underline text-left break-all">
+                        <Mail className="w-3.5 h-3.5 text-[#0284C7] mt-0.5 flex-shrink-0" />
+                        <a href="mailto:aabshar.org@gmail.com" className="text-slate-600 font-medium hover:underline text-left break-all">
                           aabshar.org@gmail.com
                         </a>
                       </div>
@@ -357,16 +348,16 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                   </div>
                 </div>
 
-                {/* 5. Mobile CTA Bottom Block (Golden Button opening WhatsApp) */}
-                <div className="p-5 border-t border-white/10 bg-[#0F3A4A]/80">
+                {/* 5. Mobile CTA Bottom Block */}
+                <div className="p-5 border-t border-slate-200 bg-slate-50">
                   <a
                     href="https://wa.me/923051999897?text=Hi%20Aabshar,%20I%20would%20like%20to%20place%20an%20order%20for%20Aabshar%20Prime%20Water."
                     target="_blank"
                     rel="noreferrer"
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-center w-full px-5 py-3.5 text-sm font-black text-[#0A1930] bg-gradient-to-r from-[#C9A24A] via-[#E5C158] to-[#C9A24A] rounded-xl shadow-[0_4px_20px_rgba(201,162,74,0.4)] hover:brightness-110 active:scale-98 transition-all cursor-pointer border border-[#E5C158]/50 uppercase tracking-wider"
+                    className="flex items-center justify-center w-full px-5 py-3.5 text-sm font-black text-white bg-gradient-to-r from-[#00D4FF] via-[#0284C7] to-[#0369A1] rounded-xl shadow-md hover:brightness-110 active:scale-98 transition-all cursor-pointer border border-[#00D4FF]/40 uppercase tracking-wider"
                   >
-                    <Droplets className="w-4.5 h-4.5 mr-2 text-[#0A1930] fill-[#0A1930] animate-bounce" />
+                    <Droplets className="w-4.5 h-4.5 mr-2 text-white fill-white animate-bounce" />
                     Place Quick Order
                   </a>
                 </div>

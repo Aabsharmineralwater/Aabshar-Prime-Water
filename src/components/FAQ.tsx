@@ -98,18 +98,13 @@ export default function FAQ() {
   return (
     <section 
       id="faq" 
-      className="py-20 bg-gradient-to-b from-[#0A1930] via-[#0D223D] to-[#0A1930] text-white relative overflow-hidden cv-auto border-t border-[#00D4FF]/20"
+      className="py-20 bg-slate-50 text-slate-800 relative overflow-hidden cv-auto border-t border-slate-200"
     >
       {/* Schema.org FAQPage structured data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-
-      {/* Decorative ambient water glows & wave divider */}
-      <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#00D4FF]/50 to-transparent pointer-events-none z-20" />
-      <div className="absolute top-1/4 -right-20 w-80 h-80 bg-[#00D4FF]/10 rounded-full blur-[130px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -left-20 w-80 h-80 bg-[#C9A24A]/10 rounded-full blur-[130px] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -119,9 +114,9 @@ export default function FAQ() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#00D4FF]/15 border border-[#00D4FF]/30 text-[#00D4FF] text-xs font-mono font-bold uppercase tracking-wider mb-3"
+            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-50 border border-sky-200 text-[#0284C7] text-xs font-mono font-bold uppercase tracking-wider mb-3"
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#C9A24A]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#0284C7]" />
             <span>Got Questions? We Have Answers</span>
           </motion.div>
           
@@ -130,16 +125,16 @@ export default function FAQ() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="font-serif text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight"
+            className="font-serif text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight"
           >
-            Frequently Asked <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-[#00D4FF] via-[#38bdf8] to-[#C9A24A]">Questions</span>
+            Frequently Asked <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-[#0088CC] via-[#00B4D8] to-[#0284C7]">Questions</span>
           </motion.h2>
 
-          <p className="font-sans text-slate-300 text-sm sm:text-base mt-3 max-w-2xl mx-auto">
+          <p className="font-sans text-slate-600 text-sm sm:text-base mt-3 max-w-2xl mx-auto">
             Everything you need to know about Aabshar's bio-balanced 135 TDS mineral water, express delivery coverage, and custom B2B bottle labeling.
           </p>
 
-          <div className="w-20 h-1 bg-gradient-to-r from-[#00D4FF] via-[#38bdf8] to-[#C9A24A] mx-auto mt-4 rounded-full" />
+          <div className="w-20 h-1 bg-[#0284C7] mx-auto mt-4 rounded-full" />
         </div>
 
         {/* Filter Category Tabs */}
@@ -150,14 +145,15 @@ export default function FAQ() {
             return (
               <button
                 key={cat.id}
+                type="button"
                 onClick={() => setActiveTab(cat.id)}
                 className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold flex items-center gap-2 transition-all duration-300 cursor-pointer ${
                   isActive
-                    ? 'bg-gradient-to-r from-[#00D4FF] to-[#0F3A4A] text-white shadow-[0_0_20px_rgba(0,212,255,0.4)] border border-[#00D4FF]'
-                    : 'bg-[#0A1930]/80 text-slate-300 hover:text-white hover:bg-[#0F3A4A]/60 border border-white/10'
+                    ? 'bg-[#0284C7] text-white shadow-sm border border-[#0284C7]'
+                    : 'bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-100 border border-slate-200'
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-[#00D4FF]'}`} />
+                <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-[#0284C7]'}`} />
                 <span>{cat.label}</span>
               </button>
             );
@@ -177,29 +173,30 @@ export default function FAQ() {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
                   isOpen
-                    ? 'bg-[#0D2644]/90 border-[#00D4FF] shadow-[0_10px_30px_rgba(0,212,255,0.2)]'
-                    : 'bg-[#0A1930]/80 border-white/10 hover:border-[#00D4FF]/40'
+                    ? 'bg-white border-[#0284C7] shadow-md'
+                    : 'bg-white border-slate-200 hover:border-sky-300 shadow-sm'
                 }`}
               >
                 <button
+                  type="button"
                   onClick={() => toggleAccordion(faq.id)}
                   className="w-full px-6 py-5 flex items-center justify-between text-left gap-4 cursor-pointer focus:outline-none select-none group"
                 >
                   <div className="flex items-center gap-3.5">
                     <div className={`w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${
-                      isOpen ? 'bg-[#00D4FF] text-[#0A1930]' : 'bg-[#0F3A4A] text-[#00D4FF] group-hover:bg-[#00D4FF]/20'
+                      isOpen ? 'bg-[#0284C7] text-white' : 'bg-sky-50 text-[#0284C7] group-hover:bg-sky-100'
                     }`}>
                       <Droplets className="w-4 h-4 fill-current" />
                     </div>
-                    <span className="font-serif text-base sm:text-lg font-bold text-white group-hover:text-[#00D4FF] transition-colors">
+                    <span className="font-serif text-base sm:text-lg font-bold text-slate-900 group-hover:text-[#0284C7] transition-colors">
                       {faq.question}
                     </span>
                   </div>
 
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center border transition-transform duration-300 flex-shrink-0 ${
                     isOpen 
-                      ? 'bg-[#00D4FF]/20 border-[#00D4FF] text-[#00D4FF] rotate-180' 
-                      : 'border-white/20 text-slate-400 group-hover:text-white'
+                      ? 'bg-sky-50 border-sky-300 text-[#0284C7] rotate-180' 
+                      : 'border-slate-200 text-slate-400 group-hover:text-slate-700'
                   }`}>
                     <ChevronDown className="w-4 h-4" />
                   </div>
@@ -214,7 +211,7 @@ export default function FAQ() {
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-6 pt-1 border-t border-white/5 font-sans text-slate-300 text-sm sm:text-base leading-relaxed">
+                      <div className="px-6 pb-6 pt-1 border-t border-slate-100 font-sans text-slate-600 text-sm sm:text-base leading-relaxed">
                         <p className="mb-4">{faq.answer}</p>
 
                         {faq.highlights && faq.highlights.length > 0 && (
@@ -222,9 +219,9 @@ export default function FAQ() {
                             {faq.highlights.map((hl, i) => (
                               <span 
                                 key={i}
-                                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00D4FF]/10 border border-[#00D4FF]/30 text-[#00D4FF] text-xs font-mono font-bold"
+                                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-[#0284C7] text-xs font-mono font-bold"
                               >
-                                <Award className="w-3 h-3 text-[#C9A24A]" />
+                                <Award className="w-3 h-3 text-[#0284C7]" />
                                 <span>{hl}</span>
                               </span>
                             ))}
@@ -244,17 +241,17 @@ export default function FAQ() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#0F3A4A] via-[#0A1930] to-[#0F3A4A] border border-[#00D4FF]/30 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl text-center sm:text-left relative overflow-hidden"
+          className="mt-12 p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm text-center sm:text-left relative overflow-hidden"
         >
           <div className="relative z-10 flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#25D366]/20 border border-[#25D366]/50 flex items-center justify-center text-[#25D366] flex-shrink-0">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 flex-shrink-0">
               <MessageCircle className="w-6 h-6 fill-current" />
             </div>
             <div>
-              <h3 className="font-serif text-lg sm:text-xl font-bold text-white">
+              <h3 className="font-serif text-lg sm:text-xl font-bold text-slate-900">
                 Have a unique question or bulk custom inquiry?
               </h3>
-              <p className="font-sans text-xs sm:text-sm text-slate-300 mt-1">
+              <p className="font-sans text-xs sm:text-sm text-slate-600 mt-1">
                 Our water hydrologist team is available on WhatsApp 24/7 for instant support.
               </p>
             </div>
@@ -264,7 +261,7 @@ export default function FAQ() {
             href="https://wa.me/923051999897?text=Hi%20Aabshar,%20I%20have%20a%20question%20regarding%20Aabshar%20Prime%20Water."
             target="_blank"
             rel="noreferrer"
-            className="relative z-10 px-6 py-3.5 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-[0_0_20px_rgba(37,211,102,0.4)] active:scale-95 transition-all flex items-center gap-2 flex-shrink-0 cursor-pointer"
+            className="relative z-10 px-6 py-3.5 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-md active:scale-95 transition-all flex items-center gap-2 flex-shrink-0 cursor-pointer"
           >
             <MessageCircle className="w-4 h-4 fill-current" />
             <span>Chat on WhatsApp</span>

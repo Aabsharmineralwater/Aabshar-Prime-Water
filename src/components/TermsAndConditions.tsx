@@ -6,26 +6,23 @@ interface TermsAndConditionsProps {
 
 export default function TermsAndConditions({ onBackToHome }: TermsAndConditionsProps) {
   return (
-    <section className="py-24 bg-transparent relative overflow-hidden text-slate-100 min-h-[80vh]">
-      {/* Background Overlays */}
-      <div className="absolute inset-0 bg-[rgba(5,15,35,0.75)] z-0 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-brand-teal/5 rounded-full blur-[140px] pointer-events-none" />
-
+    <section className="py-24 bg-slate-50 relative overflow-hidden text-slate-800 min-h-[80vh]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* Back Button */}
         <button
+          type="button"
           onClick={onBackToHome}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-sky-200 hover:text-white hover:bg-white/10 hover:border-brand-teal/30 transition-all duration-300 cursor-pointer mb-8 font-sans text-sm font-semibold shadow-inner-light"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-[#0284C7] hover:bg-slate-100 transition-all duration-300 cursor-pointer mb-8 font-sans text-sm font-semibold shadow-sm"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Home</span>
         </button>
 
         {/* Article Container */}
-        <article className="frosted-glass-card rounded-3xl p-8 sm:p-12 border border-white/10 shadow-3d text-slate-800 relative overflow-hidden">
+        <article className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-md text-slate-800 relative overflow-hidden">
           {/* Subtle top decoration */}
-          <div className="absolute top-0 inset-x-0 h-1.5 bg-linear-to-r from-brand-teal to-brand-aqua" />
+          <div className="absolute top-0 inset-x-0 h-1.5 bg-[#0284C7]" />
           
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
             <div className="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center text-brand-teal">

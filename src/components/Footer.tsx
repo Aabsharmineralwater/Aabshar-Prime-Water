@@ -11,12 +11,9 @@ export default function Footer({ onLinkClick }: FooterProps) {
   };
 
   return (
-    <footer className="pt-12 sm:pt-16 pb-20 md:pb-6 relative overflow-hidden font-sans text-slate-300 bg-[#0A1930]">
-      {/* Top Border Gradient Line */}
-      <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#4FD1E8]/60 to-transparent pointer-events-none z-20" />
-
+    <footer className="pt-12 sm:pt-16 pb-20 md:pb-6 relative overflow-hidden font-sans text-slate-600 bg-white border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-0 lg:divide-x divide-white/10 items-start">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-0 lg:divide-x divide-slate-200 items-start">
           
           {/* Column 1 — Brand */}
           <div className="flex flex-col items-start gap-4 lg:pr-8">
@@ -31,20 +28,20 @@ export default function Footer({ onLinkClick }: FooterProps) {
                 referrerPolicy="no-referrer"
               />
             </div>
-            <p className="font-serif italic text-base font-bold text-[#C9A24A]">
+            <p className="font-serif italic text-base font-bold text-[#0284C7]">
               Pure. Natural. Refreshing.
             </p>
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
               Premium mineral water delivered fresh to your doorstep across Rawalpindi, Islamabad, and Fateh Jang.
             </p>
             
-            {/* Social links - Duotone Glass Badges */}
+            {/* Social links */}
             <div className="flex items-center gap-3 pt-2">
               <a
                 href="https://www.facebook.com/share/1Cctr2CWfk/"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-xl bg-[#0F3A4A]/80 border border-[#C9A24A]/30 flex items-center justify-center text-[#C9A24A] hover:bg-[#C9A24A] hover:text-[#0A1930] shadow-sm transition-all duration-300"
+                className="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-[#0284C7] hover:text-white shadow-sm transition-all duration-300"
                 aria-label="Facebook"
               >
                 <Facebook className="w-4.5 h-4.5" />
@@ -53,7 +50,7 @@ export default function Footer({ onLinkClick }: FooterProps) {
                 href="https://www.instagram.com/aabshar_org/"
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-xl bg-[#0F3A4A]/80 border border-[#C9A24A]/30 flex items-center justify-center text-[#C9A24A] hover:bg-[#C9A24A] hover:text-[#0A1930] shadow-sm transition-all duration-300"
+                className="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-[#0284C7] hover:text-white shadow-sm transition-all duration-300"
                 aria-label="Instagram"
               >
                 <Instagram className="w-4.5 h-4.5" />
@@ -62,7 +59,7 @@ export default function Footer({ onLinkClick }: FooterProps) {
                 href={`https://wa.me/923051999897?text=${encodeURIComponent("Hi Aabshar! 👋\nI'd like to place an order or get more information.\nPlease assist me.")}`}
                 target="_blank"
                 rel="noreferrer"
-                className="w-10 h-10 rounded-xl bg-[#0F3A4A]/80 border border-[#00D4FF]/30 flex items-center justify-center text-[#00D4FF] hover:bg-[#00D4FF] hover:text-[#0A1930] shadow-sm transition-all duration-300"
+                className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 hover:bg-emerald-600 hover:text-white shadow-sm transition-all duration-300"
                 aria-label="WhatsApp"
               >
                 <svg viewBox="0 0 24 24" className="w-4.5 h-4.5 fill-current" xmlns="http://www.w3.org/2000/svg">
@@ -74,43 +71,49 @@ export default function Footer({ onLinkClick }: FooterProps) {
 
           {/* Column 2 — Quick Links */}
           <div className="flex flex-col items-start gap-4 lg:px-8">
-            <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider relative after:content-[''] after:block after:w-8 after:h-0.5 after:bg-[#C9A24A] after:mt-1.5">
+            <h4 className="font-serif text-sm font-bold text-slate-900 uppercase tracking-wider relative after:content-[''] after:block after:w-8 after:h-0.5 after:bg-[#0284C7] after:mt-1.5">
               Quick Links
             </h4>
             <div className="flex flex-col gap-2.5 text-left items-start">
               <button
+                type="button"
                 onClick={() => handleLinkClick('#hero')}
-                className="text-xs sm:text-sm text-slate-300 hover:text-[#00D4FF] hover:translate-x-1 transition-all cursor-pointer bg-transparent border-0 py-0"
+                className="text-xs sm:text-sm text-slate-600 hover:text-[#0284C7] hover:translate-x-1 transition-all cursor-pointer bg-transparent border-0 py-0"
               >
                 Home
               </button>
               <button
+                type="button"
                 onClick={() => handleLinkClick('#products')}
-                className="text-xs sm:text-sm text-slate-300 hover:text-[#00D4FF] hover:translate-x-1 transition-all cursor-pointer bg-transparent border-0 py-0"
+                className="text-xs sm:text-sm text-slate-600 hover:text-[#0284C7] hover:translate-x-1 transition-all cursor-pointer bg-transparent border-0 py-0"
               >
                 Products
               </button>
               <button
+                type="button"
                 onClick={() => handleLinkClick('#b2b')}
-                className="text-xs sm:text-sm text-slate-300 hover:text-[#00D4FF] hover:translate-x-1 transition-all cursor-pointer bg-transparent border-0 py-0"
+                className="text-xs sm:text-sm text-slate-600 hover:text-[#0284C7] hover:translate-x-1 transition-all cursor-pointer bg-transparent border-0 py-0"
               >
                 B2B Service
               </button>
               <button
+                type="button"
                 onClick={() => handleLinkClick('#about')}
-                className="text-xs sm:text-sm text-slate-300 hover:text-[#00D4FF] hover:translate-x-1 transition-all cursor-pointer bg-transparent border-0 py-0"
+                className="text-xs sm:text-sm text-slate-600 hover:text-[#0284C7] hover:translate-x-1 transition-all cursor-pointer bg-transparent border-0 py-0"
               >
                 About Us
               </button>
               <button
+                type="button"
                 onClick={() => handleLinkClick('#faq')}
-                className="text-xs sm:text-sm text-slate-300 hover:text-[#00D4FF] hover:translate-x-1 transition-all cursor-pointer bg-transparent border-0 py-0"
+                className="text-xs sm:text-sm text-slate-600 hover:text-[#0284C7] hover:translate-x-1 transition-all cursor-pointer bg-transparent border-0 py-0"
               >
                 FAQ
               </button>
               <button
+                type="button"
                 onClick={() => handleLinkClick('#contact')}
-                className="text-xs sm:text-sm text-slate-300 hover:text-[#00D4FF] hover:translate-x-1 transition-all cursor-pointer bg-transparent border-0 py-0"
+                className="text-xs sm:text-sm text-slate-600 hover:text-[#0284C7] hover:translate-x-1 transition-all cursor-pointer bg-transparent border-0 py-0"
               >
                 Contact
               </button>
@@ -119,20 +122,20 @@ export default function Footer({ onLinkClick }: FooterProps) {
 
           {/* Column 3 — Our Products */}
           <div className="flex flex-col items-start gap-4 lg:px-8">
-            <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider relative after:content-[''] after:block after:w-8 after:h-0.5 after:bg-[#C9A24A] after:mt-1.5">
+            <h4 className="font-serif text-sm font-bold text-slate-900 uppercase tracking-wider relative after:content-[''] after:block after:w-8 after:h-0.5 after:bg-[#0284C7] after:mt-1.5">
               Our Products
             </h4>
-            <ul className="flex flex-col gap-2.5 text-slate-300 text-xs sm:text-sm text-left">
-              <li className="cursor-pointer hover:text-[#00D4FF] transition-colors" onClick={() => handleLinkClick('#products')}>
+            <ul className="flex flex-col gap-2.5 text-slate-600 text-xs sm:text-sm text-left">
+              <li className="cursor-pointer hover:text-[#0284C7] transition-colors" onClick={() => handleLinkClick('#products')}>
                 500ml Mineral Water Bottle
               </li>
-              <li className="cursor-pointer hover:text-[#00D4FF] transition-colors" onClick={() => handleLinkClick('#products')}>
+              <li className="cursor-pointer hover:text-[#0284C7] transition-colors" onClick={() => handleLinkClick('#products')}>
                 1.5 Litre Mineral Water Bottle
               </li>
-              <li className="cursor-pointer hover:text-[#00D4FF] transition-colors" onClick={() => handleLinkClick('#b2b')}>
+              <li className="cursor-pointer hover:text-[#0284C7] transition-colors" onClick={() => handleLinkClick('#b2b')}>
                 Private Label / Custom Bottles
               </li>
-              <li className="cursor-pointer hover:text-[#00D4FF] transition-colors" onClick={() => handleLinkClick('#b2b')}>
+              <li className="cursor-pointer hover:text-[#0284C7] transition-colors" onClick={() => handleLinkClick('#b2b')}>
                 B2B & Corporate Orders
               </li>
             </ul>
@@ -140,24 +143,24 @@ export default function Footer({ onLinkClick }: FooterProps) {
 
           {/* Column 4 — Contact Us */}
           <div className="flex flex-col items-start gap-4 lg:pl-8">
-            <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider relative after:content-[''] after:block after:w-8 after:h-0.5 after:bg-[#C9A24A] after:mt-1.5">
+            <h4 className="font-serif text-sm font-bold text-slate-900 uppercase tracking-wider relative after:content-[''] after:block after:w-8 after:h-0.5 after:bg-[#0284C7] after:mt-1.5">
               Contact Us
             </h4>
-            <ul className="flex flex-col gap-3 text-slate-300 text-xs sm:text-sm text-left">
+            <ul className="flex flex-col gap-3 text-slate-600 text-xs sm:text-sm text-left">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-[#00D4FF] flex-shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-[#0284C7] flex-shrink-0 mt-0.5" />
                 <span><strong>Serving:</strong> Rawalpindi, Islamabad, Fateh Jang</span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-[#C9A24A] flex-shrink-0" />
-                <span><strong>Phone:</strong> <a href="tel:+923051999897" className="hover:text-[#00D4FF] font-medium hover:underline">+92-305-1999897</a></span>
+                <Phone className="w-5 h-5 text-[#0284C7] flex-shrink-0" />
+                <span><strong>Phone:</strong> <a href="tel:+923051999897" className="hover:text-[#0284C7] font-medium hover:underline">+92-305-1999897</a></span>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-[#00D4FF] flex-shrink-0" />
-                <span><strong>Email:</strong> <a href="mailto:aabshar.org@gmail.com" className="hover:text-[#00D4FF] hover:underline font-medium">aabshar.org@gmail.com</a></span>
+                <Mail className="w-5 h-5 text-[#0284C7] flex-shrink-0" />
+                <span><strong>Email:</strong> <a href="mailto:aabshar.org@gmail.com" className="hover:text-[#0284C7] hover:underline font-medium">aabshar.org@gmail.com</a></span>
               </li>
               <li className="flex items-center gap-3">
-                <Clock className="w-5 h-5 text-[#C9A24A] flex-shrink-0" />
+                <Clock className="w-5 h-5 text-[#0284C7] flex-shrink-0" />
                 <span><strong>Delivery Hours:</strong> 8am – 8pm Daily</span>
               </li>
             </ul>
@@ -166,17 +169,17 @@ export default function Footer({ onLinkClick }: FooterProps) {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p className="font-sans text-slate-400">
+        <div className="border-t border-slate-200 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <p className="font-sans text-slate-500">
             © 2026 Aabshar Prime Water. All Rights Reserved.
           </p>
-          <div className="flex items-center gap-4 text-slate-400">
-            <button onClick={() => handleLinkClick('#privacy')} className="hover:text-[#4FD1E8] transition-colors cursor-pointer bg-transparent border-0 py-0">Privacy Policy</button>
-            <span className="text-white/20">|</span>
-            <button onClick={() => handleLinkClick('#terms')} className="hover:text-[#4FD1E8] transition-colors cursor-pointer bg-transparent border-0 py-0">Terms & Conditions</button>
+          <div className="flex items-center gap-4 text-slate-500">
+            <button type="button" onClick={() => handleLinkClick('#privacy')} className="hover:text-[#0284C7] transition-colors cursor-pointer bg-transparent border-0 py-0">Privacy Policy</button>
+            <span className="text-slate-300">|</span>
+            <button type="button" onClick={() => handleLinkClick('#terms')} className="hover:text-[#0284C7] transition-colors cursor-pointer bg-transparent border-0 py-0">Terms & Conditions</button>
           </div>
-          <p className="flex items-center gap-1 font-medium text-slate-400">
-            Made with <span className="text-[#4FD1E8] animate-pulse">💧</span> in Pakistan
+          <p className="flex items-center gap-1 font-medium text-slate-500">
+            Made with <span className="text-[#0284C7] animate-pulse">💧</span> in Pakistan
           </p>
         </div>
       </div>

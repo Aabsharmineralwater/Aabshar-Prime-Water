@@ -11,24 +11,24 @@ const trustBadges = [
   {
     id: 'badge-1',
     icon: ShieldCheck,
-    iconColor: 'text-[#00D4FF]',
-    glowColor: 'from-[#00D4FF]/20',
+    iconColor: 'text-[#0284C7]',
+    glowColor: 'from-sky-100',
     title: 'No Upfront Payment',
     subtitle: 'Pay Cash on Delivery',
   },
   {
     id: 'badge-2',
     icon: MessageCircle,
-    iconColor: 'text-[#25D366]',
-    glowColor: 'from-[#25D366]/20',
+    iconColor: 'text-emerald-600',
+    glowColor: 'from-emerald-100',
     title: 'WhatsApp Confirmation',
     subtitle: 'Within 10 Minutes',
   },
   {
     id: 'badge-3',
     icon: Truck,
-    iconColor: 'text-[#C9A24A]',
-    glowColor: 'from-[#C9A24A]/20',
+    iconColor: 'text-[#0284C7]',
+    glowColor: 'from-sky-100',
     title: 'Chilled Fleet Delivery',
     subtitle: 'Direct Doorstep Service',
   },
@@ -173,11 +173,7 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
   };
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-b from-[#0A1930] via-[#0D223D] to-[#0A1930] text-white relative overflow-hidden cv-auto">
-      {/* Top & Bottom Accent Lines */}
-      <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#00D4FF]/40 to-[#C9A24A]/40 pointer-events-none z-20" />
-      <div className="absolute bottom-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#00D4FF]/40 to-[#C9A24A]/40 pointer-events-none z-20" />
-
+    <section id="contact" className="py-24 bg-white text-slate-800 relative overflow-hidden cv-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-2 font-sans">
         
         {/* Section Header with Subtle Glow & Premium Badge */}
@@ -186,57 +182,57 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C9A24A]/15 border border-[#C9A24A]/40 text-[#C9A24A] text-xs font-mono font-bold tracking-widest uppercase mb-3.5 shadow-[0_0_15px_rgba(201,162,74,0.25)]"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-[#0284C7] text-xs font-mono font-bold tracking-widest uppercase mb-3.5 shadow-xs"
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#E5C158] animate-pulse" />
+            <Sparkles className="w-3.5 h-3.5 text-[#0284C7] animate-pulse" />
             <span>EXPRESS DIRECT DOORSTEP DELIVERY</span>
           </motion.div>
 
-          <h2 className="font-serif text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-            Order <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-[#00D4FF] via-[#38bdf8] to-[#C9A24A]">Aabshar Mineral Water</span>
+          <h2 className="font-serif text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Order <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-[#0088CC] via-[#00B4D8] to-[#0284C7]">Aabshar Mineral Water</span>
           </h2>
           
-          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#00D4FF] to-transparent mx-auto mt-3 rounded-full shadow-[0_0_10px_#00D4FF]" />
+          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#0284C7] to-transparent mx-auto mt-3 rounded-full" />
 
-          <p className="font-sans text-slate-300 text-sm sm:text-base mt-3 max-w-xl mx-auto">
+          <p className="font-sans text-slate-600 text-sm sm:text-base mt-3 max-w-xl mx-auto">
             No credit card needed — cash on doorstep delivery across Rawalpindi, Islamabad & Fateh Jang with guaranteed 135 TDS purity.
           </p>
         </div>
 
-        {/* Sleek Dark Glassmorphism Order Card Container */}
-        <div className="max-w-4xl mx-auto bg-[#0A1930]/90 backdrop-blur-2xl border border-[#00D4FF]/30 rounded-3xl p-6 sm:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.8)] relative overflow-hidden text-white">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-[#00D4FF]/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#C9A24A]/10 rounded-full blur-3xl pointer-events-none" />
+        {/* Sleek White Order Card Container */}
+        <div className="max-w-4xl mx-auto bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden text-slate-800">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-sky-100/50 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-sky-50/70 rounded-full blur-3xl pointer-events-none" />
 
           {/* Trust Badges Row — Desktop/Tablet Grid View (hidden on mobile) */}
-          <div className="hidden md:grid md:grid-cols-3 gap-3.5 pb-8 border-b border-white/10 mb-8 text-center">
-            <div className="p-3.5 rounded-2xl bg-[#0F3A4A]/40 border border-white/10 hover:border-[#00D4FF]/40 hover:bg-[#0F3A4A]/70 transition-all duration-300 flex flex-col items-center group cursor-default shadow-sm">
-              <div className="p-3 rounded-2xl bg-gradient-to-br from-[#00D4FF]/20 to-[#0A1930] border border-[#00D4FF]/40 text-[#00D4FF] mb-2 shadow-[0_0_15px_rgba(0,212,255,0.2)] group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(0,212,255,0.5)] transition-all">
+          <div className="hidden md:grid md:grid-cols-3 gap-3.5 pb-8 border-b border-slate-200 mb-8 text-center">
+            <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-sky-300 hover:bg-sky-50/50 transition-all duration-300 flex flex-col items-center group cursor-default shadow-xs">
+              <div className="p-3 rounded-2xl bg-sky-100 border border-sky-200 text-[#0284C7] mb-2 group-hover:scale-110 transition-all">
                 <ShieldCheck className="w-5 h-5" />
               </div>
-              <span className="font-serif text-xs sm:text-sm font-bold text-white">No Upfront Payment</span>
-              <span className="font-sans text-[11px] text-slate-400 mt-0.5">Pay Cash on Delivery</span>
+              <span className="font-serif text-xs sm:text-sm font-bold text-slate-900">No Upfront Payment</span>
+              <span className="font-sans text-[11px] text-slate-500 mt-0.5">Pay Cash on Delivery</span>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-[#0F3A4A]/40 border border-white/10 hover:border-[#25D366]/40 hover:bg-[#0F3A4A]/70 transition-all duration-300 flex flex-col items-center group cursor-default shadow-sm">
-              <div className="p-3 rounded-2xl bg-gradient-to-br from-[#25D366]/20 to-[#0A1930] border border-[#25D366]/40 text-[#25D366] mb-2 shadow-[0_0_15px_rgba(37,211,102,0.2)] group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(37,211,102,0.5)] transition-all">
+            <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50/50 transition-all duration-300 flex flex-col items-center group cursor-default shadow-xs">
+              <div className="p-3 rounded-2xl bg-emerald-100 border border-emerald-200 text-emerald-600 mb-2 group-hover:scale-110 transition-all">
                 <MessageCircle className="w-5 h-5 fill-current" />
               </div>
-              <span className="font-serif text-xs sm:text-sm font-bold text-white">WhatsApp Confirmation</span>
-              <span className="font-sans text-[11px] text-slate-400 mt-0.5">Within 10 Minutes</span>
+              <span className="font-serif text-xs sm:text-sm font-bold text-slate-900">WhatsApp Confirmation</span>
+              <span className="font-sans text-[11px] text-slate-500 mt-0.5">Within 10 Minutes</span>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-[#0F3A4A]/40 border border-white/10 hover:border-[#C9A24A]/40 hover:bg-[#0F3A4A]/70 transition-all duration-300 flex flex-col items-center group cursor-default shadow-sm">
-              <div className="p-3 rounded-2xl bg-gradient-to-br from-[#C9A24A]/20 to-[#0A1930] border border-[#C9A24A]/40 text-[#C9A24A] mb-2 shadow-[0_0_15px_rgba(201,162,74,0.2)] group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(201,162,74,0.5)] transition-all">
+            <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-sky-300 hover:bg-sky-50/50 transition-all duration-300 flex flex-col items-center group cursor-default shadow-xs">
+              <div className="p-3 rounded-2xl bg-sky-100 border border-sky-200 text-[#0284C7] mb-2 group-hover:scale-110 transition-all">
                 <Truck className="w-5 h-5" />
               </div>
-              <span className="font-serif text-xs sm:text-sm font-bold text-white">Chilled Fleet Delivery</span>
-              <span className="font-sans text-[11px] text-slate-400 mt-0.5">Direct Doorstep Service</span>
+              <span className="font-serif text-xs sm:text-sm font-bold text-slate-900">Chilled Fleet Delivery</span>
+              <span className="font-sans text-[11px] text-slate-500 mt-0.5">Direct Doorstep Service</span>
             </div>
           </div>
 
           {/* Mobile Trust Badges Swipeable Auto-Sliding Carousel (< md) */}
-          <div className="block md:hidden pb-6 border-b border-white/10 mb-8 relative">
+          <div className="block md:hidden pb-6 border-b border-slate-200 mb-8 relative">
             <div 
               className="relative overflow-hidden px-10 py-1"
               onTouchStart={handleTouchStart}
@@ -247,7 +243,7 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
                 type="button"
                 onClick={handlePrevBadge}
                 aria-label="Previous badge"
-                className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#0F3A4A]/90 border border-white/20 text-[#00D4FF] flex items-center justify-center hover:bg-[#00D4FF] hover:text-[#0A1930] transition-colors z-10 cursor-pointer shadow-md active:scale-95"
+                className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border border-slate-200 text-slate-700 flex items-center justify-center hover:bg-sky-50 hover:text-[#0284C7] transition-colors z-10 cursor-pointer shadow-sm active:scale-95"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
@@ -257,7 +253,7 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
                 type="button"
                 onClick={handleNextBadge}
                 aria-label="Next badge"
-                className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#0F3A4A]/90 border border-white/20 text-[#00D4FF] flex items-center justify-center hover:bg-[#00D4FF] hover:text-[#0A1930] transition-colors z-10 cursor-pointer shadow-md active:scale-95"
+                className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border border-slate-200 text-slate-700 flex items-center justify-center hover:bg-sky-50 hover:text-[#0284C7] transition-colors z-10 cursor-pointer shadow-sm active:scale-95"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -270,18 +266,18 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.35, ease: 'easeInOut' }}
-                  className="p-4 rounded-2xl bg-[#0F3A4A]/40 border border-white/10 flex flex-col items-center text-center shadow-sm"
+                  className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col items-center text-center shadow-xs"
                 >
                   {(() => {
                     const badge = trustBadges[badgeIndex];
                     const Icon = badge.icon;
                     return (
                       <>
-                        <div className={`p-3 rounded-2xl bg-gradient-to-br ${badge.glowColor} to-[#0A1930] border border-white/20 ${badge.iconColor} mb-2 shadow-[0_0_15px_rgba(0,212,255,0.2)]`}>
+                        <div className={`p-3 rounded-2xl bg-sky-100 border border-sky-200 ${badge.iconColor} mb-2`}>
                           <Icon className="w-5 h-5 fill-current" />
                         </div>
-                        <span className="font-serif text-sm font-bold text-white">{badge.title}</span>
-                        <span className="font-sans text-[11px] text-slate-400 mt-0.5">{badge.subtitle}</span>
+                        <span className="font-serif text-sm font-bold text-slate-900">{badge.title}</span>
+                        <span className="font-sans text-[11px] text-slate-500 mt-0.5">{badge.subtitle}</span>
                       </>
                     );
                   })()}
@@ -301,7 +297,7 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
                   }}
                   aria-label={`Go to badge ${idx + 1}`}
                   className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                    idx === badgeIndex ? 'w-6 bg-[#00D4FF] shadow-[0_0_8px_#00D4FF]' : 'w-2 bg-white/20 hover:bg-white/40'
+                    idx === badgeIndex ? 'w-6 bg-[#0284C7]' : 'w-2 bg-slate-200 hover:bg-slate-300'
                   }`}
                 />
               ))}
@@ -322,12 +318,12 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
                 {/* Bottle Size Selection Cards */}
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <label className="text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] flex items-center gap-1.5">
-                      <Droplets className="w-3.5 h-3.5 text-[#00D4FF]" />
+                    <label className="text-xs font-mono font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+                      <Droplets className="w-3.5 h-3.5 text-[#0284C7]" />
                       <span>Select Bottle Size Vessel *</span>
                     </label>
                     {errors.size && (
-                      <span className="text-xs text-red-400 font-bold">{errors.size}</span>
+                      <span className="text-xs text-red-500 font-bold">{errors.size}</span>
                     )}
                   </div>
 
@@ -345,40 +341,40 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
                           onClick={() => onSizeChange(item.size)}
                           className={`relative p-4 sm:p-5 rounded-2xl border text-left transition-all duration-300 cursor-pointer overflow-hidden group ${
                             isActive
-                              ? 'bg-gradient-to-br from-[#0F3A4A] via-[#0A1930] to-[#0D2644] border-[#00D4FF] text-white shadow-[0_0_25px_rgba(0,212,255,0.35)] scale-[1.02] ring-1 ring-[#00D4FF]'
-                              : 'bg-white/5 border-white/10 text-slate-300 hover:border-white/30 hover:bg-white/10'
+                              ? 'bg-sky-50/80 border-[#0284C7] text-slate-900 shadow-md scale-[1.02] ring-2 ring-[#0284C7]'
+                              : 'bg-slate-50 border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-100/80'
                           }`}
                         >
                           {/* Active Checkmark Badge */}
                           {isActive && (
-                            <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-[#00D4FF] text-[#0A1930] flex items-center justify-center shadow-[0_0_10px_#00D4FF]">
+                            <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-[#0284C7] text-white flex items-center justify-center shadow-sm">
                               <Check className="w-3.5 h-3.5 stroke-[3]" />
                             </div>
                           )}
 
                           <div className="flex items-center gap-2.5 mb-2">
                             <div className={`p-2 rounded-xl flex items-center justify-center transition-colors ${
-                              isActive ? 'bg-[#00D4FF]/20 text-[#00D4FF] border border-[#00D4FF]/40' : 'bg-white/10 text-slate-400'
+                              isActive ? 'bg-[#0284C7] text-white' : 'bg-slate-200 text-slate-500'
                             }`}>
                               <Droplets className={item.iconSize} />
                             </div>
                             <div>
                               <span className={`font-mono text-xs font-black px-2 py-0.5 rounded-md ${
-                                isActive ? 'bg-[#00D4FF] text-[#0A1930]' : 'bg-white/10 text-slate-300'
+                                isActive ? 'bg-[#0284C7] text-white' : 'bg-slate-200 text-slate-700'
                               }`}>
                                 {item.size}
                               </span>
                             </div>
                           </div>
 
-                          <span className="font-serif text-sm sm:text-base font-bold block text-white mt-1">
+                          <span className="font-serif text-sm sm:text-base font-bold block text-slate-900 mt-1">
                             {item.label}
                           </span>
                           <div className="flex items-center justify-between mt-1">
-                            <span className="font-sans text-xs text-[#C9A24A] font-bold">
+                            <span className="font-sans text-xs text-[#0284C7] font-bold">
                               {item.price}
                             </span>
-                            <span className="font-sans text-[10px] text-slate-400 italic">
+                            <span className="font-sans text-[10px] text-slate-500 italic">
                               {item.desc}
                             </span>
                           </div>
@@ -391,12 +387,12 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
                 {/* Name and Phone Inputs with Embedded Icons */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-2">
+                    <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2">
                       Full Name *
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                        <User className="w-4 h-4 text-[#00D4FF]" />
+                        <User className="w-4 h-4 text-[#0284C7]" />
                       </div>
                       <input
                         type="text"
@@ -408,23 +404,23 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
                             setErrors((prev) => ({ ...prev, name: '' }));
                           }
                         }}
-                        className={`w-full bg-[#0F3A4A]/60 border rounded-xl pl-10 pr-4 py-3 text-white text-sm placeholder-slate-400 focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] focus:bg-[#0F3A4A] transition-all ${
-                          errors.name ? 'border-red-500/80 bg-red-950/20' : 'border-white/20'
+                        className={`w-full bg-slate-50 border rounded-xl pl-10 pr-4 py-3 text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:border-[#0284C7] focus:ring-1 focus:ring-[#0284C7] focus:bg-white transition-all ${
+                          errors.name ? 'border-red-500 bg-red-50/50' : 'border-slate-200'
                         }`}
                       />
                     </div>
                     {errors.name && (
-                      <p className="text-xs text-red-400 mt-1 font-semibold">{errors.name}</p>
+                      <p className="text-xs text-red-500 mt-1 font-semibold">{errors.name}</p>
                     )}
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-2">
+                    <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2">
                       WhatsApp / Mobile Phone *
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                        <Phone className="w-4 h-4 text-[#25D366]" />
+                        <Phone className="w-4 h-4 text-emerald-600" />
                       </div>
                       <input
                         type="tel"
@@ -436,13 +432,13 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
                             setErrors((prev) => ({ ...prev, phone: '' }));
                           }
                         }}
-                        className={`w-full bg-[#0F3A4A]/60 border rounded-xl pl-10 pr-4 py-3 text-white text-sm placeholder-slate-400 focus:outline-none focus:border-[#25D366] focus:ring-1 focus:ring-[#25D366] focus:bg-[#0F3A4A] transition-all ${
-                          errors.phone ? 'border-red-500/80 bg-red-950/20' : 'border-white/20'
+                        className={`w-full bg-slate-50 border rounded-xl pl-10 pr-4 py-3 text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 focus:bg-white transition-all ${
+                          errors.phone ? 'border-red-500 bg-red-50/50' : 'border-slate-200'
                         }`}
                       />
                     </div>
                     {errors.phone && (
-                      <p className="text-xs text-red-400 mt-1 font-semibold">{errors.phone}</p>
+                      <p className="text-xs text-red-500 mt-1 font-semibold">{errors.phone}</p>
                     )}
                   </div>
                 </div>
@@ -450,32 +446,32 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
                 {/* City Selection and Quantity Counter */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-2">
+                    <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2">
                       City of Delivery *
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                        <MapPin className="w-4 h-4 text-[#00D4FF]" />
+                        <MapPin className="w-4 h-4 text-[#0284C7]" />
                       </div>
                       <select
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
-                        className="w-full bg-[#0F3A4A]/60 border border-white/20 rounded-xl pl-10 pr-10 py-3 text-white text-sm appearance-none focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] focus:bg-[#0F3A4A] transition-all cursor-pointer"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-10 py-3 text-slate-900 text-sm appearance-none focus:outline-none focus:border-[#0284C7] focus:ring-1 focus:ring-[#0284C7] focus:bg-white transition-all cursor-pointer"
                       >
-                        <option value="Islamabad" className="bg-[#0A1930] text-white">Islamabad</option>
-                        <option value="Rawalpindi" className="bg-[#0A1930] text-white">Rawalpindi</option>
-                        <option value="Fateh Jang" className="bg-[#0A1930] text-white">Fateh Jang</option>
-                        <option value="Lahore" className="bg-[#0A1930] text-white">Lahore</option>
-                        <option value="Faisalabad" className="bg-[#0A1930] text-[#0A1930]">Faisalabad</option>
+                        <option value="Islamabad">Islamabad</option>
+                        <option value="Rawalpindi">Rawalpindi</option>
+                        <option value="Fateh Jang">Fateh Jang</option>
+                        <option value="Lahore">Lahore</option>
+                        <option value="Faisalabad">Faisalabad</option>
                       </select>
                       <div className="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-slate-400">
-                        <ChevronDown className="w-4 h-4 text-[#00D4FF]" />
+                        <ChevronDown className="w-4 h-4 text-[#0284C7]" />
                       </div>
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#C9A24A] mb-2">
+                    <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-2">
                       Bottle Quantity (Min. 5 units)
                     </label>
                     <div className="flex items-center gap-3">
@@ -483,34 +479,34 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
                         type="button"
                         onClick={handleDecrement}
                         aria-label="Decrease quantity"
-                        className="w-12 h-12 bg-gradient-to-br from-[#0F3A4A] to-[#0A1930] hover:from-[#00D4FF]/20 hover:to-[#0F3A4A] border border-white/20 hover:border-[#00D4FF] rounded-xl text-white font-bold text-xl flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-95"
+                        className="w-12 h-12 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl text-slate-700 font-bold text-xl flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-95"
                       >
                         <Minus className="w-4 h-4" />
                       </button>
 
-                      <div className="flex-1 text-center font-mono text-base font-extrabold bg-[#0F3A4A]/70 border border-[#00D4FF]/40 py-2.5 rounded-xl text-white shadow-[inset_0_0_10px_rgba(0,212,255,0.1)] flex items-center justify-center gap-2">
-                        <span className="text-[#00D4FF] text-lg">{quantity}</span>
-                        <span className="text-xs font-sans text-slate-300">units</span>
+                      <div className="flex-1 text-center font-mono text-base font-extrabold bg-slate-50 border border-slate-200 py-2.5 rounded-xl text-slate-900 flex items-center justify-center gap-2">
+                        <span className="text-[#0284C7] text-lg">{quantity}</span>
+                        <span className="text-xs font-sans text-slate-500">units</span>
                       </div>
 
                       <button
                         type="button"
                         onClick={handleIncrement}
                         aria-label="Increase quantity"
-                        className="w-12 h-12 bg-gradient-to-br from-[#0F3A4A] to-[#0A1930] hover:from-[#00D4FF]/20 hover:to-[#0F3A4A] border border-white/20 hover:border-[#00D4FF] rounded-xl text-white font-bold text-xl flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-95"
+                        className="w-12 h-12 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl text-slate-700 font-bold text-xl flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-95"
                       >
                         <Plus className="w-4 h-4" />
                       </button>
                     </div>
                     {errors.quantity && (
-                      <p className="text-xs text-red-400 mt-1 font-semibold">{errors.quantity}</p>
+                      <p className="text-xs text-red-500 mt-1 font-semibold">{errors.quantity}</p>
                     )}
                   </div>
                 </div>
 
                 {/* Delivery / Special Request Notes (Optional) */}
                 <div>
-                  <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+                  <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-600 mb-1.5">
                     Delivery Instructions / Special Requests (Optional)
                   </label>
                   <input
@@ -518,31 +514,31 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
                     placeholder="e.g. Call before arrival, corporate branding inquiry, floor number..."
                     value={corporateNotes}
                     onChange={(e) => setCorporateNotes(e.target.value)}
-                    className="w-full bg-[#0F3A4A]/40 border border-white/10 rounded-xl px-4 py-2.5 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-[#00D4FF] transition-all"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#0284C7] transition-all"
                   />
                 </div>
 
-                {/* Submit Button (Golden Order Now with WhatsApp Icon & Shadow Glow) */}
+                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-4 sm:px-6 py-3.5 bg-gradient-to-r from-[#C9A24A] via-[#E5C158] to-[#C9A24A] hover:brightness-110 text-[#0A1930] font-black text-[11px] xs:text-xs sm:text-sm uppercase tracking-wider rounded-2xl shadow-[0_4px_25px_rgba(201,162,74,0.4)] border border-[#E5C158]/70 transition-all cursor-pointer flex items-center justify-center gap-2 sm:gap-2.5 mt-5 hover:shadow-[0_0_35px_rgba(201,162,74,0.65)] active:scale-98 group"
+                  className="w-full px-4 sm:px-6 py-3.5 bg-gradient-to-r from-[#0284C7] via-[#00B4D8] to-[#0088CC] hover:brightness-105 text-white font-black text-[11px] xs:text-xs sm:text-sm uppercase tracking-wider rounded-2xl shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 sm:gap-2.5 mt-5 active:scale-98 group"
                 >
-                  <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 fill-current text-[#0A1930] group-hover:scale-110 transition-transform shrink-0" />
+                  <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 fill-current text-white group-hover:scale-110 transition-transform shrink-0" />
                   <span className="text-center leading-snug">{isSubmitting ? "Routing Order to Dispatch..." : "Confirm & Schedule WhatsApp Delivery"}</span>
                 </button>
               </motion.form>
             ) : (
               <div className="text-center py-10">
-                <CheckCircle2 className="w-16 h-16 text-[#00D4FF] mx-auto mb-4 animate-bounce drop-shadow-[0_0_20px_#00D4FF]" />
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white">Order Dispatched to Dispatch Team!</h3>
-                <p className="font-sans text-sm text-slate-300 mt-3 max-w-md mx-auto">
-                  Thank you, <span className="font-bold text-white">{name}</span>. Our Islamabad/Rawalpindi fleet driver will contact you at <span className="text-[#00D4FF] font-bold">{phone}</span> to confirm doorstep delivery.
+                <CheckCircle2 className="w-16 h-16 text-[#0284C7] mx-auto mb-4 animate-bounce" />
+                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900">Order Dispatched to Dispatch Team!</h3>
+                <p className="font-sans text-sm text-slate-600 mt-3 max-w-md mx-auto">
+                  Thank you, <span className="font-bold text-slate-900">{name}</span>. Our Islamabad/Rawalpindi fleet driver will contact you at <span className="text-[#0284C7] font-bold">{phone}</span> to confirm doorstep delivery.
                 </p>
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="mt-8 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl text-xs font-bold text-white transition-all cursor-pointer hover:border-[#00D4FF]"
+                  className="mt-8 px-6 py-3 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-xl text-xs font-bold text-slate-800 transition-all cursor-pointer"
                 >
                   Place Additional Order
                 </button>

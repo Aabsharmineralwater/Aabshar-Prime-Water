@@ -75,7 +75,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen text-slate-150 font-sans selection:bg-[#4FD1E8] selection:text-[#0A1930] relative bg-[#0A1930]">
+    <div className="min-h-screen text-slate-800 font-sans selection:bg-[#00D4FF]/30 selection:text-[#0A2540] relative bg-white">
       
       {/* Dynamic Animated Aquatic Background (Water caustics, wave vectors, rising bubble particles) */}
       <AquaticBackground />
