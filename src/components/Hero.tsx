@@ -62,17 +62,52 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="order-4 block lg:hidden my-2.5 sm:my-5 w-full max-w-[360px] sm:max-w-[420px] mx-auto text-center relative"
+              className="order-4 block lg:hidden my-3 sm:my-5 w-full max-w-[360px] sm:max-w-[420px] mx-auto text-center relative"
             >
-              <div className="absolute inset-0 m-auto w-64 h-64 bg-[radial-gradient(circle_at_center,rgba(0,180,216,0.2)_0%,transparent_70%)] blur-xl rounded-full pointer-events-none" />
-              <img
-                src={combinedBottlesImage}
-                alt="Aabshar Prime Water Bottles"
-                loading="eager"
-                className="max-h-[290px] sm:max-h-[350px] w-auto mx-auto object-contain relative z-10 filter drop-shadow-[0_16px_30px_rgba(2,132,199,0.25)] animate-float"
-                referrerPolicy="no-referrer"
-              />
-              <div className="inline-flex items-center gap-2 mt-2 px-3.5 py-1 rounded-full bg-white border border-slate-200 text-slate-800 text-[10px] sm:text-xs font-bold shadow-md">
+              {/* Radial ice-cyan glow background behind bottles */}
+              <div className="absolute inset-0 m-auto w-64 h-64 bg-[radial-gradient(circle_at_center,rgba(0,180,216,0.22)_0%,transparent_70%)] blur-xl rounded-full pointer-events-none" />
+
+              {/* Bottle with anchored Water Ripple / Splash directly beneath */}
+              <div className="relative inline-flex flex-col items-center justify-center mx-auto pb-4">
+                <img
+                  src={combinedBottlesImage}
+                  alt="Aabshar Prime Water Bottles"
+                  loading="eager"
+                  className="max-h-[290px] sm:max-h-[350px] w-auto mx-auto object-contain relative z-10 filter drop-shadow-[0_16px_30px_rgba(2,132,199,0.25)] animate-float"
+                  referrerPolicy="no-referrer"
+                />
+
+                {/* Sublte Glowing Water Ripple & Splash Effect directly below bottle bases */}
+                <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-64 sm:w-72 h-14 pointer-events-none z-0 flex items-center justify-center">
+                  {/* Soft Glowing Water Pond */}
+                  <div className="w-56 sm:w-64 h-8 rounded-[100%] bg-gradient-to-r from-[#00D4FF]/30 via-[#38bdf8]/45 to-[#00D4FF]/30 blur-md animate-ripple-pulse" />
+                  
+                  {/* Inner Water Reflection Ellipse */}
+                  <div className="absolute w-44 sm:w-52 h-6 rounded-[100%] bg-sky-200/40 blur-[2px]" />
+
+                  {/* Concentric Water Ripple Rings */}
+                  <div className="absolute w-48 sm:w-56 h-7 rounded-[100%] border-2 border-[#00D4FF] shadow-[0_0_14px_rgba(0,212,255,0.65)] animate-ripple-pulse" />
+                  <div className="absolute w-56 sm:w-64 h-9 rounded-[100%] border border-[#00D4FF]/75 shadow-[0_0_10px_rgba(0,212,255,0.4)] animate-ripple-expand-1" />
+                  <div className="absolute w-64 sm:w-72 h-11 rounded-[100%] border border-[#38bdf8]/50 shadow-[0_0_8px_rgba(56,189,248,0.3)] animate-ripple-expand-2" />
+
+                  {/* SVG Water Splash Droplets & Arc Reflections */}
+                  <svg viewBox="0 0 200 40" className="absolute inset-0 w-full h-full pointer-events-none" fill="none">
+                    {/* Splash Droplets */}
+                    <circle cx="22" cy="18" r="2.2" fill="#00D4FF" className="animate-pulse" />
+                    <circle cx="36" cy="12" r="1.5" fill="#38bdf8" />
+                    <circle cx="54" cy="28" r="2" fill="#00D4FF" />
+                    <circle cx="146" cy="28" r="2" fill="#00D4FF" />
+                    <circle cx="164" cy="12" r="1.5" fill="#38bdf8" />
+                    <circle cx="178" cy="18" r="2.2" fill="#00D4FF" className="animate-pulse" />
+                    
+                    {/* Surface Wave Curves */}
+                    <ellipse cx="100" cy="20" rx="78" ry="11" stroke="#00D4FF" strokeWidth="1.2" strokeDasharray="6 4" opacity="0.75" />
+                    <ellipse cx="100" cy="20" rx="52" ry="7" stroke="#38bdf8" strokeWidth="1" opacity="0.8" />
+                  </svg>
+                </div>
+              </div>
+
+              <div className="inline-flex items-center gap-2 mt-1 px-3.5 py-1 rounded-full bg-white/95 border border-slate-200 text-slate-800 text-[10px] sm:text-xs font-bold shadow-md relative z-10">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#0284C7]" />
                 <span>100% Lab Verified • 120-160 TDS</span>
               </div>
@@ -172,25 +207,61 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.1 }}
-              className="relative max-w-lg w-full flex items-center justify-center py-8"
+              className="relative max-w-lg w-full flex items-center justify-center py-6"
             >
               {/* Radial ice-cyan glow background beneath bottle */}
-              <div className="absolute inset-0 m-auto w-80 h-80 bg-[radial-gradient(circle_at_center,rgba(0,180,216,0.15)_0%,transparent_70%)] blur-md rounded-full pointer-events-none" />
+              <div className="absolute inset-0 m-auto w-80 h-80 bg-[radial-gradient(circle_at_center,rgba(0,180,216,0.22)_0%,transparent_70%)] blur-2xl rounded-full pointer-events-none" />
 
-              {/* Single combined bottle image */}
-              <div className="relative flex items-center justify-center h-[500px] lg:h-[560px] w-full pb-4">
+              {/* Single combined bottle image with anchored water ripple */}
+              <div className="relative flex flex-col items-center justify-center h-[520px] lg:h-[570px] w-full pb-6">
                 <img
                   src={combinedBottlesImage}
                   alt="Aabshar Prime Water Bottles"
                   loading="eager"
-                  className="max-h-[480px] lg:max-h-[520px] w-auto animate-float object-contain relative z-10 filter drop-shadow-[0_20px_35px_rgba(2,132,199,0.22)]"
+                  className="max-h-[460px] lg:max-h-[500px] w-auto animate-float object-contain relative z-10 filter drop-shadow-[0_20px_35px_rgba(2,132,199,0.25)]"
                   referrerPolicy="no-referrer"
                 />
+
+                {/* Sublte Glowing Water Ripple & Splash Effect directly below desktop bottle bases */}
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-96 lg:w-[460px] h-20 pointer-events-none z-0 flex items-center justify-center">
+                  {/* Soft Glowing Water Pond */}
+                  <div className="w-80 lg:w-96 h-12 rounded-[100%] bg-gradient-to-r from-[#00D4FF]/35 via-[#38bdf8]/50 to-[#00D4FF]/35 blur-lg animate-ripple-pulse" />
+                  
+                  {/* Inner Water Reflection Ellipse */}
+                  <div className="absolute w-72 lg:w-84 h-9 rounded-[100%] bg-sky-200/50 blur-[3px]" />
+
+                  {/* Concentric Water Ripple Rings */}
+                  <div className="absolute w-76 lg:w-88 h-11 rounded-[100%] border-2 border-[#00D4FF] shadow-[0_0_20px_rgba(0,212,255,0.7)] animate-ripple-pulse" />
+                  <div className="absolute w-88 lg:w-[410px] h-14 rounded-[100%] border border-[#00D4FF]/80 shadow-[0_0_16px_rgba(0,212,255,0.5)] animate-ripple-expand-1" />
+                  <div className="absolute w-96 lg:w-[460px] h-16 rounded-[100%] border border-[#38bdf8]/50 shadow-[0_0_12px_rgba(56,189,248,0.35)] animate-ripple-expand-2" />
+                  
+                  {/* SVG Water Splash Droplets & Arc Reflections */}
+                  <svg viewBox="0 0 300 50" className="absolute inset-0 w-full h-full pointer-events-none" fill="none">
+                    {/* Splash Droplets */}
+                    <circle cx="28" cy="24" r="2.8" fill="#00D4FF" className="animate-pulse" />
+                    <circle cx="48" cy="15" r="2" fill="#38bdf8" />
+                    <circle cx="75" cy="34" r="2.5" fill="#00D4FF" />
+                    <circle cx="225" cy="35" r="2.5" fill="#00D4FF" />
+                    <circle cx="252" cy="16" r="2" fill="#38bdf8" />
+                    <circle cx="272" cy="25" r="2.8" fill="#00D4FF" className="animate-pulse" />
+                    
+                    {/* Concentric Arc Waves */}
+                    <ellipse cx="150" cy="25" rx="125" ry="15" stroke="url(#desktop-hero-ripple-grad)" strokeWidth="1.5" strokeDasharray="8 5" opacity="0.8" />
+                    <ellipse cx="150" cy="25" rx="85" ry="10" stroke="#38bdf8" strokeWidth="1.2" opacity="0.85" />
+                    <defs>
+                      <linearGradient id="desktop-hero-ripple-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#00D4FF" stopOpacity="0.2" />
+                        <stop offset="50%" stopColor="#00D4FF" stopOpacity="1" />
+                        <stop offset="100%" stopColor="#0284C7" stopOpacity="0.2" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
               </div>
               
               {/* Floating glass badge */}
               <div 
-                className="absolute bottom-12 left-2 md:left-6 bg-white/95 border border-slate-200/90 backdrop-blur-xl p-4 sm:p-5 rounded-2xl shadow-xl z-30 animate-float [animation-delay:2s] text-left flex items-center gap-3.5"
+                className="absolute bottom-10 left-2 md:left-6 bg-white/95 border border-slate-200/90 backdrop-blur-xl p-4 sm:p-5 rounded-2xl shadow-xl z-30 animate-float [animation-delay:2s] text-left flex items-center gap-3.5"
               >
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00D4FF] to-[#0284C7] flex items-center justify-center text-white shadow-md flex-shrink-0">
                   <ShieldCheck className="w-5 h-5 text-white" />

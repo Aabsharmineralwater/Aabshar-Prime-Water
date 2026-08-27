@@ -11,27 +11,27 @@ export default function Footer({ onLinkClick }: FooterProps) {
   };
 
   return (
-    <footer className="pt-8 sm:pt-14 pb-24 md:pb-8 relative overflow-hidden font-sans text-slate-600 bg-white border-t border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <footer className="pt-8 sm:pt-12 pb-24 md:pb-8 relative overflow-hidden font-sans text-slate-600 bg-white border-t border-slate-200 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-0 lg:divide-x divide-slate-200 items-start">
           
           {/* Column 1 — Brand */}
-          <div className="flex flex-col items-start gap-2.5 sm:gap-4 lg:pr-8">
-            <div className="flex items-center">
+          <div className="flex flex-col items-start gap-2 sm:gap-3 lg:pr-8 w-full max-w-full overflow-hidden">
+            <div className="flex items-center max-w-full">
               <img
                 src={aabsharLogo}
                 alt="Aabshar Prime Water Logo"
                 loading="lazy"
                 decoding="async"
-                className="h-12 sm:h-16 w-auto object-contain cursor-pointer transition-transform hover:scale-102"
+                className="h-10 sm:h-14 max-w-[180px] sm:max-w-[220px] w-auto object-contain cursor-pointer transition-transform hover:scale-102"
                 onClick={() => handleLinkClick('#hero')}
                 referrerPolicy="no-referrer"
               />
             </div>
-            <p className="font-serif italic text-sm sm:text-base font-bold text-[#0284C7]">
+            <p className="font-serif italic text-xs sm:text-sm font-bold text-[#0284C7] whitespace-nowrap">
               Pure. Natural. Refreshing.
             </p>
-            <p className="text-xs sm:text-sm text-slate-500 leading-relaxed max-w-sm">
+            <p className="text-xs text-slate-500 leading-relaxed max-w-xs">
               Premium mineral water delivered fresh to your doorstep across Rawalpindi, Islamabad, and Fateh Jang.
             </p>
             
@@ -169,16 +169,16 @@ export default function Footer({ onLinkClick }: FooterProps) {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-slate-200 mt-8 sm:mt-12 pt-4 sm:pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs text-slate-500">
+        <div className="border-t border-slate-200 mt-6 sm:mt-10 pt-4 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-4 text-[11px] sm:text-xs text-slate-500 w-full">
           <p className="font-sans text-slate-500 text-center sm:text-left">
             © 2026 Aabshar Prime Water. All Rights Reserved.
           </p>
-          <div className="flex items-center gap-3 sm:gap-4 text-slate-500">
-            <button type="button" onClick={() => handleLinkClick('#privacy')} className="hover:text-[#0284C7] transition-colors cursor-pointer bg-transparent border-0 py-0 text-xs">Privacy Policy</button>
+          <div className="flex items-center justify-center gap-2 sm:gap-3 text-slate-500 flex-wrap">
+            <button type="button" onClick={() => handleLinkClick('#privacy')} className="hover:text-[#0284C7] transition-colors cursor-pointer bg-transparent border-0 py-0 text-[11px] sm:text-xs">Privacy Policy</button>
             <span className="text-slate-300">|</span>
-            <button type="button" onClick={() => handleLinkClick('#terms')} className="hover:text-[#0284C7] transition-colors cursor-pointer bg-transparent border-0 py-0 text-xs">Terms & Conditions</button>
+            <button type="button" onClick={() => handleLinkClick('#terms')} className="hover:text-[#0284C7] transition-colors cursor-pointer bg-transparent border-0 py-0 text-[11px] sm:text-xs">Terms & Conditions</button>
           </div>
-          <p className="flex items-center gap-1 font-medium text-slate-500">
+          <p className="flex items-center justify-center gap-1 font-medium text-slate-500 text-[11px] sm:text-xs">
             Made with <span className="text-[#0284C7] animate-pulse">💧</span> in Pakistan
           </p>
         </div>
