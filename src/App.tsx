@@ -112,14 +112,14 @@ export default function App() {
             {/* Map tracker Area Delivery options */}
             <Delivery />
 
-            {/* Frequently Asked Questions */}
-            <FAQ />
-
             {/* Interactive Ordering Form / Contact */}
             <OrderForm
               selectedSize={selectedSize}
               onSizeChange={(size) => setSelectedSize(size)}
             />
+
+            {/* Frequently Asked Questions */}
+            <FAQ />
           </>
         ) : page === 'privacy' ? (
           <PrivacyPolicy onBackToHome={() => handleLinkClick('#hero')} />

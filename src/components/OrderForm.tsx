@@ -95,10 +95,12 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
   };
 
   useEffect(() => {
-    if (selectedSize) {
+    if (selectedSize === '19L') {
+      onSizeChange('500ml');
+    } else if (selectedSize) {
       setErrors((prev) => ({ ...prev, size: '' }));
     }
-  }, [selectedSize]);
+  }, [selectedSize, onSizeChange]);
 
   const handleIncrement = () => {
     setQuantity((prev) => prev + 1);
@@ -129,8 +131,8 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
     if (!city) {
       newErrors.city = 'City of residence is required';
     }
-    if (!selectedSize) {
-      newErrors.size = 'Vessel size selection is required';
+    if (!selectedSize || selectedSize === '19L') {
+      newErrors.size = 'Please select an available bottle size (500ml or 1.5L)';
     }
     if (!quantity || quantity < 5) {
       newErrors.quantity = 'Minimum 5 bottles are required for delivery';
@@ -329,22 +331,38 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
                     {[
-                      { size: '500ml', label: '500 mL Personal', price: 'RS 50 / bottle', desc: 'Handy & Compact', iconSize: 'w-4 h-5' },
-                      { size: '1.5L', label: '1.5 Litre Family', price: 'RS 90 / bottle', desc: 'Most Popular', iconSize: 'w-5 h-6' },
-                      { size: '19L', label: '19 Litre Gallon', price: 'RS 250 / gallon', desc: 'Home & Office Dispenser', iconSize: 'w-6 h-7' },
+                      { size: '500ml', label: '500 mL Personal', price: 'RS 50 / bottle', desc: 'Handy & Compact', iconSize: 'w-4 h-5', disabled: false },
+                      { size: '1.5L', label: '1.5 Litre Family', price: 'RS 90 / bottle', desc: 'Most Popular', iconSize: 'w-5 h-6', disabled: false },
+                      { size: '19L', label: '19 Litre Gallon', price: 'RS 250 / gallon', desc: 'Home & Office Dispenser', iconSize: 'w-6 h-7', disabled: true },
                     ].map((item) => {
-                      const isActive = selectedSize === item.size;
+                      const isActive = selectedSize === item.size && !item.disabled;
+                      const isDisabled = item.disabled;
+
                       return (
                         <button
                           key={item.size}
                           type="button"
-                          onClick={() => onSizeChange(item.size)}
-                          className={`relative p-4 sm:p-5 rounded-2xl border text-left transition-all duration-300 cursor-pointer overflow-hidden group ${
-                            isActive
-                              ? 'bg-sky-50/80 border-[#0284C7] text-slate-900 shadow-md scale-[1.02] ring-2 ring-[#0284C7]'
-                              : 'bg-slate-50 border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-100/80'
+                          disabled={isDisabled}
+                          onClick={() => {
+                            if (!isDisabled) {
+                              onSizeChange(item.size);
+                            }
+                          }}
+                          className={`relative p-4 sm:p-5 rounded-2xl border text-left transition-all duration-300 overflow-hidden group ${
+                            isDisabled
+                              ? 'bg-slate-100/90 border-slate-200 text-slate-400 opacity-70 cursor-not-allowed select-none'
+                              : isActive
+                              ? 'bg-sky-50/80 border-[#0284C7] text-slate-900 shadow-md scale-[1.02] ring-2 ring-[#0284C7] cursor-pointer'
+                              : 'bg-slate-50 border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-100/80 cursor-pointer'
                           }`}
                         >
+                          {/* Coming Soon Badge for Disabled Items */}
+                          {isDisabled && (
+                            <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-slate-200 border border-slate-300 text-slate-600 font-mono text-[9px] font-bold uppercase tracking-wider shadow-xs">
+                              COMING SOON
+                            </div>
+                          )}
+
                           {/* Active Checkmark Badge */}
                           {isActive && (
                             <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-[#0284C7] text-white flex items-center justify-center shadow-sm">
@@ -354,27 +372,39 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
 
                           <div className="flex items-center gap-2.5 mb-2">
                             <div className={`p-2 rounded-xl flex items-center justify-center transition-colors ${
-                              isActive ? 'bg-[#0284C7] text-white' : 'bg-slate-200 text-slate-500'
+                              isDisabled
+                                ? 'bg-slate-200 text-slate-400'
+                                : isActive 
+                                ? 'bg-[#0284C7] text-white' 
+                                : 'bg-slate-200 text-slate-500'
                             }`}>
                               <Droplets className={item.iconSize} />
                             </div>
                             <div>
                               <span className={`font-mono text-xs font-black px-2 py-0.5 rounded-md ${
-                                isActive ? 'bg-[#0284C7] text-white' : 'bg-slate-200 text-slate-700'
+                                isDisabled
+                                  ? 'bg-slate-200 text-slate-500'
+                                  : isActive 
+                                  ? 'bg-[#0284C7] text-white' 
+                                  : 'bg-slate-200 text-slate-700'
                               }`}>
                                 {item.size}
                               </span>
                             </div>
                           </div>
 
-                          <span className="font-serif text-sm sm:text-base font-bold block text-slate-900 mt-1">
+                          <span className={`font-serif text-sm sm:text-base font-bold block mt-1 ${
+                            isDisabled ? 'text-slate-500 line-clamp-1' : 'text-slate-900'
+                          }`}>
                             {item.label}
                           </span>
                           <div className="flex items-center justify-between mt-1">
-                            <span className="font-sans text-xs text-[#0284C7] font-bold">
+                            <span className={`font-sans text-xs font-bold ${
+                              isDisabled ? 'text-slate-400' : 'text-[#0284C7]'
+                            }`}>
                               {item.price}
                             </span>
-                            <span className="font-sans text-[10px] text-slate-500 italic">
+                            <span className="font-sans text-[10px] text-slate-400 italic">
                               {item.desc}
                             </span>
                           </div>

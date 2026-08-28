@@ -598,7 +598,7 @@ export default function B2B({ onQuoteClick }: B2BProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* SECTION 5: B2B EDITORIAL + INDUSTRIES SERVED */}
-        <div className="text-center max-w-4xl mx-auto mb-16 sm:mb-20">
+        <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 md:mb-20">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -650,8 +650,8 @@ export default function B2B({ onQuoteClick }: B2BProps) {
           </div>
         </div>
 
-        {/* SECTION 6: METRO-MAP CONNECTED HORIZONTAL TIMELINE PROCESS */}
-        <div className="mb-24 max-w-5xl mx-auto bg-white p-8 sm:p-12 rounded-3xl border border-slate-200 shadow-xl text-center relative overflow-hidden">
+        {/* SECTION 6: METRO-MAP CONNECTED HORIZONTAL TIMELINE PROCESS (Visible on Desktop/Tablet, Hidden on Mobile) */}
+        <div className="hidden md:block mb-24 max-w-5xl mx-auto bg-white p-8 sm:p-12 rounded-3xl border border-slate-200 shadow-xl text-center relative overflow-hidden">
           <div className="mb-12">
             <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#0284C7]">
               EFFICIENT WORKFLOW
@@ -664,13 +664,8 @@ export default function B2B({ onQuoteClick }: B2BProps) {
             </p>
           </div>
 
-          {/* Mobile View: Auto-sliding Carousel (< md) */}
-          <div className="block md:hidden">
-            <MobileOnboardingCarousel steps={steps} />
-          </div>
-
           {/* Desktop/Tablet View: Circuit Trace Timeline Line & Nodes (>= md) */}
-          <div className="hidden md:block relative my-8">
+          <div className="relative my-8">
             {/* Glowing cyan-and-royal gradient timeline line */}
             <div className="absolute top-7 left-[10%] right-[10%] h-1 bg-gradient-to-r from-[#00D4FF] via-[#0284C7] to-[#0369A1] z-0 rounded-full shadow-sm" />
 
@@ -707,7 +702,7 @@ export default function B2B({ onQuoteClick }: B2BProps) {
         </div>
 
         {/* SECTION 7: MOCKUP CARDS WITH COLOR-TINTED OVERLAYS & HOVER ZOOM */}
-        <div className="mb-24 max-w-6xl mx-auto">
+        <div className="mb-16 md:mb-24 max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h3 className="font-serif text-2xl sm:text-4xl font-extrabold text-slate-900">
               Private Label Industry Mockups

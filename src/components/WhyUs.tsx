@@ -140,58 +140,58 @@ export default function WhyUs() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="p-8 rounded-3xl bg-slate-50 text-slate-800 border border-slate-200 shadow-xl relative overflow-hidden"
+          className="p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl bg-slate-50 text-slate-800 border border-slate-200 shadow-xl relative overflow-hidden"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-8 items-center relative z-10">
             
             <div className="lg:col-span-7 text-left">
-              <span className="font-mono text-xs font-bold tracking-widest uppercase bg-sky-100 border border-sky-300 text-[#0284C7] px-3.5 py-1 rounded-full mb-3 inline-block">
+              <span className="font-mono text-[10px] sm:text-xs font-bold tracking-widest uppercase bg-sky-100 border border-sky-300 text-[#0284C7] px-2.5 py-0.5 sm:px-3.5 sm:py-1 rounded-full mb-1.5 sm:mb-3 inline-block">
                 SCIENTIFIC TDS ABSORPTION GAUGE
               </span>
-              <h3 className="font-serif text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3 leading-tight">
+              <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 mb-1.5 sm:mb-3 leading-tight">
                 Why <span className="font-serif italic text-[#0284C7]">120–160 TDS</span> is the Bio-Sweet Spot
               </h3>
-              <p className="font-sans text-slate-600 text-sm leading-relaxed max-w-xl">
+              <p className="font-sans text-slate-600 text-xs sm:text-sm leading-relaxed max-w-xl">
                 Demineralized water (&lt;50 TDS) leaches body minerals and causes acidic taste. Excess mineral water (&gt;300 TDS) burdens kidneys with heavy salts. Aabshar’s engineered 135 PPM target matches cellular fluid density for optimal bio-absorption.
               </p>
             </div>
 
-            <div className="lg:col-span-5 bg-white p-6 rounded-2xl border border-slate-200 text-left shadow-sm">
-              <div className="flex items-center justify-between mb-3">
-                <span className="font-mono text-xs font-bold uppercase text-slate-500 tracking-wider">Bio-Hydration Meter</span>
-                <span className="font-serif text-sm font-extrabold text-[#0284C7] bg-sky-50 px-2.5 py-0.5 rounded-full border border-sky-200">
+            <div className="lg:col-span-5 bg-white p-3.5 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-slate-200 text-left shadow-sm">
+              <div className="flex items-center justify-between mb-2 sm:mb-3">
+                <span className="font-mono text-[11px] sm:text-xs font-bold uppercase text-slate-500 tracking-wider">Bio-Hydration Meter</span>
+                <span className="font-serif text-xs sm:text-sm font-extrabold text-[#0284C7] bg-sky-50 px-2 py-0.5 sm:px-2.5 sm:py-0.5 rounded-full border border-sky-200">
                   Aabshar Target: 135 PPM
                 </span>
               </div>
 
               {/* FUEL GAUGE METER GRAPHIC */}
-              <div className="relative w-full my-4">
+              <div className="relative w-full my-2.5 sm:my-3.5 md:my-4">
                 {/* Meter Bar Container */}
-                <div className="h-7 w-full rounded-full bg-slate-100 border border-slate-300 p-0.5 flex overflow-hidden shadow-inner">
+                <div className="h-6 sm:h-7 w-full rounded-full bg-slate-100 border border-slate-300 p-0.5 flex overflow-hidden shadow-inner">
                   {/* Zone 1: Demineralized / Acidic */}
-                  <div className="w-[30%] h-full bg-slate-200 border-r border-slate-300 flex items-center justify-center text-[9px] font-mono font-bold text-slate-600">
+                  <div className="w-[30%] h-full bg-slate-200 border-r border-slate-300 flex items-center justify-center text-[8px] sm:text-[9px] font-mono font-bold text-slate-600">
                     ACIDIC (&lt;50)
                   </div>
                   {/* Zone 2: Aabshar Ideal Bio-Zone */}
-                  <div className="w-[40%] h-full bg-gradient-to-r from-[#00D4FF] via-[#0284C7] to-[#0369A1] flex items-center justify-center text-[9px] font-mono font-black text-white uppercase tracking-wider relative shadow-md">
+                  <div className="w-[40%] h-full bg-gradient-to-r from-[#00D4FF] via-[#0284C7] to-[#0369A1] flex items-center justify-center text-[8px] sm:text-[9px] font-mono font-black text-white uppercase tracking-wider relative shadow-md">
                     SWEET SPOT (120-160)
                   </div>
                   {/* Zone 3: High Saline / Heavy Salts */}
-                  <div className="w-[30%] h-full bg-slate-200 border-l border-slate-300 flex items-center justify-center text-[9px] font-mono font-bold text-slate-600">
+                  <div className="w-[30%] h-full bg-slate-200 border-l border-slate-300 flex items-center justify-center text-[8px] sm:text-[9px] font-mono font-bold text-slate-600">
                     HEAVY (&gt;300)
                   </div>
                 </div>
 
                 {/* Glowing Needle Indicator pointing directly at 135 PPM (approx 52% mark) */}
                 <div className="absolute top-0 bottom-0 left-[52%] -translate-x-1/2 flex flex-col items-center pointer-events-none z-20">
-                  <div className="w-1 h-9 bg-[#0284C7] shadow-sm rounded-full animate-pulse" />
-                  <div className="w-3.5 h-3.5 rounded-full bg-[#00D4FF] border-2 border-white shadow-md -mt-1" />
+                  <div className="w-1 h-8 sm:h-9 bg-[#0284C7] shadow-sm rounded-full animate-pulse" />
+                  <div className="w-3 sm:w-3.5 h-3 sm:h-3.5 rounded-full bg-[#00D4FF] border-2 border-white shadow-md -mt-1" />
                 </div>
               </div>
 
-              <div className="p-3 bg-sky-50 rounded-xl border border-sky-200 flex items-center gap-3">
-                <ShieldCheck className="w-5 h-5 text-[#0284C7] flex-shrink-0" />
-                <span className="font-serif text-xs font-bold text-slate-800">
+              <div className="p-2.5 sm:p-3 bg-sky-50 rounded-lg sm:rounded-xl border border-sky-200 flex items-center gap-2.5 sm:gap-3">
+                <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-[#0284C7] flex-shrink-0" />
+                <span className="font-serif text-[11px] sm:text-xs font-bold text-slate-800">
                   100% PCRWR & WHO Certified Pure Standard
                 </span>
               </div>
