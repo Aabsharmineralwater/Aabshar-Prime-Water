@@ -10,12 +10,18 @@ import {
   Home, 
   Crown, 
   Tag,
+  Truck,
+  MessageCircle,
+  CheckCircle2,
+  BadgePercent,
+  Layers,
   LucideIcon
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import WaterRippleEffect from './WaterRippleEffect';
 import bottleImage15L from '../assets/images/product_card_1_5l.png';
 import bottleImage500ml from '../assets/images/product_card_500ml.png';
+import combinedBottlesImg from '../assets/images/hero_combined_bottles.png';
 
 interface ProductFeature {
   text: string;
@@ -226,6 +232,145 @@ export default function Products({ onOrderProduct }: ProductsProps) {
             </motion.div>
           ))}
         </div>
+
+        {/* ========================================================================= */}
+        {/* SPECIAL WHOLESALE / BULK ORDER PRICING CARD */}
+        {/* ========================================================================= */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-10 sm:mt-14 max-w-5xl mx-auto relative group"
+        >
+          {/* Subtle Outer Cyan Aura / Glow */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-[#00D4FF]/40 via-[#0284C7]/30 to-[#0088CC]/40 rounded-3xl blur-lg opacity-70 group-hover:opacity-100 transition duration-500 pointer-events-none" />
+
+          {/* Main Card Container */}
+          <div className="relative bg-gradient-to-br from-white via-sky-50/50 to-blue-50/30 border-2 border-sky-300 hover:border-[#00D4FF] rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 shadow-xl overflow-hidden">
+            
+            {/* Background Water Caustic / Decorative Ripple */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-[radial-gradient(circle,rgba(0,180,216,0.12)_0%,transparent_70%)] rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-[radial-gradient(circle,rgba(2,132,199,0.1)_0%,transparent_70%)] rounded-full blur-2xl pointer-events-none" />
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center relative z-10">
+              
+              {/* Left Column: Heading, Badges, Subtext, and Feature Checklist */}
+              <div className="lg:col-span-7 flex flex-col items-start text-left">
+                
+                {/* Badges Bar */}
+                <div className="flex flex-wrap items-center gap-2 mb-3">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#0284C7] to-[#00D4FF] text-white font-mono text-[10px] sm:text-xs font-black uppercase tracking-wider shadow-xs">
+                    <BadgePercent className="w-3.5 h-3.5" />
+                    <span>Bulk Order Special</span>
+                  </div>
+                  
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-300 text-emerald-700 font-mono text-[10px] sm:text-xs font-black uppercase tracking-wide shadow-xs animate-pulse">
+                    <Truck className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>FREE DELIVERY</span>
+                  </div>
+
+                  <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 border border-slate-200 text-slate-700 font-mono text-[10px] sm:text-xs font-bold uppercase">
+                    <Layers className="w-3 h-3 text-[#0284C7]" />
+                    <span>500ML & 1.5L Universal Rate</span>
+                  </div>
+                </div>
+
+                {/* Main Heading */}
+                <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-2">
+                  Wholesale Rate Special
+                </h3>
+
+                {/* Subtext */}
+                <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-5 font-normal max-w-xl">
+                  Best rate for bulk/wholesale orders — available for both <span className="font-bold text-slate-800">500ml</span> and <span className="font-bold text-slate-800">1.5 litre</span> bottles.
+                </p>
+
+                {/* Bullet Points Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 w-full mb-2 sm:mb-0">
+                  <div className="flex items-center gap-2 text-xs sm:text-[13px] text-slate-700 font-medium">
+                    <div className="w-5 h-5 rounded-full bg-sky-100 border border-sky-300 flex items-center justify-center flex-shrink-0 text-[#0284C7]">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                    </div>
+                    <span>Valid for 500ml & 1.5L PET Cases</span>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-xs sm:text-[13px] text-slate-700 font-medium">
+                    <div className="w-5 h-5 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center flex-shrink-0 text-emerald-600">
+                      <Truck className="w-3.5 h-3.5" />
+                    </div>
+                    <span>100% Free Doorstep Delivery</span>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-xs sm:text-[13px] text-slate-700 font-medium">
+                    <div className="w-5 h-5 rounded-full bg-sky-100 border border-sky-300 flex items-center justify-center flex-shrink-0 text-[#0284C7]">
+                      <ShieldCheck className="w-3.5 h-3.5" />
+                    </div>
+                    <span>TDS 120-160 Lab Verified Purity</span>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-xs sm:text-[13px] text-slate-700 font-medium">
+                    <div className="w-5 h-5 rounded-full bg-sky-100 border border-sky-300 flex items-center justify-center flex-shrink-0 text-[#0284C7]">
+                      <Sparkles className="w-3.5 h-3.5" />
+                    </div>
+                    <span>Rwp, Islamabad & Fateh Jang</span>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Right Column: Custom Wholesale Pricing Box, Visual Callout & Actions */}
+              <div className="lg:col-span-5 bg-white/90 backdrop-blur-md rounded-2xl border border-sky-200 p-4 sm:p-6 shadow-md flex flex-col justify-between text-center lg:text-left">
+                
+                {/* Custom Wholesale Pricing Display */}
+                <div className="mb-4 text-center">
+                  <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-slate-500 block mb-1">
+                    Tiered Volume Savings
+                  </span>
+                  <h4 className="font-serif text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#0088CC] via-[#00B4D8] to-[#0284C7] leading-tight">
+                    Custom Wholesale Pricing
+                  </h4>
+                  <p className="text-xs text-slate-600 font-medium mt-1.5">
+                    Better rates unlocked as your order grows • Get a personalized quote based on your order size
+                  </p>
+                </div>
+
+                {/* Thin Divider */}
+                <div className="w-full h-px bg-slate-200 mb-4" />
+
+                {/* CTAs */}
+                <div className="flex flex-col gap-2.5">
+                  <button
+                    id="order-wholesale-btn"
+                    onClick={() => onOrderProduct('500ml')}
+                    className="w-full px-4 py-3 bg-gradient-to-r from-[#00D4FF] via-[#0284C7] to-[#0369A1] hover:brightness-110 text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-xl shadow-md border border-[#00D4FF]/50 transition-all cursor-pointer flex items-center justify-center gap-2 hover:shadow-lg active:scale-98"
+                  >
+                    <ShoppingCart className="w-4 h-4 text-white shrink-0" />
+                    <span>Get Wholesale Quote</span>
+                  </button>
+
+                  <a
+                    id="wholesale-whatsapp-btn"
+                    href="https://wa.me/923051999897?text=Hello%20Aabshar%20Team%2C%20I%20am%20interested%20in%20Custom%20Wholesale%20Pricing%20for%20bulk%20orders%20(500ml%20/%201.5L)%20with%20Free%20Delivery.%20Please%20provide%20a%20quote%20based%20on%20my%20volume."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full px-4 py-2.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-300 font-bold text-xs sm:text-sm rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 active:scale-98 shadow-xs"
+                  >
+                    <MessageCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>Contact for Bulk Order</span>
+                  </a>
+                </div>
+
+                <p className="font-sans text-center text-[10px] text-slate-500 mt-2.5 font-medium">
+                  ⚡ Same-Day / Scheduled Bulk Fleet Dispatch Available
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+        </motion.div>
 
       </div>
     </section>

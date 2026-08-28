@@ -237,13 +237,13 @@ export default function Navbar({ onOrderClick, onLinkClick }: NavbarProps) {
                 id="drawer-backdrop"
               />
 
-              {/* Modern Slide-out Panel Drawer Container in Clean White Theme */}
+              {/* Modern Slide-out Panel Drawer Container in Clean White Theme (Left slide-in) */}
               <motion.div
-                initial={{ x: '100%' }}
+                initial={{ x: '-100%' }}
                 animate={{ x: 0 }}
-                exit={{ x: '100%' }}
+                exit={{ x: '-100%' }}
                 transition={{ type: 'spring', damping: 26, stiffness: 210 }}
-                className="fixed top-0 right-0 h-screen w-full max-w-[340px] sm:max-w-[380px] bg-white text-slate-900 z-50 md:hidden shadow-2xl border-l border-slate-200 flex flex-col justify-between overflow-y-auto"
+                className="fixed top-0 left-0 h-screen w-full max-w-[340px] sm:max-w-[380px] bg-white text-slate-900 z-50 md:hidden shadow-2xl border-r border-slate-200 flex flex-col justify-between overflow-y-auto"
                 id="drawer-panel"
               >
                 {/* 1. Drawer Header Panel */}
