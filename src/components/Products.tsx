@@ -319,56 +319,62 @@ export default function Products({ onOrderProduct }: ProductsProps) {
         </div>
 
         {/* Filter Navigation Tabs */}
-        <div className="flex items-center justify-center gap-2 sm:gap-3 mb-10 max-w-xl mx-auto px-2">
-          <button
-            onClick={() => setActiveTab('all')}
-            className={`px-3.5 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-mono font-bold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 shadow-xs ${
-              activeTab === 'all'
-                ? 'bg-[#0284C7] text-white shadow-md shadow-sky-500/20'
-                : 'bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200'
-            }`}
-          >
-            <span>All Products</span>
-            <span className={`px-1.5 py-0.2 rounded-full text-[10px] ${
-              activeTab === 'all' ? 'bg-white/25 text-white' : 'bg-slate-100 text-slate-600'
-            }`}>
-              6
-            </span>
-          </button>
+        <div className="w-full max-w-md sm:max-w-xl mx-auto px-2 mb-8 sm:mb-10">
+          <div className="grid grid-cols-3 gap-1.5 sm:flex sm:items-center sm:justify-center sm:gap-3">
+            <button
+              onClick={() => setActiveTab('all')}
+              className={`px-1.5 sm:px-5 py-2 min-h-[38px] sm:min-h-[42px] rounded-xl text-[11px] sm:text-sm font-mono font-bold uppercase tracking-tight sm:tracking-wider transition-all cursor-pointer flex items-center justify-center gap-1 sm:gap-2 shadow-xs whitespace-nowrap ${
+                activeTab === 'all'
+                  ? 'bg-[#0284C7] text-white shadow-md shadow-sky-500/20'
+                  : 'bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200'
+              }`}
+            >
+              <span className="sm:hidden">All</span>
+              <span className="hidden sm:inline">All Products</span>
+              <span className={`px-1 sm:px-1.5 py-0.5 sm:py-0.2 rounded-full text-[9px] sm:text-[10px] leading-none shrink-0 font-bold ${
+                activeTab === 'all' ? 'bg-white/25 text-white' : 'bg-slate-100 text-slate-600'
+              }`}>
+                6
+              </span>
+            </button>
 
-          <button
-            onClick={() => setActiveTab('available')}
-            className={`px-3.5 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-mono font-bold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 shadow-xs ${
-              activeTab === 'available'
-                ? 'bg-[#0284C7] text-white shadow-md shadow-sky-500/20'
-                : 'bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200'
-            }`}
-          >
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Available Now</span>
-            <span className={`px-1.5 py-0.2 rounded-full text-[10px] ${
-              activeTab === 'available' ? 'bg-white/25 text-white' : 'bg-slate-100 text-slate-600'
-            }`}>
-              3
-            </span>
-          </button>
+            <button
+              onClick={() => setActiveTab('available')}
+              className={`px-1.5 sm:px-5 py-2 min-h-[38px] sm:min-h-[42px] rounded-xl text-[11px] sm:text-sm font-mono font-bold uppercase tracking-tight sm:tracking-wider transition-all cursor-pointer flex items-center justify-center gap-1 sm:gap-2 shadow-xs whitespace-nowrap ${
+                activeTab === 'available'
+                  ? 'bg-[#0284C7] text-white shadow-md shadow-sky-500/20'
+                  : 'bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200'
+              }`}
+            >
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+              <span className="sm:hidden">Available</span>
+              <span className="hidden sm:inline">Available Now</span>
+              <span className={`px-1 sm:px-1.5 py-0.5 sm:py-0.2 rounded-full text-[9px] sm:text-[10px] leading-none shrink-0 font-bold ${
+                activeTab === 'available' ? 'bg-white/25 text-white' : 'bg-slate-100 text-slate-600'
+              }`}>
+                3
+              </span>
+            </button>
 
-          <button
-            onClick={() => setActiveTab('coming_soon')}
-            className={`px-3.5 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-mono font-bold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 shadow-xs ${
-              activeTab === 'coming_soon'
-                ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-md shadow-amber-500/20'
-                : 'bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200'
-            }`}
-          >
-            <Clock className={`w-3.5 h-3.5 ${activeTab === 'coming_soon' ? 'text-white' : 'text-amber-500'}`} />
-            <span>Coming Soon</span>
-            <span className={`px-1.5 py-0.2 rounded-full text-[10px] ${
-              activeTab === 'coming_soon' ? 'bg-white/25 text-white' : 'bg-amber-100 text-amber-800'
-            }`}>
-              3
-            </span>
-          </button>
+            <button
+              onClick={() => setActiveTab('coming_soon')}
+              className={`px-1.5 sm:px-5 py-2 min-h-[38px] sm:min-h-[42px] rounded-xl text-[11px] sm:text-sm font-mono font-bold uppercase tracking-tight sm:tracking-wider transition-all cursor-pointer flex items-center justify-center gap-1 sm:gap-2 shadow-xs whitespace-nowrap ${
+                activeTab === 'coming_soon'
+                  ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-md shadow-amber-500/20'
+                  : 'bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200'
+              }`}
+            >
+              <Clock className={`w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 ${activeTab === 'coming_soon' ? 'text-white' : 'text-amber-500'}`} />
+              <span className="hidden min-[380px]:inline sm:hidden">Coming Soon</span>
+              <span className="min-[380px]:hidden sm:hidden">Soon</span>
+              <span className="hidden sm:inline">Coming Soon</span>
+              <span className={`px-1 sm:px-1.5 py-0.5 sm:py-0.2 rounded-full text-[9px] sm:text-[10px] leading-none shrink-0 font-bold ${
+                activeTab === 'coming_soon' ? 'bg-white/25 text-white' : 'bg-amber-100 text-amber-800'
+              }`}>
+                3
+              </span>
+            </button>
+          </div>
         </div>
 
         {/* Product Cards - Mobile Horizontal Swipeable Carousel & Desktop Stacked Grid Cards */}
@@ -407,9 +413,9 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                 >
                   {/* High-Contrast "Coming Soon" Badge in Top-Right Corner */}
                   {isComingSoon && (
-                    <div className="absolute top-3 right-3 sm:top-5 sm:right-5 z-30">
-                      <div className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-mono text-[10px] sm:text-xs font-black uppercase tracking-wider shadow-md border border-amber-300/40">
-                        <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 animate-spin-slow" />
+                    <div className="absolute top-2.5 right-2.5 sm:top-5 sm:right-5 z-30">
+                      <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-0.5 sm:py-1.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-mono text-[9px] sm:text-xs font-black uppercase tracking-wider shadow-md border border-amber-300/40">
+                        <Clock className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 animate-spin-slow" />
                         <span>COMING SOON</span>
                       </div>
                     </div>
@@ -417,38 +423,38 @@ export default function Products({ onOrderProduct }: ProductsProps) {
 
                   {/* Private Label Corner Ribbon */}
                   {isPrivateLabel && (
-                    <div className="absolute top-3 right-3 sm:top-5 sm:right-5 z-30">
-                      <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-gradient-to-r from-slate-900 to-[#0284C7] text-white font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-md">
-                        <Crown className="w-3 h-3 text-amber-300" />
+                    <div className="absolute top-2.5 right-2.5 sm:top-5 sm:right-5 z-30">
+                      <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-gradient-to-r from-slate-900 to-[#0284C7] text-white font-mono text-[9px] sm:text-xs font-bold uppercase tracking-wider shadow-md">
+                        <Crown className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-amber-300" />
                         <span>B2B CUSTOM</span>
                       </div>
                     </div>
                   )}
 
                   {/* Left Column: Asymmetric Bottle Showcase Stage */}
-                  <div className={`md:col-span-5 relative min-h-[280px] sm:min-h-[320px] md:min-h-[450px] flex flex-col items-center justify-end pt-12 sm:pt-16 md:pt-16 pb-4 sm:pb-6 md:pb-8 px-4 sm:px-6 border-b md:border-b-0 md:border-r overflow-hidden ${
+                  <div className={`md:col-span-5 relative min-h-[175px] sm:min-h-[220px] md:min-h-[450px] flex flex-col items-center justify-end pt-7 sm:pt-10 md:pt-16 pb-2 sm:pb-4 md:pb-8 px-3 sm:px-6 border-b md:border-b-0 md:border-r overflow-hidden ${
                     isComingSoon
                       ? 'bg-gradient-to-b from-amber-50/40 via-sky-50/40 to-slate-100 border-amber-200/60'
                       : 'bg-gradient-to-b from-sky-50/80 via-sky-50/40 to-slate-100 border-slate-200'
                   }`}>
                     {/* Radial Spotlight & Caustic Light behind Bottle */}
-                    <div className={`absolute w-56 sm:w-64 h-56 sm:h-64 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700 pointer-events-none ${
+                    <div className={`absolute w-36 sm:w-48 md:w-64 h-36 sm:h-48 md:h-64 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700 pointer-events-none ${
                       isComingSoon
                         ? 'bg-[radial-gradient(circle,rgba(245,158,11,0.18)_0%,transparent_75%)]'
                         : 'bg-[radial-gradient(circle,rgba(0,180,216,0.18)_0%,transparent_75%)]'
                     }`} />
 
                     {/* Refined Size Badge Top Left */}
-                    <div className="absolute top-3 left-3 sm:top-5 sm:left-5 z-20">
-                      <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 text-[#0284C7] text-[11px] sm:text-xs font-mono font-black tracking-wider uppercase shadow-xs">
-                        <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#00D4FF]" />
+                    <div className="absolute top-2.5 left-2.5 sm:top-5 sm:left-5 z-20">
+                      <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3.5 py-0.5 sm:py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 text-[#0284C7] text-[10px] sm:text-xs font-mono font-black tracking-wider uppercase shadow-xs">
+                        <Sparkles className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#00D4FF]" />
                         <span>{prod.sizeBadge}</span>
                       </div>
                     </div>
 
                     {/* Glowing Platform Pedestal & Water Ripple Effect beneath Bottle */}
-                    <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 w-44 sm:w-48 md:w-56 h-8 sm:h-10 bg-gradient-to-r from-sky-200/40 via-sky-300/50 to-sky-200/40 rounded-[100%] blur-md pointer-events-none z-10 animate-ripple-pulse" />
-                    <WaterRippleEffect size="lg" className="bottom-1 sm:bottom-2 opacity-60" />
+                    <div className="absolute bottom-2 sm:bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 w-32 sm:w-44 md:w-56 h-5 sm:h-7 md:h-10 bg-gradient-to-r from-sky-200/40 via-sky-300/50 to-sky-200/40 rounded-[100%] blur-md pointer-events-none z-10 animate-ripple-pulse" />
+                    <WaterRippleEffect size="lg" className="bottom-0.5 sm:bottom-2 opacity-50" />
 
                     {/* Floating Bottle Render with Gentle Idle Bobbing */}
                     <motion.img
@@ -456,9 +462,9 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                       alt={`${prod.name} - ${prod.sizeBadge}`}
                       loading="lazy"
                       decoding="async"
-                      animate={{ y: [0, -6, 0] }}
+                      animate={{ y: [0, -4, 0] }}
                       transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-                      className={`h-56 sm:h-60 md:h-72 w-auto object-contain pointer-events-none filter drop-shadow-[0_16px_24px_rgba(2,132,199,0.22)] z-20 mt-4 sm:mt-6 md:mt-6 mb-1 ${
+                      className={`h-36 sm:h-44 md:h-72 w-auto object-contain pointer-events-none filter drop-shadow-[0_12px_18px_rgba(2,132,199,0.22)] z-20 mt-1 sm:mt-3 md:mt-6 mb-0.5 sm:mb-1 ${
                         prod.blendMultiply ? 'mix-blend-multiply' : ''
                       } ${prod.imgScale}`}
                       referrerPolicy="no-referrer"
@@ -466,42 +472,42 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                   </div>
 
                   {/* Right Column: Details & Actions */}
-                  <div className="md:col-span-7 p-4 sm:p-6 md:p-8 flex flex-col justify-between text-left">
+                  <div className="md:col-span-7 p-3 sm:p-5 md:p-8 flex flex-col justify-between text-left">
                     <div>
                       {/* Top Badges Row */}
-                      <div className="flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 mb-2 sm:mb-3">
+                      <div className="flex flex-wrap items-center justify-between gap-1 sm:gap-2 mb-1.5 sm:mb-3">
                         {isComingSoon ? (
-                          <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-amber-50 border border-amber-300 text-amber-800 text-[10px] sm:text-xs font-mono font-black uppercase tracking-widest">
-                            <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-600" />
+                          <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-amber-50 border border-amber-300 text-amber-800 text-[9px] sm:text-xs font-mono font-black uppercase tracking-wider">
+                            <Clock className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-amber-600" />
                             <span>UPCOMING LAUNCH</span>
                           </div>
                         ) : isPrivateLabel ? (
-                          <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-[10px] sm:text-xs font-mono font-black uppercase tracking-widest">
-                            <Paintbrush className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#0284C7]" />
+                          <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-[9px] sm:text-xs font-mono font-black uppercase tracking-wider">
+                            <Paintbrush className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#0284C7]" />
                             <span>BESPOKE BRANDING</span>
                           </div>
                         ) : (
-                          <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-sky-50 border border-sky-200 text-[#0284C7] text-[10px] sm:text-xs font-mono font-black uppercase tracking-widest">
-                            <Droplets className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#00D4FF]" />
+                          <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-sky-50 border border-sky-200 text-[#0284C7] text-[9px] sm:text-xs font-mono font-black uppercase tracking-wider">
+                            <Droplets className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#00D4FF]" />
                             <span>AABSHAR PURE SERIES</span>
                           </div>
                         )}
 
-                        <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-[10px] sm:text-[11px] font-mono font-bold tracking-wider uppercase">
-                          <ShieldCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#0284C7]" />
+                        <div className="inline-flex items-center gap-1 sm:gap-1.5 px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-[9px] sm:text-[11px] font-mono font-bold tracking-wider uppercase">
+                          <ShieldCheck className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#0284C7]" />
                           <span>TDS 135 VERIFIED</span>
                         </div>
                       </div>
 
-                      <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 group-hover:text-[#0284C7] transition-colors duration-200 mb-0.5 sm:mb-1">
+                      <h3 className="font-serif text-lg sm:text-2xl md:text-3xl font-extrabold text-slate-900 group-hover:text-[#0284C7] transition-colors duration-200 mb-0.5 leading-snug">
                         {prod.name}
                       </h3>
-                      <p className="font-sans text-slate-600 text-xs sm:text-sm font-medium mb-2.5 sm:mb-4">
+                      <p className="font-sans text-slate-600 text-[11px] sm:text-sm font-medium mb-2 sm:mb-4 line-clamp-2 md:line-clamp-none leading-snug sm:leading-normal">
                         {prod.subtitle}
                       </p>
 
                       {/* Animated Thin Accent Line */}
-                      <div className={`w-full h-[1.5px] mb-3 sm:mb-5 ${
+                      <div className={`w-full h-[1px] md:h-[1.5px] mb-2 sm:mb-4 md:mb-5 ${
                         isComingSoon
                           ? 'bg-gradient-to-r from-amber-500 via-amber-300 to-transparent'
                           : 'bg-gradient-to-r from-[#0088CC] via-sky-300 to-transparent'
@@ -530,47 +536,47 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                     <div>
                       {/* Pricing / Availability Box */}
                       {isComingSoon ? (
-                        <div className="mb-3 sm:mb-5 p-2.5 sm:p-4 bg-amber-50/70 rounded-xl sm:rounded-2xl border border-amber-200/90 flex items-center justify-between gap-2 sm:gap-3 shadow-xs relative overflow-hidden">
+                        <div className="mb-2.5 sm:mb-4 md:mb-5 p-2 sm:p-3 md:p-4 bg-amber-50/70 rounded-xl sm:rounded-2xl border border-amber-200/90 flex items-center justify-between gap-1.5 sm:gap-3 shadow-xs relative overflow-hidden">
                           <div>
-                            <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-amber-700 block mb-0.5">
+                            <span className="text-[8.5px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-amber-700 block mb-0.5">
                               Release Status
                             </span>
-                            <span className="font-serif text-xl sm:text-2xl md:text-3xl font-extrabold text-amber-900 leading-none">
+                            <span className="font-serif text-lg sm:text-2xl md:text-3xl font-extrabold text-amber-900 leading-none">
                               Coming Soon
                             </span>
-                            <span className="text-[10px] sm:text-xs text-amber-700/90 font-medium block mt-1">
+                            <span className="text-[9.5px] sm:text-xs text-amber-700/90 font-medium block mt-0.5 sm:mt-1">
                               {prod.priceDetail}
                             </span>
                           </div>
-                          <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 font-mono text-[10px] sm:text-xs font-black uppercase tracking-wide">
-                            <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-700" />
+                          <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 font-mono text-[9px] sm:text-xs font-black uppercase tracking-wide">
+                            <Clock className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-amber-700" />
                             <span>In Production</span>
                           </div>
                         </div>
                       ) : (
-                        <div className="mb-3 sm:mb-5 p-2.5 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border border-slate-200 flex items-center justify-between gap-2 sm:gap-3 shadow-xs relative overflow-hidden group/price">
+                        <div className="mb-2.5 sm:mb-4 md:mb-5 p-2 sm:p-3 md:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border border-slate-200 flex items-center justify-between gap-1.5 sm:gap-3 shadow-xs relative overflow-hidden group/price">
                           <div className="relative z-10">
-                            <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500 block mb-0.5">
+                            <span className="text-[8.5px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500 block mb-0.5">
                               {isPrivateLabel ? 'Pricing Plan' : 'Unit Retail Price'}
                             </span>
                             <div className="flex items-baseline gap-1">
-                              <span className="font-serif text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 leading-none">
+                              <span className="font-serif text-xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 leading-none">
                                 {prod.price}
                               </span>
                             </div>
-                            <span className="text-[10px] sm:text-xs text-slate-500 font-medium block mt-1">
+                            <span className="text-[9.5px] sm:text-xs text-slate-500 font-medium block mt-0.5 sm:mt-1">
                               {prod.priceDetail}
                             </span>
                           </div>
-                          <div className="relative z-10 inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-sky-100 border border-sky-300 text-[#0284C7] font-mono text-[10px] sm:text-xs font-black uppercase tracking-wide">
+                          <div className="relative z-10 inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3.5 py-0.5 sm:py-1.5 rounded-full bg-sky-100 border border-sky-300 text-[#0284C7] font-mono text-[9px] sm:text-xs font-black uppercase tracking-wide">
                             {isPrivateLabel ? (
                               <>
-                                <Crown className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#0284C7]" />
+                                <Crown className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#0284C7]" />
                                 <span>Zero Setup Fee</span>
                               </>
                             ) : (
                               <>
-                                <Tag className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#0284C7]" />
+                                <Tag className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#0284C7]" />
                                 <span>Bulk Savings</span>
                               </>
                             )}
@@ -585,22 +591,22 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                           <button
                             id={`notify-btn-${prod.id}`}
                             onClick={() => handleNotifyMe(prod)}
-                            className="w-full px-4 sm:px-6 py-2.5 sm:py-3.5 bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 hover:brightness-110 text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl shadow-md border border-amber-400/50 transition-all cursor-pointer flex items-center justify-center gap-2 sm:gap-2.5 hover:shadow-lg active:scale-98"
+                            className="w-full px-3.5 sm:px-6 py-2 sm:py-3.5 min-h-[42px] sm:min-h-[46px] bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 hover:brightness-110 text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl shadow-md border border-amber-400/50 transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2.5 hover:shadow-lg active:scale-98"
                           >
                             {isNotified ? (
                               <>
-                                <Check className="w-4 h-4 sm:w-5 sm:h-5 text-white shrink-0" />
+                                <Check className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-white shrink-0" />
                                 <span>Waitlist Confirmed! Opening WhatsApp...</span>
                               </>
                             ) : (
                               <>
-                                <Bell className="w-4 h-4 sm:w-5 sm:h-5 text-white shrink-0" />
+                                <Bell className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-white shrink-0" />
                                 <span>Notify Me When Available</span>
                               </>
                             )}
                           </button>
-                          <p className="font-sans text-center text-[10px] sm:text-[11px] text-amber-700/80 mt-1.5 sm:mt-2 font-medium">
-                            Join the priority launch waitlist to receive early-bird stock alerts and discounts.
+                          <p className="font-sans text-center text-[9.5px] sm:text-[11px] text-amber-700/80 mt-1 sm:mt-2 font-medium line-clamp-1 sm:line-clamp-none">
+                            Join priority launch waitlist for early-bird stock alerts & discounts.
                           </p>
                         </div>
                       ) : isPrivateLabel ? (
@@ -619,13 +625,13 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                                 b2bEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
                               }
                             }}
-                            className="w-full px-4 sm:px-6 py-2.5 sm:py-3.5 bg-gradient-to-r from-slate-900 via-[#0A2540] to-[#0284C7] hover:brightness-110 text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl shadow-md border border-sky-400/30 transition-all cursor-pointer flex items-center justify-center gap-2 sm:gap-2.5 hover:shadow-lg active:scale-98 group"
+                            className="w-full px-3.5 sm:px-6 py-2 sm:py-3.5 min-h-[42px] sm:min-h-[46px] bg-gradient-to-r from-slate-900 via-[#0A2540] to-[#0284C7] hover:brightness-110 text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl shadow-md border border-sky-400/30 transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2.5 hover:shadow-lg active:scale-98 group"
                           >
-                            <Paintbrush className="w-4 h-4 sm:w-5 sm:h-5 text-[#00D4FF] group-hover:rotate-12 transition-transform shrink-0" />
+                            <Paintbrush className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#00D4FF] group-hover:rotate-12 transition-transform shrink-0" />
                             <span className="text-center leading-snug">Explore Private Label Branding</span>
                           </a>
-                          <p className="font-sans text-center text-[10px] sm:text-[11px] text-slate-500 mt-1.5 sm:mt-2 font-medium">
-                            Full digital preview & 3D mockup consultation for businesses, hotels & events
+                          <p className="font-sans text-center text-[9.5px] sm:text-[11px] text-slate-500 mt-1 sm:mt-2 font-medium line-clamp-1 sm:line-clamp-none">
+                            Digital preview & 3D mockup consultation for businesses, hotels & events
                           </p>
                         </div>
                       ) : (
@@ -636,13 +642,13 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                               if (isDragging) return;
                               onOrderProduct(prod.id);
                             }}
-                            className="w-full px-4 sm:px-6 py-2.5 sm:py-3.5 bg-gradient-to-r from-[#00D4FF] via-[#0284C7] to-[#0369A1] hover:brightness-110 text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl shadow-md border border-[#00D4FF]/50 transition-all cursor-pointer flex items-center justify-center gap-2 sm:gap-2.5 hover:shadow-lg active:scale-98 group"
+                            className="w-full px-3.5 sm:px-6 py-2 sm:py-3.5 min-h-[42px] sm:min-h-[46px] bg-gradient-to-r from-[#00D4FF] via-[#0284C7] to-[#0369A1] hover:brightness-110 text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl shadow-md border border-[#00D4FF]/50 transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2.5 hover:shadow-lg active:scale-98 group"
                           >
-                            <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 fill-current text-white group-hover:scale-110 transition-transform shrink-0" />
+                            <ShoppingCart className="w-3.5 h-3.5 sm:w-5 sm:h-5 fill-current text-white group-hover:scale-110 transition-transform shrink-0" />
                             <span className="text-center leading-snug">Order {prod.sizeBadge} Chilled</span>
                           </button>
-                          <p className="font-sans text-center text-[10px] sm:text-[11px] text-slate-500 mt-1.5 sm:mt-2 font-medium">
-                            Daily Chilled Express Delivery across Rawalpindi, Islamabad & Fateh Jang
+                          <p className="font-sans text-center text-[9.5px] sm:text-[11px] text-slate-500 mt-1 sm:mt-2 font-medium line-clamp-1 sm:line-clamp-none">
+                            Daily Chilled Express Delivery in Rawalpindi, Islamabad & Fateh Jang
                           </p>
                         </div>
                       )}
