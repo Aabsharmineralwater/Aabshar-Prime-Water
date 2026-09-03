@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect, useCallback, MouseEvent } from 'react';
 import { 
   ShoppingCart, 
   Sparkles, 
@@ -21,6 +21,9 @@ import {
   Paintbrush,
   Building2,
   Check,
+  ChevronLeft,
+  ChevronRight,
+  ArrowLeftRight,
   LucideIcon
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -62,7 +65,16 @@ export default function Products({ onOrderProduct }: ProductsProps) {
   const [activeTab, setActiveTab] = useState<'all' | 'available' | 'coming_soon'>('all');
   const [notifiedItems, setNotifiedItems] = useState<Record<string, boolean>>({});
 
+  // Mobile Carousel State & Refs
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const isMouseDownRef = useRef(false);
+  const startXRef = useRef(0);
+  const scrollLeftRef = useRef(0);
+  const [isDragging, setIsDragging] = useState(false);
+
   const handleNotifyMe = (item: ProductItem) => {
+    if (isDragging) return;
     setNotifiedItems((prev) => ({ ...prev, [item.id]: true }));
     const text = encodeURIComponent(
       item.notifyMessage || `Hello Aabshar Team, please notify me when the ${item.sizeBadge} (${item.name}) becomes available!`
@@ -206,6 +218,72 @@ export default function Products({ onOrderProduct }: ProductsProps) {
     return true;
   });
 
+  // Reset carousel index and position on filter tab changes
+  useEffect(() => {
+    setCurrentIndex(0);
+    if (carouselRef.current) {
+      carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+    }
+  }, [activeTab]);
+
+  // Handle horizontal scroll to update current dot indicator (mobile only)
+  const handleScroll = useCallback(() => {
+    if (!carouselRef.current || window.innerWidth >= 768) return;
+    const container = carouselRef.current;
+    const cards = container.querySelectorAll<HTMLElement>('[data-carousel-card]');
+    if (!cards.length) return;
+
+    const containerLeft = container.getBoundingClientRect().left;
+    let closestIndex = 0;
+    let minDiff = Infinity;
+
+    cards.forEach((card, idx) => {
+      const cardRect = card.getBoundingClientRect();
+      const diff = Math.abs(cardRect.left - containerLeft);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIndex = idx;
+      }
+    });
+
+    setCurrentIndex(closestIndex);
+  }, []);
+
+  const scrollToCard = (index: number) => {
+    if (!carouselRef.current) return;
+    const container = carouselRef.current;
+    const cards = container.querySelectorAll<HTMLElement>('[data-carousel-card]');
+    if (cards[index]) {
+      cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+      setCurrentIndex(index);
+    }
+  };
+
+  // Mouse drag-to-scroll support for desktop preview and touch devices
+  const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
+    if (window.innerWidth >= 768 || !carouselRef.current) return;
+    isMouseDownRef.current = true;
+    setIsDragging(false);
+    startXRef.current = e.pageX - carouselRef.current.offsetLeft;
+    scrollLeftRef.current = carouselRef.current.scrollLeft;
+  };
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (!isMouseDownRef.current || !carouselRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - carouselRef.current.offsetLeft;
+    const walk = x - startXRef.current;
+    if (Math.abs(walk) > 6) {
+      setIsDragging(true);
+    }
+    carouselRef.current.scrollLeft = scrollLeftRef.current - walk;
+  };
+
+  const handleMouseUp = () => {
+    isMouseDownRef.current = false;
+    setTimeout(() => setIsDragging(false), 80);
+  };
+
   return (
     <section id="products" className="py-20 bg-slate-50/70 text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
       {/* Subtle Background Glows */}
@@ -293,8 +371,17 @@ export default function Products({ onOrderProduct }: ProductsProps) {
           </button>
         </div>
 
-        {/* Product Cards - Asymmetric Split Layout Cards */}
-        <div className="flex flex-col gap-6 sm:gap-10 max-w-5xl mx-auto">
+        {/* Product Cards - Mobile Horizontal Swipeable Carousel & Desktop Stacked Grid Cards */}
+        <div
+          ref={carouselRef}
+          onScroll={handleScroll}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          className="flex flex-row md:flex-col overflow-x-auto md:overflow-visible gap-4 sm:gap-6 md:gap-10 -mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-auto md:px-0 max-w-5xl snap-x snap-mandatory md:snap-none scroll-smooth scroll-px-4 sm:scroll-px-6 md:scroll-px-0 pb-4 md:pb-0 select-none md:select-auto cursor-grab active:cursor-grabbing md:cursor-default [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          style={{ WebkitOverflowScrolling: 'touch' }}
+        >
           <AnimatePresence mode="popLayout">
             {filteredItems.map((prod, index) => {
               const isComingSoon = prod.isComingSoon;
@@ -304,12 +391,13 @@ export default function Products({ onOrderProduct }: ProductsProps) {
               return (
                 <motion.div
                   key={prod.id}
+                  data-carousel-card
                   layout
                   initial={{ opacity: 0, y: 25 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.96 }}
                   transition={{ duration: 0.45, delay: index * 0.05 }}
-                  className={`bg-white border rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 grid grid-cols-1 md:grid-cols-12 relative group ${
+                  className={`w-[84vw] sm:w-[72vw] md:w-full max-w-[390px] md:max-w-none shrink-0 md:shrink snap-start snap-always md:snap-align-none bg-white border rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 grid grid-cols-1 md:grid-cols-12 relative group ${
                     isComingSoon
                       ? 'border-amber-200/90 hover:border-amber-400/80 ring-1 ring-amber-100'
                       : isPrivateLabel
@@ -521,6 +609,10 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                             id="private-label-btn"
                             href="#b2b"
                             onClick={(e) => {
+                              if (isDragging) {
+                                e.preventDefault();
+                                return;
+                              }
                               e.preventDefault();
                               const b2bEl = document.querySelector('#b2b');
                               if (b2bEl) {
@@ -540,7 +632,10 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                         <div>
                           <button
                             id={`order-btn-${prod.id}`}
-                            onClick={() => onOrderProduct(prod.id)}
+                            onClick={() => {
+                              if (isDragging) return;
+                              onOrderProduct(prod.id);
+                            }}
                             className="w-full px-4 sm:px-6 py-2.5 sm:py-3.5 bg-gradient-to-r from-[#00D4FF] via-[#0284C7] to-[#0369A1] hover:brightness-110 text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl shadow-md border border-[#00D4FF]/50 transition-all cursor-pointer flex items-center justify-center gap-2 sm:gap-2.5 hover:shadow-lg active:scale-98 group"
                           >
                             <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 fill-current text-white group-hover:scale-110 transition-transform shrink-0" />
@@ -557,6 +652,64 @@ export default function Products({ onOrderProduct }: ProductsProps) {
               );
             })}
           </AnimatePresence>
+        </div>
+
+        {/* Mobile Carousel Indicators & Position Controls (Visible strictly below 768px) */}
+        <div className="flex md:hidden flex-col items-center gap-2.5 mt-3 mb-6">
+          {/* Position & Swipe Cue */}
+          <div className="flex items-center justify-between w-full max-w-[340px] px-1">
+            <div className="inline-flex items-center gap-1.5 text-[11px] font-mono font-medium text-slate-500">
+              <ArrowLeftRight className="w-3.5 h-3.5 text-[#0284C7] animate-pulse" />
+              <span>Swipe to browse vessels</span>
+            </div>
+            <span className="text-[11px] font-mono font-bold text-slate-700 bg-white px-2.5 py-0.5 rounded-full border border-slate-200 shadow-2xs">
+              {Math.min(currentIndex + 1, filteredItems.length)} of {filteredItems.length}
+            </span>
+          </div>
+
+          {/* Carousel Navigation with Dots & Chevrons */}
+          <div className="flex items-center justify-center gap-2.5">
+            <button
+              onClick={() => scrollToCard(Math.max(0, currentIndex - 1))}
+              disabled={currentIndex === 0}
+              aria-label="Previous vessel"
+              className={`w-8 h-8 rounded-full flex items-center justify-center border transition-all cursor-pointer ${
+                currentIndex === 0
+                  ? 'opacity-30 cursor-not-allowed border-slate-200 text-slate-400 bg-slate-50'
+                  : 'bg-white border-slate-200 text-slate-700 hover:border-sky-400 hover:text-sky-600 shadow-xs active:scale-95'
+              }`}
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/90 backdrop-blur-xs rounded-full border border-slate-200 shadow-xs">
+              {filteredItems.map((prod, idx) => (
+                <button
+                  key={`dot-${prod.id}`}
+                  onClick={() => scrollToCard(idx)}
+                  aria-label={`Go to ${prod.sizeBadge}`}
+                  className={`transition-all duration-300 rounded-full cursor-pointer ${
+                    currentIndex === idx
+                      ? 'w-6 h-2 bg-[#0284C7]'
+                      : 'w-2 h-2 bg-slate-300 hover:bg-slate-400'
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={() => scrollToCard(Math.min(filteredItems.length - 1, currentIndex + 1))}
+              disabled={currentIndex >= filteredItems.length - 1}
+              aria-label="Next vessel"
+              className={`w-8 h-8 rounded-full flex items-center justify-center border transition-all cursor-pointer ${
+                currentIndex >= filteredItems.length - 1
+                  ? 'opacity-30 cursor-not-allowed border-slate-200 text-slate-400 bg-slate-50'
+                  : 'bg-white border-slate-200 text-slate-700 hover:border-sky-400 hover:text-sky-600 shadow-xs active:scale-95'
+              }`}
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
         {/* ========================================================================= */}
