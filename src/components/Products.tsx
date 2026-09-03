@@ -27,9 +27,9 @@ import { motion, AnimatePresence } from 'motion/react';
 import WaterRippleEffect from './WaterRippleEffect';
 import bottleImage15L from '../assets/images/product_card_1_5l.png';
 import bottleImage500ml from '../assets/images/product_card_500ml.png';
-import bottleImage19L from '../assets/images/bottle_19l_gallon_1788458811713.jpg';
-import bottleImage12L from '../assets/images/bottle_12l_water_1788458825021.jpg';
-import bottleImage6L from '../assets/images/bottle_6l_water_1788458837693.jpg';
+import bottleImage19L from '../assets/images/regenerated_image_1788459984885.png';
+import bottleImage12L from '../assets/images/regenerated_image_1788460019830.png';
+import bottleImage6L from '../assets/images/regenerated_image_1788460051533.png';
 import privateLabelImg from '../assets/images/b2b_nexora_card_mockup.png';
 
 interface ProductFeature {
@@ -151,7 +151,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
       tagline: 'High-volume pure mineral hydration engineered for water coolers and active workspaces.',
       image: bottleImage19L,
       isComingSoon: true,
-      blendMultiply: true,
+      blendMultiply: false,
       notifyMessage: 'Hello Aabshar Team, please notify me when the 19 Litre Gallon bottle is available for order!',
     },
     // 5. Coming Soon Product: 12 Litre Bottle
@@ -173,7 +173,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
       tagline: 'A modern mid-size pantry reservoir providing multi-day pure water for the entire family.',
       image: bottleImage12L,
       isComingSoon: true,
-      blendMultiply: true,
+      blendMultiply: false,
       notifyMessage: 'Hello Aabshar Team, please notify me when the 12 Litre bottle is launched!',
     },
     // 6. Coming Soon Product: 6 Litre Bottle
@@ -195,7 +195,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
       tagline: 'Easy-to-chill, grab-and-go bulk format tailored for refrigerators and road journeys.',
       image: bottleImage6L,
       isComingSoon: true,
-      blendMultiply: true,
+      blendMultiply: false,
       notifyMessage: 'Hello Aabshar Team, please notify me when the 6 Litre bottle is launched!',
     },
   ];
