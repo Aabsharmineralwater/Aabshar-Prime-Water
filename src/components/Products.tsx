@@ -44,7 +44,7 @@ interface ProductItem {
   id: string;
   name: string;
   sizeBadge: string;
-  subtitle: string;
+  subtitle?: string;
   price: string;
   priceDetail: string;
   features: ProductFeature[];
@@ -88,7 +88,6 @@ export default function Products({ onOrderProduct }: ProductsProps) {
       id: '500ml',
       name: 'Aabshar Eco Active',
       sizeBadge: '500ml Bottle',
-      subtitle: 'Perfect for on-the-go active hydration',
       price: 'PKR 50',
       priceDetail: 'Per bottle (Bulk rate available)',
       features: [
@@ -108,7 +107,6 @@ export default function Products({ onOrderProduct }: ProductsProps) {
       id: '1.5L',
       name: 'Aabshar Signature Suite',
       sizeBadge: '1.5 Litre Bottle',
-      subtitle: 'Ideal for home & premium executive suites',
       price: 'PKR 90',
       priceDetail: 'Per bottle (Bulk rate available)',
       features: [
@@ -128,7 +126,6 @@ export default function Products({ onOrderProduct }: ProductsProps) {
       id: 'private-label',
       name: 'Aabshar Bespoke Labeling',
       sizeBadge: 'Private Label (Custom Branding)',
-      subtitle: 'Custom branded water bottles for corporate, hospitality & events',
       price: 'Custom Quote',
       priceDetail: 'Tailored batch pricing & zero setup fees',
       features: [
@@ -149,7 +146,6 @@ export default function Products({ onOrderProduct }: ProductsProps) {
       id: '19L',
       name: 'Aabshar Hydro Tower',
       sizeBadge: '19 Litre Gallon',
-      subtitle: 'Dispenser cooler vessel for homes, offices & corporate cafeterias',
       price: 'Coming Soon',
       priceDetail: 'Weekly swap subscription launching shortly',
       features: [
@@ -171,7 +167,6 @@ export default function Products({ onOrderProduct }: ProductsProps) {
       id: '12L',
       name: 'Aabshar Home Reservoir',
       sizeBadge: '12 Litre Bottle',
-      subtitle: 'Mid-capacity dispenser & counter-top reservoir for modern households',
       price: 'Coming Soon',
       priceDetail: 'Eco-conscious bulk family format',
       features: [
@@ -193,7 +188,6 @@ export default function Products({ onOrderProduct }: ProductsProps) {
       id: '6L',
       name: 'Aabshar Pantry Reserve',
       sizeBadge: '6 Litre Bottle',
-      subtitle: 'Compact bulk bottle crafted for standard refrigerator shelves & road trips',
       price: 'Coming Soon',
       priceDetail: 'Convenient multi-day personal hydration',
       features: [
@@ -314,7 +308,8 @@ export default function Products({ onOrderProduct }: ProductsProps) {
           </motion.h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#0088CC] via-[#00B4D8] to-[#0284C7] mx-auto mt-3 rounded-full shadow-xs" />
           <p className="font-sans text-slate-600 text-xs sm:text-sm mt-3 max-w-xl mx-auto">
-            From active personal bottles to upcoming dispenser gallons and bespoke private labeling, discover our complete mineral water line.
+            <span className="sm:hidden">Premium hydration, delivered fresh to your door.</span>
+            <span className="hidden sm:inline">From active personal bottles to upcoming dispenser gallons and bespoke private labeling, discover our complete mineral water line.</span>
           </p>
         </div>
 
@@ -432,7 +427,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                   )}
 
                   {/* Left Column: Asymmetric Bottle Showcase Stage */}
-                  <div className={`md:col-span-5 relative min-h-[175px] sm:min-h-[220px] md:min-h-[450px] flex flex-col items-center justify-end pt-7 sm:pt-10 md:pt-16 pb-2 sm:pb-4 md:pb-8 px-3 sm:px-6 border-b md:border-b-0 md:border-r overflow-hidden ${
+                  <div className={`md:col-span-5 relative min-h-[200px] sm:min-h-[240px] md:min-h-[450px] flex flex-col items-center justify-end pt-6 sm:pt-10 md:pt-16 pb-2 sm:pb-4 md:pb-8 px-3 sm:px-6 border-b md:border-b-0 md:border-r overflow-hidden ${
                     isComingSoon
                       ? 'bg-gradient-to-b from-amber-50/40 via-sky-50/40 to-slate-100 border-amber-200/60'
                       : 'bg-gradient-to-b from-sky-50/80 via-sky-50/40 to-slate-100 border-slate-200'
@@ -446,15 +441,15 @@ export default function Products({ onOrderProduct }: ProductsProps) {
 
                     {/* Refined Size Badge Top Left */}
                     <div className="absolute top-2.5 left-2.5 sm:top-5 sm:left-5 z-20">
-                      <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3.5 py-0.5 sm:py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 text-[#0284C7] text-[10px] sm:text-xs font-mono font-black tracking-wider uppercase shadow-xs">
+                      <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-0.5 sm:py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 text-[#0284C7] text-[10px] sm:text-xs font-mono font-black tracking-wider uppercase shadow-xs">
                         <Sparkles className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#00D4FF]" />
                         <span>{prod.sizeBadge}</span>
                       </div>
                     </div>
 
                     {/* Glowing Platform Pedestal & Water Ripple Effect beneath Bottle */}
-                    <div className="absolute bottom-2 sm:bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 w-32 sm:w-44 md:w-56 h-5 sm:h-7 md:h-10 bg-gradient-to-r from-sky-200/40 via-sky-300/50 to-sky-200/40 rounded-[100%] blur-md pointer-events-none z-10 animate-ripple-pulse" />
-                    <WaterRippleEffect size="lg" className="bottom-0.5 sm:bottom-2 opacity-50" />
+                    <div className="absolute bottom-1.5 sm:bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 w-32 sm:w-44 md:w-56 h-5 sm:h-7 md:h-10 bg-gradient-to-r from-sky-200/40 via-sky-300/50 to-sky-200/40 rounded-[100%] blur-md pointer-events-none z-10 animate-ripple-pulse" />
+                    <WaterRippleEffect size="lg" className="bottom-0.5 sm:bottom-2 opacity-45 sm:opacity-50 scale-80 sm:scale-100 origin-bottom" />
 
                     {/* Floating Bottle Render with Gentle Idle Bobbing */}
                     <motion.img
@@ -464,7 +459,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                       decoding="async"
                       animate={{ y: [0, -4, 0] }}
                       transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-                      className={`h-36 sm:h-44 md:h-72 w-auto object-contain pointer-events-none filter drop-shadow-[0_12px_18px_rgba(2,132,199,0.22)] z-20 mt-1 sm:mt-3 md:mt-6 mb-0.5 sm:mb-1 ${
+                      className={`h-40 sm:h-48 md:h-72 w-auto object-contain pointer-events-none filter drop-shadow-[0_12px_20px_rgba(2,132,199,0.22)] md:drop-shadow-[0_16px_24px_rgba(2,132,199,0.22)] z-20 mt-1 sm:mt-3 md:mt-6 mb-0.5 sm:mb-1 ${
                         prod.blendMultiply ? 'mix-blend-multiply' : ''
                       } ${prod.imgScale}`}
                       referrerPolicy="no-referrer"
@@ -502,9 +497,11 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                       <h3 className="font-serif text-lg sm:text-2xl md:text-3xl font-extrabold text-slate-900 group-hover:text-[#0284C7] transition-colors duration-200 mb-0.5 leading-snug">
                         {prod.name}
                       </h3>
-                      <p className="font-sans text-slate-600 text-[11px] sm:text-sm font-medium mb-2 sm:mb-4 line-clamp-2 md:line-clamp-none leading-snug sm:leading-normal">
-                        {prod.subtitle}
-                      </p>
+                      {prod.subtitle && (
+                        <p className="font-sans text-slate-600 text-[11px] sm:text-sm font-medium mb-2 sm:mb-4 line-clamp-2 md:line-clamp-none leading-snug sm:leading-normal">
+                          {prod.subtitle}
+                        </p>
+                      )}
 
                       {/* Animated Thin Accent Line */}
                       <div className={`w-full h-[1px] md:h-[1.5px] mb-2 sm:mb-4 md:mb-5 ${
@@ -661,34 +658,34 @@ export default function Products({ onOrderProduct }: ProductsProps) {
         </div>
 
         {/* Mobile Carousel Indicators & Position Controls (Visible strictly below 768px) */}
-        <div className="flex md:hidden flex-col items-center gap-2.5 mt-3 mb-6">
+        <div className="flex md:hidden flex-col items-center gap-1.5 mt-2 mb-4">
           {/* Position & Swipe Cue */}
-          <div className="flex items-center justify-between w-full max-w-[340px] px-1">
-            <div className="inline-flex items-center gap-1.5 text-[11px] font-mono font-medium text-slate-500">
-              <ArrowLeftRight className="w-3.5 h-3.5 text-[#0284C7] animate-pulse" />
+          <div className="flex items-center justify-between w-full max-w-[320px] px-1">
+            <div className="inline-flex items-center gap-1 text-[9.5px] font-mono font-medium text-slate-500">
+              <ArrowLeftRight className="w-3 h-3 text-[#0284C7] animate-pulse" />
               <span>Swipe to browse vessels</span>
             </div>
-            <span className="text-[11px] font-mono font-bold text-slate-700 bg-white px-2.5 py-0.5 rounded-full border border-slate-200 shadow-2xs">
+            <span className="text-[9.5px] font-mono font-bold text-slate-700 bg-white px-2 py-0.5 rounded-full border border-slate-200 shadow-2xs">
               {Math.min(currentIndex + 1, filteredItems.length)} of {filteredItems.length}
             </span>
           </div>
 
           {/* Carousel Navigation with Dots & Chevrons */}
-          <div className="flex items-center justify-center gap-2.5">
+          <div className="flex items-center justify-center gap-2">
             <button
               onClick={() => scrollToCard(Math.max(0, currentIndex - 1))}
               disabled={currentIndex === 0}
               aria-label="Previous vessel"
-              className={`w-8 h-8 rounded-full flex items-center justify-center border transition-all cursor-pointer ${
+              className={`w-7 h-7 rounded-full flex items-center justify-center border transition-all cursor-pointer ${
                 currentIndex === 0
                   ? 'opacity-30 cursor-not-allowed border-slate-200 text-slate-400 bg-slate-50'
                   : 'bg-white border-slate-200 text-slate-700 hover:border-sky-400 hover:text-sky-600 shadow-xs active:scale-95'
               }`}
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-3.5 h-3.5" />
             </button>
 
-            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/90 backdrop-blur-xs rounded-full border border-slate-200 shadow-xs">
+            <div className="flex items-center gap-1 px-2.5 py-1 bg-white/90 backdrop-blur-xs rounded-full border border-slate-200 shadow-xs">
               {filteredItems.map((prod, idx) => (
                 <button
                   key={`dot-${prod.id}`}
@@ -696,8 +693,8 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                   aria-label={`Go to ${prod.sizeBadge}`}
                   className={`transition-all duration-300 rounded-full cursor-pointer ${
                     currentIndex === idx
-                      ? 'w-6 h-2 bg-[#0284C7]'
-                      : 'w-2 h-2 bg-slate-300 hover:bg-slate-400'
+                      ? 'w-5 h-1.5 bg-[#0284C7]'
+                      : 'w-1.5 h-1.5 bg-slate-300 hover:bg-slate-400'
                   }`}
                 />
               ))}
@@ -707,13 +704,13 @@ export default function Products({ onOrderProduct }: ProductsProps) {
               onClick={() => scrollToCard(Math.min(filteredItems.length - 1, currentIndex + 1))}
               disabled={currentIndex >= filteredItems.length - 1}
               aria-label="Next vessel"
-              className={`w-8 h-8 rounded-full flex items-center justify-center border transition-all cursor-pointer ${
+              className={`w-7 h-7 rounded-full flex items-center justify-center border transition-all cursor-pointer ${
                 currentIndex >= filteredItems.length - 1
                   ? 'opacity-30 cursor-not-allowed border-slate-200 text-slate-400 bg-slate-50'
                   : 'bg-white border-slate-200 text-slate-700 hover:border-sky-400 hover:text-sky-600 shadow-xs active:scale-95'
               }`}
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>
