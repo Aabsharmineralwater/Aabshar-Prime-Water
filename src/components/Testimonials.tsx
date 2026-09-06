@@ -53,7 +53,7 @@ const MobileTestimonialCarousel = ({ reviews }: { reviews: ReviewItem[] }) => {
   const initials = rev.name.split(' ').map(n => n[0]).join('');
 
   return (
-    <div className="relative w-full max-w-xs sm:max-w-sm mx-auto px-6 mb-8 select-none">
+    <div className="relative w-full max-w-xs sm:max-w-sm mx-auto px-6 mb-3 select-none">
       {/* Left Arrow */}
       <button
         type="button"
@@ -242,11 +242,11 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="py-20 bg-white text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
+    <section id="testimonials" className="py-8 sm:py-12 md:py-14 bg-white text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-5 sm:mb-8">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}

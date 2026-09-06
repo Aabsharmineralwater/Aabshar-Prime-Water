@@ -594,11 +594,11 @@ export default function B2B({ onQuoteClick }: B2BProps) {
   ];
 
   return (
-    <section id="b2b" className="py-24 bg-slate-50/70 text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
+    <section id="b2b" className="py-8 sm:py-12 md:py-14 bg-slate-50/70 text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* SECTION 5: B2B EDITORIAL + INDUSTRIES SERVED */}
-        <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 md:mb-20">
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -625,13 +625,13 @@ export default function B2B({ onQuoteClick }: B2BProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-sans text-slate-600 text-sm sm:text-base leading-relaxed mb-10 max-w-2xl mx-auto"
+            className="font-sans text-slate-600 text-sm sm:text-base leading-relaxed mb-6 max-w-2xl mx-auto"
           >
             Transform standard hydration into a high-impact branding statement. We manufacture, custom-label, and deliver certified mineral water directly to luxury hotels, fine dining establishments, corporate boardrooms, and premier wedding marquees.
           </motion.p>
 
           {/* Fine-Line Icon Strip for Industries Served */}
-          <div className="pt-8 border-t border-slate-200 max-w-4xl mx-auto">
+          <div className="pt-5 sm:pt-6 border-t border-slate-200 max-w-4xl mx-auto">
             <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#0284C7] block mb-4">
               Industries Served
             </span>
@@ -651,8 +651,8 @@ export default function B2B({ onQuoteClick }: B2BProps) {
         </div>
 
         {/* SECTION 6: METRO-MAP CONNECTED HORIZONTAL TIMELINE PROCESS (Visible on Desktop/Tablet, Hidden on Mobile) */}
-        <div className="hidden md:block mb-24 max-w-5xl mx-auto bg-white p-8 sm:p-12 rounded-3xl border border-slate-200 shadow-xl text-center relative overflow-hidden">
-          <div className="mb-12">
+        <div className="hidden md:block mb-10 md:mb-14 max-w-5xl mx-auto bg-white p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-xl text-center relative overflow-hidden">
+          <div className="mb-8">
             <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#0284C7]">
               EFFICIENT WORKFLOW
             </span>
@@ -665,7 +665,7 @@ export default function B2B({ onQuoteClick }: B2BProps) {
           </div>
 
           {/* Desktop/Tablet View: Circuit Trace Timeline Line & Nodes (>= md) */}
-          <div className="relative my-8">
+          <div className="relative my-6">
             {/* Glowing cyan-and-royal gradient timeline line */}
             <div className="absolute top-7 left-[10%] right-[10%] h-1 bg-gradient-to-r from-[#00D4FF] via-[#0284C7] to-[#0369A1] z-0 rounded-full shadow-sm" />
 
@@ -702,8 +702,8 @@ export default function B2B({ onQuoteClick }: B2BProps) {
         </div>
 
         {/* SECTION 7: MOCKUP CARDS WITH COLOR-TINTED OVERLAYS & HOVER ZOOM */}
-        <div className="mb-16 md:mb-24 max-w-6xl mx-auto">
-          <div className="text-center mb-12">
+        <div className="mb-10 md:mb-14 max-w-6xl mx-auto">
+          <div className="text-center mb-6 sm:mb-8">
             <h3 className="font-serif text-2xl sm:text-4xl font-extrabold text-slate-900">
               Private Label Industry Mockups
             </h3>

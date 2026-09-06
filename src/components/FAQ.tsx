@@ -98,7 +98,7 @@ export default function FAQ() {
   return (
     <section 
       id="faq" 
-      className="py-20 bg-slate-50 text-slate-800 relative overflow-hidden cv-auto border-t border-slate-200"
+      className="py-8 sm:py-12 md:py-14 bg-slate-50 text-slate-800 relative overflow-hidden cv-auto border-t border-slate-200"
     >
       {/* Schema.org FAQPage structured data */}
       <script
@@ -109,7 +109,7 @@ export default function FAQ() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-5 sm:mb-8">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -138,7 +138,7 @@ export default function FAQ() {
         </div>
 
         {/* Filter Category Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
           {categories.map((cat) => {
             const Icon = cat.icon;
             const isActive = activeTab === cat.id;
@@ -241,7 +241,7 @@ export default function FAQ() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-12 p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm text-center sm:text-left relative overflow-hidden"
+          className="mt-6 sm:mt-8 p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm text-center sm:text-left relative overflow-hidden"
         >
           <div className="relative z-10 flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 flex-shrink-0">

@@ -272,11 +272,11 @@ export default function Delivery() {
   ];
 
   return (
-    <section id="delivery" className="py-20 bg-slate-50 text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-6">
+    <section id="delivery" className="py-8 sm:py-12 md:py-14 bg-slate-50 text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -297,21 +297,21 @@ export default function Delivery() {
             Delivering Fresh To <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-[#0088CC] via-[#00B4D8] to-[#0284C7]">Your Doorstep</span>
           </motion.h2>
 
-          <div className="w-16 h-1 bg-[#0284C7] mx-auto mt-5 rounded-full" />
+          <div className="w-16 h-1 bg-[#0284C7] mx-auto mt-4 rounded-full" />
 
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-sans text-slate-600 text-base sm:text-lg mt-4 max-w-2xl mx-auto"
+            className="font-sans text-slate-600 text-sm sm:text-base mt-3 max-w-2xl mx-auto"
           >
             Our specialized fleet of chilled delivery vehicles operates daily to bring Aabshar Prime Water straight to your residence, luxury café, wedding marquee, or office.
           </motion.p>
         </div>
 
         {/* VISUAL REGIONAL MAP SILHOUETTE GRAPHIC */}
-        <div className="mb-12 max-w-5xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl relative overflow-hidden">
+        <div className="mb-6 sm:mb-8 max-w-5xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl relative overflow-hidden">
           <div className="text-center mb-6 relative z-10">
             <span className="font-mono text-xs uppercase font-bold text-[#0284C7] tracking-widest">
               NORTHERN PAKISTAN HUB NETWORK

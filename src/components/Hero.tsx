@@ -11,7 +11,7 @@ export default function Hero({ onOrderClick, onExploreClick }: HeroProps) {
   return (
     <section
       id="hero"
-      className="relative min-h-[90vh] lg:min-h-screen pt-28 pb-10 sm:pt-32 sm:pb-14 md:pt-32 lg:pt-36 flex items-center justify-center noise-overlay overflow-hidden bg-gradient-to-b from-white via-sky-50/30 to-slate-50"
+      className="relative pt-20 pb-6 sm:pt-24 sm:pb-8 md:pt-28 lg:pt-32 lg:pb-10 lg:min-h-[85vh] flex items-center justify-center noise-overlay overflow-hidden bg-gradient-to-b from-white via-sky-50/30 to-slate-50"
     >
       {/* 1. Two Soft Radial Glow Blobs in Opposite Corners (Light blue, ~0.15-0.2 opacity) */}
       <div className="absolute -top-20 -left-20 sm:-top-28 sm:-left-28 w-80 sm:w-96 lg:w-[480px] h-80 sm:h-96 lg:h-[480px] rounded-full bg-[radial-gradient(circle_at_center,rgba(0,180,216,0.18)_0%,transparent_70%)] blur-2xl sm:blur-3xl pointer-events-none z-0" />

@@ -175,11 +175,11 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
   };
 
   return (
-    <section id="contact" className="py-24 bg-white text-slate-800 relative overflow-hidden cv-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-2 font-sans">
+    <section id="contact" className="py-8 sm:py-12 md:py-14 bg-white text-slate-800 relative overflow-hidden cv-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-sans">
         
         {/* Section Header with Subtle Glow & Premium Badge */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -207,7 +207,7 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-sky-50/70 rounded-full blur-3xl pointer-events-none" />
 
           {/* Trust Badges Row — Desktop/Tablet Grid View (hidden on mobile) */}
-          <div className="hidden md:grid md:grid-cols-3 gap-3.5 pb-8 border-b border-slate-200 mb-8 text-center">
+          <div className="hidden md:grid md:grid-cols-3 gap-3.5 pb-5 sm:pb-6 border-b border-slate-200 mb-5 sm:mb-6 text-center">
             <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-sky-300 hover:bg-sky-50/50 transition-all duration-300 flex flex-col items-center group cursor-default shadow-xs">
               <div className="p-3 rounded-2xl bg-sky-100 border border-sky-200 text-[#0284C7] mb-2 group-hover:scale-110 transition-all">
                 <ShieldCheck className="w-5 h-5" />
@@ -234,7 +234,7 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
           </div>
 
           {/* Mobile Trust Badges Swipeable Auto-Sliding Carousel (< md) */}
-          <div className="block md:hidden pb-6 border-b border-slate-200 mb-8 relative">
+          <div className="block md:hidden pb-4 border-b border-slate-200 mb-5 relative">
             <div 
               className="relative overflow-hidden px-10 py-1"
               onTouchStart={handleTouchStart}

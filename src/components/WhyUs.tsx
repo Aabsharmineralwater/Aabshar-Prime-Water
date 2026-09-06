@@ -48,12 +48,12 @@ export default function WhyUs() {
   ];
 
   return (
-    <section id="about" className="py-12 md:py-20 bg-white text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
+    <section id="about" className="py-8 sm:py-12 md:py-14 bg-white text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Magazine Editorial Section Header & Cards — Hidden on Mobile (< md), Visible on Tablet/Desktop (>= md) */}
         <div className="hidden md:block">
-          <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -80,7 +80,7 @@ export default function WhyUs() {
           </div>
 
           {/* Desktop/Tablet View: Grid Layout (>= md breakpoint) */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {features.map((item, index) => (
               <motion.div
                 key={item.title}

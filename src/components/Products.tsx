@@ -279,7 +279,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
   };
 
   return (
-    <section id="products" className="py-20 bg-slate-50/70 text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
+    <section id="products" className="py-8 sm:py-12 md:py-14 bg-slate-50/70 text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
       {/* Subtle Background Glows */}
       <div className="absolute top-1/3 right-0 w-96 h-96 bg-sky-200/20 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-blue-100/30 rounded-full blur-[140px] pointer-events-none" />
@@ -287,7 +287,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+        <div className="text-center max-w-2xl mx-auto mb-5 sm:mb-7">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -314,7 +314,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
         </div>
 
         {/* Filter Navigation Tabs */}
-        <div className="w-full max-w-md sm:max-w-xl mx-auto px-2 mb-8 sm:mb-10">
+        <div className="w-full max-w-md sm:max-w-xl mx-auto px-2 mb-5 sm:mb-7">
           <div className="grid grid-cols-3 gap-1.5 sm:flex sm:items-center sm:justify-center sm:gap-3">
             <button
               onClick={() => setActiveTab('all')}
@@ -397,59 +397,94 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                   initial={{ opacity: 0, y: 25 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.45, delay: index * 0.05 }}
-                  className={`w-[84vw] sm:w-[72vw] md:w-full max-w-[390px] md:max-w-none shrink-0 md:shrink snap-start snap-always md:snap-align-none bg-white border rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 grid grid-cols-1 md:grid-cols-12 relative group ${
+                  whileHover={{ y: -5, scale: 1.008 }}
+                  whileTap={{ scale: 0.992 }}
+                  transition={{ duration: 0.35 }}
+                  className={`w-[84vw] sm:w-[72vw] md:w-full max-w-[390px] md:max-w-none shrink-0 md:shrink snap-start snap-always md:snap-align-none rounded-2xl sm:rounded-3xl overflow-hidden grid grid-cols-1 md:grid-cols-12 relative group transition-all duration-300 ${
                     isComingSoon
-                      ? 'border-amber-200/90 hover:border-amber-400/80 ring-1 ring-amber-100'
+                      ? 'bg-gradient-to-br from-white via-amber-50/20 to-orange-50/15 border border-amber-200/90 hover:border-amber-400 shadow-[0_8px_30px_rgba(245,158,11,0.08),0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_45px_-8px_rgba(245,158,11,0.22)]'
                       : isPrivateLabel
-                      ? 'border-sky-300/90 hover:border-blue-400'
-                      : 'border-slate-200/90 hover:border-sky-300'
+                      ? 'bg-gradient-to-br from-white via-sky-50/30 to-blue-50/25 border border-sky-200/90 hover:border-sky-400 shadow-[0_8px_30px_rgba(2,132,199,0.09),0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_45px_-8px_rgba(2,132,199,0.24)]'
+                      : 'bg-gradient-to-br from-white via-sky-50/35 to-blue-50/20 border border-slate-200/90 hover:border-sky-300 shadow-[0_8px_30px_rgba(2,132,199,0.08),0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_45px_-8px_rgba(2,132,199,0.22)]'
                   }`}
                 >
-                  {/* High-Contrast "Coming Soon" Badge in Top-Right Corner */}
+                  {/* High-Contrast "Coming Soon" Pill in Top-Right Corner */}
                   {isComingSoon && (
-                    <div className="absolute top-2.5 right-2.5 sm:top-5 sm:right-5 z-30">
-                      <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-0.5 sm:py-1.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-mono text-[9px] sm:text-xs font-black uppercase tracking-wider shadow-md border border-amber-300/40">
-                        <Clock className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 animate-spin-slow" />
+                    <div className="absolute top-2.5 right-2.5 sm:top-4 sm:right-4 z-30">
+                      <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-mono text-[9px] sm:text-xs font-bold uppercase tracking-wider shadow-md shadow-amber-500/25 border border-amber-300/50">
+                        <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 animate-spin-slow shrink-0" />
                         <span>COMING SOON</span>
                       </div>
                     </div>
                   )}
 
-                  {/* Private Label Corner Ribbon */}
+                  {/* Private Label Corner Ribbon Pill */}
                   {isPrivateLabel && (
-                    <div className="absolute top-2.5 right-2.5 sm:top-5 sm:right-5 z-30">
-                      <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-gradient-to-r from-slate-900 to-[#0284C7] text-white font-mono text-[9px] sm:text-xs font-bold uppercase tracking-wider shadow-md">
-                        <Crown className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-amber-300" />
-                        <span>B2B CUSTOM</span>
+                    <div className="absolute top-2.5 right-2.5 sm:top-4 sm:right-4 z-30">
+                      <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-gradient-to-r from-slate-900 via-slate-800 to-[#0284C7] text-white font-mono text-[9px] sm:text-xs font-bold uppercase tracking-wider shadow-md shadow-sky-950/20 border border-sky-300/30">
+                        <Crown className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-300 shrink-0" />
+                        <span>B2B BESPOKE</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Available Now Corner Badge */}
+                  {!isComingSoon && !isPrivateLabel && (
+                    <div className="absolute top-2.5 right-2.5 sm:top-4 sm:right-4 z-30">
+                      <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-emerald-800 font-mono text-[9px] sm:text-xs font-bold uppercase tracking-wider border border-emerald-200/90 shadow-2xs">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                        <span>AVAILABLE NOW</span>
                       </div>
                     </div>
                   )}
 
                   {/* Left Column: Asymmetric Bottle Showcase Stage */}
-                  <div className={`md:col-span-5 relative min-h-[200px] sm:min-h-[240px] md:min-h-[450px] flex flex-col items-center justify-end pt-6 sm:pt-10 md:pt-16 pb-2 sm:pb-4 md:pb-8 px-3 sm:px-6 border-b md:border-b-0 md:border-r overflow-hidden ${
+                  <div className={`md:col-span-5 relative min-h-[220px] sm:min-h-[260px] md:min-h-[460px] flex flex-col items-center justify-end pt-8 sm:pt-12 md:pt-16 pb-3 sm:pb-5 md:pb-8 px-4 sm:px-6 border-b md:border-b-0 md:border-r overflow-hidden ${
                     isComingSoon
-                      ? 'bg-gradient-to-b from-amber-50/40 via-sky-50/40 to-slate-100 border-amber-200/60'
-                      : 'bg-gradient-to-b from-sky-50/80 via-sky-50/40 to-slate-100 border-slate-200'
+                      ? 'bg-gradient-to-b from-amber-50/50 via-sky-50/40 to-slate-100/80 border-amber-200/60'
+                      : 'bg-gradient-to-b from-sky-50/90 via-sky-100/40 to-white/70 border-slate-200/80'
                   }`}>
-                    {/* Radial Spotlight & Caustic Light behind Bottle */}
-                    <div className={`absolute w-36 sm:w-48 md:w-64 h-36 sm:h-48 md:h-64 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700 pointer-events-none ${
+                    {/* Soft Radial Ambient Glow behind Bottle */}
+                    <div className={`absolute w-44 sm:w-56 md:w-72 h-44 sm:h-56 md:h-72 rounded-full blur-2xl group-hover:scale-120 transition-transform duration-700 pointer-events-none ${
                       isComingSoon
-                        ? 'bg-[radial-gradient(circle,rgba(245,158,11,0.18)_0%,transparent_75%)]'
-                        : 'bg-[radial-gradient(circle,rgba(0,180,216,0.18)_0%,transparent_75%)]'
+                        ? 'bg-[radial-gradient(circle,rgba(245,158,11,0.22)_0%,transparent_75%)]'
+                        : 'bg-[radial-gradient(circle,rgba(0,212,255,0.28)_0%,rgba(2,132,199,0.12)_50%,transparent_75%)]'
                     }`} />
 
-                    {/* Refined Size Badge Top Left */}
-                    <div className="absolute top-2.5 left-2.5 sm:top-5 sm:left-5 z-20">
-                      <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-0.5 sm:py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 text-[#0284C7] text-[10px] sm:text-xs font-mono font-black tracking-wider uppercase shadow-xs">
-                        <Sparkles className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#00D4FF]" />
+                    {/* Dynamic Concentric Circular Wave Backdrop with Light Rays */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      {/* Outer ripple ring */}
+                      <div className={`w-48 sm:w-60 md:w-80 h-48 sm:h-60 md:h-80 rounded-full border transition-all duration-700 group-hover:scale-105 ${
+                        isComingSoon ? 'border-amber-300/30' : 'border-sky-300/40'
+                      }`} />
+                      
+                      {/* Middle glowing halo ring */}
+                      <div className={`absolute w-40 sm:w-52 md:w-68 h-40 sm:h-52 md:h-68 rounded-full border transition-all duration-500 ${
+                        isComingSoon ? 'border-amber-200/40' : 'border-sky-200/60'
+                      }`} />
+
+                      {/* Inner solid circular backdrop disc with soft frosted gradient */}
+                      <div className={`absolute w-32 sm:w-44 md:w-58 h-32 sm:h-44 md:h-58 rounded-full bg-gradient-to-tr shadow-[inset_0_2px_14px_rgba(255,255,255,0.9),0_12px_28px_rgba(2,132,199,0.1)] border transition-transform duration-500 group-hover:scale-105 ${
+                        isComingSoon
+                          ? 'from-amber-100/60 via-white/85 to-amber-50/70 border-amber-200/80'
+                          : 'from-sky-100/70 via-white/90 to-sky-50/80 border-sky-200/90'
+                      }`} />
+
+                      {/* Subtle radiating light rays shimmer */}
+                      <div className="absolute w-48 sm:w-60 md:w-76 h-48 sm:h-60 md:h-76 opacity-30 pointer-events-none bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-sky-400/25 via-transparent to-transparent blur-xs" />
+                    </div>
+
+                    {/* Sleek Size Badge Pill on Top Left */}
+                    <div className="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 z-20">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-sky-200/90 text-sky-900 text-[10px] sm:text-xs font-mono font-bold tracking-wider uppercase shadow-[0_2px_8px_rgba(2,132,199,0.12)]">
+                        <Sparkles className="w-3 h-3 text-[#0088CC] shrink-0" />
                         <span>{prod.sizeBadge}</span>
                       </div>
                     </div>
 
-                    {/* Glowing Platform Pedestal & Water Ripple Effect beneath Bottle */}
-                    <div className="absolute bottom-1.5 sm:bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 w-32 sm:w-44 md:w-56 h-5 sm:h-7 md:h-10 bg-gradient-to-r from-sky-200/40 via-sky-300/50 to-sky-200/40 rounded-[100%] blur-md pointer-events-none z-10 animate-ripple-pulse" />
-                    <WaterRippleEffect size="lg" className="bottom-0.5 sm:bottom-2 opacity-45 sm:opacity-50 scale-80 sm:scale-100 origin-bottom" />
+                    {/* Glowing Liquid Platform Pedestal & Water Ripple Effect beneath Bottle */}
+                    <div className="absolute bottom-2 sm:bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 w-32 sm:w-44 md:w-56 h-4 sm:h-6 md:h-8 bg-gradient-to-r from-sky-200/40 via-[#00D4FF]/40 to-sky-200/40 rounded-[100%] blur-sm pointer-events-none z-10 animate-ripple-pulse" />
+                    <WaterRippleEffect size="lg" className="bottom-0.5 sm:bottom-2 opacity-45 sm:opacity-50 scale-85 sm:scale-100 origin-bottom" />
 
                     {/* Floating Bottle Render with Gentle Idle Bobbing */}
                     <motion.img
@@ -459,7 +494,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                       decoding="async"
                       animate={{ y: [0, -4, 0] }}
                       transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-                      className={`h-40 sm:h-48 md:h-72 w-auto object-contain pointer-events-none filter drop-shadow-[0_12px_20px_rgba(2,132,199,0.22)] md:drop-shadow-[0_16px_24px_rgba(2,132,199,0.22)] z-20 mt-1 sm:mt-3 md:mt-6 mb-0.5 sm:mb-1 ${
+                      className={`h-40 sm:h-48 md:h-72 w-auto object-contain pointer-events-none filter drop-shadow-[0_14px_22px_rgba(2,132,199,0.22)] md:drop-shadow-[0_18px_26px_rgba(2,132,199,0.24)] z-20 mt-1 sm:mt-3 md:mt-6 mb-0.5 sm:mb-1 ${
                         prod.blendMultiply ? 'mix-blend-multiply' : ''
                       } ${prod.imgScale}`}
                       referrerPolicy="no-referrer"
@@ -467,61 +502,58 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                   </div>
 
                   {/* Right Column: Details & Actions */}
-                  <div className="md:col-span-7 p-3 sm:p-5 md:p-8 flex flex-col justify-between text-left">
+                  <div className="md:col-span-7 p-3.5 sm:p-5 md:p-8 flex flex-col justify-between text-left">
                     <div>
                       {/* Top Badges Row */}
-                      <div className="flex flex-wrap items-center justify-between gap-1 sm:gap-2 mb-1.5 sm:mb-3">
+                      <div className="flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 mb-2 sm:mb-3">
                         {isComingSoon ? (
-                          <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-amber-50 border border-amber-300 text-amber-800 text-[9px] sm:text-xs font-mono font-black uppercase tracking-wider">
-                            <Clock className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-amber-600" />
+                          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-amber-50 to-orange-50/70 border border-amber-200 text-amber-900 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider shadow-2xs">
+                            <Clock className="w-3 h-3 text-amber-600 shrink-0" />
                             <span>UPCOMING LAUNCH</span>
                           </div>
                         ) : isPrivateLabel ? (
-                          <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-[9px] sm:text-xs font-mono font-black uppercase tracking-wider">
-                            <Paintbrush className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#0284C7]" />
+                          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-blue-50 to-sky-50/70 border border-blue-200 text-blue-900 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider shadow-2xs">
+                            <Paintbrush className="w-3 h-3 text-[#0284C7] shrink-0" />
                             <span>BESPOKE BRANDING</span>
                           </div>
                         ) : (
-                          <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-sky-50 border border-sky-200 text-[#0284C7] text-[9px] sm:text-xs font-mono font-black uppercase tracking-wider">
-                            <Droplets className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#00D4FF]" />
+                          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-sky-50 to-blue-50/70 border border-sky-200 text-sky-900 text-[10px] sm:text-xs font-mono font-bold tracking-wider uppercase shadow-2xs">
+                            <Droplets className="w-3 h-3 text-[#0088CC] shrink-0" />
                             <span>AABSHAR PURE SERIES</span>
                           </div>
                         )}
 
-                        <div className="inline-flex items-center gap-1 sm:gap-1.5 px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-[9px] sm:text-[11px] font-mono font-bold tracking-wider uppercase">
-                          <ShieldCheck className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#0284C7]" />
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-teal-50 to-emerald-50/70 border border-teal-200/90 text-teal-900 text-[10px] sm:text-[11px] font-mono font-bold tracking-wider uppercase shadow-2xs">
+                          <ShieldCheck className="w-3.5 h-3.5 text-teal-600 shrink-0" />
                           <span>TDS 135 VERIFIED</span>
                         </div>
                       </div>
 
-                      <h3 className="font-serif text-lg sm:text-2xl md:text-3xl font-extrabold text-slate-900 group-hover:text-[#0284C7] transition-colors duration-200 mb-0.5 leading-snug">
-                        {prod.name}
-                      </h3>
+                      {/* Title */}
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <h3 className="font-serif text-lg sm:text-2xl md:text-3xl font-extrabold text-slate-900 group-hover:text-[#0284C7] transition-colors duration-200 leading-snug">
+                          {prod.name}
+                        </h3>
+                      </div>
+
                       {prod.subtitle && (
-                        <p className="font-sans text-slate-600 text-[11px] sm:text-sm font-medium mb-2 sm:mb-4 line-clamp-2 md:line-clamp-none leading-snug sm:leading-normal">
+                        <p className="font-sans text-slate-600 text-[11.5px] sm:text-sm font-medium mb-3 sm:mb-5 line-clamp-2 md:line-clamp-none leading-snug sm:leading-normal">
                           {prod.subtitle}
                         </p>
                       )}
 
-                      {/* Animated Thin Accent Line */}
-                      <div className={`w-full h-[1px] md:h-[1.5px] mb-2 sm:mb-4 md:mb-5 ${
-                        isComingSoon
-                          ? 'bg-gradient-to-r from-amber-500 via-amber-300 to-transparent'
-                          : 'bg-gradient-to-r from-[#0088CC] via-sky-300 to-transparent'
-                      }`} />
-
                       {/* Specifications List with Contextual Icons - Hidden on mobile (< md), visible on tablet/desktop (>= md) */}
-                      <ul className="hidden md:grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                      <ul className="hidden md:grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">
                         {prod.features.map((feat) => {
                           const IconComponent = feat.icon;
                           return (
                             <li key={feat.text} className="flex items-center text-xs text-slate-700 font-medium">
-                              <div className={`w-5 h-5 rounded-full border flex items-center justify-center mr-2.5 flex-shrink-0 ${
+                              <div className={`w-6 h-6 rounded-full border flex items-center justify-center mr-2.5 flex-shrink-0 shadow-2xs ${
                                 isComingSoon
                                   ? 'bg-amber-50 border-amber-200 text-amber-600'
                                   : 'bg-sky-50 border-sky-200 text-[#0284C7]'
                               }`}>
-                                <IconComponent className="w-3 h-3" />
+                                <IconComponent className="w-3.5 h-3.5" />
                               </div>
                               <span className="leading-tight">{feat.text}</span>
                             </li>
@@ -533,49 +565,49 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                     <div>
                       {/* Pricing / Availability Box */}
                       {isComingSoon ? (
-                        <div className="mb-2.5 sm:mb-4 md:mb-5 p-2 sm:p-3 md:p-4 bg-amber-50/70 rounded-xl sm:rounded-2xl border border-amber-200/90 flex items-center justify-between gap-1.5 sm:gap-3 shadow-xs relative overflow-hidden">
+                        <div className="mb-3 sm:mb-4 md:mb-5 p-2.5 sm:p-3.5 md:p-4 rounded-2xl bg-gradient-to-r from-amber-50/90 via-white to-orange-50/40 border border-amber-200 shadow-2xs flex items-center justify-between gap-2 sm:gap-3 relative overflow-hidden">
                           <div>
-                            <span className="text-[8.5px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-amber-700 block mb-0.5">
+                            <span className="text-[9px] sm:text-[10.5px] font-mono font-bold uppercase tracking-wider text-amber-700 block mb-0.5">
                               Release Status
                             </span>
-                            <span className="font-serif text-lg sm:text-2xl md:text-3xl font-extrabold text-amber-900 leading-none">
+                            <span className="font-serif text-xl sm:text-2xl md:text-3xl font-black text-amber-950 tracking-tight leading-none">
                               Coming Soon
                             </span>
-                            <span className="text-[9.5px] sm:text-xs text-amber-700/90 font-medium block mt-0.5 sm:mt-1">
+                            <span className="text-[10px] sm:text-xs text-amber-800/90 font-medium block mt-0.5 sm:mt-1">
                               {prod.priceDetail}
                             </span>
                           </div>
-                          <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 font-mono text-[9px] sm:text-xs font-black uppercase tracking-wide">
-                            <Clock className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-amber-700" />
+                          <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-amber-100/90 border border-amber-300 text-amber-900 font-mono text-[9.5px] sm:text-xs font-bold uppercase tracking-wide">
+                            <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-700 shrink-0" />
                             <span>In Production</span>
                           </div>
                         </div>
                       ) : (
-                        <div className="mb-2.5 sm:mb-4 md:mb-5 p-2 sm:p-3 md:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border border-slate-200 flex items-center justify-between gap-1.5 sm:gap-3 shadow-xs relative overflow-hidden group/price">
+                        <div className="mb-3 sm:mb-4 md:mb-5 p-2.5 sm:p-3.5 md:p-4 rounded-2xl bg-gradient-to-r from-sky-50/90 via-white to-blue-50/40 border border-sky-100/90 shadow-2xs flex items-center justify-between gap-2 sm:gap-3 relative overflow-hidden">
                           <div className="relative z-10">
-                            <span className="text-[8.5px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500 block mb-0.5">
-                              {isPrivateLabel ? 'Pricing Plan' : 'Unit Retail Price'}
+                            <span className="text-[9px] sm:text-[10.5px] font-mono font-bold uppercase tracking-wider text-slate-500 block mb-0.5">
+                              {isPrivateLabel ? 'Commercial Pricing' : 'Direct Chilled Price'}
                             </span>
-                            <div className="flex items-baseline gap-1">
-                              <span className="font-serif text-xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 leading-none">
+                            <div className="flex items-baseline gap-1.5">
+                              <span className="font-serif text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-none">
                                 {prod.price}
                               </span>
                             </div>
-                            <span className="text-[9.5px] sm:text-xs text-slate-500 font-medium block mt-0.5 sm:mt-1">
+                            <span className="text-[10px] sm:text-xs text-slate-500 font-medium block mt-0.5 sm:mt-1">
                               {prod.priceDetail}
                             </span>
                           </div>
-                          <div className="relative z-10 inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3.5 py-0.5 sm:py-1.5 rounded-full bg-sky-100 border border-sky-300 text-[#0284C7] font-mono text-[9px] sm:text-xs font-black uppercase tracking-wide">
+                          <div className="relative z-10">
                             {isPrivateLabel ? (
-                              <>
-                                <Crown className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#0284C7]" />
+                              <span className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-white/95 border border-sky-200 text-sky-800 font-mono text-[9px] sm:text-xs font-bold uppercase tracking-wider shadow-2xs">
+                                <Crown className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-500 shrink-0" />
                                 <span>Zero Setup Fee</span>
-                              </>
+                              </span>
                             ) : (
-                              <>
-                                <Tag className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#0284C7]" />
+                              <span className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-white/95 border border-sky-200 text-sky-800 font-mono text-[9px] sm:text-xs font-bold uppercase tracking-wider shadow-2xs">
+                                <BadgePercent className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#0284C7] shrink-0" />
                                 <span>Bulk Savings</span>
-                              </>
+                              </span>
                             )}
                           </div>
                         </div>
@@ -584,26 +616,25 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                       {/* CTA Actions */}
                       {isComingSoon ? (
                         <div>
-                          {/* Notify Me on WhatsApp Action */}
                           <button
                             id={`notify-btn-${prod.id}`}
                             onClick={() => handleNotifyMe(prod)}
-                            className="w-full px-3.5 sm:px-6 py-2 sm:py-3.5 min-h-[42px] sm:min-h-[46px] bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 hover:brightness-110 text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl shadow-md border border-amber-400/50 transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2.5 hover:shadow-lg active:scale-98"
+                            className="w-full px-5 sm:px-8 py-3 sm:py-3.5 min-h-[44px] sm:min-h-[48px] rounded-full bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 hover:brightness-110 text-white font-black text-xs sm:text-sm uppercase tracking-wider shadow-[0_8px_20px_-4px_rgba(245,158,11,0.35)] hover:shadow-[0_12px_28px_-4px_rgba(245,158,11,0.48)] active:scale-[0.98] transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 group/btn"
                           >
                             {isNotified ? (
                               <>
-                                <Check className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-white shrink-0" />
+                                <Check className="w-4 h-4 sm:w-5 sm:h-5 text-white shrink-0" />
                                 <span>Waitlist Confirmed! Opening WhatsApp...</span>
                               </>
                             ) : (
                               <>
-                                <Bell className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-white shrink-0" />
+                                <Bell className="w-4 h-4 sm:w-5 sm:h-5 text-white shrink-0 group-hover/btn:rotate-12 transition-transform" />
                                 <span>Notify Me When Available</span>
                               </>
                             )}
                           </button>
-                          <p className="font-sans text-center text-[9.5px] sm:text-[11px] text-amber-700/80 mt-1 sm:mt-2 font-medium line-clamp-1 sm:line-clamp-none">
-                            Join priority launch waitlist for early-bird stock alerts & discounts.
+                          <p className="font-sans text-center text-[9.5px] sm:text-[11px] text-amber-700/80 mt-1 sm:mt-1.5 font-medium line-clamp-1 sm:line-clamp-none">
+                            Join priority launch waitlist for early-bird stock alerts & bulk discounts.
                           </p>
                         </div>
                       ) : isPrivateLabel ? (
@@ -622,12 +653,12 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                                 b2bEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
                               }
                             }}
-                            className="w-full px-3.5 sm:px-6 py-2 sm:py-3.5 min-h-[42px] sm:min-h-[46px] bg-gradient-to-r from-slate-900 via-[#0A2540] to-[#0284C7] hover:brightness-110 text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl shadow-md border border-sky-400/30 transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2.5 hover:shadow-lg active:scale-98 group"
+                            className="w-full px-5 sm:px-8 py-3 sm:py-3.5 min-h-[44px] sm:min-h-[48px] rounded-full bg-gradient-to-r from-slate-900 via-[#0A2540] to-[#0284C7] hover:brightness-110 text-white font-black text-xs sm:text-sm uppercase tracking-wider shadow-[0_8px_20px_-4px_rgba(10,37,64,0.3)] hover:shadow-[0_12px_28px_-4px_rgba(2,132,199,0.45)] active:scale-[0.98] transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 group/btn"
                           >
-                            <Paintbrush className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#00D4FF] group-hover:rotate-12 transition-transform shrink-0" />
+                            <Paintbrush className="w-4 h-4 sm:w-5 sm:h-5 text-[#00D4FF] group-hover/btn:rotate-12 transition-transform shrink-0" />
                             <span className="text-center leading-snug">Explore Private Label Branding</span>
                           </a>
-                          <p className="font-sans text-center text-[9.5px] sm:text-[11px] text-slate-500 mt-1 sm:mt-2 font-medium line-clamp-1 sm:line-clamp-none">
+                          <p className="font-sans text-center text-[9.5px] sm:text-[11px] text-slate-500 mt-1 sm:mt-1.5 font-medium line-clamp-1 sm:line-clamp-none">
                             Digital preview & 3D mockup consultation for businesses, hotels & events
                           </p>
                         </div>
@@ -639,12 +670,12 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                               if (isDragging) return;
                               onOrderProduct(prod.id);
                             }}
-                            className="w-full px-3.5 sm:px-6 py-2 sm:py-3.5 min-h-[42px] sm:min-h-[46px] bg-gradient-to-r from-[#00D4FF] via-[#0284C7] to-[#0369A1] hover:brightness-110 text-white font-black text-xs sm:text-sm uppercase tracking-wider rounded-xl sm:rounded-2xl shadow-md border border-[#00D4FF]/50 transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2.5 hover:shadow-lg active:scale-98 group"
+                            className="w-full px-5 sm:px-8 py-3 sm:py-3.5 min-h-[44px] sm:min-h-[48px] rounded-full bg-gradient-to-r from-[#00D4FF] via-[#0284C7] to-[#0369A1] hover:from-[#00E5FF] hover:via-[#0295E0] hover:to-[#0274B3] text-white font-black text-xs sm:text-sm uppercase tracking-wider shadow-[0_8px_20px_-4px_rgba(2,132,199,0.38)] hover:shadow-[0_12px_28px_-4px_rgba(2,132,199,0.52)] active:scale-[0.98] transition-all duration-200 cursor-pointer flex items-center justify-center gap-2.5 group/btn"
                           >
-                            <ShoppingCart className="w-3.5 h-3.5 sm:w-5 sm:h-5 fill-current text-white group-hover:scale-110 transition-transform shrink-0" />
-                            <span className="text-center leading-snug">Order {prod.sizeBadge} Chilled</span>
+                            <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 fill-current text-white group-hover/btn:scale-110 transition-transform shrink-0" />
+                            <span className="text-center leading-snug">Order {prod.sizeBadge} Now</span>
                           </button>
-                          <p className="font-sans text-center text-[9.5px] sm:text-[11px] text-slate-500 mt-1 sm:mt-2 font-medium line-clamp-1 sm:line-clamp-none">
+                          <p className="font-sans text-center text-[9.5px] sm:text-[11px] text-slate-500 mt-1 sm:mt-1.5 font-medium line-clamp-1 sm:line-clamp-none">
                             Daily Chilled Express Delivery in Rawalpindi, Islamabad & Fateh Jang
                           </p>
                         </div>
@@ -723,7 +754,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-10 sm:mt-14 max-w-5xl mx-auto relative group"
+          className="mt-6 sm:mt-10 max-w-5xl mx-auto relative group"
         >
           {/* Subtle Outer Cyan Aura / Glow */}
           <div className="absolute -inset-1 bg-gradient-to-r from-[#00D4FF]/40 via-[#0284C7]/30 to-[#0088CC]/40 rounded-3xl blur-lg opacity-70 group-hover:opacity-100 transition duration-500 pointer-events-none" />
