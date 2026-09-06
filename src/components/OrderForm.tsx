@@ -175,7 +175,7 @@ export default function OrderForm({ selectedSize, onSizeChange }: OrderFormProps
   };
 
   return (
-    <section id="contact" className="py-8 sm:py-12 md:py-14 bg-white text-slate-800 relative overflow-hidden cv-auto">
+    <section id="contact" className="scroll-mt-24 md:scroll-mt-32 py-8 sm:py-12 md:py-14 bg-white text-slate-800 relative overflow-hidden cv-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-sans">
         
         {/* Section Header with Subtle Glow & Premium Badge */}

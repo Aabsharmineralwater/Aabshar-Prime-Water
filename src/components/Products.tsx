@@ -279,7 +279,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
   };
 
   return (
-    <section id="products" className="py-8 sm:py-12 md:py-14 bg-slate-50/70 text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
+    <section id="products" className="scroll-mt-24 md:scroll-mt-32 py-8 sm:py-12 md:py-14 bg-slate-50/70 text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
       {/* Subtle Background Glows */}
       <div className="absolute top-1/3 right-0 w-96 h-96 bg-sky-200/20 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-blue-100/30 rounded-full blur-[140px] pointer-events-none" />

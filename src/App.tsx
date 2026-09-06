@@ -34,9 +34,13 @@ export default function App() {
         if (hash && hash !== '#' && hash !== '#/') {
           // Allow some time for rendering before scrolling
           setTimeout(() => {
-            const element = document.querySelector(hash);
-            if (element) {
-              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (hash === '#hero') {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+              const element = document.querySelector(hash);
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
             }
           }, 150);
         }
@@ -59,11 +63,13 @@ export default function App() {
         setPage('home');
       }
       setTimeout(() => {
-        const element = document.querySelector(href);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else if (href === '#hero' || href === '#') {
+        if (href === '#hero' || href === '#') {
           window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
         }
       }, 150);
     }

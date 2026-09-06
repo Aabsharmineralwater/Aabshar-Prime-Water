@@ -48,7 +48,7 @@ export default function WhyUs() {
   ];
 
   return (
-    <section id="about" className="py-8 sm:py-12 md:py-14 bg-white text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
+    <section id="about" className="scroll-mt-24 md:scroll-mt-32 py-8 sm:py-12 md:py-14 bg-white text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Magazine Editorial Section Header & Cards — Hidden on Mobile (< md), Visible on Tablet/Desktop (>= md) */}

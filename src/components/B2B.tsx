@@ -594,7 +594,7 @@ export default function B2B({ onQuoteClick }: B2BProps) {
   ];
 
   return (
-    <section id="b2b" className="py-8 sm:py-12 md:py-14 bg-slate-50/70 text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
+    <section id="b2b" className="scroll-mt-24 md:scroll-mt-32 py-8 sm:py-12 md:py-14 bg-slate-50/70 text-slate-800 relative overflow-hidden cv-auto border-t border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* SECTION 5: B2B EDITORIAL + INDUSTRIES SERVED */}
