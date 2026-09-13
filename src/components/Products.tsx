@@ -483,7 +483,7 @@ export default function Products({ onOrderProduct }: ProductsProps) {
                     </div>
 
                     {/* Glowing Liquid Platform Pedestal & Water Ripple Effect beneath Bottle */}
-                    <div className="absolute bottom-2 sm:bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 w-32 sm:w-44 md:w-56 h-4 sm:h-6 md:h-8 bg-gradient-to-r from-sky-200/40 via-[#00D4FF]/40 to-sky-200/40 rounded-[100%] blur-sm pointer-events-none z-10 animate-ripple-pulse" />
+                    <div className="absolute bottom-2 sm:bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 w-32 sm:w-44 md:w-56 h-4 sm:h-6 md:h-8 bg-gradient-to-r from-sky-200/40 via-sky-300/40 to-sky-200/40 rounded-[100%] blur-sm pointer-events-none z-10" />
                     <WaterRippleEffect size="lg" className="bottom-0.5 sm:bottom-2 opacity-45 sm:opacity-50 scale-85 sm:scale-100 origin-bottom" />
 
                     {/* Floating Bottle Render with Gentle Idle Bobbing */}

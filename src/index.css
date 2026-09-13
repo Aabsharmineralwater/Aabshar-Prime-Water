@@ -379,7 +379,7 @@ html.dark .shimmer-bg {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .shimmer-bg, .animate-pulse, .animate-float, .animate-slow-spin, .animate-bubble-slow, .animate-bubble-fast {
+  .shimmer-bg, .animate-pulse, .animate-float, .animate-slow-spin {
     animation: none !important;
     transition: none !important;
   }
@@ -411,20 +411,6 @@ html.dark .shimmer-bg {
 
 .animate-slow-spin {
   animation: slow-spin 30s linear infinite;
-}
-
-@keyframes rise {
-  0% { transform: translateY(100%) scale(0.8); opacity: 0; }
-  50% { opacity: 0.5; }
-  100% { transform: translateY(-100px) scale(1.2); opacity: 0; }
-}
-
-.animate-bubble-slow {
-  animation: rise 12s infinite linear;
-}
-
-.animate-bubble-fast {
-  animation: rise 8s infinite linear;
 }
 
 @keyframes waveFlow {
@@ -514,50 +500,5 @@ html.dark .shimmer-bg {
 
 .animate-splash-shimmer {
   animation: splashShimmer 2.5s ease-in-out infinite;
-}
-
-@keyframes waterCaustics {
-  0% {
-    background-position: 0% 0%, 0% 0%, 0% 0%;
-    transform: scale(1) rotate(0deg);
-  }
-  50% {
-    background-position: 100% 50%, 50% 100%, 80% 20%;
-    transform: scale(1.04) rotate(1deg);
-  }
-  100% {
-    background-position: 0% 100%, 100% 0%, 0% 100%;
-    transform: scale(1) rotate(0deg);
-  }
-}
-
-@keyframes aquaticRipples {
-  0% {
-    background-position: 0px 0px, 0px 0px, 0px 0px;
-  }
-  50% {
-    background-position: 150px 100px, -100px 150px, 80px -80px;
-  }
-  100% {
-    background-position: 300px 200px, -200px 300px, 160px -160px;
-  }
-}
-
-.aquatic-caustics {
-  background-image: 
-    radial-gradient(ellipse at 25% 25%, rgba(0, 180, 216, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 75% 75%, rgba(56, 189, 248, 0.08) 0%, transparent 55%),
-    radial-gradient(circle at 50% 50%, rgba(201, 162, 74, 0.05) 0%, transparent 60%);
-  background-size: 150% 150%, 180% 180%, 200% 200%;
-  animation: waterCaustics 16s ease-in-out infinite alternate;
-}
-
-.aquatic-ripples {
-  background-image: 
-    radial-gradient(circle at 50% 50%, rgba(0, 180, 216, 0.08) 1px, transparent 2px),
-    radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.06) 1px, transparent 3px),
-    radial-gradient(circle at 80% 80%, rgba(14, 165, 233, 0.06) 1px, transparent 2px);
-  background-size: 40px 40px, 60px 60px, 50px 50px;
-  animation: aquaticRipples 20s linear infinite;
 }
 
